@@ -1,0 +1,11 @@
+
+
+
+.. only:: html
+
+   المراجع
+   ==========
+
+.. bibliography:: ../d2l.bib
+   :style: apa
+   :all:

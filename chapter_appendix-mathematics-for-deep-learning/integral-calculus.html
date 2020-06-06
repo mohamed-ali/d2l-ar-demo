@@ -1,0 +1,659 @@
+<!DOCTYPE html>
+
+<html xmlns="http://www.w3.org/1999/xhtml" lang="ar">
+  <head>
+    <meta charset="utf-8" />
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta http-equiv="x-ua-compatible" content="ie=edge">
+    
+    <title>Integral Calculus &#8212; تعمّق في التعلّم العميق 0.7.1 documentation</title>
+
+    <link rel="stylesheet" href="../_static/basic.css" type="text/css" />
+    <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+    <link rel="stylesheet" href="../_static/material-design-lite-1.3.0/material.blue-deep_orange.min.css" type="text/css" />
+    <link rel="stylesheet" href="../_static/sphinx_materialdesign_theme.css" type="text/css" />
+    <link rel="stylesheet" href="../_static/fontawesome/all.css" type="text/css" />
+    <link rel="stylesheet" href="../_static/fonts.css" type="text/css" />
+    <link rel="stylesheet" type="text/css" href="../_static/d2l.css" />
+    <script type="text/javascript" id="documentation_options" data-url_root="../" src="../_static/documentation_options.js"></script>
+    <script type="text/javascript" src="../_static/jquery.js"></script>
+    <script type="text/javascript" src="../_static/underscore.js"></script>
+    <script type="text/javascript" src="../_static/doctools.js"></script>
+    <script type="text/javascript" src="../_static/language_data.js"></script>
+    <script type="text/javascript" src="../_static/d2l.js"></script>
+    <script type="text/javascript" src="../_static/translations.js"></script>
+    <script async="async" type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/latest.js?config=TeX-AMS-MML_HTMLorMML"></script>
+    <link rel="shortcut icon" href="../_static/favicon.png"/>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" /> 
+  </head>
+<body>
+    <div class="mdl-layout mdl-js-layout mdl-layout--fixed-header "><header class="mdl-layout__header mdl-layout__header--waterfall ">
+    <div class="mdl-layout__header-row">
+        
+        <nav class="mdl-navigation breadcrumb">
+            <a class="mdl-navigation__link is-active">Integral Calculus</a>
+        </nav>
+        <div class="mdl-layout-spacer"></div>
+        <nav class="mdl-navigation">
+        
+<form class="form-inline pull-sm-right" action="../search.html" method="get">
+      <div class="mdl-textfield mdl-js-textfield mdl-textfield--expandable mdl-textfield--floating-label mdl-textfield--align-right">
+        <label id="quick-search-icon" class="mdl-button mdl-js-button mdl-button--icon"  for="waterfall-exp">
+          <i class="material-icons">search</i>
+        </label>
+        <div class="mdl-textfield__expandable-holder">
+          <input class="mdl-textfield__input" type="text" name="q"  id="waterfall-exp" placeholder="Search" />
+          <input type="hidden" name="check_keywords" value="yes" />
+          <input type="hidden" name="area" value="default" />
+        </div>
+      </div>
+      <div class="mdl-tooltip" data-mdl-for="quick-search-icon">
+      Quick search
+      </div>
+</form>
+        
+<a id="button-show-source"
+    class="mdl-button mdl-js-button mdl-button--icon"
+    href="../_sources/chapter_appendix-mathematics-for-deep-learning/integral-calculus.rst.txt" rel="nofollow">
+  <i class="material-icons">code</i>
+</a>
+<div class="mdl-tooltip" data-mdl-for="button-show-source">
+Show Source
+</div>
+        </nav>
+    </div>
+    <div class="mdl-layout__header-row header-links">
+      <div class="mdl-layout-spacer"></div>
+      <nav class="mdl-navigation">
+          
+              <a  class="mdl-navigation__link" href="https://courses.d2l.ai">
+                  <i class="fas fa-user-graduate"></i>
+                  Courses
+              </a>
+          
+              <a  class="mdl-navigation__link" href="https://d2l.ai/d2l-en.pdf">
+                  <i class="fas fa-file-pdf"></i>
+                  PDF
+              </a>
+          
+              <a  class="mdl-navigation__link" href="https://d2l.ai/d2l-en.zip">
+                  <i class="fas fa-download"></i>
+                  All Notebooks
+              </a>
+          
+              <a  class="mdl-navigation__link" href="https://discuss.mxnet.io">
+                  <i class="fab fa-discourse"></i>
+                  Discuss
+              </a>
+          
+              <a  class="mdl-navigation__link" href="https://github.com/d2l-ai/d2l-en">
+                  <i class="fab fa-github"></i>
+                  GitHub
+              </a>
+          
+              <a  class="mdl-navigation__link" href="https://zh.d2l.ai">
+                  <i class="fas fa-external-link-alt"></i>
+                  中文版
+              </a>
+      </nav>
+    </div>
+</header><header class="mdl-layout__drawer">
+    
+          <!-- Title -->
+      <span class="mdl-layout-title">
+          <a class="title" href="../index.html">
+              <img class="logo" src="../_static/logo-with-text.png" alt="تعمّق في التعلّم العميق"/>
+          </a>
+      </span>
+    
+    
+      <div class="globaltoc">
+        <span class="mdl-layout-title toc">Table Of Contents</span>
+        
+        
+            
+            <nav class="mdl-navigation">
+                <ul>
+<li class="toctree-l1"><a class="reference internal" href="../chapter_preface/index.html">Preface</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../chapter_notation/index.html">الّرموز</a></li>
+</ul>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../chapter_introduction/index.html">1. مقدّمة</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../chapter_preliminaries/index.html">2. التمهيدات</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../chapter_appendix-math-and-keywords-translations/index.html">3. ملحق: ترجمة الألفاظ التقنية و الرياضية</a></li>
+</ul>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../chapter_references/zreferences.html">المراجع</a></li>
+</ul>
+
+            </nav>
+        
+        </div>
+    
+</header>
+        <main class="mdl-layout__content" tabIndex="0">
+
+	<script type="text/javascript" src="../_static/sphinx_materialdesign_theme.js "></script>
+    <header class="mdl-layout__drawer">
+    
+          <!-- Title -->
+      <span class="mdl-layout-title">
+          <a class="title" href="../index.html">
+              <img class="logo" src="../_static/logo-with-text.png" alt="تعمّق في التعلّم العميق"/>
+          </a>
+      </span>
+    
+    
+      <div class="globaltoc">
+        <span class="mdl-layout-title toc">Table Of Contents</span>
+        
+        
+            
+            <nav class="mdl-navigation">
+                <ul>
+<li class="toctree-l1"><a class="reference internal" href="../chapter_preface/index.html">Preface</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../chapter_notation/index.html">الّرموز</a></li>
+</ul>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../chapter_introduction/index.html">1. مقدّمة</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../chapter_preliminaries/index.html">2. التمهيدات</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../chapter_appendix-math-and-keywords-translations/index.html">3. ملحق: ترجمة الألفاظ التقنية و الرياضية</a></li>
+</ul>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../chapter_references/zreferences.html">المراجع</a></li>
+</ul>
+
+            </nav>
+        
+        </div>
+    
+</header>
+
+    <div class="document">
+        <div class="page-content" role="main">
+        
+  <div class="section" id="integral-calculus">
+<span id="sec-integral-calculus"></span><h1>Integral Calculus<a class="headerlink" href="#integral-calculus" title="Permalink to this headline">¶</a><a href="https://colab.research.google.com/github/d2l-ai/d2l-en-colab/blob/master/chapter_appendix-mathematics-for-deep-learning/integral-calculus.ipynb" onclick="captureOutboundLink('https://colab.research.google.com/github/d2l-ai/d2l-en-colab/blob/master/chapter_appendix-mathematics-for-deep-learning/integral-calculus.ipynb'); return false;"> <button style="float:right", id="colab" class="mdl-button mdl-js-button mdl-button--primary mdl-js-ripple-effect"> <i class=" fas fa-external-link-alt"></i> Colab </button></a><div class="mdl-tooltip" data-mdl-for="colab"> Open the notebook in Colab</div></h1>
+<p>Differentiation only makes up half of the content of a traditional
+calculus education. The other pillar, integration, starts out seeming a
+rather disjoint question, “What is the area underneath this curve?”
+While seemingly unrelated, integration is tightly intertwined with the
+differentiation via what is known as the <em>fundamental theorem of
+calculus</em>.</p>
+<p>At the level of machine learning we discuss in this book, we will not
+need a deep understanding of integration. However, we will provide a
+brief introduction to lay the groundwork for any further applications we
+will encounter later on.</p>
+<div class="section" id="geometric-interpretation">
+<h2>Geometric Interpretation<a class="headerlink" href="#geometric-interpretation" title="Permalink to this headline">¶</a></h2>
+<p>Suppose that we have a function <span class="math notranslate nohighlight">\(f(x)\)</span>. For simplicity, let’s
+assume that <span class="math notranslate nohighlight">\(f(x)\)</span> is non-negative (never takes a value less than
+zero). What we want to try and understand is: what is the area contained
+between <span class="math notranslate nohighlight">\(f(x)\)</span> and the <span class="math notranslate nohighlight">\(x\)</span>-axis?</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="o">%</span><span class="n">matplotlib</span> <span class="n">inline</span>
+<span class="kn">import</span> <span class="nn">d2l</span>
+<span class="kn">from</span> <span class="nn">IPython</span> <span class="kn">import</span> <span class="n">display</span>
+<span class="kn">from</span> <span class="nn">mpl_toolkits</span> <span class="kn">import</span> <span class="n">mplot3d</span>
+<span class="kn">from</span> <span class="nn">mxnet</span> <span class="kn">import</span> <span class="n">np</span><span class="p">,</span> <span class="n">npx</span>
+<span class="n">npx</span><span class="o">.</span><span class="n">set_np</span><span class="p">()</span>
+
+<span class="n">x</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="o">-</span><span class="mi">2</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mf">0.01</span><span class="p">)</span>
+<span class="n">f</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">exp</span><span class="p">(</span><span class="o">-</span><span class="n">x</span><span class="o">**</span><span class="mi">2</span><span class="p">)</span>
+
+<span class="n">d2l</span><span class="o">.</span><span class="n">set_figsize</span><span class="p">()</span>
+<span class="n">d2l</span><span class="o">.</span><span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">f</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s1">&#39;black&#39;</span><span class="p">)</span>
+<span class="n">d2l</span><span class="o">.</span><span class="n">plt</span><span class="o">.</span><span class="n">fill_between</span><span class="p">(</span><span class="n">x</span><span class="o">.</span><span class="n">tolist</span><span class="p">(),</span> <span class="n">f</span><span class="o">.</span><span class="n">tolist</span><span class="p">())</span>
+<span class="n">d2l</span><span class="o">.</span><span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</pre></div>
+</div>
+<div class="figure align-default">
+<img alt="../_images/output_integral-calculus_c53817_1_0.svg" src="../_images/output_integral-calculus_c53817_1_0.svg" /></div>
+<p>In most cases, this area will be infinite or undefined (consider the
+area under <span class="math notranslate nohighlight">\(f(x) = x^{2}\)</span>), so people will often talk about the
+area between a pair of ends, say <span class="math notranslate nohighlight">\(a\)</span> and <span class="math notranslate nohighlight">\(b\)</span>.</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">x</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="o">-</span><span class="mi">2</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mf">0.01</span><span class="p">)</span>
+<span class="n">f</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">exp</span><span class="p">(</span><span class="o">-</span><span class="n">x</span><span class="o">**</span><span class="mi">2</span><span class="p">)</span>
+
+<span class="n">d2l</span><span class="o">.</span><span class="n">set_figsize</span><span class="p">()</span>
+<span class="n">d2l</span><span class="o">.</span><span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">f</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s1">&#39;black&#39;</span><span class="p">)</span>
+<span class="n">d2l</span><span class="o">.</span><span class="n">plt</span><span class="o">.</span><span class="n">fill_between</span><span class="p">(</span><span class="n">x</span><span class="o">.</span><span class="n">tolist</span><span class="p">()[</span><span class="mi">50</span><span class="p">:</span><span class="mi">250</span><span class="p">],</span> <span class="n">f</span><span class="o">.</span><span class="n">tolist</span><span class="p">()[</span><span class="mi">50</span><span class="p">:</span><span class="mi">250</span><span class="p">])</span>
+<span class="n">d2l</span><span class="o">.</span><span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</pre></div>
+</div>
+<div class="figure align-default">
+<img alt="../_images/output_integral-calculus_c53817_3_0.svg" src="../_images/output_integral-calculus_c53817_3_0.svg" /></div>
+<p>We will denote this area by the integral symbol below:</p>
+<div class="math notranslate nohighlight" id="equation-chapter-appendix-mathematics-for-deep-learning-integral-calculus-0">
+<span class="eqno">()<a class="headerlink" href="#equation-chapter-appendix-mathematics-for-deep-learning-integral-calculus-0" title="Permalink to this equation">¶</a></span>\[\mathrm{Area}(\mathcal{A}) = \int_a^b f(x) \;dx.\]</div>
+<p>The inner variable is a dummy variable, much like the index of a sum in
+a <span class="math notranslate nohighlight">\(\sum\)</span>, and so this can be equivalently written with any inner
+value we like:</p>
+<div class="math notranslate nohighlight" id="equation-chapter-appendix-mathematics-for-deep-learning-integral-calculus-1">
+<span class="eqno">()<a class="headerlink" href="#equation-chapter-appendix-mathematics-for-deep-learning-integral-calculus-1" title="Permalink to this equation">¶</a></span>\[\int_a^b f(x) \;dx = \int_a^b f(z) \;dz.\]</div>
+<p>There is a traditional way to try and understand how we might try to
+approximate such integrals: we can imaging taking the region in-between
+<span class="math notranslate nohighlight">\(a\)</span> and <span class="math notranslate nohighlight">\(b\)</span> and chopping it into <span class="math notranslate nohighlight">\(N\)</span> vertical slices.
+If <span class="math notranslate nohighlight">\(N\)</span> is large, we can approximate the area of each slice by a
+rectangle, and then add up the areas to get the total area under the
+curve. Let’s take a look at an example doing this in code. We will see
+how to get the true value in a later section.</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">epsilon</span> <span class="o">=</span> <span class="mf">0.05</span>
+<span class="n">a</span> <span class="o">=</span> <span class="mi">0</span>
+<span class="n">b</span> <span class="o">=</span> <span class="mi">2</span>
+
+<span class="n">x</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="n">a</span><span class="p">,</span> <span class="n">b</span><span class="p">,</span> <span class="n">epsilon</span><span class="p">)</span>
+<span class="n">f</span> <span class="o">=</span> <span class="n">x</span> <span class="o">/</span> <span class="p">(</span><span class="mi">1</span> <span class="o">+</span> <span class="n">x</span><span class="o">**</span><span class="mi">2</span><span class="p">)</span>
+
+<span class="n">approx</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">sum</span><span class="p">(</span><span class="n">epsilon</span><span class="o">*</span><span class="n">f</span><span class="p">)</span>
+<span class="n">true</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">log</span><span class="p">(</span><span class="mi">2</span><span class="p">)</span> <span class="o">/</span> <span class="mi">2</span>
+
+<span class="n">d2l</span><span class="o">.</span><span class="n">set_figsize</span><span class="p">()</span>
+<span class="n">d2l</span><span class="o">.</span><span class="n">plt</span><span class="o">.</span><span class="n">bar</span><span class="p">(</span><span class="n">x</span><span class="o">.</span><span class="n">asnumpy</span><span class="p">(),</span> <span class="n">f</span><span class="o">.</span><span class="n">asnumpy</span><span class="p">(),</span> <span class="n">width</span><span class="o">=</span><span class="n">epsilon</span><span class="p">,</span> <span class="n">align</span><span class="o">=</span><span class="s1">&#39;edge&#39;</span><span class="p">)</span>
+<span class="n">d2l</span><span class="o">.</span><span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">f</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s1">&#39;black&#39;</span><span class="p">)</span>
+<span class="n">d2l</span><span class="o">.</span><span class="n">plt</span><span class="o">.</span><span class="n">ylim</span><span class="p">([</span><span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">])</span>
+<span class="n">d2l</span><span class="o">.</span><span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+
+<span class="s2">&quot;Approximation: </span><span class="si">{}</span><span class="s2">, Truth: </span><span class="si">{}</span><span class="s2">&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">approx</span><span class="p">,</span> <span class="n">true</span><span class="p">)</span>
+</pre></div>
+</div>
+<div class="figure align-default">
+<img alt="../_images/output_integral-calculus_c53817_5_0.svg" src="../_images/output_integral-calculus_c53817_5_0.svg" /></div>
+<div class="output highlight-default notranslate"><div class="highlight"><pre><span></span><span class="s1">&#39;Approximation: 0.79448557, Truth: 0.34657359027997264&#39;</span>
+</pre></div>
+</div>
+<p>The issue is that while it can be done numerically, we can do this
+approach analytically for only the simplest functions like</p>
+<div class="math notranslate nohighlight" id="equation-chapter-appendix-mathematics-for-deep-learning-integral-calculus-2">
+<span class="eqno">()<a class="headerlink" href="#equation-chapter-appendix-mathematics-for-deep-learning-integral-calculus-2" title="Permalink to this equation">¶</a></span>\[\int_a^b x \;dx.\]</div>
+<p>Anything somewhat more complex like our example from the code above</p>
+<div class="math notranslate nohighlight" id="equation-chapter-appendix-mathematics-for-deep-learning-integral-calculus-3">
+<span class="eqno">()<a class="headerlink" href="#equation-chapter-appendix-mathematics-for-deep-learning-integral-calculus-3" title="Permalink to this equation">¶</a></span>\[\int_a^b \frac{x}{1+x^{2}} \;dx.\]</div>
+<p>is beyond what we can solve with such a direct method.</p>
+<p>We will instead take a different approach. We will work intuitively with
+the notion of the area, and learn the main computational tool used to
+find integrals: the <em>fundamental theorem of calculus</em>. This will be the
+basis for our study of integration.</p>
+</div>
+<div class="section" id="the-fundamental-theorem-of-calculus">
+<h2>The Fundamental Theorem of Calculus<a class="headerlink" href="#the-fundamental-theorem-of-calculus" title="Permalink to this headline">¶</a></h2>
+<p>To dive deeper into the theory of integration, let’s introduce a
+function</p>
+<div class="math notranslate nohighlight" id="equation-chapter-appendix-mathematics-for-deep-learning-integral-calculus-4">
+<span class="eqno">()<a class="headerlink" href="#equation-chapter-appendix-mathematics-for-deep-learning-integral-calculus-4" title="Permalink to this equation">¶</a></span>\[F(x) = \int_0^x f(y) dy.\]</div>
+<p>This function measures the area between <span class="math notranslate nohighlight">\(0\)</span> and <span class="math notranslate nohighlight">\(x\)</span>
+depending on how we change <span class="math notranslate nohighlight">\(x\)</span>. Notice that this is everything we
+need since</p>
+<div class="math notranslate nohighlight" id="equation-chapter-appendix-mathematics-for-deep-learning-integral-calculus-5">
+<span class="eqno">()<a class="headerlink" href="#equation-chapter-appendix-mathematics-for-deep-learning-integral-calculus-5" title="Permalink to this equation">¶</a></span>\[\int_a^b f(x) \;dx = F(b) - F(a).\]</div>
+<p>This is a mathematical encoding of the fact that we can measure the area
+out to the far end-point and then subtract off the area to the near end
+point as indicated in <code class="xref std std-numref docutils literal notranslate"><span class="pre">fig_area-subtract</span></code>.</p>
+<div class="figure align-default" id="id1">
+<span id="fig-area-subtract"></span><img alt="../_images/SubArea.svg" src="../_images/SubArea.svg" /><p class="caption"><span class="caption-text">Visualizing why we may reduce the problem of computing the area under
+a curve between two points to computing the area to the left of a
+point.</span><a class="headerlink" href="#id1" title="Permalink to this image">¶</a></p>
+</div>
+<p>Thus, if we can figure out what the integral over any interval is by
+figuring out what <span class="math notranslate nohighlight">\(F(x)\)</span> is.</p>
+<p>To do so, let’s consider an experiment. As we often do in calculus,
+let’s imaging what happens when we shift the value by a tiny bit. From
+the comment above, we know that</p>
+<div class="math notranslate nohighlight" id="equation-chapter-appendix-mathematics-for-deep-learning-integral-calculus-6">
+<span class="eqno">()<a class="headerlink" href="#equation-chapter-appendix-mathematics-for-deep-learning-integral-calculus-6" title="Permalink to this equation">¶</a></span>\[F(x+\epsilon) - F(x) = \int_x^{x+\epsilon} f(y) \; dy.\]</div>
+<p>This tells us that the function changes by the area under a tiny sliver
+of a function.</p>
+<p>This is the point at which we make an approximation. If we look at a
+tiny sliver of area like this, it looks like this area is close to the
+rectangular area with height the value of <span class="math notranslate nohighlight">\(f(x)\)</span> and the base
+width <span class="math notranslate nohighlight">\(\epsilon\)</span>. Indeed, one can show that as
+<span class="math notranslate nohighlight">\(\epsilon \rightarrow 0\)</span> this approximation becomes better and
+better. Thus we can conclude:</p>
+<div class="math notranslate nohighlight" id="equation-chapter-appendix-mathematics-for-deep-learning-integral-calculus-7">
+<span class="eqno">()<a class="headerlink" href="#equation-chapter-appendix-mathematics-for-deep-learning-integral-calculus-7" title="Permalink to this equation">¶</a></span>\[F(x+\epsilon) - F(x) \approx \epsilon f(x).\]</div>
+<p>However, we can now notice: this is exactly the pattern we expect if we
+were computing the derivative of <span class="math notranslate nohighlight">\(F\)</span>! Thus we see the following
+rather surprising fact:</p>
+<div class="math notranslate nohighlight" id="equation-chapter-appendix-mathematics-for-deep-learning-integral-calculus-8">
+<span class="eqno">()<a class="headerlink" href="#equation-chapter-appendix-mathematics-for-deep-learning-integral-calculus-8" title="Permalink to this equation">¶</a></span>\[\frac{dF}{dx}(x) = f(x).\]</div>
+<p>This is the <em>fundamental theorem of calculus</em>. We may write it in
+expanded form as</p>
+<div class="math notranslate nohighlight" id="equation-eq-ftc">
+<span class="eqno">()<a class="headerlink" href="#equation-eq-ftc" title="Permalink to this equation">¶</a></span>\[\frac{d}{dx}\int_{-\infty}^x f(y) \; dy = f(x).\]</div>
+<p>It takes the concept of finding areas (<em>a priori</em> rather hard), and
+reduces it to a statement derivatives (something much more completely
+understood). One last comment that we must make is that this does not
+tell we exactly what <span class="math notranslate nohighlight">\(F(x)\)</span>. Indeed <span class="math notranslate nohighlight">\(F(x) + C\)</span> for any
+<span class="math notranslate nohighlight">\(C\)</span> has the same derivative. This is a fact-of-life in the theory
+of integration. Thankfully, notice that when working with definite
+integrals, the constants drop out, and thus are irrelevant to the
+outcome.</p>
+<div class="math notranslate nohighlight" id="equation-chapter-appendix-mathematics-for-deep-learning-integral-calculus-9">
+<span class="eqno">()<a class="headerlink" href="#equation-chapter-appendix-mathematics-for-deep-learning-integral-calculus-9" title="Permalink to this equation">¶</a></span>\[\int_a^b f(x) \; dx = (F(b) + C) - (F(a) + C) = F(b) - F(a).\]</div>
+<p>This may seem like abstract non-sense, but let’s take a moment to
+appreciate that it has given us a whole new perspective on computing
+integrals. Our goal is no-longer to do some sort of chop-and-sum process
+to try and recover the area, rather we need only find a function whose
+derivative is the function we have! This is incredible since we can now
+list many rather difficult integrals by just reversing the table from
+<code class="xref std std-numref docutils literal notranslate"><span class="pre">sec_derivative_table</span></code>. For instance, we know that the
+derivative of <span class="math notranslate nohighlight">\(x^{n}\)</span> is <span class="math notranslate nohighlight">\(nx^{n-1}\)</span>. Thus, we can say using
+the fundamental theorem <a class="reference internal" href="#equation-eq-ftc">()</a> that</p>
+<div class="math notranslate nohighlight" id="equation-chapter-appendix-mathematics-for-deep-learning-integral-calculus-10">
+<span class="eqno">()<a class="headerlink" href="#equation-chapter-appendix-mathematics-for-deep-learning-integral-calculus-10" title="Permalink to this equation">¶</a></span>\[\int_0^{x} ny^{n-1} \; dy = x^n - 0^n = x^n.\]</div>
+<p>Similarly, we know that the derivative of <span class="math notranslate nohighlight">\(e^{x}\)</span> is itself, so
+that means</p>
+<div class="math notranslate nohighlight" id="equation-chapter-appendix-mathematics-for-deep-learning-integral-calculus-11">
+<span class="eqno">()<a class="headerlink" href="#equation-chapter-appendix-mathematics-for-deep-learning-integral-calculus-11" title="Permalink to this equation">¶</a></span>\[\int_0^{x} e^{x} \; dx = e^{x} - e^{0} = e^x - 1.\]</div>
+<p>In this way, we can develop the entire theory of integration leveraging
+ideas from differential calculus freely. Every integration rule derives
+from this one fact.</p>
+</div>
+<div class="section" id="change-of-variables">
+<span id="integral-example"></span><h2>Change of Variables<a class="headerlink" href="#change-of-variables" title="Permalink to this headline">¶</a></h2>
+<p>Just as with differentiation, there are a number of rules which make the
+computation of integrals more tractable. In fact, every rule of
+differential calculus (like the product rule, sum rule, and chain rule)
+has a corresponding rule for integral calculus (integration by parts,
+linearity of integration, and the change of variables formula
+respectively). In this section, we will dive into what is arguably the
+most important from the list: the change of variables formula.</p>
+<p>First, suppose that we have a function which is itself an integral:</p>
+<div class="math notranslate nohighlight" id="equation-chapter-appendix-mathematics-for-deep-learning-integral-calculus-12">
+<span class="eqno">()<a class="headerlink" href="#equation-chapter-appendix-mathematics-for-deep-learning-integral-calculus-12" title="Permalink to this equation">¶</a></span>\[F(x) = \int_0^x f(y) \; dy.\]</div>
+<p>Let’s suppose that we want to know how this function looks when we
+compose it with another to obtain <span class="math notranslate nohighlight">\(F(u(x))\)</span>. By the chain rule, we
+know</p>
+<div class="math notranslate nohighlight" id="equation-chapter-appendix-mathematics-for-deep-learning-integral-calculus-13">
+<span class="eqno">()<a class="headerlink" href="#equation-chapter-appendix-mathematics-for-deep-learning-integral-calculus-13" title="Permalink to this equation">¶</a></span>\[\frac{d}{dx}F(u(x)) = \frac{dF}{dx}(u(x))\cdot \frac{du}{dx}.\]</div>
+<p>We can turn this into a statement about integration by using the
+fundamental theorem <a class="reference internal" href="#equation-eq-ftc">()</a> as above. This gives</p>
+<div class="math notranslate nohighlight" id="equation-chapter-appendix-mathematics-for-deep-learning-integral-calculus-14">
+<span class="eqno">()<a class="headerlink" href="#equation-chapter-appendix-mathematics-for-deep-learning-integral-calculus-14" title="Permalink to this equation">¶</a></span>\[F(u(x)) - F(u(0)) = \int_0^x \frac{dF}{dx}(u(y))\cdot \frac{du}{dy} \;dy.\]</div>
+<p>Recalling that <span class="math notranslate nohighlight">\(F\)</span> is itself an integral gives that the left hand
+side may be rewritten to be</p>
+<div class="math notranslate nohighlight" id="equation-chapter-appendix-mathematics-for-deep-learning-integral-calculus-15">
+<span class="eqno">()<a class="headerlink" href="#equation-chapter-appendix-mathematics-for-deep-learning-integral-calculus-15" title="Permalink to this equation">¶</a></span>\[\int_{u(0)}^{u(x)} f(y) \; dy = \int_0^x \frac{dF}{dx}(u(y))\cdot \frac{du}{dy} \;dy.\]</div>
+<p>Similarly, recalling that <span class="math notranslate nohighlight">\(F\)</span> is an integral allows us to
+recognize that <span class="math notranslate nohighlight">\(\frac{dF}{dx} = f\)</span> using the fundamental theorem
+<a class="reference internal" href="#equation-eq-ftc">()</a>, and thus we may conclude</p>
+<div class="math notranslate nohighlight" id="equation-eq-change-var">
+<span class="eqno">()<a class="headerlink" href="#equation-eq-change-var" title="Permalink to this equation">¶</a></span>\[\int_{u(0)}^{u(x)} f(y) \; dy = \int_0^x f(u(y))\cdot \frac{du}{dy} \;dy.\]</div>
+<p>This is the <em>change of variables</em> formula.</p>
+<p>For a more intuitive derivation, consider what happens when we take an
+integral of <span class="math notranslate nohighlight">\(f(u(x))\)</span> between <span class="math notranslate nohighlight">\(x\)</span> and <span class="math notranslate nohighlight">\(x+\epsilon\)</span>.
+For a small <span class="math notranslate nohighlight">\(\epsilon\)</span>, this integral is approximately
+<span class="math notranslate nohighlight">\(\epsilon f(u(x))\)</span>, the area of the associated rectangle. Now,
+let’s compare this with the integral of <span class="math notranslate nohighlight">\(f(y)\)</span> from <span class="math notranslate nohighlight">\(u(x)\)</span>
+to <span class="math notranslate nohighlight">\(u(x+\epsilon)\)</span>. We know that
+<span class="math notranslate nohighlight">\(u(x+\epsilon) \approx u(x) + \epsilon \frac{du}{dx}(x)\)</span>, so the
+area of this rectangle is approximately
+<span class="math notranslate nohighlight">\(\epsilon \frac{du}{dx}(x)f(u(x))\)</span>. Thus, to make the area of
+these two rectangles to agree, we need to multiply the first one by
+<span class="math notranslate nohighlight">\(\frac{du}{dx}(x)\)</span> as is illustrated in
+<code class="xref std std-numref docutils literal notranslate"><span class="pre">fig_rect-transform</span></code>.</p>
+<div class="figure align-default" id="id2">
+<span id="fig-rect-transform"></span><img alt="../_images/RectTrans.svg" src="../_images/RectTrans.svg" /><p class="caption"><span class="caption-text">Visualizing the transformation of a single thin rectangle under the
+change of variables.</span><a class="headerlink" href="#id2" title="Permalink to this image">¶</a></p>
+</div>
+<p>This tells us that</p>
+<div class="math notranslate nohighlight" id="equation-chapter-appendix-mathematics-for-deep-learning-integral-calculus-16">
+<span class="eqno">()<a class="headerlink" href="#equation-chapter-appendix-mathematics-for-deep-learning-integral-calculus-16" title="Permalink to this equation">¶</a></span>\[\int_x^{x+\epsilon} f(u(y))\frac{du}{dy}(y)\;dy = \int_{u(x)}^{u(x+\epsilon)} f(y) \; dy.\]</div>
+<p>This is the change of variables formula expressed for a single small
+rectangle.</p>
+<p>If <span class="math notranslate nohighlight">\(u(x)\)</span> and <span class="math notranslate nohighlight">\(f(x)\)</span> are properly chosen, this can allow for
+the computation of incredibly complex integrals. For instance, if we
+even chose <span class="math notranslate nohighlight">\(f(y) = 1\)</span> and <span class="math notranslate nohighlight">\(u(x) = e^{-x^{2}}\)</span> (which means
+<span class="math notranslate nohighlight">\(\frac{du}{dx}(x) = -2xe^{-x^{2}}\)</span>, this can show for instance
+that</p>
+<div class="math notranslate nohighlight" id="equation-chapter-appendix-mathematics-for-deep-learning-integral-calculus-17">
+<span class="eqno">()<a class="headerlink" href="#equation-chapter-appendix-mathematics-for-deep-learning-integral-calculus-17" title="Permalink to this equation">¶</a></span>\[e^{-1} - 1 = \int_{e^{-0}}^{e^{-1}} 1 \; dy = -2\int_0^{1} ye^{-y^2}\;dy,\]</div>
+<p>and thus by rearranging that</p>
+<div class="math notranslate nohighlight" id="equation-chapter-appendix-mathematics-for-deep-learning-integral-calculus-18">
+<span class="eqno">()<a class="headerlink" href="#equation-chapter-appendix-mathematics-for-deep-learning-integral-calculus-18" title="Permalink to this equation">¶</a></span>\[\int_0^{1} ye^{-y^2}\; dy = \frac{1-e^{-1}}{2}.\]</div>
+</div>
+<div class="section" id="a-comment-on-sign-conventions">
+<h2>A Comment on Sign Conventions<a class="headerlink" href="#a-comment-on-sign-conventions" title="Permalink to this headline">¶</a></h2>
+<p>Keen-eyed readers will observe something strange about the computations
+above. Namely, computations like</p>
+<div class="math notranslate nohighlight" id="equation-chapter-appendix-mathematics-for-deep-learning-integral-calculus-19">
+<span class="eqno">()<a class="headerlink" href="#equation-chapter-appendix-mathematics-for-deep-learning-integral-calculus-19" title="Permalink to this equation">¶</a></span>\[\int_{e^{-0}}^{e^{-1}} 1 \; dy = e^{-1} -1 &lt; 0,\]</div>
+<p>can produce negative numbers. When thinking about areas, it can be
+strange to see a negative value, and so it is worth digging into what
+the convention is.</p>
+<p>Mathematicians take the notion of signed areas. This manifests itself in
+two ways. First, if we consider a function <span class="math notranslate nohighlight">\(f(x)\)</span> which is
+sometimes less than zero, then the area will also be negative. So for
+instance</p>
+<div class="math notranslate nohighlight" id="equation-chapter-appendix-mathematics-for-deep-learning-integral-calculus-20">
+<span class="eqno">()<a class="headerlink" href="#equation-chapter-appendix-mathematics-for-deep-learning-integral-calculus-20" title="Permalink to this equation">¶</a></span>\[\int_0^{1} (-1)\;dx = -1.\]</div>
+<p>Similarly, integrals which progress from right to left, rather than left
+to right are also taken to be negative areas</p>
+<div class="math notranslate nohighlight" id="equation-chapter-appendix-mathematics-for-deep-learning-integral-calculus-21">
+<span class="eqno">()<a class="headerlink" href="#equation-chapter-appendix-mathematics-for-deep-learning-integral-calculus-21" title="Permalink to this equation">¶</a></span>\[\int_0^{-1} 1\; dx = -1.\]</div>
+<p>The standard area (from left to right of a positive function) is always
+positive. Anything obtained by flipping it (say flipping over the
+<span class="math notranslate nohighlight">\(x\)</span>-axis to get the integral of a negative number, or flipping
+over the <span class="math notranslate nohighlight">\(y\)</span>-axis to get an integral in the wrong order) will
+produce a negative area. And indeed, flipping twice will give a pair of
+negative signs that cancel out to have positive area</p>
+<div class="math notranslate nohighlight" id="equation-chapter-appendix-mathematics-for-deep-learning-integral-calculus-22">
+<span class="eqno">()<a class="headerlink" href="#equation-chapter-appendix-mathematics-for-deep-learning-integral-calculus-22" title="Permalink to this equation">¶</a></span>\[\int_0^{-1} (-1)\;dx =  1.\]</div>
+<p>If this discussion sounds familiar, it is! In
+<code class="xref std std-numref docutils literal notranslate"><span class="pre">sec_geometry-linear-algebric-ops</span></code> we discussed how the
+determinant represented the signed area in much the same way.</p>
+</div>
+<div class="section" id="multiple-integrals">
+<h2>Multiple Integrals<a class="headerlink" href="#multiple-integrals" title="Permalink to this headline">¶</a></h2>
+<p>In some cases, we will need to work in higher dimensions. For instance,
+suppose that we have a function of two variables, like <span class="math notranslate nohighlight">\(f(x, y)\)</span>
+and we want to know the volume under <span class="math notranslate nohighlight">\(f\)</span> when <span class="math notranslate nohighlight">\(x\)</span> ranges
+over <span class="math notranslate nohighlight">\([a, b]\)</span> and <span class="math notranslate nohighlight">\(y\)</span> ranges over <span class="math notranslate nohighlight">\([c, d]\)</span>.</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1"># Construct grid and compute function</span>
+<span class="n">x</span><span class="p">,</span> <span class="n">y</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">meshgrid</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">linspace</span><span class="p">(</span><span class="o">-</span><span class="mi">2</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">101</span><span class="p">),</span> <span class="n">np</span><span class="o">.</span><span class="n">linspace</span><span class="p">(</span><span class="o">-</span><span class="mi">2</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">101</span><span class="p">),</span>
+                   <span class="n">indexing</span><span class="o">=</span><span class="s1">&#39;ij&#39;</span><span class="p">)</span>
+<span class="n">z</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">exp</span><span class="p">(</span><span class="o">-</span> <span class="n">x</span><span class="o">**</span><span class="mi">2</span> <span class="o">-</span> <span class="n">y</span><span class="o">**</span><span class="mi">2</span><span class="p">)</span>
+
+<span class="c1"># Plot function</span>
+<span class="n">ax</span> <span class="o">=</span> <span class="n">d2l</span><span class="o">.</span><span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">()</span><span class="o">.</span><span class="n">add_subplot</span><span class="p">(</span><span class="mi">111</span><span class="p">,</span> <span class="n">projection</span><span class="o">=</span><span class="s1">&#39;3d&#39;</span><span class="p">)</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">plot_wireframe</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">,</span> <span class="n">z</span><span class="p">)</span>
+<span class="n">d2l</span><span class="o">.</span><span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s1">&#39;x&#39;</span><span class="p">)</span>
+<span class="n">d2l</span><span class="o">.</span><span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s1">&#39;y&#39;</span><span class="p">)</span>
+<span class="n">d2l</span><span class="o">.</span><span class="n">plt</span><span class="o">.</span><span class="n">xticks</span><span class="p">([</span><span class="o">-</span><span class="mi">2</span><span class="p">,</span> <span class="o">-</span><span class="mi">1</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">])</span>
+<span class="n">d2l</span><span class="o">.</span><span class="n">plt</span><span class="o">.</span><span class="n">yticks</span><span class="p">([</span><span class="o">-</span><span class="mi">2</span><span class="p">,</span> <span class="o">-</span><span class="mi">1</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">])</span>
+<span class="n">d2l</span><span class="o">.</span><span class="n">set_figsize</span><span class="p">()</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">set_xlim</span><span class="p">(</span><span class="o">-</span><span class="mi">2</span><span class="p">,</span> <span class="mi">2</span><span class="p">)</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">set_ylim</span><span class="p">(</span><span class="o">-</span><span class="mi">2</span><span class="p">,</span> <span class="mi">2</span><span class="p">)</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">set_zlim</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">)</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">dist</span> <span class="o">=</span> <span class="mi">12</span>
+</pre></div>
+</div>
+<div class="figure align-default">
+<img alt="../_images/output_integral-calculus_c53817_7_0.svg" src="../_images/output_integral-calculus_c53817_7_0.svg" /></div>
+<p>We write this as</p>
+<div class="math notranslate nohighlight" id="equation-chapter-appendix-mathematics-for-deep-learning-integral-calculus-23">
+<span class="eqno">()<a class="headerlink" href="#equation-chapter-appendix-mathematics-for-deep-learning-integral-calculus-23" title="Permalink to this equation">¶</a></span>\[\int_{[a, b]\times[c, d]} f(x, y)\;dx\;dy.\]</div>
+<p>Suppose that we wish to compute this integral. My claim is that we can
+do this by iteratively computing first the integral in say <span class="math notranslate nohighlight">\(x\)</span> and
+then shifting to the integral in <span class="math notranslate nohighlight">\(y\)</span>, that is to say</p>
+<div class="math notranslate nohighlight" id="equation-chapter-appendix-mathematics-for-deep-learning-integral-calculus-24">
+<span class="eqno">()<a class="headerlink" href="#equation-chapter-appendix-mathematics-for-deep-learning-integral-calculus-24" title="Permalink to this equation">¶</a></span>\[\int_{[a, b]\times[c, d]} f(x, y)\;dx\;dy = \int_c^{d} \left(\int_a^{b} f(x, y) \;dx\right) \; dy.\]</div>
+<p>Let’s see why this is.</p>
+<p>Consider the figure above where we have split the function into
+<span class="math notranslate nohighlight">\(\epsilon \times \epsilon\)</span> squares which we will index with
+integer coordinates <span class="math notranslate nohighlight">\(i, j\)</span>. In this case, our integral is
+approximately</p>
+<div class="math notranslate nohighlight" id="equation-chapter-appendix-mathematics-for-deep-learning-integral-calculus-25">
+<span class="eqno">()<a class="headerlink" href="#equation-chapter-appendix-mathematics-for-deep-learning-integral-calculus-25" title="Permalink to this equation">¶</a></span>\[\sum_{i, j} \epsilon^{2} f(\epsilon i, \epsilon j).\]</div>
+<p>Once we discretize the problem, we may add up the values on these
+squares in whatever order we like, and not worry about changing the
+values. This is illustrated in <code class="xref std std-numref docutils literal notranslate"><span class="pre">fig_sum-order</span></code>. In particular,
+we can say that</p>
+<div class="math notranslate nohighlight" id="equation-chapter-appendix-mathematics-for-deep-learning-integral-calculus-26">
+<span class="eqno">()<a class="headerlink" href="#equation-chapter-appendix-mathematics-for-deep-learning-integral-calculus-26" title="Permalink to this equation">¶</a></span>\[\sum _ {j} \epsilon \left(\sum_{i} \epsilon f(\epsilon i, \epsilon j)\right).\]</div>
+<div class="figure align-default" id="id3">
+<span id="fig-sum-order"></span><img alt="../_images/SumOrder.svg" src="../_images/SumOrder.svg" /><p class="caption"><span class="caption-text">Illustrating how to decompose a sum over many squares as a sum over
+first the columns (1), then adding the column sums together (2).</span><a class="headerlink" href="#id3" title="Permalink to this image">¶</a></p>
+</div>
+<p>The sum on the inside is precisely the discretization of the integral</p>
+<div class="math notranslate nohighlight" id="equation-chapter-appendix-mathematics-for-deep-learning-integral-calculus-27">
+<span class="eqno">()<a class="headerlink" href="#equation-chapter-appendix-mathematics-for-deep-learning-integral-calculus-27" title="Permalink to this equation">¶</a></span>\[G(\epsilon j) = \int _a^{b} f(x, \epsilon j) \; dx.\]</div>
+<p>Finally, notice that if we combine these two expressions we get</p>
+<div class="math notranslate nohighlight" id="equation-chapter-appendix-mathematics-for-deep-learning-integral-calculus-28">
+<span class="eqno">()<a class="headerlink" href="#equation-chapter-appendix-mathematics-for-deep-learning-integral-calculus-28" title="Permalink to this equation">¶</a></span>\[\sum _ {j} \epsilon G(\epsilon j) \approx \int _ {c}^{d} G(y) \; dy = \int _ {[a, b]\times[c, d]} f(x, y)\;dx\;dy.\]</div>
+<p>Thus putting it all together, we have that</p>
+<div class="math notranslate nohighlight" id="equation-chapter-appendix-mathematics-for-deep-learning-integral-calculus-29">
+<span class="eqno">()<a class="headerlink" href="#equation-chapter-appendix-mathematics-for-deep-learning-integral-calculus-29" title="Permalink to this equation">¶</a></span>\[\int _ {[a, b]\times[c, d]} f(x, y)\;dx\;dy = \int _ c^{d} \left(\int _ a^{b} f(x, y) \;dx\right) \; dy.\]</div>
+<p>Notice that, once discretized, all we did was rearrange the order in
+which we added a list of numbers. This may make it seem like it is
+nothing, however this result (called <em>Fubini’s Theorem</em>) is not always
+true! For the type of mathematics encountered when doing machine
+learning (continuous functions), there is no concern, however it is
+possible to create examples where it fails (for example the function
+<span class="math notranslate nohighlight">\(f(x, y) = xy(x^2-y^2)/(x^2+y^2)^3\)</span> over the rectangle
+<span class="math notranslate nohighlight">\([0,2]\times[0,1]\)</span>).</p>
+<p>Note that the choice to do the integral in <span class="math notranslate nohighlight">\(x\)</span> first, and then the
+integral in <span class="math notranslate nohighlight">\(y\)</span> was arbitrary. We could have equally well chosen
+to do <span class="math notranslate nohighlight">\(y\)</span> first and then <span class="math notranslate nohighlight">\(x\)</span> to see</p>
+<div class="math notranslate nohighlight" id="equation-chapter-appendix-mathematics-for-deep-learning-integral-calculus-30">
+<span class="eqno">()<a class="headerlink" href="#equation-chapter-appendix-mathematics-for-deep-learning-integral-calculus-30" title="Permalink to this equation">¶</a></span>\[\int _ {[a, b]\times[c, d]} f(x, y)\;dx\;dy = \int _ a^{b} \left(\int _ c^{d} f(x, y) \;dy\right) \; dx.\]</div>
+<p>Often times, we will condense down to vector notation, and say that for
+<span class="math notranslate nohighlight">\(U = [a, b]\times [c, d]\)</span> this is</p>
+<div class="math notranslate nohighlight" id="equation-chapter-appendix-mathematics-for-deep-learning-integral-calculus-31">
+<span class="eqno">()<a class="headerlink" href="#equation-chapter-appendix-mathematics-for-deep-learning-integral-calculus-31" title="Permalink to this equation">¶</a></span>\[\int _ U f(\mathbf{x})\;d\mathbf{x}.\]</div>
+</div>
+<div class="section" id="change-of-variables-in-multiple-integrals">
+<h2>Change of Variables in Multiple Integrals<a class="headerlink" href="#change-of-variables-in-multiple-integrals" title="Permalink to this headline">¶</a></h2>
+<p>As we with single variables in <a class="reference internal" href="#equation-eq-change-var">()</a>, the ability to
+change variables inside a higher dimensional integral is a key tool.
+Let’s summarize the result without derivation.</p>
+<p>We need a function that reparametrizes our domain of integration. We can
+take this to be <span class="math notranslate nohighlight">\(\phi : \mathbb{R}^n \rightarrow \mathbb{R}^n\)</span>,
+that is any function which takes in <span class="math notranslate nohighlight">\(n\)</span> real variables and returns
+another <span class="math notranslate nohighlight">\(n\)</span>. To keep the expressions clean, we will assume that
+<span class="math notranslate nohighlight">\(\phi\)</span> is <em>injective</em> which is to say it never folds over itself
+(<span class="math notranslate nohighlight">\(\phi(\mathbf{x}) = \phi(\mathbf{y}) \implies \mathbf{x} = \mathbf{y}\)</span>).</p>
+<p>In this case, we can say that</p>
+<div class="math notranslate nohighlight" id="equation-chapter-appendix-mathematics-for-deep-learning-integral-calculus-32">
+<span class="eqno">()<a class="headerlink" href="#equation-chapter-appendix-mathematics-for-deep-learning-integral-calculus-32" title="Permalink to this equation">¶</a></span>\[\int _ {\phi(U)} f(\mathbf{x})\;d\mathbf{x} = \int _ {U} f(\phi(\mathbf{x})) \left|\det(D\phi(\mathbf{x}))\right|\;d\mathbf{x}.\]</div>
+<p>where <span class="math notranslate nohighlight">\(D\phi\)</span> is the <em>Jacobian</em> of <span class="math notranslate nohighlight">\(\phi\)</span>, which is the
+matrix of partial derivatives of
+<span class="math notranslate nohighlight">\(\boldsymbol{\phi} = (\phi_1(x_1, \ldots, x_n), \ldots, \phi_n(x_1, \ldots, x_n))\)</span>,</p>
+<div class="math notranslate nohighlight" id="equation-chapter-appendix-mathematics-for-deep-learning-integral-calculus-33">
+<span class="eqno">()<a class="headerlink" href="#equation-chapter-appendix-mathematics-for-deep-learning-integral-calculus-33" title="Permalink to this equation">¶</a></span>\[\begin{split}D\boldsymbol{\phi} = \begin{bmatrix}
+\frac{\partial \phi _ 1}{\partial x _ 1} &amp; \cdots &amp; \frac{\partial \phi _ 1}{\partial x _ n} \\
+\vdots &amp; \ddots &amp; \vdots \\
+\frac{\partial \phi _ n}{\partial x _ 1} &amp; \cdots &amp; \frac{\partial \phi _ n}{\partial x _ n}
+\end{bmatrix}.\end{split}\]</div>
+<p>Looking closely, we see that this is similar to the single variable
+chain rule <a class="reference internal" href="#equation-eq-change-var">()</a>, except we have replaced the term
+<span class="math notranslate nohighlight">\(\frac{du}{dx}(x)\)</span> with
+<span class="math notranslate nohighlight">\(\left|\det(D\phi(\mathbf{x}))\right|\)</span>. Let’s see how we can to
+interpret this term. Recall that the <span class="math notranslate nohighlight">\(\frac{du}{dx}(x)\)</span> term
+existed to say how much we stretched our <span class="math notranslate nohighlight">\(x\)</span>-axis by applying
+<span class="math notranslate nohighlight">\(u\)</span>. The same process in higher dimensions is to determine how
+much we stretch the area (or volume, or hyper-volume) of a little square
+(or little <em>hyper-cube</em>) by applying <span class="math notranslate nohighlight">\(\boldsymbol{\phi}\)</span>. If
+<span class="math notranslate nohighlight">\(\boldsymbol{\phi}\)</span> was the multiplication by a matrix, then we
+know how the determinant already gives the answer.</p>
+<p>With some work, one can show that the <em>Jacobian</em> provides the best
+approximation to a multivariable function <span class="math notranslate nohighlight">\(\boldsymbol{\phi}\)</span> at a
+point by a matrix in the same way we could approximate by lines or
+planes with derivatives and gradients. Thus the determinant of the
+Jacobian exactly mirrors the scaling factor we identified in one
+dimension.</p>
+<p>It takes some work to fill in the details to this, so do not worry if
+they are not clear now. Let’s see at least one example we will make use
+of later on. Consider the integral</p>
+<div class="math notranslate nohighlight" id="equation-chapter-appendix-mathematics-for-deep-learning-integral-calculus-34">
+<span class="eqno">()<a class="headerlink" href="#equation-chapter-appendix-mathematics-for-deep-learning-integral-calculus-34" title="Permalink to this equation">¶</a></span>\[\int _ {-\infty}^{\infty} \int _ {-\infty}^{\infty} e^{-x^{2}-y^{2}} \;dx\;dy.\]</div>
+<p>Playing with this integral directly will get us no-where, but if we
+change variables, we can make significant progress. If we let
+<span class="math notranslate nohighlight">\(\boldsymbol{\phi}(r, \theta) = (r \cos(\theta), r\sin(\theta))\)</span>
+(which is to say that <span class="math notranslate nohighlight">\(x = r \cos(\theta)\)</span>,
+<span class="math notranslate nohighlight">\(y = r \sin(\theta)\)</span>), then we can apply the change of variable
+formula to see that this is the same thing as</p>
+<div class="math notranslate nohighlight" id="equation-chapter-appendix-mathematics-for-deep-learning-integral-calculus-35">
+<span class="eqno">()<a class="headerlink" href="#equation-chapter-appendix-mathematics-for-deep-learning-integral-calculus-35" title="Permalink to this equation">¶</a></span>\[\int _ 0^\infty \int_0 ^ {2\pi} e^{-r^{2}} \left|\det(D\mathbf{\phi}(\mathbf{x}))\right|\;d\theta\;dr,\]</div>
+<p>where</p>
+<div class="math notranslate nohighlight" id="equation-chapter-appendix-mathematics-for-deep-learning-integral-calculus-36">
+<span class="eqno">()<a class="headerlink" href="#equation-chapter-appendix-mathematics-for-deep-learning-integral-calculus-36" title="Permalink to this equation">¶</a></span>\[\begin{split}\left|\det(D\mathbf{\phi}(\mathbf{x}))\right| = \left|\det\begin{bmatrix}
+\cos(\theta) &amp; -r\sin(\theta) \\
+\sin(\theta) &amp; r\cos(\theta)
+\end{bmatrix}\right| = r(\cos^{2}(\theta) + \sin^{2}(\theta)) = r.\end{split}\]</div>
+<p>Thus, the integral is</p>
+<div class="math notranslate nohighlight" id="equation-chapter-appendix-mathematics-for-deep-learning-integral-calculus-37">
+<span class="eqno">()<a class="headerlink" href="#equation-chapter-appendix-mathematics-for-deep-learning-integral-calculus-37" title="Permalink to this equation">¶</a></span>\[\int _ 0^\infty \int _ 0 ^ {2\pi} re^{-r^{2}} \;d\theta\;dr = 2\pi\int _ 0^\infty re^{-r^{2}} \;dr = \pi,\]</div>
+<p>where the final equality follows by the same computation that we used in
+section <code class="xref std std-numref docutils literal notranslate"><span class="pre">integral_example</span></code>.</p>
+<p>We will meet this integral again when we study continuous random
+variables in <code class="xref std std-numref docutils literal notranslate"><span class="pre">sec_random_variables</span></code>.</p>
+</div>
+<div class="section" id="summary">
+<h2>Summary<a class="headerlink" href="#summary" title="Permalink to this headline">¶</a></h2>
+<ul class="simple">
+<li><p>The theory of integration allows us to answer questions about areas
+or volumes.</p></li>
+<li><p>The fundamental theorem of calculus allows us to leverage knowledge
+about derivatives to compute areas via the observation that the
+derivative of the area up to some point is given by the value of the
+function being integrated.</p></li>
+<li><p>Integrals in higher dimensions can be computed by iterating single
+variable integrals.</p></li>
+</ul>
+</div>
+<div class="section" id="exercises">
+<h2>Exercises<a class="headerlink" href="#exercises" title="Permalink to this headline">¶</a></h2>
+<ol class="arabic simple">
+<li><p>What is <span class="math notranslate nohighlight">\(\int_1^2 \frac{1}{x} \;dx\)</span>?</p></li>
+<li><p>Use the change of variables formula to integrate
+<span class="math notranslate nohighlight">\(\int_0^{\sqrt{\pi}}x\sin(x^2)\;dx\)</span>.</p></li>
+<li><p>What is <span class="math notranslate nohighlight">\(\int_{[0,1]^2} xy \;dx\;dy\)</span>?</p></li>
+<li><p>Use the change of variables formula to compute
+<span class="math notranslate nohighlight">\(\int_0^2\int_0^1xy(x^2-y^2)/(x^2+y^2)^3\;dy\;dx\)</span> and
+<span class="math notranslate nohighlight">\(\int_0^1\int_0^2f(x, y) = xy(x^2-y^2)/(x^2+y^2)^3\;dx\;dy\)</span> to
+see they are different.</p></li>
+</ol>
+</div>
+<div class="section" id="discussions">
+<h2><a class="reference external" href="https://discuss.mxnet.io/t/5151">Discussions</a><a class="headerlink" href="#discussions" title="Permalink to this headline">¶</a></h2>
+<p><img alt="image0" src="../_images/qr_integral-calculus.svg" /></p>
+</div>
+</div>
+
+
+        </div>
+        <div class="side-doc-outline">
+            <div class="side-doc-outline--content"> 
+<div class="localtoc">
+    <p class="caption">
+      <span class="caption-text">Table Of Contents</span>
+    </p>
+    <ul>
+<li><a class="reference internal" href="#">Integral Calculus</a><ul>
+<li><a class="reference internal" href="#geometric-interpretation">Geometric Interpretation</a></li>
+<li><a class="reference internal" href="#the-fundamental-theorem-of-calculus">The Fundamental Theorem of Calculus</a></li>
+<li><a class="reference internal" href="#change-of-variables">Change of Variables</a></li>
+<li><a class="reference internal" href="#a-comment-on-sign-conventions">A Comment on Sign Conventions</a></li>
+<li><a class="reference internal" href="#multiple-integrals">Multiple Integrals</a></li>
+<li><a class="reference internal" href="#change-of-variables-in-multiple-integrals">Change of Variables in Multiple Integrals</a></li>
+<li><a class="reference internal" href="#summary">Summary</a></li>
+<li><a class="reference internal" href="#exercises">Exercises</a></li>
+<li><a class="reference internal" href="#discussions">Discussions</a></li>
+</ul>
+</li>
+</ul>
+
+</div>
+            </div>
+        </div>
+
+      <div class="clearer"></div>
+    </div><div class="pagenation">
+  </div>
+        
+        </main>
+    </div>
+  </body>
+</html>

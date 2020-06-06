@@ -1,0 +1,380 @@
+<!DOCTYPE html>
+
+<html xmlns="http://www.w3.org/1999/xhtml" lang="ar">
+  <head>
+    <meta charset="utf-8" />
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta http-equiv="x-ua-compatible" content="ie=edge">
+    
+    <title>2.7. Documentation &#8212; تعمّق في التعلّم العميق 0.7.1 documentation</title>
+
+    <link rel="stylesheet" href="../_static/basic.css" type="text/css" />
+    <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+    <link rel="stylesheet" href="../_static/material-design-lite-1.3.0/material.blue-deep_orange.min.css" type="text/css" />
+    <link rel="stylesheet" href="../_static/sphinx_materialdesign_theme.css" type="text/css" />
+    <link rel="stylesheet" href="../_static/fontawesome/all.css" type="text/css" />
+    <link rel="stylesheet" href="../_static/fonts.css" type="text/css" />
+    <link rel="stylesheet" type="text/css" href="../_static/d2l.css" />
+    <script type="text/javascript" id="documentation_options" data-url_root="../" src="../_static/documentation_options.js"></script>
+    <script type="text/javascript" src="../_static/jquery.js"></script>
+    <script type="text/javascript" src="../_static/underscore.js"></script>
+    <script type="text/javascript" src="../_static/doctools.js"></script>
+    <script type="text/javascript" src="../_static/language_data.js"></script>
+    <script type="text/javascript" src="../_static/d2l.js"></script>
+    <script type="text/javascript" src="../_static/translations.js"></script>
+    <script async="async" type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/latest.js?config=TeX-AMS-MML_HTMLorMML"></script>
+    <link rel="shortcut icon" href="../_static/favicon.png"/>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="3. ملحق: ترجمة الألفاظ التقنية و الرياضية" href="../chapter_appendix-math-and-keywords-translations/index.html" />
+    <link rel="prev" title="2.6. Probability" href="probability.html" /> 
+  </head>
+<body>
+    <div class="mdl-layout mdl-js-layout mdl-layout--fixed-header "><header class="mdl-layout__header mdl-layout__header--waterfall ">
+    <div class="mdl-layout__header-row">
+        
+        <nav class="mdl-navigation breadcrumb">
+            <a class="mdl-navigation__link" href="index.html"><span class="section-number">2. </span>التمهيدات</a><i class="material-icons">navigate_next</i>
+            <a class="mdl-navigation__link is-active"><span class="section-number">2.7. </span>Documentation</a>
+        </nav>
+        <div class="mdl-layout-spacer"></div>
+        <nav class="mdl-navigation">
+        
+<form class="form-inline pull-sm-right" action="../search.html" method="get">
+      <div class="mdl-textfield mdl-js-textfield mdl-textfield--expandable mdl-textfield--floating-label mdl-textfield--align-right">
+        <label id="quick-search-icon" class="mdl-button mdl-js-button mdl-button--icon"  for="waterfall-exp">
+          <i class="material-icons">search</i>
+        </label>
+        <div class="mdl-textfield__expandable-holder">
+          <input class="mdl-textfield__input" type="text" name="q"  id="waterfall-exp" placeholder="Search" />
+          <input type="hidden" name="check_keywords" value="yes" />
+          <input type="hidden" name="area" value="default" />
+        </div>
+      </div>
+      <div class="mdl-tooltip" data-mdl-for="quick-search-icon">
+      Quick search
+      </div>
+</form>
+        
+<a id="button-show-source"
+    class="mdl-button mdl-js-button mdl-button--icon"
+    href="../_sources/chapter_preliminaries/lookup-api.rst.txt" rel="nofollow">
+  <i class="material-icons">code</i>
+</a>
+<div class="mdl-tooltip" data-mdl-for="button-show-source">
+Show Source
+</div>
+        </nav>
+    </div>
+    <div class="mdl-layout__header-row header-links">
+      <div class="mdl-layout-spacer"></div>
+      <nav class="mdl-navigation">
+          
+              <a  class="mdl-navigation__link" href="https://courses.d2l.ai">
+                  <i class="fas fa-user-graduate"></i>
+                  Courses
+              </a>
+          
+              <a  class="mdl-navigation__link" href="https://d2l.ai/d2l-en.pdf">
+                  <i class="fas fa-file-pdf"></i>
+                  PDF
+              </a>
+          
+              <a  class="mdl-navigation__link" href="https://d2l.ai/d2l-en.zip">
+                  <i class="fas fa-download"></i>
+                  All Notebooks
+              </a>
+          
+              <a  class="mdl-navigation__link" href="https://discuss.mxnet.io">
+                  <i class="fab fa-discourse"></i>
+                  Discuss
+              </a>
+          
+              <a  class="mdl-navigation__link" href="https://github.com/d2l-ai/d2l-en">
+                  <i class="fab fa-github"></i>
+                  GitHub
+              </a>
+          
+              <a  class="mdl-navigation__link" href="https://zh.d2l.ai">
+                  <i class="fas fa-external-link-alt"></i>
+                  中文版
+              </a>
+      </nav>
+    </div>
+</header><header class="mdl-layout__drawer">
+    
+          <!-- Title -->
+      <span class="mdl-layout-title">
+          <a class="title" href="../index.html">
+              <img class="logo" src="../_static/logo-with-text.png" alt="تعمّق في التعلّم العميق"/>
+          </a>
+      </span>
+    
+    
+      <div class="globaltoc">
+        <span class="mdl-layout-title toc">Table Of Contents</span>
+        
+        
+            
+            <nav class="mdl-navigation">
+                <ul>
+<li class="toctree-l1"><a class="reference internal" href="../chapter_preface/index.html">Preface</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../chapter_notation/index.html">الّرموز</a></li>
+</ul>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../chapter_introduction/index.html">1. مقدّمة</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="index.html">2. التمهيدات</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="ndarray.html">2.1. معالجة البيانات</a></li>
+<li class="toctree-l2"><a class="reference internal" href="pandas.html">2.2. Data Preprocessing</a></li>
+<li class="toctree-l2"><a class="reference internal" href="linear-algebra.html">2.3. Linear Algebra</a></li>
+<li class="toctree-l2"><a class="reference internal" href="calculus.html">2.4. Calculus</a></li>
+<li class="toctree-l2"><a class="reference internal" href="autograd.html">2.5. Automatic Differentiation</a></li>
+<li class="toctree-l2"><a class="reference internal" href="probability.html">2.6. Probability</a></li>
+<li class="toctree-l2 current"><a class="current reference internal" href="#">2.7. Documentation</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../chapter_appendix-math-and-keywords-translations/index.html">3. ملحق: ترجمة الألفاظ التقنية و الرياضية</a></li>
+</ul>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../chapter_references/zreferences.html">المراجع</a></li>
+</ul>
+
+            </nav>
+        
+        </div>
+    
+</header>
+        <main class="mdl-layout__content" tabIndex="0">
+
+	<script type="text/javascript" src="../_static/sphinx_materialdesign_theme.js "></script>
+    <header class="mdl-layout__drawer">
+    
+          <!-- Title -->
+      <span class="mdl-layout-title">
+          <a class="title" href="../index.html">
+              <img class="logo" src="../_static/logo-with-text.png" alt="تعمّق في التعلّم العميق"/>
+          </a>
+      </span>
+    
+    
+      <div class="globaltoc">
+        <span class="mdl-layout-title toc">Table Of Contents</span>
+        
+        
+            
+            <nav class="mdl-navigation">
+                <ul>
+<li class="toctree-l1"><a class="reference internal" href="../chapter_preface/index.html">Preface</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../chapter_notation/index.html">الّرموز</a></li>
+</ul>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../chapter_introduction/index.html">1. مقدّمة</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="index.html">2. التمهيدات</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="ndarray.html">2.1. معالجة البيانات</a></li>
+<li class="toctree-l2"><a class="reference internal" href="pandas.html">2.2. Data Preprocessing</a></li>
+<li class="toctree-l2"><a class="reference internal" href="linear-algebra.html">2.3. Linear Algebra</a></li>
+<li class="toctree-l2"><a class="reference internal" href="calculus.html">2.4. Calculus</a></li>
+<li class="toctree-l2"><a class="reference internal" href="autograd.html">2.5. Automatic Differentiation</a></li>
+<li class="toctree-l2"><a class="reference internal" href="probability.html">2.6. Probability</a></li>
+<li class="toctree-l2 current"><a class="current reference internal" href="#">2.7. Documentation</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../chapter_appendix-math-and-keywords-translations/index.html">3. ملحق: ترجمة الألفاظ التقنية و الرياضية</a></li>
+</ul>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../chapter_references/zreferences.html">المراجع</a></li>
+</ul>
+
+            </nav>
+        
+        </div>
+    
+</header>
+
+    <div class="document">
+        <div class="page-content" role="main">
+        
+  <div class="section" id="documentation">
+<h1><span class="section-number">2.7. </span>Documentation<a class="headerlink" href="#documentation" title="Permalink to this headline">¶</a><a href="https://colab.research.google.com/github/d2l-ai/d2l-en-colab/blob/master/chapter_preliminaries/lookup-api.ipynb" onclick="captureOutboundLink('https://colab.research.google.com/github/d2l-ai/d2l-en-colab/blob/master/chapter_preliminaries/lookup-api.ipynb'); return false;"> <button style="float:right", id="colab" class="mdl-button mdl-js-button mdl-button--primary mdl-js-ripple-effect"> <i class=" fas fa-external-link-alt"></i> Colab </button></a><div class="mdl-tooltip" data-mdl-for="colab"> Open the notebook in Colab</div></h1>
+<p>Due to constraints on the length of this book, we cannot possibly
+introduce every single MXNet function and class (and you probably would
+not want us to). The API documentation and additional tutorials and
+examples provide plenty of documentation beyond the book. In this
+section we provide you with some guidance to exploring the MXNet API.</p>
+<div class="section" id="finding-all-the-functions-and-classes-in-a-module">
+<h2><span class="section-number">2.7.1. </span>Finding All the Functions and Classes in a Module<a class="headerlink" href="#finding-all-the-functions-and-classes-in-a-module" title="Permalink to this headline">¶</a></h2>
+<p>In order to know which functions and classes can be called in a module,
+we invoke the <code class="docutils literal notranslate"><span class="pre">dir</span></code> function. For instance, we can query all
+properties in the <code class="docutils literal notranslate"><span class="pre">np.random</span></code> module as follows:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">mxnet</span> <span class="kn">import</span> <span class="n">np</span>
+<span class="nb">print</span><span class="p">(</span><span class="nb">dir</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="p">))</span>
+</pre></div>
+</div>
+<div class="output highlight-default notranslate"><div class="highlight"><pre><span></span><span class="p">[</span><span class="s1">&#39;__all__&#39;</span><span class="p">,</span> <span class="s1">&#39;__builtins__&#39;</span><span class="p">,</span> <span class="s1">&#39;__cached__&#39;</span><span class="p">,</span> <span class="s1">&#39;__doc__&#39;</span><span class="p">,</span> <span class="s1">&#39;__file__&#39;</span><span class="p">,</span> <span class="s1">&#39;__loader__&#39;</span><span class="p">,</span> <span class="s1">&#39;__name__&#39;</span><span class="p">,</span> <span class="s1">&#39;__package__&#39;</span><span class="p">,</span> <span class="s1">&#39;__spec__&#39;</span><span class="p">,</span> <span class="s1">&#39;_mx_nd_np&#39;</span><span class="p">,</span> <span class="s1">&#39;absolute_import&#39;</span><span class="p">,</span> <span class="s1">&#39;choice&#39;</span><span class="p">,</span> <span class="s1">&#39;multinomial&#39;</span><span class="p">,</span> <span class="s1">&#39;normal&#39;</span><span class="p">,</span> <span class="s1">&#39;rand&#39;</span><span class="p">,</span> <span class="s1">&#39;randint&#39;</span><span class="p">,</span> <span class="s1">&#39;randn&#39;</span><span class="p">,</span> <span class="s1">&#39;shuffle&#39;</span><span class="p">,</span> <span class="s1">&#39;uniform&#39;</span><span class="p">]</span>
+</pre></div>
+</div>
+<p>Generally, we can ignore functions that start and end with <code class="docutils literal notranslate"><span class="pre">__</span></code>
+(special objects in Python) or functions that start with a single
+<code class="docutils literal notranslate"><span class="pre">_</span></code>(usually internal functions). Based on the remaining function or
+attribute names, we might hazard a guess that this module offers various
+methods for generating random numbers, including sampling from the
+uniform distribution (<code class="docutils literal notranslate"><span class="pre">uniform</span></code>), normal distribution (<code class="docutils literal notranslate"><span class="pre">normal</span></code>),
+and multinomial distribution (<code class="docutils literal notranslate"><span class="pre">multinomial</span></code>).</p>
+</div>
+<div class="section" id="finding-the-usage-of-specific-functions-and-classes">
+<h2><span class="section-number">2.7.2. </span>Finding the Usage of Specific Functions and Classes<a class="headerlink" href="#finding-the-usage-of-specific-functions-and-classes" title="Permalink to this headline">¶</a></h2>
+<p>For more specific instructions on how to use a given function or class,
+we can invoke the <code class="docutils literal notranslate"><span class="pre">help</span></code> function. As an example, let’s explore the
+usage instructions for <code class="docutils literal notranslate"><span class="pre">ndarray</span></code>’s <code class="docutils literal notranslate"><span class="pre">ones_like</span></code> function.</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">help</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">ones_like</span><span class="p">)</span>
+</pre></div>
+</div>
+<pre class="output literal-block">Help on function ones_like in module mxnet.numpy:
+
+ones_like(a, dtype=None, order='C', ctx=None, out=None)
+    Return an array of ones with the same shape and type as a given array.
+
+    Parameters
+    ----------
+    a : ndarray
+        The shape and data-type of <cite>a</cite> define these same attributes of
+        the returned array.
+    dtype : data-type, optional
+        Overrides the data type of the result.
+        Temporarily do not support boolean type.
+    order : {'C'}, optional
+        Whether to store multidimensional data in C- or Fortran-contiguous
+        (row- or column-wise) order in memory. Currently only supports C order.
+    ctx: to specify the device, e.g. the i-th GPU.
+    out : ndarray or None, optional
+        A location into which the result is stored.
+        If provided, it must have the same shape and dtype as input ndarray.
+        If not provided or <cite>None</cite>, a freshly-allocated array is returned.
+
+    Returns
+    -------
+    out : ndarray
+        Array of ones with the same shape and type as a.
+
+    See Also
+    --------
+    empty_like : Return an empty array with shape and type of input.
+    zeros_like : Return an array of zeros with shape and type of input.
+    full_like : Return a new array with shape of input filled with value.
+    ones : Return a new array setting values to one.
+
+    Examples
+    --------
+    &gt;&gt;&gt; x = np.arange(6)
+    &gt;&gt;&gt; x = x.reshape((2, 3))
+    &gt;&gt;&gt; x
+    array([[0., 1., 2.],
+           [3., 4., 5.]])
+    &gt;&gt;&gt; np.ones_like(x)
+    array([[1., 1., 1.],
+           [1., 1., 1.]])
+    &gt;&gt;&gt; np.ones_like(x, int)
+    array([[1, 1, 1],
+           [1, 1, 1]], dtype=int64)
+    &gt;&gt;&gt; y = np.arange(3, dtype=float)
+    &gt;&gt;&gt; y
+    array([0., 1., 2.], dtype=float64)
+    &gt;&gt;&gt; np.ones_like(y)
+    array([1., 1., 1.], dtype=float64)</pre>
+<p>From the documentation, we can see that the <code class="docutils literal notranslate"><span class="pre">ones_like</span></code> function
+creates a new array with the same shape as the supplied <code class="docutils literal notranslate"><span class="pre">ndarray</span></code> and
+sets all the elements to <code class="docutils literal notranslate"><span class="pre">1</span></code>. Whenever possible, you should run a
+quick test to confirm your interpretation:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">x</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([[</span><span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">],</span> <span class="p">[</span><span class="mi">2</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">2</span><span class="p">]])</span>
+<span class="n">np</span><span class="o">.</span><span class="n">ones_like</span><span class="p">(</span><span class="n">x</span><span class="p">)</span>
+</pre></div>
+</div>
+<div class="output highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">array</span><span class="p">([[</span><span class="mf">1.</span><span class="p">,</span> <span class="mf">1.</span><span class="p">,</span> <span class="mf">1.</span><span class="p">],</span>
+       <span class="p">[</span><span class="mf">1.</span><span class="p">,</span> <span class="mf">1.</span><span class="p">,</span> <span class="mf">1.</span><span class="p">]])</span>
+</pre></div>
+</div>
+<p>In the Jupyter notebook, we can use <code class="docutils literal notranslate"><span class="pre">?</span></code> to display the document in
+another window. For example, <code class="docutils literal notranslate"><span class="pre">np.random.uniform?</span></code> will create content
+that is almost identical to <code class="docutils literal notranslate"><span class="pre">help(np.random.uniform)</span></code>, displaying it
+in a new browser window. In addition, if we use two question marks, such
+as <code class="docutils literal notranslate"><span class="pre">np.random.uniform??</span></code>, the code implementing the function will also
+be displayed.</p>
+</div>
+<div class="section" id="api-documentation">
+<h2><span class="section-number">2.7.3. </span>API Documentation<a class="headerlink" href="#api-documentation" title="Permalink to this headline">¶</a></h2>
+<p>For further details on the API details check the MXNet website at
+<a class="reference external" href="http://mxnet.apache.org/">http://mxnet.apache.org/</a>. You can find the details under the appropriate
+headings (also for programming languages other than Python).</p>
+</div>
+<div class="section" id="summary">
+<h2><span class="section-number">2.7.4. </span>Summary<a class="headerlink" href="#summary" title="Permalink to this headline">¶</a></h2>
+<ul class="simple">
+<li><p>The official documentation provides plenty of descriptions and
+examples that are beyond this book.</p></li>
+<li><p>We can look up documentation for the usage of MXNet API by calling
+the <code class="docutils literal notranslate"><span class="pre">dir</span></code> and <code class="docutils literal notranslate"><span class="pre">help</span></code> functions, or checking the MXNet website.</p></li>
+</ul>
+</div>
+<div class="section" id="exercises">
+<h2><span class="section-number">2.7.5. </span>Exercises<a class="headerlink" href="#exercises" title="Permalink to this headline">¶</a></h2>
+<ol class="arabic simple">
+<li><p>Look up <code class="docutils literal notranslate"><span class="pre">ones_like</span></code> and <code class="docutils literal notranslate"><span class="pre">autograd</span></code> on the MXNet website.</p></li>
+<li><p>What are all the possible outputs after running
+<code class="docutils literal notranslate"><span class="pre">np.random.choice(4,</span> <span class="pre">2)</span></code>?</p></li>
+<li><p>Can you rewrite <code class="docutils literal notranslate"><span class="pre">np.random.choice(4,</span> <span class="pre">2)</span></code> by using the
+<code class="docutils literal notranslate"><span class="pre">np.random.randint</span></code> function?</p></li>
+</ol>
+</div>
+<div class="section" id="discussions">
+<h2><span class="section-number">2.7.6. </span><a class="reference external" href="https://discuss.mxnet.io/t/2322">Discussions</a><a class="headerlink" href="#discussions" title="Permalink to this headline">¶</a></h2>
+<p><img alt="image0" src="../_images/qr_lookup-api.svg" /></p>
+</div>
+</div>
+
+
+        </div>
+        <div class="side-doc-outline">
+            <div class="side-doc-outline--content"> 
+<div class="localtoc">
+    <p class="caption">
+      <span class="caption-text">Table Of Contents</span>
+    </p>
+    <ul>
+<li><a class="reference internal" href="#">2.7. Documentation</a><ul>
+<li><a class="reference internal" href="#finding-all-the-functions-and-classes-in-a-module">2.7.1. Finding All the Functions and Classes in a Module</a></li>
+<li><a class="reference internal" href="#finding-the-usage-of-specific-functions-and-classes">2.7.2. Finding the Usage of Specific Functions and Classes</a></li>
+<li><a class="reference internal" href="#api-documentation">2.7.3. API Documentation</a></li>
+<li><a class="reference internal" href="#summary">2.7.4. Summary</a></li>
+<li><a class="reference internal" href="#exercises">2.7.5. Exercises</a></li>
+<li><a class="reference internal" href="#discussions">2.7.6. Discussions</a></li>
+</ul>
+</li>
+</ul>
+
+</div>
+            </div>
+        </div>
+
+      <div class="clearer"></div>
+    </div><div class="pagenation">
+     <a id="button-prev" href="probability.html" class="mdl-button mdl-js-button mdl-js-ripple-effect mdl-button--colored" role="botton" accesskey="P">
+         <i class="pagenation-arrow-L fas fa-arrow-left fa-lg"></i>
+         <div class="pagenation-text">
+            <span class="pagenation-direction">Previous</span>
+            <div>2.6. Probability</div>
+         </div>
+     </a>
+     <a id="button-next" href="../chapter_appendix-math-and-keywords-translations/index.html" class="mdl-button mdl-js-button mdl-js-ripple-effect mdl-button--colored" role="botton" accesskey="N">
+         <i class="pagenation-arrow-R fas fa-arrow-right fa-lg"></i>
+        <div class="pagenation-text">
+            <span class="pagenation-direction">Next</span>
+            <div>3. ملحق: ترجمة الألفاظ التقنية و الرياضية</div>
+        </div>
+     </a>
+  </div>
+        
+        </main>
+    </div>
+  </body>
+</html>

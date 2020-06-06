@@ -1,0 +1,26 @@
+
+تعمّق في التّعلم العميق
+=======================
+
+
+.. raw:: html
+   :file: frontpage.html
+
+.. toctree::
+   :maxdepth: 1
+
+   chapter_preface/index
+   chapter_notation/index
+
+.. toctree::
+   :maxdepth: 2
+   :numbered:
+
+   chapter_introduction/index
+   chapter_preliminaries/index
+   chapter_appendix-math-and-keywords-translations/index
+
+.. toctree::
+   :maxdepth: 1
+
+   chapter_references/zreferences

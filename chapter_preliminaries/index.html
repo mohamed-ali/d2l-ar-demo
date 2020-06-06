@@ -1,0 +1,337 @@
+<!DOCTYPE html>
+
+<html xmlns="http://www.w3.org/1999/xhtml" lang="ar">
+  <head>
+    <meta charset="utf-8" />
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta http-equiv="x-ua-compatible" content="ie=edge">
+    
+    <title>2. التمهيدات &#8212; تعمّق في التعلّم العميق 0.7.1 documentation</title>
+
+    <link rel="stylesheet" href="../_static/basic.css" type="text/css" />
+    <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+    <link rel="stylesheet" href="../_static/material-design-lite-1.3.0/material.blue-deep_orange.min.css" type="text/css" />
+    <link rel="stylesheet" href="../_static/sphinx_materialdesign_theme.css" type="text/css" />
+    <link rel="stylesheet" href="../_static/fontawesome/all.css" type="text/css" />
+    <link rel="stylesheet" href="../_static/fonts.css" type="text/css" />
+    <link rel="stylesheet" type="text/css" href="../_static/d2l.css" />
+    <script type="text/javascript" id="documentation_options" data-url_root="../" src="../_static/documentation_options.js"></script>
+    <script type="text/javascript" src="../_static/jquery.js"></script>
+    <script type="text/javascript" src="../_static/underscore.js"></script>
+    <script type="text/javascript" src="../_static/doctools.js"></script>
+    <script type="text/javascript" src="../_static/language_data.js"></script>
+    <script type="text/javascript" src="../_static/d2l.js"></script>
+    <script type="text/javascript" src="../_static/translations.js"></script>
+    <script async="async" type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/latest.js?config=TeX-AMS-MML_HTMLorMML"></script>
+    <link rel="shortcut icon" href="../_static/favicon.png"/>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="2.1. معالجة البيانات" href="ndarray.html" />
+    <link rel="prev" title="1. مقدّمة" href="../chapter_introduction/index.html" /> 
+  </head>
+<body>
+    <div class="mdl-layout mdl-js-layout mdl-layout--fixed-header "><header class="mdl-layout__header mdl-layout__header--waterfall ">
+    <div class="mdl-layout__header-row">
+        
+        <nav class="mdl-navigation breadcrumb">
+            <a class="mdl-navigation__link is-active"><span class="section-number">2. </span>التمهيدات</a>
+        </nav>
+        <div class="mdl-layout-spacer"></div>
+        <nav class="mdl-navigation">
+        
+<form class="form-inline pull-sm-right" action="../search.html" method="get">
+      <div class="mdl-textfield mdl-js-textfield mdl-textfield--expandable mdl-textfield--floating-label mdl-textfield--align-right">
+        <label id="quick-search-icon" class="mdl-button mdl-js-button mdl-button--icon"  for="waterfall-exp">
+          <i class="material-icons">search</i>
+        </label>
+        <div class="mdl-textfield__expandable-holder">
+          <input class="mdl-textfield__input" type="text" name="q"  id="waterfall-exp" placeholder="Search" />
+          <input type="hidden" name="check_keywords" value="yes" />
+          <input type="hidden" name="area" value="default" />
+        </div>
+      </div>
+      <div class="mdl-tooltip" data-mdl-for="quick-search-icon">
+      Quick search
+      </div>
+</form>
+        
+<a id="button-show-source"
+    class="mdl-button mdl-js-button mdl-button--icon"
+    href="../_sources/chapter_preliminaries/index.rst.txt" rel="nofollow">
+  <i class="material-icons">code</i>
+</a>
+<div class="mdl-tooltip" data-mdl-for="button-show-source">
+Show Source
+</div>
+        </nav>
+    </div>
+    <div class="mdl-layout__header-row header-links">
+      <div class="mdl-layout-spacer"></div>
+      <nav class="mdl-navigation">
+          
+              <a  class="mdl-navigation__link" href="https://courses.d2l.ai">
+                  <i class="fas fa-user-graduate"></i>
+                  Courses
+              </a>
+          
+              <a  class="mdl-navigation__link" href="https://d2l.ai/d2l-en.pdf">
+                  <i class="fas fa-file-pdf"></i>
+                  PDF
+              </a>
+          
+              <a  class="mdl-navigation__link" href="https://d2l.ai/d2l-en.zip">
+                  <i class="fas fa-download"></i>
+                  All Notebooks
+              </a>
+          
+              <a  class="mdl-navigation__link" href="https://discuss.mxnet.io">
+                  <i class="fab fa-discourse"></i>
+                  Discuss
+              </a>
+          
+              <a  class="mdl-navigation__link" href="https://github.com/d2l-ai/d2l-en">
+                  <i class="fab fa-github"></i>
+                  GitHub
+              </a>
+          
+              <a  class="mdl-navigation__link" href="https://zh.d2l.ai">
+                  <i class="fas fa-external-link-alt"></i>
+                  中文版
+              </a>
+      </nav>
+    </div>
+</header><header class="mdl-layout__drawer">
+    
+          <!-- Title -->
+      <span class="mdl-layout-title">
+          <a class="title" href="../index.html">
+              <img class="logo" src="../_static/logo-with-text.png" alt="تعمّق في التعلّم العميق"/>
+          </a>
+      </span>
+    
+    
+      <div class="globaltoc">
+        <span class="mdl-layout-title toc">Table Of Contents</span>
+        
+        
+            
+            <nav class="mdl-navigation">
+                <ul>
+<li class="toctree-l1"><a class="reference internal" href="../chapter_preface/index.html">Preface</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../chapter_notation/index.html">الّرموز</a></li>
+</ul>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../chapter_introduction/index.html">1. مقدّمة</a></li>
+<li class="toctree-l1 current"><a class="current reference internal" href="#">2. التمهيدات</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="ndarray.html">2.1. معالجة البيانات</a></li>
+<li class="toctree-l2"><a class="reference internal" href="pandas.html">2.2. Data Preprocessing</a></li>
+<li class="toctree-l2"><a class="reference internal" href="linear-algebra.html">2.3. Linear Algebra</a></li>
+<li class="toctree-l2"><a class="reference internal" href="calculus.html">2.4. Calculus</a></li>
+<li class="toctree-l2"><a class="reference internal" href="autograd.html">2.5. Automatic Differentiation</a></li>
+<li class="toctree-l2"><a class="reference internal" href="probability.html">2.6. Probability</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lookup-api.html">2.7. Documentation</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../chapter_appendix-math-and-keywords-translations/index.html">3. ملحق: ترجمة الألفاظ التقنية و الرياضية</a></li>
+</ul>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../chapter_references/zreferences.html">المراجع</a></li>
+</ul>
+
+            </nav>
+        
+        </div>
+    
+</header>
+        <main class="mdl-layout__content" tabIndex="0">
+
+	<script type="text/javascript" src="../_static/sphinx_materialdesign_theme.js "></script>
+    <header class="mdl-layout__drawer">
+    
+          <!-- Title -->
+      <span class="mdl-layout-title">
+          <a class="title" href="../index.html">
+              <img class="logo" src="../_static/logo-with-text.png" alt="تعمّق في التعلّم العميق"/>
+          </a>
+      </span>
+    
+    
+      <div class="globaltoc">
+        <span class="mdl-layout-title toc">Table Of Contents</span>
+        
+        
+            
+            <nav class="mdl-navigation">
+                <ul>
+<li class="toctree-l1"><a class="reference internal" href="../chapter_preface/index.html">Preface</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../chapter_notation/index.html">الّرموز</a></li>
+</ul>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../chapter_introduction/index.html">1. مقدّمة</a></li>
+<li class="toctree-l1 current"><a class="current reference internal" href="#">2. التمهيدات</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="ndarray.html">2.1. معالجة البيانات</a></li>
+<li class="toctree-l2"><a class="reference internal" href="pandas.html">2.2. Data Preprocessing</a></li>
+<li class="toctree-l2"><a class="reference internal" href="linear-algebra.html">2.3. Linear Algebra</a></li>
+<li class="toctree-l2"><a class="reference internal" href="calculus.html">2.4. Calculus</a></li>
+<li class="toctree-l2"><a class="reference internal" href="autograd.html">2.5. Automatic Differentiation</a></li>
+<li class="toctree-l2"><a class="reference internal" href="probability.html">2.6. Probability</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lookup-api.html">2.7. Documentation</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../chapter_appendix-math-and-keywords-translations/index.html">3. ملحق: ترجمة الألفاظ التقنية و الرياضية</a></li>
+</ul>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../chapter_references/zreferences.html">المراجع</a></li>
+</ul>
+
+            </nav>
+        
+        </div>
+    
+</header>
+
+    <div class="document">
+        <div class="page-content" role="main">
+        
+  <div class="section" id="chap-preliminaries">
+<span id="id1"></span><h1><span class="section-number">2. </span>التمهيدات<a class="headerlink" href="#chap-preliminaries" title="Permalink to this headline">¶</a></h1>
+<p>للبدء في التعلم العميق ، سنحتاج إلى تطوير بعض المهارات الأساسية.</p>
+<p>إعلم أنّ جميع التعلم الآلي يهتم باستخراج المعلومات من البيانات. لذلك وجب
+أن نبدأ بتعلّم المهارات العمليّة لتخزين و تنظيف ومعالجة البيانات.</p>
+<p>علاوة على ذلك ، يتطلب التعلم الآلي عادةً العمل مع مجموعات البيانات
+الكبيرة ، والتي يمكننا التفكير فيها كجداول ، حيث تتوافق الصفوف مع
+الأمثلة والأعمدة تتوافق مع السمات. الجبر الخطي يعطينا مجموعة قوية من
+التقنيات للعمل مع البيانات الجدولية. لن نذهب بعيدًا إلى الأعشاب الضارة
+بل نركز على العمليات الأساسية للمصفوفة وتنفيذها.</p>
+<p>بالإضافة إلى ذلك ، التعلم العميق هو كل شيء عن التحسين. لدينا نموذج مع
+بعض المعلمات ونريد أن نجد تلك التي تناسب بياناتنا * الأفضل *. يتطلب
+تحديد طريقة نقل كل معلمة في كل خطوة من الخوارزمية القليل من حساب التفاضل
+والتكامل ، والذي سيتم تقديمه لفترة وجيزة. لحسن الحظ ، تقوم حزمة
+“autograd” تلقائيًا بحساب التمايز بالنسبة لنا ، وسوف نقوم بتغطيتها بعد
+ذلك.</p>
+<p>بعد ذلك ، يهتم التعلم الآلي بعمل التنبؤات: ما هي القيمة المحتملة لبعض
+السمات غير المعروفة ، بالنظر إلى المعلومات التي نلاحظها؟ لسبب صارم في ظل
+عدم اليقين سنحتاج إلى استدعاء لغة الاحتمال.</p>
+<p>في النهاية ، توفر الوثائق الرسمية الكثير من الأوصاف والأمثلة التي تتجاوز
+هذا الكتاب. لاختتام الفصل ، سنبين لك كيفية البحث عن الوثائق للحصول على
+المعلومات المطلوبة.</p>
+<p>حافظ هذا الكتاب على المحتوى الرياضي إلى الحد الأدنى الضروري للحصول على
+فهم سليم للتعلم العميق. ومع ذلك ، هذا لا يعني أن هذا الكتاب خالٍ من
+الرياضيات. وبالتالي ، يقدم هذا الفصل مقدمة سريعة للرياضيات الأساسية
+والمستخدمة بشكل متكرر للسماح لأي شخص بأن يفهم على الأقل * معظم *
+المحتوى الرياضي للكتاب. إذا كنت ترغب في فهم * الكل * للمحتوى الرياضي ،
+فيجب أن تكون المراجعة الإضافية <code class="xref std std-numref docutils literal notranslate"><span class="pre">chap_appendix_math</span></code> كافية.</p>
+<div class="toctree-wrapper compound">
+<p class="caption"><span class="caption-text">فهرس المقال</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="ndarray.html">2.1. معالجة البيانات</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="ndarray.html#id2">2.1.1. لنشرع بالعمل</a></li>
+<li class="toctree-l2"><a class="reference internal" href="ndarray.html#operations">2.1.2. Operations</a></li>
+<li class="toctree-l2"><a class="reference internal" href="ndarray.html#broadcasting-mechanism">2.1.3. Broadcasting Mechanism</a></li>
+<li class="toctree-l2"><a class="reference internal" href="ndarray.html#indexing-and-slicing">2.1.4. Indexing and Slicing</a></li>
+<li class="toctree-l2"><a class="reference internal" href="ndarray.html#id3">2.1.5. حفظ الذاكرة</a></li>
+<li class="toctree-l2"><a class="reference internal" href="ndarray.html#conversion-to-other-python-objects">2.1.6. Conversion to Other Python Objects</a></li>
+<li class="toctree-l2"><a class="reference internal" href="ndarray.html#id4">2.1.7. الخلاصة</a></li>
+<li class="toctree-l2"><a class="reference internal" href="ndarray.html#id5">2.1.8. التّمارين</a></li>
+<li class="toctree-l2"><a class="reference internal" href="ndarray.html#discussions">2.1.9. Discussions</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="pandas.html">2.2. Data Preprocessing</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="pandas.html#reading-the-dataset">2.2.1. Reading the Dataset</a></li>
+<li class="toctree-l2"><a class="reference internal" href="pandas.html#handling-missing-data">2.2.2. Handling Missing Data</a></li>
+<li class="toctree-l2"><a class="reference internal" href="pandas.html#conversion-to-the-ndarray-format">2.2.3. Conversion to the <code class="docutils literal notranslate"><span class="pre">ndarray</span></code> Format</a></li>
+<li class="toctree-l2"><a class="reference internal" href="pandas.html#summary">2.2.4. Summary</a></li>
+<li class="toctree-l2"><a class="reference internal" href="pandas.html#exercises">2.2.5. Exercises</a></li>
+<li class="toctree-l2"><a class="reference internal" href="pandas.html#discussions">2.2.6. Discussions</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="linear-algebra.html">2.3. Linear Algebra</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="linear-algebra.html#scalars">2.3.1. Scalars</a></li>
+<li class="toctree-l2"><a class="reference internal" href="linear-algebra.html#vectors">2.3.2. Vectors</a></li>
+<li class="toctree-l2"><a class="reference internal" href="linear-algebra.html#matrices">2.3.3. Matrices</a></li>
+<li class="toctree-l2"><a class="reference internal" href="linear-algebra.html#tensors">2.3.4. Tensors</a></li>
+<li class="toctree-l2"><a class="reference internal" href="linear-algebra.html#basic-properties-of-tensor-arithmetic">2.3.5. Basic Properties of Tensor Arithmetic</a></li>
+<li class="toctree-l2"><a class="reference internal" href="linear-algebra.html#reduction">2.3.6. Reduction</a></li>
+<li class="toctree-l2"><a class="reference internal" href="linear-algebra.html#dot-products">2.3.7. Dot Products</a></li>
+<li class="toctree-l2"><a class="reference internal" href="linear-algebra.html#matrix-vector-products">2.3.8. Matrix-Vector Products</a></li>
+<li class="toctree-l2"><a class="reference internal" href="linear-algebra.html#matrix-matrix-multiplication">2.3.9. Matrix-Matrix Multiplication</a></li>
+<li class="toctree-l2"><a class="reference internal" href="linear-algebra.html#norms">2.3.10. Norms</a></li>
+<li class="toctree-l2"><a class="reference internal" href="linear-algebra.html#more-on-linear-algebra">2.3.11. More on Linear Algebra</a></li>
+<li class="toctree-l2"><a class="reference internal" href="linear-algebra.html#summary">2.3.12. Summary</a></li>
+<li class="toctree-l2"><a class="reference internal" href="linear-algebra.html#exercises">2.3.13. Exercises</a></li>
+<li class="toctree-l2"><a class="reference internal" href="linear-algebra.html#discussions">2.3.14. Discussions</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="calculus.html">2.4. Calculus</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="calculus.html#derivatives-and-differentiation">2.4.1. Derivatives and Differentiation</a></li>
+<li class="toctree-l2"><a class="reference internal" href="calculus.html#partial-derivatives">2.4.2. Partial Derivatives</a></li>
+<li class="toctree-l2"><a class="reference internal" href="calculus.html#gradients">2.4.3. Gradients</a></li>
+<li class="toctree-l2"><a class="reference internal" href="calculus.html#chain-rule">2.4.4. Chain Rule</a></li>
+<li class="toctree-l2"><a class="reference internal" href="calculus.html#summary">2.4.5. Summary</a></li>
+<li class="toctree-l2"><a class="reference internal" href="calculus.html#exercises">2.4.6. Exercises</a></li>
+<li class="toctree-l2"><a class="reference internal" href="calculus.html#discussions">2.4.7. Discussions</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="autograd.html">2.5. Automatic Differentiation</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="autograd.html#a-simple-example">2.5.1. A Simple Example</a></li>
+<li class="toctree-l2"><a class="reference internal" href="autograd.html#backward-for-non-scalar-variables">2.5.2. Backward for Non-Scalar Variables</a></li>
+<li class="toctree-l2"><a class="reference internal" href="autograd.html#detaching-computation">2.5.3. Detaching Computation</a></li>
+<li class="toctree-l2"><a class="reference internal" href="autograd.html#computing-the-gradient-of-python-control-flow">2.5.4. Computing the Gradient of Python Control Flow</a></li>
+<li class="toctree-l2"><a class="reference internal" href="autograd.html#training-mode-and-prediction-mode">2.5.5. Training Mode and Prediction Mode</a></li>
+<li class="toctree-l2"><a class="reference internal" href="autograd.html#summary">2.5.6. Summary</a></li>
+<li class="toctree-l2"><a class="reference internal" href="autograd.html#exercises">2.5.7. Exercises</a></li>
+<li class="toctree-l2"><a class="reference internal" href="autograd.html#discussions">2.5.8. Discussions</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="probability.html">2.6. Probability</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="probability.html#basic-probability-theory">2.6.1. Basic Probability Theory</a></li>
+<li class="toctree-l2"><a class="reference internal" href="probability.html#dealing-with-multiple-random-variables">2.6.2. Dealing with Multiple Random Variables</a></li>
+<li class="toctree-l2"><a class="reference internal" href="probability.html#expectation-and-variance">2.6.3. Expectation and Variance</a></li>
+<li class="toctree-l2"><a class="reference internal" href="probability.html#summary">2.6.4. Summary</a></li>
+<li class="toctree-l2"><a class="reference internal" href="probability.html#exercises">2.6.5. Exercises</a></li>
+<li class="toctree-l2"><a class="reference internal" href="probability.html#discussions">2.6.6. Discussions</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="lookup-api.html">2.7. Documentation</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="lookup-api.html#finding-all-the-functions-and-classes-in-a-module">2.7.1. Finding All the Functions and Classes in a Module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lookup-api.html#finding-the-usage-of-specific-functions-and-classes">2.7.2. Finding the Usage of Specific Functions and Classes</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lookup-api.html#api-documentation">2.7.3. API Documentation</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lookup-api.html#summary">2.7.4. Summary</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lookup-api.html#exercises">2.7.5. Exercises</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lookup-api.html#discussions">2.7.6. Discussions</a></li>
+</ul>
+</li>
+</ul>
+</div>
+</div>
+
+
+        </div>
+        <div class="side-doc-outline">
+            <div class="side-doc-outline--content"> 
+            </div>
+        </div>
+
+      <div class="clearer"></div>
+    </div><div class="pagenation">
+     <a id="button-prev" href="../chapter_introduction/index.html" class="mdl-button mdl-js-button mdl-js-ripple-effect mdl-button--colored" role="botton" accesskey="P">
+         <i class="pagenation-arrow-L fas fa-arrow-left fa-lg"></i>
+         <div class="pagenation-text">
+            <span class="pagenation-direction">Previous</span>
+            <div>1. مقدّمة</div>
+         </div>
+     </a>
+     <a id="button-next" href="ndarray.html" class="mdl-button mdl-js-button mdl-js-ripple-effect mdl-button--colored" role="botton" accesskey="N">
+         <i class="pagenation-arrow-R fas fa-arrow-right fa-lg"></i>
+        <div class="pagenation-text">
+            <span class="pagenation-direction">Next</span>
+            <div>2.1. معالجة البيانات</div>
+        </div>
+     </a>
+  </div>
+        
+        </main>
+    </div>
+  </body>
+</html>

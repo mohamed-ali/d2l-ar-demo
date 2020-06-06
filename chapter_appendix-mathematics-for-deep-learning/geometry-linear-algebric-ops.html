@@ -1,0 +1,1027 @@
+<!DOCTYPE html>
+
+<html xmlns="http://www.w3.org/1999/xhtml" lang="ar">
+  <head>
+    <meta charset="utf-8" />
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta http-equiv="x-ua-compatible" content="ie=edge">
+    
+    <title>Geometry and Linear Algebraic Operations &#8212; تعمّق في التعلّم العميق 0.7.1 documentation</title>
+
+    <link rel="stylesheet" href="../_static/basic.css" type="text/css" />
+    <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+    <link rel="stylesheet" href="../_static/material-design-lite-1.3.0/material.blue-deep_orange.min.css" type="text/css" />
+    <link rel="stylesheet" href="../_static/sphinx_materialdesign_theme.css" type="text/css" />
+    <link rel="stylesheet" href="../_static/fontawesome/all.css" type="text/css" />
+    <link rel="stylesheet" href="../_static/fonts.css" type="text/css" />
+    <link rel="stylesheet" type="text/css" href="../_static/d2l.css" />
+    <script type="text/javascript" id="documentation_options" data-url_root="../" src="../_static/documentation_options.js"></script>
+    <script type="text/javascript" src="../_static/jquery.js"></script>
+    <script type="text/javascript" src="../_static/underscore.js"></script>
+    <script type="text/javascript" src="../_static/doctools.js"></script>
+    <script type="text/javascript" src="../_static/language_data.js"></script>
+    <script type="text/javascript" src="../_static/d2l.js"></script>
+    <script type="text/javascript" src="../_static/translations.js"></script>
+    <script async="async" type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/latest.js?config=TeX-AMS-MML_HTMLorMML"></script>
+    <link rel="shortcut icon" href="../_static/favicon.png"/>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" /> 
+  </head>
+<body>
+    <div class="mdl-layout mdl-js-layout mdl-layout--fixed-header "><header class="mdl-layout__header mdl-layout__header--waterfall ">
+    <div class="mdl-layout__header-row">
+        
+        <nav class="mdl-navigation breadcrumb">
+            <a class="mdl-navigation__link is-active">Geometry and Linear Algebraic Operations</a>
+        </nav>
+        <div class="mdl-layout-spacer"></div>
+        <nav class="mdl-navigation">
+        
+<form class="form-inline pull-sm-right" action="../search.html" method="get">
+      <div class="mdl-textfield mdl-js-textfield mdl-textfield--expandable mdl-textfield--floating-label mdl-textfield--align-right">
+        <label id="quick-search-icon" class="mdl-button mdl-js-button mdl-button--icon"  for="waterfall-exp">
+          <i class="material-icons">search</i>
+        </label>
+        <div class="mdl-textfield__expandable-holder">
+          <input class="mdl-textfield__input" type="text" name="q"  id="waterfall-exp" placeholder="Search" />
+          <input type="hidden" name="check_keywords" value="yes" />
+          <input type="hidden" name="area" value="default" />
+        </div>
+      </div>
+      <div class="mdl-tooltip" data-mdl-for="quick-search-icon">
+      Quick search
+      </div>
+</form>
+        
+<a id="button-show-source"
+    class="mdl-button mdl-js-button mdl-button--icon"
+    href="../_sources/chapter_appendix-mathematics-for-deep-learning/geometry-linear-algebric-ops.rst.txt" rel="nofollow">
+  <i class="material-icons">code</i>
+</a>
+<div class="mdl-tooltip" data-mdl-for="button-show-source">
+Show Source
+</div>
+        </nav>
+    </div>
+    <div class="mdl-layout__header-row header-links">
+      <div class="mdl-layout-spacer"></div>
+      <nav class="mdl-navigation">
+          
+              <a  class="mdl-navigation__link" href="https://courses.d2l.ai">
+                  <i class="fas fa-user-graduate"></i>
+                  Courses
+              </a>
+          
+              <a  class="mdl-navigation__link" href="https://d2l.ai/d2l-en.pdf">
+                  <i class="fas fa-file-pdf"></i>
+                  PDF
+              </a>
+          
+              <a  class="mdl-navigation__link" href="https://d2l.ai/d2l-en.zip">
+                  <i class="fas fa-download"></i>
+                  All Notebooks
+              </a>
+          
+              <a  class="mdl-navigation__link" href="https://discuss.mxnet.io">
+                  <i class="fab fa-discourse"></i>
+                  Discuss
+              </a>
+          
+              <a  class="mdl-navigation__link" href="https://github.com/d2l-ai/d2l-en">
+                  <i class="fab fa-github"></i>
+                  GitHub
+              </a>
+          
+              <a  class="mdl-navigation__link" href="https://zh.d2l.ai">
+                  <i class="fas fa-external-link-alt"></i>
+                  中文版
+              </a>
+      </nav>
+    </div>
+</header><header class="mdl-layout__drawer">
+    
+          <!-- Title -->
+      <span class="mdl-layout-title">
+          <a class="title" href="../index.html">
+              <img class="logo" src="../_static/logo-with-text.png" alt="تعمّق في التعلّم العميق"/>
+          </a>
+      </span>
+    
+    
+      <div class="globaltoc">
+        <span class="mdl-layout-title toc">Table Of Contents</span>
+        
+        
+            
+            <nav class="mdl-navigation">
+                <ul>
+<li class="toctree-l1"><a class="reference internal" href="../chapter_preface/index.html">Preface</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../chapter_notation/index.html">الّرموز</a></li>
+</ul>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../chapter_introduction/index.html">1. مقدّمة</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../chapter_preliminaries/index.html">2. التمهيدات</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../chapter_appendix-math-and-keywords-translations/index.html">3. ملحق: ترجمة الألفاظ التقنية و الرياضية</a></li>
+</ul>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../chapter_references/zreferences.html">المراجع</a></li>
+</ul>
+
+            </nav>
+        
+        </div>
+    
+</header>
+        <main class="mdl-layout__content" tabIndex="0">
+
+	<script type="text/javascript" src="../_static/sphinx_materialdesign_theme.js "></script>
+    <header class="mdl-layout__drawer">
+    
+          <!-- Title -->
+      <span class="mdl-layout-title">
+          <a class="title" href="../index.html">
+              <img class="logo" src="../_static/logo-with-text.png" alt="تعمّق في التعلّم العميق"/>
+          </a>
+      </span>
+    
+    
+      <div class="globaltoc">
+        <span class="mdl-layout-title toc">Table Of Contents</span>
+        
+        
+            
+            <nav class="mdl-navigation">
+                <ul>
+<li class="toctree-l1"><a class="reference internal" href="../chapter_preface/index.html">Preface</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../chapter_notation/index.html">الّرموز</a></li>
+</ul>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../chapter_introduction/index.html">1. مقدّمة</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../chapter_preliminaries/index.html">2. التمهيدات</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../chapter_appendix-math-and-keywords-translations/index.html">3. ملحق: ترجمة الألفاظ التقنية و الرياضية</a></li>
+</ul>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../chapter_references/zreferences.html">المراجع</a></li>
+</ul>
+
+            </nav>
+        
+        </div>
+    
+</header>
+
+    <div class="document">
+        <div class="page-content" role="main">
+        
+  <div class="section" id="geometry-and-linear-algebraic-operations">
+<span id="sec-geometry-linear-algebric-ops"></span><h1>Geometry and Linear Algebraic Operations<a class="headerlink" href="#geometry-and-linear-algebraic-operations" title="Permalink to this headline">¶</a><a href="https://colab.research.google.com/github/d2l-ai/d2l-en-colab/blob/master/chapter_appendix-mathematics-for-deep-learning/geometry-linear-algebric-ops.ipynb" onclick="captureOutboundLink('https://colab.research.google.com/github/d2l-ai/d2l-en-colab/blob/master/chapter_appendix-mathematics-for-deep-learning/geometry-linear-algebric-ops.ipynb'); return false;"> <button style="float:right", id="colab" class="mdl-button mdl-js-button mdl-button--primary mdl-js-ripple-effect"> <i class=" fas fa-external-link-alt"></i> Colab </button></a><div class="mdl-tooltip" data-mdl-for="colab"> Open the notebook in Colab</div></h1>
+<p>In <a class="reference internal" href="../chapter_preliminaries/linear-algebra.html#sec-linear-algebra"><span class="std std-numref">Section 2.3</span></a>, we encountered the basics of linear
+algebra and saw how it could be used to express common operations for
+transforming our data. Linear algebra is one of the key mathematical
+pillars underlying much of the work that we do deep learning and in
+machine learning more broadly. While <a class="reference internal" href="../chapter_preliminaries/linear-algebra.html#sec-linear-algebra"><span class="std std-numref">Section 2.3</span></a>
+contained enough machinery to communicate the mechanics of modern deep
+learning models, there is a lot more to the subject. In this section, we
+will go deeper, highlighting some geometric interpretations of linear
+algebra operations, and introducing a few fundamental concepts,
+including of eigenvalues and eigenvectors.</p>
+<div class="section" id="geometry-of-vectors">
+<h2>Geometry of Vectors<a class="headerlink" href="#geometry-of-vectors" title="Permalink to this headline">¶</a></h2>
+<p>First, we need to discuss the two common geometric interpretations of
+vectors, as either points or directions in space. Fundamentally, a
+vector is a list of numbers such as the Python list below.</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">v</span> <span class="o">=</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">7</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">]</span>
+</pre></div>
+</div>
+<p>Mathematicians most often write this as either a <em>column</em> or <em>row</em>
+vector, which is to say either as</p>
+<div class="math notranslate nohighlight" id="equation-chapter-appendix-mathematics-for-deep-learning-geometry-linear-algebric-ops-0">
+<span class="eqno">()<a class="headerlink" href="#equation-chapter-appendix-mathematics-for-deep-learning-geometry-linear-algebric-ops-0" title="Permalink to this equation">¶</a></span>\[\begin{split}\mathbf{x} = \begin{bmatrix}1\\7\\0\\1\end{bmatrix},\end{split}\]</div>
+<p>or</p>
+<div class="math notranslate nohighlight" id="equation-chapter-appendix-mathematics-for-deep-learning-geometry-linear-algebric-ops-1">
+<span class="eqno">()<a class="headerlink" href="#equation-chapter-appendix-mathematics-for-deep-learning-geometry-linear-algebric-ops-1" title="Permalink to this equation">¶</a></span>\[\mathbf{x}^\top = \begin{bmatrix}1 &amp; 7 &amp; 0 &amp; 1\end{bmatrix}.\]</div>
+<p>These often have different interpretations, where data points are column
+vectors and weights used to form weighted sums are row vectors. However,
+it can be beneficial to be flexible. Matrices are useful data
+structures: they allow us to organize data that have different
+modalities of variation. For example, rows in our matrix might
+correspond to different houses (data points), while columns might
+correspond to different attributes. This should sound familiar if you
+have ever used spreadsheet software or have read <a class="reference internal" href="../chapter_preliminaries/pandas.html#sec-pandas"><span class="std std-numref">Section 2.2</span></a>.
+Thus, although the default orientation of a single vector is a column
+vector, in a matrix that represents a tabular dataset, it is more
+conventional to treat each data point as a row vector in the matrix.
+And, as we will see in later chapters, this convention will enable
+common deep learning practices. For example, along the outermost axis of
+an <code class="docutils literal notranslate"><span class="pre">ndarray</span></code>, we can access or enumerate minibatches of data points,
+or just data points if no minibatch exists.</p>
+<p>Given a vector, the first interpretation that we should give it is as a
+point in space. In two or three dimensions, we can visualize these
+points by using the components of the vectors to define the location of
+the points in space compared to a fixed reference called the <em>origin</em>.
+This can be seen in <code class="xref std std-numref docutils literal notranslate"><span class="pre">fig_grid</span></code>.</p>
+<div class="figure align-default" id="id1">
+<span id="fig-grid"></span><img alt="../_images/GridPoints.svg" src="../_images/GridPoints.svg" /><p class="caption"><span class="caption-text">An illustration of visualizing vectors as points in the plane. The
+first component of the vector gives the <span class="math notranslate nohighlight">\(x\)</span>-coordinate, the
+second component gives the <span class="math notranslate nohighlight">\(y\)</span>-coordinate. Higher dimensions
+are analogous, although much harder to visualize.</span><a class="headerlink" href="#id1" title="Permalink to this image">¶</a></p>
+</div>
+<p>This geometric point of view allows us to consider the problem on a more
+abstract level. No longer faced with some insurmountable seeming problem
+like classifying pictures as either cats or dogs, we can start
+considering tasks abstractly as collections of points in space and
+picturing the task as discovering how to separate two distinct clusters
+of points.</p>
+<p>In parallel, there is a second point of view that people often take of
+vectors: as directions in space. Not only can we think of the vector
+<span class="math notranslate nohighlight">\(\mathbf{v} = [2,3]^\top\)</span> as the location <span class="math notranslate nohighlight">\(2\)</span> units to the
+right and <span class="math notranslate nohighlight">\(3\)</span> units up from the origin, we can also think of it as
+the direction itself to take <span class="math notranslate nohighlight">\(2\)</span> steps to the right and <span class="math notranslate nohighlight">\(3\)</span>
+steps up. In this way, we consider all the vectors in figure
+<code class="xref std std-numref docutils literal notranslate"><span class="pre">fig_arrow</span></code> the same.</p>
+<div class="figure align-default" id="id2">
+<span id="fig-arrow"></span><img alt="../_images/ParVec.svg" src="../_images/ParVec.svg" /><p class="caption"><span class="caption-text">Any vector can be visualized as an arrow in the plane. In this case,
+every vector drawn is a representation of the vector <span class="math notranslate nohighlight">\((2,3)\)</span>.</span><a class="headerlink" href="#id2" title="Permalink to this image">¶</a></p>
+</div>
+<p>One of the benefits of this shift is that we can make visual sense of
+the act of vector addition. In particular, we follow the directions
+given by one vector, and then follow the directions given by the other,
+as is seen in <code class="xref std std-numref docutils literal notranslate"><span class="pre">fig_add-vec</span></code>.</p>
+<div class="figure align-default" id="id3">
+<span id="fig-add-vec"></span><img alt="../_images/VecAdd.svg" src="../_images/VecAdd.svg" /><p class="caption"><span class="caption-text">We can visualize vector addition by first following one vector, and
+then another.</span><a class="headerlink" href="#id3" title="Permalink to this image">¶</a></p>
+</div>
+<p>Vector subtraction has a similar interpretation. By considering the
+identity that <span class="math notranslate nohighlight">\(\mathbf{u} = \mathbf{v} + (\mathbf{u}-\mathbf{v})\)</span>,
+we see that the vector <span class="math notranslate nohighlight">\(\mathbf{u}-\mathbf{v}\)</span> is the direction
+that takes us from the point <span class="math notranslate nohighlight">\(\mathbf{u}\)</span> to the point
+<span class="math notranslate nohighlight">\(\mathbf{v}\)</span>.</p>
+</div>
+<div class="section" id="dot-products-and-angles">
+<h2>Dot Products and Angles<a class="headerlink" href="#dot-products-and-angles" title="Permalink to this headline">¶</a></h2>
+<p>As we saw in <a class="reference internal" href="../chapter_preliminaries/linear-algebra.html#sec-linear-algebra"><span class="std std-numref">Section 2.3</span></a>, if we take two column
+vectors say <span class="math notranslate nohighlight">\(\mathbf{u}\)</span> and <span class="math notranslate nohighlight">\(\mathbf{v}\)</span>, we can form their
+dot product by computing:</p>
+<div class="math notranslate nohighlight" id="equation-eq-dot-def">
+<span class="eqno">()<a class="headerlink" href="#equation-eq-dot-def" title="Permalink to this equation">¶</a></span>\[\mathbf{u}^\top\mathbf{v} = \sum_i u_i\cdot v_i.\]</div>
+<p>Because <a class="reference internal" href="#equation-eq-dot-def">()</a> is symmetric, we will mirror the notation
+of classical multiplication and write</p>
+<div class="math notranslate nohighlight" id="equation-chapter-appendix-mathematics-for-deep-learning-geometry-linear-algebric-ops-2">
+<span class="eqno">()<a class="headerlink" href="#equation-chapter-appendix-mathematics-for-deep-learning-geometry-linear-algebric-ops-2" title="Permalink to this equation">¶</a></span>\[\mathbf{u}\cdot\mathbf{v} = \mathbf{u}^\top\mathbf{v} = \mathbf{v}^\top\mathbf{u},\]</div>
+<p>to highlight the fact that exchanging the order of the vectors will
+yield the same answer.</p>
+<p>The dot product <a class="reference internal" href="#equation-eq-dot-def">()</a> also admits a geometric
+interpretation: it is closely related to the angle between two vectors.
+Consider the angle shown in <code class="xref std std-numref docutils literal notranslate"><span class="pre">fig_angle</span></code>.</p>
+<div class="figure align-default" id="id4">
+<span id="fig-angle"></span><img alt="../_images/VecAngle.svg" src="../_images/VecAngle.svg" /><p class="caption"><span class="caption-text">Between any two vectors in the plane there is a well defined angle
+<span class="math notranslate nohighlight">\(\theta\)</span>. We will see this angle is intimately tied to the dot
+product.</span><a class="headerlink" href="#id4" title="Permalink to this image">¶</a></p>
+</div>
+<p>To start, let’s consider two specific vectors:</p>
+<div class="math notranslate nohighlight" id="equation-chapter-appendix-mathematics-for-deep-learning-geometry-linear-algebric-ops-3">
+<span class="eqno">()<a class="headerlink" href="#equation-chapter-appendix-mathematics-for-deep-learning-geometry-linear-algebric-ops-3" title="Permalink to this equation">¶</a></span>\[\mathbf{v} = (r,0) \; \text{and} \; \mathbf{w} = (s\cos(\theta), s \sin(\theta)).\]</div>
+<div class="line-block">
+<div class="line">The vector <span class="math notranslate nohighlight">\(\mathbf{v}\)</span> is length <span class="math notranslate nohighlight">\(r\)</span> and runs parallel to
+the <span class="math notranslate nohighlight">\(x\)</span>-axis, and the vector <span class="math notranslate nohighlight">\(\mathbf{w}\)</span> is of length
+<span class="math notranslate nohighlight">\(s\)</span> and at angle <span class="math notranslate nohighlight">\(\theta\)</span> with the <span class="math notranslate nohighlight">\(x\)</span>-axis.</div>
+<div class="line">If we compute the dot product of these two vectors, we see that</div>
+</div>
+<div class="math notranslate nohighlight" id="equation-chapter-appendix-mathematics-for-deep-learning-geometry-linear-algebric-ops-4">
+<span class="eqno">()<a class="headerlink" href="#equation-chapter-appendix-mathematics-for-deep-learning-geometry-linear-algebric-ops-4" title="Permalink to this equation">¶</a></span>\[\mathbf{v}\cdot\mathbf{w} = rs\cos(\theta) = \|\mathbf{v}\|\|\mathbf{w}\|\cos(\theta).\]</div>
+<p>With some simple algebraic manipulation, we can rearrange terms to
+obtain</p>
+<div class="math notranslate nohighlight" id="equation-chapter-appendix-mathematics-for-deep-learning-geometry-linear-algebric-ops-5">
+<span class="eqno">()<a class="headerlink" href="#equation-chapter-appendix-mathematics-for-deep-learning-geometry-linear-algebric-ops-5" title="Permalink to this equation">¶</a></span>\[\theta = \arccos\left(\frac{\mathbf{v}\cdot\mathbf{w}}{\|\mathbf{v}\|\|\mathbf{w}\|}\right).\]</div>
+<p>In short, for these two specific vectors, the dot product combined with
+the norms tell us the angle between the two vectors. This same fact is
+true in general. We will not derive the expression here, however, if we
+consider writing <span class="math notranslate nohighlight">\(\|\mathbf{v} - \mathbf{w}\|^2\)</span> in two ways: one
+with the dot product, and the other geometrically using the law of
+cosines, we can obtain the full relationship. Indeed, for any two
+vectors <span class="math notranslate nohighlight">\(\mathbf{v}\)</span> and <span class="math notranslate nohighlight">\(\mathbf{w}\)</span>, the angle between the
+two vectors is</p>
+<div class="math notranslate nohighlight" id="equation-eq-angle-forumla">
+<span class="eqno">()<a class="headerlink" href="#equation-eq-angle-forumla" title="Permalink to this equation">¶</a></span>\[\theta = \arccos\left(\frac{\mathbf{v}\cdot\mathbf{w}}{\|\mathbf{v}\|\|\mathbf{w}\|}\right).\]</div>
+<p>This is a nice result since nothing in the computation references
+two-dimensions. Indeed, we can use this in three or three million
+dimensions without issue.</p>
+<p>As a simple example, let’s see how to compute the angle between a pair
+of vectors:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="o">%</span><span class="n">matplotlib</span> <span class="n">inline</span>
+<span class="kn">import</span> <span class="nn">d2l</span>
+<span class="kn">from</span> <span class="nn">IPython</span> <span class="kn">import</span> <span class="n">display</span>
+<span class="kn">from</span> <span class="nn">mxnet</span> <span class="kn">import</span> <span class="n">gluon</span><span class="p">,</span> <span class="n">np</span><span class="p">,</span> <span class="n">npx</span>
+<span class="n">npx</span><span class="o">.</span><span class="n">set_np</span><span class="p">()</span>
+
+<span class="k">def</span> <span class="nf">angle</span><span class="p">(</span><span class="n">v</span><span class="p">,</span> <span class="n">w</span><span class="p">):</span>
+    <span class="k">return</span> <span class="n">np</span><span class="o">.</span><span class="n">arccos</span><span class="p">(</span><span class="n">v</span><span class="o">.</span><span class="n">dot</span><span class="p">(</span><span class="n">w</span><span class="p">)</span> <span class="o">/</span> <span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">linalg</span><span class="o">.</span><span class="n">norm</span><span class="p">(</span><span class="n">v</span><span class="p">)</span> <span class="o">*</span> <span class="n">np</span><span class="o">.</span><span class="n">linalg</span><span class="o">.</span><span class="n">norm</span><span class="p">(</span><span class="n">w</span><span class="p">)))</span>
+
+<span class="n">angle</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span><span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">]),</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span><span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">4</span><span class="p">]))</span>
+</pre></div>
+</div>
+<div class="output highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">array</span><span class="p">(</span><span class="mf">0.41899002</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>We will not use it right now, but it is useful to know that we will
+refer to vectors for which the angle is <span class="math notranslate nohighlight">\(\pi/2\)</span> (or equivalently
+<span class="math notranslate nohighlight">\(90^{\circ}\)</span>) as being <em>orthogonal</em>. By examining the equation
+above, we see that this happens when <span class="math notranslate nohighlight">\(\theta = \pi/2\)</span>, which is
+the same thing as <span class="math notranslate nohighlight">\(\cos(\theta) = 0\)</span>. The only way this can happen
+is if the dot product itself is zero, and two vectors are orthogonal if
+and only if <span class="math notranslate nohighlight">\(\mathbf{v}\cdot\mathbf{w} = 0\)</span>. This will prove to be
+a helpful formula when understanding objects geometrically.</p>
+<div class="line-block">
+<div class="line">It is reasonable to ask: why is computing the angle useful? The answer
+comes in the kind of invariance we expect data to have. Consider an
+image, and a duplicate image, where every pixel value is the same but
+<span class="math notranslate nohighlight">\(10\%\)</span> the brightness. The values of the individual pixels are
+in general far from the original values. Thus, if one computed the
+distance between the original image and the darker one, the distance
+can be large.</div>
+<div class="line">However, for most ML applications, the <em>content</em> is the same—it is
+still an image of a cat as far as a cat/dog classifier is concerned.
+However, if we consider the angle, it is not hard to see that for any
+vector <span class="math notranslate nohighlight">\(\mathbf{v}\)</span>, the angle between <span class="math notranslate nohighlight">\(\mathbf{v}\)</span> and
+<span class="math notranslate nohighlight">\(0.1\cdot\mathbf{v}\)</span> is zero. This corresponds to the fact that
+scaling vectors keeps the same direction and just changes the length.
+The angle considers the darker image identical.</div>
+</div>
+<p>Examples like this are everywhere. In text, we might want the topic
+being discussed to not change if we write twice as long of document that
+says the same thing. For some encoding (such as counting the number of
+occurrences of words in some vocabulary), this corresponds to a doubling
+of the vector encoding the document, so again we can use the angle.</p>
+<div class="section" id="cosine-similarity">
+<h3>Cosine Similarity<a class="headerlink" href="#cosine-similarity" title="Permalink to this headline">¶</a></h3>
+<p>In ML contexts where the angle is employed to measure the closeness of
+two vectors, practitioners adopt the term <em>cosine similarity</em> to refer
+to the portion</p>
+<div class="math notranslate nohighlight" id="equation-chapter-appendix-mathematics-for-deep-learning-geometry-linear-algebric-ops-6">
+<span class="eqno">()<a class="headerlink" href="#equation-chapter-appendix-mathematics-for-deep-learning-geometry-linear-algebric-ops-6" title="Permalink to this equation">¶</a></span>\[\cos(\theta) = \frac{\mathbf{v}\cdot\mathbf{w}}{\|\mathbf{v}\|\|\mathbf{w}\|}.\]</div>
+<p>The cosine takes a maximum value of <span class="math notranslate nohighlight">\(1\)</span> when the two vectors point
+in the same direction, a minimum value of <span class="math notranslate nohighlight">\(-1\)</span> when they point in
+opposite directions, and a value of <span class="math notranslate nohighlight">\(0\)</span> when the two vectors are
+orthogonal. Note that if the components of high-dimensional vectors are
+sampled randomly with mean <span class="math notranslate nohighlight">\(0\)</span>, their cosine will nearly always be
+close to <span class="math notranslate nohighlight">\(0\)</span>.</p>
+</div>
+</div>
+<div class="section" id="hyperplanes">
+<h2>Hyperplanes<a class="headerlink" href="#hyperplanes" title="Permalink to this headline">¶</a></h2>
+<p>In addition to working with vectors, another key object that you must
+understand to go far in linear algebra is the <em>hyperplane</em>, a
+generalization to higher dimensions of a line (two dimensions) or of a
+plane (three dimensions). In an <span class="math notranslate nohighlight">\(d\)</span>-dimensional vector space, a
+hyperplane has <span class="math notranslate nohighlight">\(d-1\)</span> dimensions and divides the space into two
+half-spaces.</p>
+<p>Let’s start with an example. Suppose that we have a column vector
+<span class="math notranslate nohighlight">\(\mathbf{w}=[2,1]^\top\)</span>. We want to know, “what are the points
+<span class="math notranslate nohighlight">\(\mathbf{v}\)</span> with <span class="math notranslate nohighlight">\(\mathbf{w}\cdot\mathbf{v} = 1\)</span>?” By
+recalling the connection between dot products and angles above
+<a class="reference internal" href="#equation-eq-angle-forumla">()</a>, we can see that this is equivalent to</p>
+<div class="math notranslate nohighlight" id="equation-chapter-appendix-mathematics-for-deep-learning-geometry-linear-algebric-ops-7">
+<span class="eqno">()<a class="headerlink" href="#equation-chapter-appendix-mathematics-for-deep-learning-geometry-linear-algebric-ops-7" title="Permalink to this equation">¶</a></span>\[\|\mathbf{v}\|\|\mathbf{w}\|\cos(\theta) = 1 \; \iff \; \|\mathbf{v}\|\cos(\theta) = \frac{1}{\|\mathbf{w}\|} = \frac{1}{\sqrt{5}}.\]</div>
+<div class="figure align-default" id="id5">
+<span id="fig-vector-project"></span><img alt="../_images/ProjVec.svg" src="../_images/ProjVec.svg" /><p class="caption"><span class="caption-text">Recalling trigonometry, we see the formula
+<span class="math notranslate nohighlight">\(\|\mathbf{v}\|\cos(\theta)\)</span> is the length of the projection of
+the vector <span class="math notranslate nohighlight">\(\mathbf{v}\)</span> onto the direction of
+<span class="math notranslate nohighlight">\(\mathbf{w}\)</span></span><a class="headerlink" href="#id5" title="Permalink to this image">¶</a></p>
+</div>
+<p>If we consider the geometric meaning of this expression, we see that
+this is equivalent to saying that the length of the projection of
+<span class="math notranslate nohighlight">\(\mathbf{v}\)</span> onto the direction of <span class="math notranslate nohighlight">\(\mathbf{w}\)</span> is exactly
+<span class="math notranslate nohighlight">\(1/\|\mathbf{w}\|\)</span>, as is shown in <code class="xref std std-numref docutils literal notranslate"><span class="pre">fig_vector-project</span></code>.
+The set of all points where this is true is a line at right angles to
+the vector <span class="math notranslate nohighlight">\(\mathbf{w}\)</span>. If we wanted, we could find the equation
+for this line and see that it is <span class="math notranslate nohighlight">\(2x + y = 1\)</span> or equivalently
+<span class="math notranslate nohighlight">\(y = 1 - 2x\)</span>.</p>
+<p>If we now look at what happens when we ask about the set of points with
+<span class="math notranslate nohighlight">\(\mathbf{w}\cdot\mathbf{v} &gt; 1\)</span> or
+<span class="math notranslate nohighlight">\(\mathbf{w}\cdot\mathbf{v} &lt; 1\)</span>, we can see that these are cases
+where the projections are longer or shorter than
+<span class="math notranslate nohighlight">\(1/\|\mathbf{w}\|\)</span>, respectively. Thus, those two inequalities
+define either side of the line. In this way, we have found a way to cut
+our space into two halves, where all the points on one side have dot
+product below a threshold, and the other side above as we see in
+<code class="xref std std-numref docutils literal notranslate"><span class="pre">fig_space-division</span></code>.</p>
+<div class="figure align-default" id="id6">
+<span id="fig-space-division"></span><img alt="../_images/SpaceDivision.svg" src="../_images/SpaceDivision.svg" /><p class="caption"><span class="caption-text">If we now consider the inequality version of the expression, we see
+that our hyperplane (in this case: just a line) separates the space
+into two halves.</span><a class="headerlink" href="#id6" title="Permalink to this image">¶</a></p>
+</div>
+<p>The story in higher dimension is much the same. If we now take
+<span class="math notranslate nohighlight">\(\mathbf{w} = [1,2,3]^\top\)</span> and ask about the points in three
+dimensions with <span class="math notranslate nohighlight">\(\mathbf{w}\cdot\mathbf{v} = 1\)</span>, we obtain a plane
+at right angles to the given vector <span class="math notranslate nohighlight">\(\mathbf{w}\)</span>. The two
+inequalities again define the two sides of the plane as is shown in
+<code class="xref std std-numref docutils literal notranslate"><span class="pre">fig_higher-division</span></code>.</p>
+<div class="figure align-default" id="id7">
+<span id="fig-higher-division"></span><img alt="../_images/SpaceDivision3D.svg" src="../_images/SpaceDivision3D.svg" /><p class="caption"><span class="caption-text">Hyperplanes in any dimension separate the space into two halves.</span><a class="headerlink" href="#id7" title="Permalink to this image">¶</a></p>
+</div>
+<p>While our ability to visualize runs out at this point, nothing stops us
+from doing this in tens, hundreds, or billions of dimensions. This
+occurs often when thinking about machine learned models. For instance,
+we can understand linear classification models like those from
+<code class="xref std std-numref docutils literal notranslate"><span class="pre">sec_softmax</span></code>, as methods to find hyperplanes that separate
+the different target classes. In this context, such hyperplanes are
+often referred to as <em>decision planes</em>. The majority of deep learned
+classification models end with a linear layer fed into a softmax, so one
+can interpret the role of the deep neural network to be to find a
+non-linear embedding such that the target classes can be separated
+cleanly by hyperplanes.</p>
+<p>To give a hand-built example, notice that we can produce a reasonable
+model to classify tiny images of t-shirts and trousers from the Fashion
+MNIST dataset (seen in <code class="xref std std-numref docutils literal notranslate"><span class="pre">sec_fashion_mnist</span></code>) by just taking the
+vector between their means to define the decision plane and eyeball a
+crude threshold. First we will load the data and compute the averages.</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1"># Load in the dataset</span>
+<span class="n">train</span> <span class="o">=</span> <span class="n">gluon</span><span class="o">.</span><span class="n">data</span><span class="o">.</span><span class="n">vision</span><span class="o">.</span><span class="n">FashionMNIST</span><span class="p">(</span><span class="n">train</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+<span class="n">test</span> <span class="o">=</span> <span class="n">gluon</span><span class="o">.</span><span class="n">data</span><span class="o">.</span><span class="n">vision</span><span class="o">.</span><span class="n">FashionMNIST</span><span class="p">(</span><span class="n">train</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
+
+<span class="n">X_train_0</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">stack</span><span class="p">([</span><span class="n">x</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="k">for</span> <span class="n">x</span> <span class="ow">in</span> <span class="n">train</span> <span class="k">if</span> <span class="n">x</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span> <span class="o">==</span> <span class="mi">0</span><span class="p">])</span><span class="o">.</span><span class="n">astype</span><span class="p">(</span><span class="nb">float</span><span class="p">)</span>
+<span class="n">X_train_1</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">stack</span><span class="p">([</span><span class="n">x</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="k">for</span> <span class="n">x</span> <span class="ow">in</span> <span class="n">train</span> <span class="k">if</span> <span class="n">x</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span> <span class="o">==</span> <span class="mi">1</span><span class="p">])</span><span class="o">.</span><span class="n">astype</span><span class="p">(</span><span class="nb">float</span><span class="p">)</span>
+<span class="n">X_test</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">stack</span><span class="p">(</span>
+    <span class="p">[</span><span class="n">x</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="k">for</span> <span class="n">x</span> <span class="ow">in</span> <span class="n">test</span> <span class="k">if</span> <span class="n">x</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span> <span class="o">==</span> <span class="mi">0</span> <span class="ow">or</span> <span class="n">x</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span> <span class="o">==</span> <span class="mi">1</span><span class="p">])</span><span class="o">.</span><span class="n">astype</span><span class="p">(</span><span class="nb">float</span><span class="p">)</span>
+<span class="n">y_test</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">stack</span><span class="p">(</span>
+    <span class="p">[</span><span class="n">x</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span> <span class="k">for</span> <span class="n">x</span> <span class="ow">in</span> <span class="n">test</span> <span class="k">if</span> <span class="n">x</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span> <span class="o">==</span> <span class="mi">0</span> <span class="ow">or</span> <span class="n">x</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span> <span class="o">==</span> <span class="mi">1</span><span class="p">])</span><span class="o">.</span><span class="n">astype</span><span class="p">(</span><span class="nb">float</span><span class="p">)</span>
+
+<span class="c1"># Compute averages</span>
+<span class="n">ave_0</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">mean</span><span class="p">(</span><span class="n">X_train_0</span><span class="p">,</span> <span class="n">axis</span><span class="o">=</span><span class="mi">0</span><span class="p">)</span>
+<span class="n">ave_1</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">mean</span><span class="p">(</span><span class="n">X_train_1</span><span class="p">,</span> <span class="n">axis</span><span class="o">=</span><span class="mi">0</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>It can be informative to examine these averages in detail, so let’s plot
+what they look like. In this case, we see that the average indeed
+resembles a blurry image of a t-shirt.</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1"># Plot average t-shirt</span>
+<span class="n">d2l</span><span class="o">.</span><span class="n">set_figsize</span><span class="p">()</span>
+<span class="n">d2l</span><span class="o">.</span><span class="n">plt</span><span class="o">.</span><span class="n">imshow</span><span class="p">(</span><span class="n">ave_0</span><span class="o">.</span><span class="n">reshape</span><span class="p">(</span><span class="mi">28</span><span class="p">,</span> <span class="mi">28</span><span class="p">)</span><span class="o">.</span><span class="n">tolist</span><span class="p">(),</span> <span class="n">cmap</span><span class="o">=</span><span class="s1">&#39;Greys&#39;</span><span class="p">)</span>
+<span class="n">d2l</span><span class="o">.</span><span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</pre></div>
+</div>
+<div class="figure align-default">
+<img alt="../_images/output_geometry-linear-algebric-ops_e3ed31_7_0.svg" src="../_images/output_geometry-linear-algebric-ops_e3ed31_7_0.svg" /></div>
+<p>In the second case, we again see that the average resembles a blurry
+image of trousers.</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1"># Plot average trousers</span>
+<span class="n">d2l</span><span class="o">.</span><span class="n">plt</span><span class="o">.</span><span class="n">imshow</span><span class="p">(</span><span class="n">ave_1</span><span class="o">.</span><span class="n">reshape</span><span class="p">(</span><span class="mi">28</span><span class="p">,</span> <span class="mi">28</span><span class="p">)</span><span class="o">.</span><span class="n">tolist</span><span class="p">(),</span> <span class="n">cmap</span><span class="o">=</span><span class="s1">&#39;Greys&#39;</span><span class="p">)</span>
+<span class="n">d2l</span><span class="o">.</span><span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</pre></div>
+</div>
+<div class="figure align-default">
+<img alt="../_images/output_geometry-linear-algebric-ops_e3ed31_9_0.svg" src="../_images/output_geometry-linear-algebric-ops_e3ed31_9_0.svg" /></div>
+<p>In a fully machine learned solution, we would learn the threshold from
+the dataset. In this case, I simply eyeballed a threshold that looked
+good on the training data by hand.</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1"># Print test set accuracy with eyeballed threshold</span>
+<span class="n">w</span> <span class="o">=</span> <span class="p">(</span><span class="n">ave_1</span> <span class="o">-</span> <span class="n">ave_0</span><span class="p">)</span><span class="o">.</span><span class="n">T</span>
+<span class="n">predictions</span> <span class="o">=</span> <span class="n">X_test</span><span class="o">.</span><span class="n">reshape</span><span class="p">(</span><span class="mi">2000</span><span class="p">,</span> <span class="o">-</span><span class="mi">1</span><span class="p">)</span><span class="o">.</span><span class="n">dot</span><span class="p">(</span><span class="n">w</span><span class="o">.</span><span class="n">flatten</span><span class="p">())</span> <span class="o">&gt;</span> <span class="o">-</span><span class="mi">1500000</span>
+
+<span class="c1"># Accuracy</span>
+<span class="n">np</span><span class="o">.</span><span class="n">mean</span><span class="p">(</span><span class="n">predictions</span><span class="o">.</span><span class="n">astype</span><span class="p">(</span><span class="n">y_test</span><span class="o">.</span><span class="n">dtype</span><span class="p">)</span> <span class="o">==</span> <span class="n">y_test</span><span class="p">,</span> <span class="n">dtype</span><span class="o">=</span><span class="n">np</span><span class="o">.</span><span class="n">float64</span><span class="p">)</span>
+</pre></div>
+</div>
+<div class="output highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">array</span><span class="p">(</span><span class="mf">0.801</span><span class="p">,</span> <span class="n">dtype</span><span class="o">=</span><span class="n">float64</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="geometry-of-linear-transformations">
+<h2>Geometry of Linear Transformations<a class="headerlink" href="#geometry-of-linear-transformations" title="Permalink to this headline">¶</a></h2>
+<p>Through <a class="reference internal" href="../chapter_preliminaries/linear-algebra.html#sec-linear-algebra"><span class="std std-numref">Section 2.3</span></a> and the above discussions, we
+have a solid understanding of the geometry of vectors, lengths, and
+angles. However, there is one important object we have omitted
+discussing, and that is a geometric understanding of linear
+transformations represented by matrices. Fully internalizing what
+matrices can do to transform data between two potentially different high
+dimensional spaces takes significant practice, and is beyond the scope
+of this appendix. However, we can start building up intuition in two
+dimensions.</p>
+<p>Suppose that we have some matrix:</p>
+<div class="math notranslate nohighlight" id="equation-chapter-appendix-mathematics-for-deep-learning-geometry-linear-algebric-ops-8">
+<span class="eqno">()<a class="headerlink" href="#equation-chapter-appendix-mathematics-for-deep-learning-geometry-linear-algebric-ops-8" title="Permalink to this equation">¶</a></span>\[\begin{split}\mathbf{A} = \begin{bmatrix}
+a &amp; b \\ c &amp; d
+\end{bmatrix}.\end{split}\]</div>
+<p>If we want to apply this to an arbitrary vector
+<span class="math notranslate nohighlight">\(\mathbf{v} = [x, y]^\top\)</span>, we multiply and see that</p>
+<div class="math notranslate nohighlight" id="equation-chapter-appendix-mathematics-for-deep-learning-geometry-linear-algebric-ops-9">
+<span class="eqno">()<a class="headerlink" href="#equation-chapter-appendix-mathematics-for-deep-learning-geometry-linear-algebric-ops-9" title="Permalink to this equation">¶</a></span>\[\begin{split}\begin{aligned}
+\mathbf{A}\mathbf{v} &amp; = \begin{bmatrix}a &amp; b \\ c &amp; d\end{bmatrix}\begin{bmatrix}x \\ y\end{bmatrix} \\
+&amp; = \begin{bmatrix}ax+by\\ cx+dy\end{bmatrix} \\
+&amp; = x\begin{bmatrix}a \\ c\end{bmatrix} + y\begin{bmatrix}b \\d\end{bmatrix} \\
+&amp; = x\left\{\mathbf{A}\begin{bmatrix}1\\0\end{bmatrix}\right\} + y\left\{\mathbf{A}\begin{bmatrix}0\\1\end{bmatrix}\right\}.
+\end{aligned}\end{split}\]</div>
+<p>This may seem like an odd computation, where something clear became
+somewhat impenetrable. However, it tells us that we can write the way
+that a matrix transforms <em>any</em> vector in terms of how it transforms <em>two
+specific vectors</em>: <span class="math notranslate nohighlight">\([1,0]^\top\)</span> and <span class="math notranslate nohighlight">\([0,1]^\top\)</span>. This is
+worth considering for a moment. We have essentially reduced an infinite
+problem (what happens to any pair of real numbers) to a finite one (what
+happens to these specific vectors). These vectors are an example a
+<em>basis</em>, where we can write any vector in our space as a weighted sum of
+these <em>basis vectors</em>.</p>
+<p>Let’s draw what happens when we use the specific matrix</p>
+<div class="math notranslate nohighlight" id="equation-chapter-appendix-mathematics-for-deep-learning-geometry-linear-algebric-ops-10">
+<span class="eqno">()<a class="headerlink" href="#equation-chapter-appendix-mathematics-for-deep-learning-geometry-linear-algebric-ops-10" title="Permalink to this equation">¶</a></span>\[\begin{split}\mathbf{A} = \begin{bmatrix}
+1 &amp; 2 \\
+-1 &amp; 3
+\end{bmatrix}.\end{split}\]</div>
+<p>If we look at the specific vector <span class="math notranslate nohighlight">\(\mathbf{v} = [2, -1]^\top\)</span>, we
+see this is <span class="math notranslate nohighlight">\(2\cdot[1,0]^\top + -1\cdot[0,1]^\top\)</span>, and thus we
+know that the matrix <span class="math notranslate nohighlight">\(A\)</span> will send this to
+<span class="math notranslate nohighlight">\(2(\mathbf{A}[1,0]^\top) + -1(\mathbf{A}[0,1])^\top = 2[1, -1]^\top - [2,3]^\top = [0, -5]^\top\)</span>.
+If we follow this logic through carefully, say by considering the grid
+of all integer pairs of points, we see that what happens is that the
+matrix multiplication can skew, rotate, and scale the grid, but the grid
+structure must remain as you see in <code class="xref std std-numref docutils literal notranslate"><span class="pre">fig_grid-transform</span></code>.</p>
+<div class="figure align-default" id="id8">
+<span id="fig-grid-transform"></span><img alt="../_images/GridTransform.svg" src="../_images/GridTransform.svg" /><p class="caption"><span class="caption-text">The matrix <span class="math notranslate nohighlight">\(\mathbf{A}\)</span> acting on the given basis vectors.
+Notice how the entire grid is transported along with it.</span><a class="headerlink" href="#id8" title="Permalink to this image">¶</a></p>
+</div>
+<p>This is the most important intuitive point to internalize about linear
+transformations represented by matrices. Matrices are incapable of
+distorting some parts of space differently than others. All they can do
+is take the original coordinates on our space and skew, rotate, and
+scale them.</p>
+<p>Some distortions can be severe. For instance the matrix</p>
+<div class="math notranslate nohighlight" id="equation-chapter-appendix-mathematics-for-deep-learning-geometry-linear-algebric-ops-11">
+<span class="eqno">()<a class="headerlink" href="#equation-chapter-appendix-mathematics-for-deep-learning-geometry-linear-algebric-ops-11" title="Permalink to this equation">¶</a></span>\[\begin{split}\mathbf{B} = \begin{bmatrix}
+2 &amp; -1 \\ 4 &amp; -2
+\end{bmatrix},\end{split}\]</div>
+<p>compresses the entire two-dimensional plane down to a single line.
+Identifying and working with such transformations are the topic of a
+later section, but geometrically we can see that this is fundamentally
+different from the types of transformations we saw above. For instance,
+the result from matrix <span class="math notranslate nohighlight">\(\mathbf{A}\)</span> can be “bent back” to the
+original grid. The results from matrix <span class="math notranslate nohighlight">\(\mathbf{B}\)</span> cannot because
+we will never know where the vector <span class="math notranslate nohighlight">\([1,2]^\top\)</span> came from—was it
+<span class="math notranslate nohighlight">\([1,1]^\top\)</span> or <span class="math notranslate nohighlight">\([0, -1]^\top\)</span>?</p>
+<p>While this picture was for a <span class="math notranslate nohighlight">\(2\times2\)</span> matrix, nothing prevents
+us from taking the lessons learned into higher dimensions. If we take
+similar basis vectors like <span class="math notranslate nohighlight">\([1,0, \ldots,0]\)</span> and see where our
+matrix sends them, we can start to get a feeling for how the matrix
+multiplication distorts the entire space in whatever dimension space we
+are dealing with.</p>
+</div>
+<div class="section" id="linear-dependence">
+<h2>Linear Dependence<a class="headerlink" href="#linear-dependence" title="Permalink to this headline">¶</a></h2>
+<p>Consider again the matrix</p>
+<div class="math notranslate nohighlight" id="equation-chapter-appendix-mathematics-for-deep-learning-geometry-linear-algebric-ops-12">
+<span class="eqno">()<a class="headerlink" href="#equation-chapter-appendix-mathematics-for-deep-learning-geometry-linear-algebric-ops-12" title="Permalink to this equation">¶</a></span>\[\begin{split}\mathbf{B} = \begin{bmatrix}
+2 &amp; -1 \\ 4 &amp; -2
+\end{bmatrix}.\end{split}\]</div>
+<p>This compresses the entire plane down to live on the single line
+<span class="math notranslate nohighlight">\(y = 2x\)</span>. The question now arises: is there some way we can detect
+this just looking at the matrix itself? The answer is that indeed we
+can. Let’s take <span class="math notranslate nohighlight">\(\mathbf{b}_1 = [2,4]^\top\)</span> and
+<span class="math notranslate nohighlight">\(\mathbf{b}_2 = [-1, -2]^\top\)</span> be the two columns of
+<span class="math notranslate nohighlight">\(\mathbf{B}\)</span>. Remember that we can write everything transformed by
+the matrix <span class="math notranslate nohighlight">\(\mathbf{B}\)</span> as a weighted sum of the columns of the
+matrix: like <span class="math notranslate nohighlight">\(a_1\mathbf{b}_1 + a_2\mathbf{b}_2\)</span>. We call this a
+<em>linear combination</em>. The fact that
+<span class="math notranslate nohighlight">\(\mathbf{b}_1 = -2\cdot\mathbf{b}_2\)</span> means that we can write any
+linear combination of those two columns entirely in terms of say
+<span class="math notranslate nohighlight">\(\mathbf{b}_2\)</span> since</p>
+<div class="math notranslate nohighlight" id="equation-chapter-appendix-mathematics-for-deep-learning-geometry-linear-algebric-ops-13">
+<span class="eqno">()<a class="headerlink" href="#equation-chapter-appendix-mathematics-for-deep-learning-geometry-linear-algebric-ops-13" title="Permalink to this equation">¶</a></span>\[a_1\mathbf{b}_1 + a_2\mathbf{b}_2 = -2a_1\mathbf{b}_2 + a_2\mathbf{b}_2 = (a_2-2a_1)\mathbf{b}_2.\]</div>
+<p>This means that one of the columns is, in a sense, redundant because it
+does not define a unique direction in space. This should not surprise us
+too much since we already saw that this matrix collapses the entire
+plane down into a single line. Moreover, we see that the linear
+dependence <span class="math notranslate nohighlight">\(\mathbf{b}_1 = -2\cdot\mathbf{b}_2\)</span> captures this. To
+make this more symmetrical between the two vectors, we will write this
+as</p>
+<div class="math notranslate nohighlight" id="equation-chapter-appendix-mathematics-for-deep-learning-geometry-linear-algebric-ops-14">
+<span class="eqno">()<a class="headerlink" href="#equation-chapter-appendix-mathematics-for-deep-learning-geometry-linear-algebric-ops-14" title="Permalink to this equation">¶</a></span>\[\mathbf{b}_1  + 2\cdot\mathbf{b}_2 = 0.\]</div>
+<p>In general, we will say that a collection of vectors
+<span class="math notranslate nohighlight">\(\mathbf{v}_1, \ldots \mathbf{v}_k\)</span> are <em>linearly dependent</em> if
+there exist coefficients <span class="math notranslate nohighlight">\(a_1, \ldots, a_k\)</span> <em>not all equal to
+zero</em> so that</p>
+<div class="math notranslate nohighlight" id="equation-chapter-appendix-mathematics-for-deep-learning-geometry-linear-algebric-ops-15">
+<span class="eqno">()<a class="headerlink" href="#equation-chapter-appendix-mathematics-for-deep-learning-geometry-linear-algebric-ops-15" title="Permalink to this equation">¶</a></span>\[\sum_{i=1}^k a_i\mathbf{v_i} = 0.\]</div>
+<p>In this case, we can solve for one of the vectors in terms of some
+combination of the others, and effectively render it redundant. Thus, a
+linear dependence in the columns of a matrix is a witness to the fact
+that our matrix is compressing the space down to some lower dimension.
+If there is no linear dependence we say the vectors are <em>linearly
+independent</em>. If the columns of a matrix are linearly independent, no
+compression occurs and the operation can be undone.</p>
+</div>
+<div class="section" id="rank">
+<h2>Rank<a class="headerlink" href="#rank" title="Permalink to this headline">¶</a></h2>
+<p>If we have a general <span class="math notranslate nohighlight">\(n\times m\)</span> matrix, it is reasonable to ask
+what dimension space the matrix maps into. A concept known as the <em>rank</em>
+will be our answer. In the previous section, we noted that a linear
+dependence bears witness to compression of space into a lower dimension
+and so we will be able to use this to define the notion of rank. In
+particular, the rank of a matrix <span class="math notranslate nohighlight">\(\mathbf{A}\)</span> is the largest
+number of linearly independent columns amongst all subsets of columns.
+For example, the matrix</p>
+<div class="math notranslate nohighlight" id="equation-chapter-appendix-mathematics-for-deep-learning-geometry-linear-algebric-ops-16">
+<span class="eqno">()<a class="headerlink" href="#equation-chapter-appendix-mathematics-for-deep-learning-geometry-linear-algebric-ops-16" title="Permalink to this equation">¶</a></span>\[\begin{split}\mathbf{B} = \begin{bmatrix}
+2 &amp; 4 \\ -1 &amp; -2
+\end{bmatrix},\end{split}\]</div>
+<p>has <span class="math notranslate nohighlight">\(\mathrm{rank}(B)=1\)</span>, since the two columns are linearly
+dependent, but either column by itself is not linearly dependent. For a
+more challenging example, we can consider</p>
+<div class="math notranslate nohighlight" id="equation-chapter-appendix-mathematics-for-deep-learning-geometry-linear-algebric-ops-17">
+<span class="eqno">()<a class="headerlink" href="#equation-chapter-appendix-mathematics-for-deep-learning-geometry-linear-algebric-ops-17" title="Permalink to this equation">¶</a></span>\[\begin{split}\mathbf{C} = \begin{bmatrix}
+1&amp; 3 &amp; 0 &amp; -1 &amp; 0 \\
+-1 &amp; 0 &amp; 1 &amp; 1 &amp; -1 \\
+0 &amp; 3 &amp; 1 &amp; 0 &amp; -1 \\
+2 &amp; 3 &amp; -1 &amp; -2 &amp; 1
+\end{bmatrix},\end{split}\]</div>
+<p>and show that <span class="math notranslate nohighlight">\(\mathbf{C}\)</span> has rank two since, for instance, the
+first two columns are linearly independent, however any of the four
+collections of three columns are dependent.</p>
+<p>This procedure, as described, is very inefficient. It requires looking
+at every subset of the columns of our given matrix, and thus is
+potentially exponential in the number of columns. Later we will see a
+more computationally efficient way to compute the rank of a matrix, but
+for now, this is sufficient to see that the concept is well defined and
+understand the meaning.</p>
+</div>
+<div class="section" id="invertibility">
+<h2>Invertibility<a class="headerlink" href="#invertibility" title="Permalink to this headline">¶</a></h2>
+<p>We have seen above that multiplication by a matrix with linearly
+dependent columns cannot be undone, i.e., there is no inverse operation
+that can always recover the input. However, multiplication by a
+full-rank matrix (i.e., some <span class="math notranslate nohighlight">\(\mathbf{A}\)</span> that is
+<span class="math notranslate nohighlight">\(n \times n\)</span> matrix with rank <span class="math notranslate nohighlight">\(n\)</span>), we should always be able
+to undo it. Consider the matrix</p>
+<div class="math notranslate nohighlight" id="equation-chapter-appendix-mathematics-for-deep-learning-geometry-linear-algebric-ops-18">
+<span class="eqno">()<a class="headerlink" href="#equation-chapter-appendix-mathematics-for-deep-learning-geometry-linear-algebric-ops-18" title="Permalink to this equation">¶</a></span>\[\begin{split}\mathbf{I} = \begin{bmatrix}
+1 &amp; 0 &amp; \cdots &amp; 0 \\
+0 &amp; 1 &amp; \cdots &amp; 0 \\
+\vdots &amp; \vdots &amp; \ddots &amp; \vdots \\
+0 &amp; 0 &amp; \cdots &amp; 1
+\end{bmatrix}.\end{split}\]</div>
+<p>which is the matrix with ones along the diagonal, and zeros elsewhere.
+We call this the <em>identity</em> matrix. It is the matrix which leaves our
+data unchanged when applied. To find a matrix which undoes what our
+matrix <span class="math notranslate nohighlight">\(\mathbf{A}\)</span> has done, we want to find a matrix
+<span class="math notranslate nohighlight">\(\mathbf{A}^{-1}\)</span> such that</p>
+<div class="math notranslate nohighlight" id="equation-chapter-appendix-mathematics-for-deep-learning-geometry-linear-algebric-ops-19">
+<span class="eqno">()<a class="headerlink" href="#equation-chapter-appendix-mathematics-for-deep-learning-geometry-linear-algebric-ops-19" title="Permalink to this equation">¶</a></span>\[\mathbf{A}^{-1}\mathbf{A} = \mathbf{A}\mathbf{A}^{-1} =  \mathbf{I}.\]</div>
+<p>If we look at this as a system, we have <span class="math notranslate nohighlight">\(n \times n\)</span> unknowns (the
+entries of <span class="math notranslate nohighlight">\(\mathbf{A}^{-1}\)</span>) and <span class="math notranslate nohighlight">\(n \times n\)</span> equations
+(the equality that needs to hold between every entry of the product
+<span class="math notranslate nohighlight">\(\mathbf{A}^{-1}\mathbf{A}\)</span> and every entry of <span class="math notranslate nohighlight">\(\mathbf{I}\)</span>)
+so we should generically expect a solution to exist. Indeed, in the next
+section we will see a quantity called the <em>determinant</em>, which has the
+property that as long as the determinant is not zero, we can find a
+solution. We call such a matrix <span class="math notranslate nohighlight">\(\mathbf{A}^{-1}\)</span> the <em>inverse</em>
+matrix. As an example, if <span class="math notranslate nohighlight">\(\mathbf{A}\)</span> is the general
+<span class="math notranslate nohighlight">\(2 \times 2\)</span> matrix</p>
+<div class="math notranslate nohighlight" id="equation-chapter-appendix-mathematics-for-deep-learning-geometry-linear-algebric-ops-20">
+<span class="eqno">()<a class="headerlink" href="#equation-chapter-appendix-mathematics-for-deep-learning-geometry-linear-algebric-ops-20" title="Permalink to this equation">¶</a></span>\[\begin{split}\mathbf{A} = \begin{bmatrix}
+a &amp; b \\
+c &amp; d
+\end{bmatrix},\end{split}\]</div>
+<p>then we can see that the inverse is</p>
+<div class="math notranslate nohighlight" id="equation-chapter-appendix-mathematics-for-deep-learning-geometry-linear-algebric-ops-21">
+<span class="eqno">()<a class="headerlink" href="#equation-chapter-appendix-mathematics-for-deep-learning-geometry-linear-algebric-ops-21" title="Permalink to this equation">¶</a></span>\[\begin{split} \frac{1}{ad-bc}  \begin{bmatrix}
+d &amp; -b \\
+-c &amp; a
+\end{bmatrix}.\end{split}\]</div>
+<p>We can test to see this by seeing that multiplying by the inverse given
+by the formula above works in practice.</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">M</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">],</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">4</span><span class="p">]])</span>
+<span class="n">M_inv</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([[</span><span class="mi">2</span><span class="p">,</span> <span class="o">-</span><span class="mi">1</span><span class="p">],</span> <span class="p">[</span><span class="o">-</span><span class="mf">0.5</span><span class="p">,</span> <span class="mf">0.5</span><span class="p">]])</span>
+<span class="n">M_inv</span><span class="o">.</span><span class="n">dot</span><span class="p">(</span><span class="n">M</span><span class="p">)</span>
+</pre></div>
+</div>
+<div class="output highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">array</span><span class="p">([[</span><span class="mf">1.</span><span class="p">,</span> <span class="mf">0.</span><span class="p">],</span>
+       <span class="p">[</span><span class="mf">0.</span><span class="p">,</span> <span class="mf">1.</span><span class="p">]])</span>
+</pre></div>
+</div>
+<div class="section" id="numerical-issues">
+<h3>Numerical Issues<a class="headerlink" href="#numerical-issues" title="Permalink to this headline">¶</a></h3>
+<p>While the inverse of a matrix is useful in theory, we must say that most
+of the time we do not wish to <em>use</em> the matrix inverse to solve a
+problem in practice. In general, there are far more numerically stable
+algorithms for solving linear equations like</p>
+<div class="math notranslate nohighlight" id="equation-chapter-appendix-mathematics-for-deep-learning-geometry-linear-algebric-ops-22">
+<span class="eqno">()<a class="headerlink" href="#equation-chapter-appendix-mathematics-for-deep-learning-geometry-linear-algebric-ops-22" title="Permalink to this equation">¶</a></span>\[\mathbf{A}\mathbf{x} = \mathbf{b},\]</div>
+<p>than computing the inverse and multiplying to get</p>
+<div class="math notranslate nohighlight" id="equation-chapter-appendix-mathematics-for-deep-learning-geometry-linear-algebric-ops-23">
+<span class="eqno">()<a class="headerlink" href="#equation-chapter-appendix-mathematics-for-deep-learning-geometry-linear-algebric-ops-23" title="Permalink to this equation">¶</a></span>\[\mathbf{x} = \mathbf{A}^{-1}\mathbf{b}.\]</div>
+<p>Just as division by a small number can lead to numerical instability, so
+can inversion of a matrix which is close to having low rank.</p>
+<p>Moreover, it is common that the matrix <span class="math notranslate nohighlight">\(\mathbf{A}\)</span> is <em>sparse</em>,
+which is to say that it contains only a small number of non-zero values.
+If we were to explore examples, we would see that this does not mean the
+inverse is sparse. Even if <span class="math notranslate nohighlight">\(\mathbf{A}\)</span> was a <span class="math notranslate nohighlight">\(1\)</span> million by
+<span class="math notranslate nohighlight">\(1\)</span> million matrix with only <span class="math notranslate nohighlight">\(5\)</span> million non-zero entries
+(and thus we need only store those <span class="math notranslate nohighlight">\(5\)</span> million), the inverse will
+typically have almost every entry non-negative, requiring us to store
+all <span class="math notranslate nohighlight">\(1\text{M}^2\)</span> entries—that is <span class="math notranslate nohighlight">\(1\)</span> trillion entries!</p>
+<p>While we do not have time to dive all the way into the thorny numerical
+issues frequently encountered when working with linear algebra, we want
+to provide you with some intuition about when to proceed with caution,
+and generally avoiding inversion in practice is a good rule of thumb.</p>
+</div>
+</div>
+<div class="section" id="determinant">
+<h2>Determinant<a class="headerlink" href="#determinant" title="Permalink to this headline">¶</a></h2>
+<p>The geometric view of linear algebra gives an intuitive way to interpret
+a a fundamental quantity known as the <em>determinant</em>. Consider the grid
+image from before, but now with a highlighted region
+(<code class="xref std std-numref docutils literal notranslate"><span class="pre">fig_grid-filled</span></code>).</p>
+<div class="figure align-default" id="id9">
+<span id="fig-grid-filled"></span><img alt="../_images/GridTransformFilled.svg" src="../_images/GridTransformFilled.svg" /><p class="caption"><span class="caption-text">The matrix <span class="math notranslate nohighlight">\(\mathbf{A}\)</span> again distorting the grid. This time, I
+want to draw particular attention to what happens to the highlighted
+square.</span><a class="headerlink" href="#id9" title="Permalink to this image">¶</a></p>
+</div>
+<p>Look at the highlighted square. This is a square with edges given by
+<span class="math notranslate nohighlight">\((0, 1)\)</span> and <span class="math notranslate nohighlight">\((1, 0)\)</span> and thus it has area one. After
+<span class="math notranslate nohighlight">\(\mathbf{A}\)</span> transforms this square, we see that it becomes a
+parallelogram. There is no reason this parallelogram should have the
+same area that we started with, and indeed in the specific case shown
+here of</p>
+<div class="math notranslate nohighlight" id="equation-chapter-appendix-mathematics-for-deep-learning-geometry-linear-algebric-ops-24">
+<span class="eqno">()<a class="headerlink" href="#equation-chapter-appendix-mathematics-for-deep-learning-geometry-linear-algebric-ops-24" title="Permalink to this equation">¶</a></span>\[\begin{split}\mathbf{A} = \begin{bmatrix}
+1 &amp; -1 \\
+2 &amp; 3
+\end{bmatrix},\end{split}\]</div>
+<p>it is an exercise in coordinate geometry to compute the area of this
+parallelogram and obtain that the area is <span class="math notranslate nohighlight">\(5\)</span>.</p>
+<p>In general, if we have a matrix</p>
+<div class="math notranslate nohighlight" id="equation-chapter-appendix-mathematics-for-deep-learning-geometry-linear-algebric-ops-25">
+<span class="eqno">()<a class="headerlink" href="#equation-chapter-appendix-mathematics-for-deep-learning-geometry-linear-algebric-ops-25" title="Permalink to this equation">¶</a></span>\[\begin{split}\mathbf{A} = \begin{bmatrix}
+a &amp; b \\
+c &amp; d
+\end{bmatrix},\end{split}\]</div>
+<p>we can see with some computation that the area of the resulting
+parallelogram is <span class="math notranslate nohighlight">\(ad-bc\)</span>. This area is referred to as the
+<em>determinant</em>.</p>
+<p>Let’s check this quickly with some example code.</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
+<span class="n">np</span><span class="o">.</span><span class="n">linalg</span><span class="o">.</span><span class="n">det</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([[</span><span class="mi">1</span><span class="p">,</span> <span class="o">-</span><span class="mi">1</span><span class="p">],</span> <span class="p">[</span><span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">]]))</span>
+</pre></div>
+</div>
+<div class="output highlight-default notranslate"><div class="highlight"><pre><span></span><span class="mf">5.000000000000001</span>
+</pre></div>
+</div>
+<p>The eagle-eyed amongst us will notice that this expression can be zero
+or even negative. For the negative term, this is a matter of convention
+taken generally in mathematics: if the matrix flips the figure, we say
+the area is negated. Let’s see now that when the determinant is zero, we
+learn more.</p>
+<p>Let’s consider</p>
+<div class="math notranslate nohighlight" id="equation-chapter-appendix-mathematics-for-deep-learning-geometry-linear-algebric-ops-26">
+<span class="eqno">()<a class="headerlink" href="#equation-chapter-appendix-mathematics-for-deep-learning-geometry-linear-algebric-ops-26" title="Permalink to this equation">¶</a></span>\[\begin{split}\mathbf{B} = \begin{bmatrix}
+2 &amp; 4 \\ -1 &amp; -2
+\end{bmatrix}.\end{split}\]</div>
+<p>If we compute the determinant of this matrix, we get
+<span class="math notranslate nohighlight">\(2\cdot(-2 ) - 4\cdot(-1) = 0\)</span>. Given our understanding above,
+this makes sense. <span class="math notranslate nohighlight">\(\mathbf{B}\)</span> compresses the square from the
+original image down to a line segment, which has zero area. And indeed,
+being compressed into a lower dimensional space is the only way to have
+zero area after the transformation. Thus we see the following result is
+true: a matrix <span class="math notranslate nohighlight">\(A\)</span> is invertible if and only if the determinant is
+not equal to zero.</p>
+<p>As a final comment, imagine that we have any figure drawn on the plane.
+Thinking like computer scientists, we can decompose that figure into a
+collection of little squares so that the area of the figure is in
+essence just the number of squares in the decomposition. If we now
+transform that figure by a matrix, we send each of these squares to
+parallelograms, each one of which has area given by the determinant. We
+see that for any figure, the determinant gives the (signed) number that
+a matrix scales the area of any figure.</p>
+<p>Computing determinants for larger matrices can be laborious, but the
+intuition is the same. The determinant remains the factor that
+<span class="math notranslate nohighlight">\(n\times n\)</span> matrices scale <span class="math notranslate nohighlight">\(n\)</span>-dimensional volumes.</p>
+</div>
+<div class="section" id="tensors-and-common-linear-algebra-operations">
+<h2>Tensors and Common Linear Algebra Operations<a class="headerlink" href="#tensors-and-common-linear-algebra-operations" title="Permalink to this headline">¶</a></h2>
+<p>In <a class="reference internal" href="../chapter_preliminaries/linear-algebra.html#sec-linear-algebra"><span class="std std-numref">Section 2.3</span></a> the concept of tensors was introduced.
+In this section, we will dive more deeply into tensor contractions (the
+tensor equivalent of matrix multiplication), and see how it can provide
+a unified view on a number of matrix and vector operations.</p>
+<p>With matrices and vectors we knew how to multiply them to transform
+data. We need to have a similar definition for tensors if they are to be
+useful to us. Think about matrix multiplication:</p>
+<div class="math notranslate nohighlight" id="equation-chapter-appendix-mathematics-for-deep-learning-geometry-linear-algebric-ops-27">
+<span class="eqno">()<a class="headerlink" href="#equation-chapter-appendix-mathematics-for-deep-learning-geometry-linear-algebric-ops-27" title="Permalink to this equation">¶</a></span>\[\mathbf{C} = \mathbf{A}\mathbf{B},\]</div>
+<p>or equivalently</p>
+<div class="math notranslate nohighlight" id="equation-chapter-appendix-mathematics-for-deep-learning-geometry-linear-algebric-ops-28">
+<span class="eqno">()<a class="headerlink" href="#equation-chapter-appendix-mathematics-for-deep-learning-geometry-linear-algebric-ops-28" title="Permalink to this equation">¶</a></span>\[c_{i, j} = \sum_{k} a_{i, k}b_{k, j}.\]</div>
+<p>This pattern is one we can repeat for tensors. For tensors, there is no
+one case of what to sum over that can be universally chosen, so we need
+specify exactly which indices we want to sum over. For instance we could
+consider</p>
+<div class="math notranslate nohighlight" id="equation-chapter-appendix-mathematics-for-deep-learning-geometry-linear-algebric-ops-29">
+<span class="eqno">()<a class="headerlink" href="#equation-chapter-appendix-mathematics-for-deep-learning-geometry-linear-algebric-ops-29" title="Permalink to this equation">¶</a></span>\[y_{il} = \sum_{jk} x_{ijkl}a_{jk}.\]</div>
+<p>Such a transformation is called a <em>tensor contraction</em>. It can represent
+a far more flexible family of transformations that matrix multiplication
+alone.</p>
+<p>As a often-used notational simplification, we can notice that the sum is
+over exactly those indices that occur more than once in the expression,
+thus people often work with <em>Einstein notation</em>, where the summation is
+implicitly taken over all repeated indices. This gives the compact
+expression:</p>
+<div class="math notranslate nohighlight" id="equation-chapter-appendix-mathematics-for-deep-learning-geometry-linear-algebric-ops-30">
+<span class="eqno">()<a class="headerlink" href="#equation-chapter-appendix-mathematics-for-deep-learning-geometry-linear-algebric-ops-30" title="Permalink to this equation">¶</a></span>\[y_{il} = x_{ijkl}a_{jk}.\]</div>
+<div class="section" id="common-examples-from-linear-algebra">
+<h3>Common Examples from Linear Algebra<a class="headerlink" href="#common-examples-from-linear-algebra" title="Permalink to this headline">¶</a></h3>
+<p>Let’s see how many of the linear algebraic definitions we have seen
+before can be expressed in this compressed tensor notation:</p>
+<ul class="simple">
+<li><p><span class="math notranslate nohighlight">\(\mathbf{v} \cdot \mathbf{w} = \sum_i v_iw_i\)</span></p></li>
+<li><p><span class="math notranslate nohighlight">\(\|\mathbf{v}\|_2^{2} = \sum_i v_iv_i\)</span></p></li>
+<li><p><span class="math notranslate nohighlight">\((\mathbf{A}\mathbf{v})_i = \sum_j a_{ij}v_j\)</span></p></li>
+<li><p><span class="math notranslate nohighlight">\((\mathbf{A}\mathbf{B})_{ik} = \sum_j a_{ij}b_{jk}\)</span></p></li>
+<li><p><span class="math notranslate nohighlight">\(\mathrm{tr}(\mathbf{A}) = \sum_i a_{ii}\)</span></p></li>
+</ul>
+<p>In this way, we can replace a myriad of specialized notations with short
+tensor expressions.</p>
+</div>
+<div class="section" id="expressing-in-code">
+<h3>Expressing in Code<a class="headerlink" href="#expressing-in-code" title="Permalink to this headline">¶</a></h3>
+<p>Tensors may flexibly be operated on in code as well. As seen in
+<a class="reference internal" href="../chapter_preliminaries/linear-algebra.html#sec-linear-algebra"><span class="std std-numref">Section 2.3</span></a>, we can create tensors as is shown below.</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1"># Define tensors</span>
+<span class="n">B</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([[[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">],</span> <span class="p">[</span><span class="mi">4</span><span class="p">,</span> <span class="mi">5</span><span class="p">,</span> <span class="mi">6</span><span class="p">]],</span> <span class="p">[[</span><span class="mi">7</span><span class="p">,</span> <span class="mi">8</span><span class="p">,</span> <span class="mi">9</span><span class="p">],</span> <span class="p">[</span><span class="mi">10</span><span class="p">,</span> <span class="mi">11</span><span class="p">,</span> <span class="mi">12</span><span class="p">]]])</span>
+<span class="n">A</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">],</span> <span class="p">[</span><span class="mi">3</span><span class="p">,</span> <span class="mi">4</span><span class="p">]])</span>
+<span class="n">v</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">])</span>
+
+<span class="c1"># Print out the shapes</span>
+<span class="n">A</span><span class="o">.</span><span class="n">shape</span><span class="p">,</span> <span class="n">B</span><span class="o">.</span><span class="n">shape</span><span class="p">,</span> <span class="n">v</span><span class="o">.</span><span class="n">shape</span>
+</pre></div>
+</div>
+<div class="output highlight-default notranslate"><div class="highlight"><pre><span></span><span class="p">((</span><span class="mi">2</span><span class="p">,</span> <span class="mi">2</span><span class="p">),</span> <span class="p">(</span><span class="mi">2</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">),</span> <span class="p">(</span><span class="mi">2</span><span class="p">,))</span>
+</pre></div>
+</div>
+<p>Einstein summation has been implemented directly via <code class="docutils literal notranslate"><span class="pre">np.einsum</span></code>. The
+indices that occurs in the Einstein summation can be passed as a string,
+followed by the tensors that are being acted upon. For instance, to
+implement matrix multiplication, we can consider the Einstein summation
+seen above (<span class="math notranslate nohighlight">\(\mathbf{A}\mathbf{v} = a_{ij}v_j\)</span>) and strip out the
+indices themselves to get the implementation:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1"># Reimplement matrix multiplication</span>
+<span class="n">np</span><span class="o">.</span><span class="n">einsum</span><span class="p">(</span><span class="s2">&quot;ij, j -&gt; i&quot;</span><span class="p">,</span> <span class="n">A</span><span class="p">,</span> <span class="n">v</span><span class="p">),</span> <span class="n">A</span><span class="o">.</span><span class="n">dot</span><span class="p">(</span><span class="n">v</span><span class="p">)</span>
+</pre></div>
+</div>
+<div class="output highlight-default notranslate"><div class="highlight"><pre><span></span><span class="p">(</span><span class="n">array</span><span class="p">([</span> <span class="mi">5</span><span class="p">,</span> <span class="mi">11</span><span class="p">]),</span> <span class="n">array</span><span class="p">([</span> <span class="mi">5</span><span class="p">,</span> <span class="mi">11</span><span class="p">]))</span>
+</pre></div>
+</div>
+<p>This is a highly flexible notation. For instance if we want to compute
+what would be traditionally written as</p>
+<div class="math notranslate nohighlight" id="equation-chapter-appendix-mathematics-for-deep-learning-geometry-linear-algebric-ops-31">
+<span class="eqno">()<a class="headerlink" href="#equation-chapter-appendix-mathematics-for-deep-learning-geometry-linear-algebric-ops-31" title="Permalink to this equation">¶</a></span>\[c_{kl} = \sum_{ij} \mathbf{B}_{ijk}\mathbf{A}_{il}v_j.\]</div>
+<p>it can be implemented via Einstein summation as:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">np</span><span class="o">.</span><span class="n">einsum</span><span class="p">(</span><span class="s2">&quot;ijk, il, j -&gt; kl&quot;</span><span class="p">,</span> <span class="n">B</span><span class="p">,</span> <span class="n">A</span><span class="p">,</span> <span class="n">v</span><span class="p">)</span>
+</pre></div>
+</div>
+<div class="output highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">array</span><span class="p">([[</span> <span class="mi">90</span><span class="p">,</span> <span class="mi">126</span><span class="p">],</span>
+       <span class="p">[</span><span class="mi">102</span><span class="p">,</span> <span class="mi">144</span><span class="p">],</span>
+       <span class="p">[</span><span class="mi">114</span><span class="p">,</span> <span class="mi">162</span><span class="p">]])</span>
+</pre></div>
+</div>
+<p>This notation is readable and efficient for humans, however bulky if for
+whatever reason we need to generate a tensor contraction
+programmatically. For this reason, <code class="docutils literal notranslate"><span class="pre">einsum</span></code> provides an alternative
+notation by providing integer indices for each tensor. For example, the
+same tensor contraction can also be written as:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">np</span><span class="o">.</span><span class="n">einsum</span><span class="p">(</span><span class="n">B</span><span class="p">,</span> <span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">],</span> <span class="n">A</span><span class="p">,</span> <span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="mi">3</span><span class="p">],</span> <span class="n">v</span><span class="p">,</span> <span class="p">[</span><span class="mi">1</span><span class="p">],</span> <span class="p">[</span><span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">])</span>
+</pre></div>
+</div>
+<div class="output highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">array</span><span class="p">([[</span> <span class="mi">90</span><span class="p">,</span> <span class="mi">126</span><span class="p">],</span>
+       <span class="p">[</span><span class="mi">102</span><span class="p">,</span> <span class="mi">144</span><span class="p">],</span>
+       <span class="p">[</span><span class="mi">114</span><span class="p">,</span> <span class="mi">162</span><span class="p">]])</span>
+</pre></div>
+</div>
+<p>Either notation allows for concise and efficient representation of
+tensor contractions in code.</p>
+</div>
+</div>
+<div class="section" id="summary">
+<h2>Summary<a class="headerlink" href="#summary" title="Permalink to this headline">¶</a></h2>
+<ul class="simple">
+<li><p>Vectors can be interpreted geometrically as either points or
+directions in space.</p></li>
+<li><p>Dot products define the notion of angle to arbitrarily
+high-dimensional spaces.</p></li>
+<li><p>Hyperplanes are high-dimensional generalizations of lines and planes.
+They can be used to define decision planes that are often used as the
+last step in a classification task.</p></li>
+<li><p>Matrix multiplication can be geometrically interpreted as uniform
+distortions of the underlying coordinates. They represent a very
+restricted, but mathematically clean, way to transform vectors.</p></li>
+<li><p>Linear dependence is a way to tell when a collection of vectors are
+in a lower dimensional space than we would expect (say you have
+<span class="math notranslate nohighlight">\(3\)</span> vectors living in a <span class="math notranslate nohighlight">\(2\)</span>-dimensional space). The rank
+of a matrix is the size of the largest subset of its columns that are
+linearly independent.</p></li>
+<li><p>When a matrix’s inverse is defined, matrix inversion allows us to
+find another matrix that undoes the action of the first. Matrix
+inversion is useful in theory, but requires care in practice owing to
+numerical instability.</p></li>
+<li><p>Determinants allow us to measure how much a matrix expands or
+contracts a space. A nonzero determinant implies an invertible
+(non-singular) matrix and a zero-valued determinant means that the
+matrix is non-invertible (singular).</p></li>
+<li><p>Tensor contractions and Einstein summation provide for a neat and
+clean notation for expressing many of the computations that are seen
+in machine learning.</p></li>
+</ul>
+</div>
+<div class="section" id="exercises">
+<h2>Exercises<a class="headerlink" href="#exercises" title="Permalink to this headline">¶</a></h2>
+<ol class="arabic">
+<li><p>What is the angle between</p>
+<div class="math notranslate nohighlight" id="equation-chapter-appendix-mathematics-for-deep-learning-geometry-linear-algebric-ops-32">
+<span class="eqno">()<a class="headerlink" href="#equation-chapter-appendix-mathematics-for-deep-learning-geometry-linear-algebric-ops-32" title="Permalink to this equation">¶</a></span>\[\begin{split}\vec v_1 = \begin{bmatrix}
+1 \\ 0 \\ -1 \\ 2
+\end{bmatrix}, \qquad \vec v_2 = \begin{bmatrix}
+3 \\ 1 \\ 0 \\ 1
+\end{bmatrix}?\end{split}\]</div>
+</li>
+<li><p>True or false: <span class="math notranslate nohighlight">\(\begin{bmatrix}1 &amp; 2\\0&amp;1\end{bmatrix}\)</span> and
+<span class="math notranslate nohighlight">\(\begin{bmatrix}1 &amp; -2\\0&amp;1\end{bmatrix}\)</span> are inverses of one
+another?</p></li>
+<li><p>Suppose that we draw a shape in the plane with area
+<span class="math notranslate nohighlight">\(100\mathrm{m}^2\)</span>. What is the area after transforming the
+figure by the matrix</p>
+<div class="math notranslate nohighlight" id="equation-chapter-appendix-mathematics-for-deep-learning-geometry-linear-algebric-ops-33">
+<span class="eqno">()<a class="headerlink" href="#equation-chapter-appendix-mathematics-for-deep-learning-geometry-linear-algebric-ops-33" title="Permalink to this equation">¶</a></span>\[\begin{split}\begin{bmatrix}
+2 &amp; 3\\
+1 &amp; 2
+\end{bmatrix}.\end{split}\]</div>
+</li>
+<li><p>Which of the following sets of vectors are linearly independent?</p></li>
+</ol>
+<ul class="simple">
+<li><p><span class="math notranslate nohighlight">\(\left\{\begin{pmatrix}1\\0\\-1\end{pmatrix}, \begin{pmatrix}2\\1\\-1\end{pmatrix}, \begin{pmatrix}3\\1\\1\end{pmatrix}\right\}\)</span></p></li>
+<li><p><span class="math notranslate nohighlight">\(\left\{\begin{pmatrix}3\\1\\1\end{pmatrix}, \begin{pmatrix}1\\1\\1\end{pmatrix}, \begin{pmatrix}0\\0\\0\end{pmatrix}\right\}\)</span></p></li>
+<li><p><span class="math notranslate nohighlight">\(\left\{\begin{pmatrix}1\\1\\0\end{pmatrix}, \begin{pmatrix}0\\1\\-1\end{pmatrix}, \begin{pmatrix}1\\0\\1\end{pmatrix}\right\}\)</span></p></li>
+</ul>
+<ol class="arabic simple" start="5">
+<li><p>Suppose that you have a matrix written as
+<span class="math notranslate nohighlight">\(A = \begin{bmatrix}c\\d\end{bmatrix}\cdot\begin{bmatrix}a &amp; b\end{bmatrix}\)</span>
+for some choice of values <span class="math notranslate nohighlight">\(a, b, c\)</span>, and <span class="math notranslate nohighlight">\(d\)</span>. True or
+false: the determinant of such a matrix is always <span class="math notranslate nohighlight">\(0\)</span>?</p></li>
+<li><p>The vectors <span class="math notranslate nohighlight">\(e_1 = \begin{bmatrix}1\\0\end{bmatrix}\)</span> and
+<span class="math notranslate nohighlight">\(e_2 = \begin{bmatrix}0\\1\end{bmatrix}\)</span> are orthogonal. What
+is the condition on a matrix <span class="math notranslate nohighlight">\(A\)</span> so that <span class="math notranslate nohighlight">\(Ae_1\)</span> and
+<span class="math notranslate nohighlight">\(Ae_2\)</span> are orthogonal?</p></li>
+<li><p>How can you write <span class="math notranslate nohighlight">\(\mathrm{tr}(\mathbf{A}^4)\)</span> in Einstein
+notation for an arbitrary matrix <span class="math notranslate nohighlight">\(A\)</span>?</p></li>
+</ol>
+</div>
+<div class="section" id="discussions">
+<h2><a class="reference external" href="https://discuss.mxnet.io/t/5147">Discussions</a><a class="headerlink" href="#discussions" title="Permalink to this headline">¶</a></h2>
+<p><img alt="image0" src="../_images/qr_geometry-linear-algebric-ops.svg" /></p>
+</div>
+</div>
+
+
+        </div>
+        <div class="side-doc-outline">
+            <div class="side-doc-outline--content"> 
+<div class="localtoc">
+    <p class="caption">
+      <span class="caption-text">Table Of Contents</span>
+    </p>
+    <ul>
+<li><a class="reference internal" href="#">Geometry and Linear Algebraic Operations</a><ul>
+<li><a class="reference internal" href="#geometry-of-vectors">Geometry of Vectors</a></li>
+<li><a class="reference internal" href="#dot-products-and-angles">Dot Products and Angles</a><ul>
+<li><a class="reference internal" href="#cosine-similarity">Cosine Similarity</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#hyperplanes">Hyperplanes</a></li>
+<li><a class="reference internal" href="#geometry-of-linear-transformations">Geometry of Linear Transformations</a></li>
+<li><a class="reference internal" href="#linear-dependence">Linear Dependence</a></li>
+<li><a class="reference internal" href="#rank">Rank</a></li>
+<li><a class="reference internal" href="#invertibility">Invertibility</a><ul>
+<li><a class="reference internal" href="#numerical-issues">Numerical Issues</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#determinant">Determinant</a></li>
+<li><a class="reference internal" href="#tensors-and-common-linear-algebra-operations">Tensors and Common Linear Algebra Operations</a><ul>
+<li><a class="reference internal" href="#common-examples-from-linear-algebra">Common Examples from Linear Algebra</a></li>
+<li><a class="reference internal" href="#expressing-in-code">Expressing in Code</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#summary">Summary</a></li>
+<li><a class="reference internal" href="#exercises">Exercises</a></li>
+<li><a class="reference internal" href="#discussions">Discussions</a></li>
+</ul>
+</li>
+</ul>
+
+</div>
+            </div>
+        </div>
+
+      <div class="clearer"></div>
+    </div><div class="pagenation">
+  </div>
+        
+        </main>
+    </div>
+  </body>
+</html>

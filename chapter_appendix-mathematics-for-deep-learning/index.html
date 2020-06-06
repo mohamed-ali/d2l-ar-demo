@@ -1,0 +1,350 @@
+<!DOCTYPE html>
+
+<html xmlns="http://www.w3.org/1999/xhtml" lang="ar">
+  <head>
+    <meta charset="utf-8" />
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta http-equiv="x-ua-compatible" content="ie=edge">
+    
+    <title>Appendix: Mathematics for Deep Learning &#8212; تعمّق في التعلّم العميق 0.7.1 documentation</title>
+
+    <link rel="stylesheet" href="../_static/basic.css" type="text/css" />
+    <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+    <link rel="stylesheet" href="../_static/material-design-lite-1.3.0/material.blue-deep_orange.min.css" type="text/css" />
+    <link rel="stylesheet" href="../_static/sphinx_materialdesign_theme.css" type="text/css" />
+    <link rel="stylesheet" href="../_static/fontawesome/all.css" type="text/css" />
+    <link rel="stylesheet" href="../_static/fonts.css" type="text/css" />
+    <link rel="stylesheet" type="text/css" href="../_static/d2l.css" />
+    <script type="text/javascript" id="documentation_options" data-url_root="../" src="../_static/documentation_options.js"></script>
+    <script type="text/javascript" src="../_static/jquery.js"></script>
+    <script type="text/javascript" src="../_static/underscore.js"></script>
+    <script type="text/javascript" src="../_static/doctools.js"></script>
+    <script type="text/javascript" src="../_static/language_data.js"></script>
+    <script type="text/javascript" src="../_static/d2l.js"></script>
+    <script type="text/javascript" src="../_static/translations.js"></script>
+    <script async="async" type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/latest.js?config=TeX-AMS-MML_HTMLorMML"></script>
+    <link rel="shortcut icon" href="../_static/favicon.png"/>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" /> 
+  </head>
+<body>
+    <div class="mdl-layout mdl-js-layout mdl-layout--fixed-header "><header class="mdl-layout__header mdl-layout__header--waterfall ">
+    <div class="mdl-layout__header-row">
+        
+        <nav class="mdl-navigation breadcrumb">
+            <a class="mdl-navigation__link is-active">Appendix: Mathematics for Deep Learning</a>
+        </nav>
+        <div class="mdl-layout-spacer"></div>
+        <nav class="mdl-navigation">
+        
+<form class="form-inline pull-sm-right" action="../search.html" method="get">
+      <div class="mdl-textfield mdl-js-textfield mdl-textfield--expandable mdl-textfield--floating-label mdl-textfield--align-right">
+        <label id="quick-search-icon" class="mdl-button mdl-js-button mdl-button--icon"  for="waterfall-exp">
+          <i class="material-icons">search</i>
+        </label>
+        <div class="mdl-textfield__expandable-holder">
+          <input class="mdl-textfield__input" type="text" name="q"  id="waterfall-exp" placeholder="Search" />
+          <input type="hidden" name="check_keywords" value="yes" />
+          <input type="hidden" name="area" value="default" />
+        </div>
+      </div>
+      <div class="mdl-tooltip" data-mdl-for="quick-search-icon">
+      Quick search
+      </div>
+</form>
+        
+<a id="button-show-source"
+    class="mdl-button mdl-js-button mdl-button--icon"
+    href="../_sources/chapter_appendix-mathematics-for-deep-learning/index.rst.txt" rel="nofollow">
+  <i class="material-icons">code</i>
+</a>
+<div class="mdl-tooltip" data-mdl-for="button-show-source">
+Show Source
+</div>
+        </nav>
+    </div>
+    <div class="mdl-layout__header-row header-links">
+      <div class="mdl-layout-spacer"></div>
+      <nav class="mdl-navigation">
+          
+              <a  class="mdl-navigation__link" href="https://courses.d2l.ai">
+                  <i class="fas fa-user-graduate"></i>
+                  Courses
+              </a>
+          
+              <a  class="mdl-navigation__link" href="https://d2l.ai/d2l-en.pdf">
+                  <i class="fas fa-file-pdf"></i>
+                  PDF
+              </a>
+          
+              <a  class="mdl-navigation__link" href="https://d2l.ai/d2l-en.zip">
+                  <i class="fas fa-download"></i>
+                  All Notebooks
+              </a>
+          
+              <a  class="mdl-navigation__link" href="https://discuss.mxnet.io">
+                  <i class="fab fa-discourse"></i>
+                  Discuss
+              </a>
+          
+              <a  class="mdl-navigation__link" href="https://github.com/d2l-ai/d2l-en">
+                  <i class="fab fa-github"></i>
+                  GitHub
+              </a>
+          
+              <a  class="mdl-navigation__link" href="https://zh.d2l.ai">
+                  <i class="fas fa-external-link-alt"></i>
+                  中文版
+              </a>
+      </nav>
+    </div>
+</header><header class="mdl-layout__drawer">
+    
+          <!-- Title -->
+      <span class="mdl-layout-title">
+          <a class="title" href="../index.html">
+              <img class="logo" src="../_static/logo-with-text.png" alt="تعمّق في التعلّم العميق"/>
+          </a>
+      </span>
+    
+    
+      <div class="globaltoc">
+        <span class="mdl-layout-title toc">Table Of Contents</span>
+        
+        
+            
+            <nav class="mdl-navigation">
+                <ul>
+<li class="toctree-l1"><a class="reference internal" href="../chapter_preface/index.html">Preface</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../chapter_notation/index.html">الّرموز</a></li>
+</ul>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../chapter_introduction/index.html">1. مقدّمة</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../chapter_preliminaries/index.html">2. التمهيدات</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../chapter_appendix-math-and-keywords-translations/index.html">3. ملحق: ترجمة الألفاظ التقنية و الرياضية</a></li>
+</ul>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../chapter_references/zreferences.html">المراجع</a></li>
+</ul>
+
+            </nav>
+        
+        </div>
+    
+</header>
+        <main class="mdl-layout__content" tabIndex="0">
+
+	<script type="text/javascript" src="../_static/sphinx_materialdesign_theme.js "></script>
+    <header class="mdl-layout__drawer">
+    
+          <!-- Title -->
+      <span class="mdl-layout-title">
+          <a class="title" href="../index.html">
+              <img class="logo" src="../_static/logo-with-text.png" alt="تعمّق في التعلّم العميق"/>
+          </a>
+      </span>
+    
+    
+      <div class="globaltoc">
+        <span class="mdl-layout-title toc">Table Of Contents</span>
+        
+        
+            
+            <nav class="mdl-navigation">
+                <ul>
+<li class="toctree-l1"><a class="reference internal" href="../chapter_preface/index.html">Preface</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../chapter_notation/index.html">الّرموز</a></li>
+</ul>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../chapter_introduction/index.html">1. مقدّمة</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../chapter_preliminaries/index.html">2. التمهيدات</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../chapter_appendix-math-and-keywords-translations/index.html">3. ملحق: ترجمة الألفاظ التقنية و الرياضية</a></li>
+</ul>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../chapter_references/zreferences.html">المراجع</a></li>
+</ul>
+
+            </nav>
+        
+        </div>
+    
+</header>
+
+    <div class="document">
+        <div class="page-content" role="main">
+        
+  <div class="section" id="appendix-mathematics-for-deep-learning">
+<span id="chap-appendix-math"></span><h1>Appendix: Mathematics for Deep Learning<a class="headerlink" href="#appendix-mathematics-for-deep-learning" title="Permalink to this headline">¶</a></h1>
+<p><strong>Brent Werness</strong> (<em>Amazon</em>), <strong>Rachel Hu</strong> (<em>Amazon</em>), and authors of
+this book</p>
+<p>One of the wonderful parts of modern deep learning is the fact that much
+of it can be understood and used without a full understanding of the
+mathematics below it. This is a sign that the field is maturing. Just as
+most software developers no longer need to worry about the theory of
+computable functions, neither should deep learning practitioners need to
+worry about the theoretical foundations of maximum likelihood learning.</p>
+<p>But, we are not quite there yet.</p>
+<p>In practice, you will sometimes need to understand how architectural
+choices influence gradient flow, or the implicit assumptions you make by
+training with a certain loss function. You might need to know what in
+the world entropy measures, and how it can help you understand exactly
+what bits-per-character means in your model. These all require deeper
+mathematical understanding.</p>
+<p>This appendix aims to provide you the mathematical background you need
+to understand the core theory of modern deep learning, but it is not
+exhaustive. We will begin with examining linear algebra in greater
+depth. We develop a geometric understanding of all the common linear
+algebraic objects and operations that will enable us to visualize the
+effects of various transformations on our data. A key element is the
+development of the basics of eigen-decompositions.</p>
+<p>We next develop the theory of differential calculus to the point that we
+can fully understand why the gradient is the direction of steepest
+descent, and why back-propagation takes the form it does. Integral
+calculus is then discussed to the degree needed to support our next
+topic, probability theory.</p>
+<p>Problems encountered in practice frequently are not certain, and thus we
+need a language to speak about uncertain things. We review the theory of
+random variables and the most commonly encountered distributions so we
+may discuss models probabilistically. This provides the foundation for
+the naive Bayes classifier, a probabilistic classification technique.</p>
+<p>Closely related to probability theory is the study of statistics. While
+statistics is far too large a field to do justice in a short section, we
+will introduce fundamental concepts that all machine learning
+practitioners should be aware of, in particular: evaluating and
+comparing estimators, conducting hypothesis tests, and constructing
+confidence intervals.</p>
+<p>Last, we turn to the topic of information theory, which is the
+mathematical study of information storage and transmission. This
+provides the core language by which we may discuss quantitatively how
+much information a model holds on a domain of discourse.</p>
+<p>Taken together, these form the core of the mathematical concepts needed
+to begin down the path towards a deep understanding of deep learning.</p>
+<div class="toctree-wrapper compound">
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="geometry-linear-algebric-ops.html">Geometry and Linear Algebraic Operations</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="geometry-linear-algebric-ops.html#geometry-of-vectors">Geometry of Vectors</a></li>
+<li class="toctree-l2"><a class="reference internal" href="geometry-linear-algebric-ops.html#dot-products-and-angles">Dot Products and Angles</a></li>
+<li class="toctree-l2"><a class="reference internal" href="geometry-linear-algebric-ops.html#hyperplanes">Hyperplanes</a></li>
+<li class="toctree-l2"><a class="reference internal" href="geometry-linear-algebric-ops.html#geometry-of-linear-transformations">Geometry of Linear Transformations</a></li>
+<li class="toctree-l2"><a class="reference internal" href="geometry-linear-algebric-ops.html#linear-dependence">Linear Dependence</a></li>
+<li class="toctree-l2"><a class="reference internal" href="geometry-linear-algebric-ops.html#rank">Rank</a></li>
+<li class="toctree-l2"><a class="reference internal" href="geometry-linear-algebric-ops.html#invertibility">Invertibility</a></li>
+<li class="toctree-l2"><a class="reference internal" href="geometry-linear-algebric-ops.html#determinant">Determinant</a></li>
+<li class="toctree-l2"><a class="reference internal" href="geometry-linear-algebric-ops.html#tensors-and-common-linear-algebra-operations">Tensors and Common Linear Algebra Operations</a></li>
+<li class="toctree-l2"><a class="reference internal" href="geometry-linear-algebric-ops.html#summary">Summary</a></li>
+<li class="toctree-l2"><a class="reference internal" href="geometry-linear-algebric-ops.html#exercises">Exercises</a></li>
+<li class="toctree-l2"><a class="reference internal" href="geometry-linear-algebric-ops.html#discussions">Discussions</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="eigendecomposition.html">Eigendecompositions</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="eigendecomposition.html#finding-eigenvalues">Finding Eigenvalues</a></li>
+<li class="toctree-l2"><a class="reference internal" href="eigendecomposition.html#decomposing-matrices">Decomposing Matrices</a></li>
+<li class="toctree-l2"><a class="reference internal" href="eigendecomposition.html#operations-on-eigendecompositions">Operations on Eigendecompositions</a></li>
+<li class="toctree-l2"><a class="reference internal" href="eigendecomposition.html#eigendecompositions-of-symmetric-matrices">Eigendecompositions of Symmetric Matrices</a></li>
+<li class="toctree-l2"><a class="reference internal" href="eigendecomposition.html#gershgorin-circle-theorem">Gershgorin Circle Theorem</a></li>
+<li class="toctree-l2"><a class="reference internal" href="eigendecomposition.html#a-useful-application-the-growth-of-iterated-maps">A Useful Application: The Growth of Iterated Maps</a></li>
+<li class="toctree-l2"><a class="reference internal" href="eigendecomposition.html#conclusions">Conclusions</a></li>
+<li class="toctree-l2"><a class="reference internal" href="eigendecomposition.html#summary">Summary</a></li>
+<li class="toctree-l2"><a class="reference internal" href="eigendecomposition.html#exercises">Exercises</a></li>
+<li class="toctree-l2"><a class="reference internal" href="eigendecomposition.html#discussions">Discussions</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="single-variable-calculus.html">Single Variable Calculus</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="single-variable-calculus.html#differential-calculus">Differential Calculus</a></li>
+<li class="toctree-l2"><a class="reference internal" href="single-variable-calculus.html#rules-of-calculus">Rules of Calculus</a></li>
+<li class="toctree-l2"><a class="reference internal" href="single-variable-calculus.html#summary">Summary</a></li>
+<li class="toctree-l2"><a class="reference internal" href="single-variable-calculus.html#exercises">Exercises</a></li>
+<li class="toctree-l2"><a class="reference internal" href="single-variable-calculus.html#discussions">Discussions</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="multivariable-calculus.html">Multivariable Calculus</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="multivariable-calculus.html#higher-dimensional-differentiation">Higher-Dimensional Differentiation</a></li>
+<li class="toctree-l2"><a class="reference internal" href="multivariable-calculus.html#geometry-of-gradients-and-gradient-descent">Geometry of Gradients and Gradient Descent</a></li>
+<li class="toctree-l2"><a class="reference internal" href="multivariable-calculus.html#a-note-on-mathematical-optimization">A Note on Mathematical Optimization</a></li>
+<li class="toctree-l2"><a class="reference internal" href="multivariable-calculus.html#multivariate-chain-rule">Multivariate Chain Rule</a></li>
+<li class="toctree-l2"><a class="reference internal" href="multivariable-calculus.html#the-backpropagation-algorithm">The Backpropagation Algorithm</a></li>
+<li class="toctree-l2"><a class="reference internal" href="multivariable-calculus.html#hessians">Hessians</a></li>
+<li class="toctree-l2"><a class="reference internal" href="multivariable-calculus.html#a-little-matrix-calculus">A Little Matrix Calculus</a></li>
+<li class="toctree-l2"><a class="reference internal" href="multivariable-calculus.html#summary">Summary</a></li>
+<li class="toctree-l2"><a class="reference internal" href="multivariable-calculus.html#exercises">Exercises</a></li>
+<li class="toctree-l2"><a class="reference internal" href="multivariable-calculus.html#discussions">Discussions</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="integral-calculus.html">Integral Calculus</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="integral-calculus.html#geometric-interpretation">Geometric Interpretation</a></li>
+<li class="toctree-l2"><a class="reference internal" href="integral-calculus.html#the-fundamental-theorem-of-calculus">The Fundamental Theorem of Calculus</a></li>
+<li class="toctree-l2"><a class="reference internal" href="integral-calculus.html#change-of-variables">Change of Variables</a></li>
+<li class="toctree-l2"><a class="reference internal" href="integral-calculus.html#a-comment-on-sign-conventions">A Comment on Sign Conventions</a></li>
+<li class="toctree-l2"><a class="reference internal" href="integral-calculus.html#multiple-integrals">Multiple Integrals</a></li>
+<li class="toctree-l2"><a class="reference internal" href="integral-calculus.html#change-of-variables-in-multiple-integrals">Change of Variables in Multiple Integrals</a></li>
+<li class="toctree-l2"><a class="reference internal" href="integral-calculus.html#summary">Summary</a></li>
+<li class="toctree-l2"><a class="reference internal" href="integral-calculus.html#exercises">Exercises</a></li>
+<li class="toctree-l2"><a class="reference internal" href="integral-calculus.html#discussions">Discussions</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="random-variables.html">Random Variables</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="random-variables.html#continuous-random-variables">Continuous Random Variables</a></li>
+<li class="toctree-l2"><a class="reference internal" href="random-variables.html#summary">Summary</a></li>
+<li class="toctree-l2"><a class="reference internal" href="random-variables.html#exercises">Exercises</a></li>
+<li class="toctree-l2"><a class="reference internal" href="random-variables.html#discussions">Discussions</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="maximum-likelihood.html">Maximum Likelihood</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="maximum-likelihood.html#the-maximum-likelihood-principle">The Maximum Likelihood Principle</a></li>
+<li class="toctree-l2"><a class="reference internal" href="maximum-likelihood.html#numerical-optimization-and-the-negative-log-likelihood">Numerical Optimization and the Negative Log-Likelihood</a></li>
+<li class="toctree-l2"><a class="reference internal" href="maximum-likelihood.html#maximum-likelihood-for-continuous-variables">Maximum Likelihood for Continuous Variables</a></li>
+<li class="toctree-l2"><a class="reference internal" href="maximum-likelihood.html#summary">Summary</a></li>
+<li class="toctree-l2"><a class="reference internal" href="maximum-likelihood.html#exercises">Exercises</a></li>
+<li class="toctree-l2"><a class="reference internal" href="maximum-likelihood.html#discussions">Discussions</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="naive-bayes.html">Naive Bayes</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="naive-bayes.html#optical-character-recognition">Optical Character Recognition</a></li>
+<li class="toctree-l2"><a class="reference internal" href="naive-bayes.html#the-probabilistic-model-for-classification">The Probabilistic Model for Classification</a></li>
+<li class="toctree-l2"><a class="reference internal" href="naive-bayes.html#the-naive-bayes-classifier">The Naive Bayes Classifier</a></li>
+<li class="toctree-l2"><a class="reference internal" href="naive-bayes.html#training">Training</a></li>
+<li class="toctree-l2"><a class="reference internal" href="naive-bayes.html#summary">Summary</a></li>
+<li class="toctree-l2"><a class="reference internal" href="naive-bayes.html#exercises">Exercises</a></li>
+<li class="toctree-l2"><a class="reference internal" href="naive-bayes.html#discussions">Discussions</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="statistics.html">Statistics</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="statistics.html#evaluating-and-comparing-estimators">Evaluating and Comparing Estimators</a></li>
+<li class="toctree-l2"><a class="reference internal" href="statistics.html#conducting-hypothesis-tests">Conducting Hypothesis Tests</a></li>
+<li class="toctree-l2"><a class="reference internal" href="statistics.html#constructing-confidence-intervals">Constructing Confidence Intervals</a></li>
+<li class="toctree-l2"><a class="reference internal" href="statistics.html#summary">Summary</a></li>
+<li class="toctree-l2"><a class="reference internal" href="statistics.html#exercises">Exercises</a></li>
+<li class="toctree-l2"><a class="reference internal" href="statistics.html#discussions">Discussions</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="information-theory.html">Information Theory</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="information-theory.html#information">Information</a></li>
+<li class="toctree-l2"><a class="reference internal" href="information-theory.html#entropy">Entropy</a></li>
+<li class="toctree-l2"><a class="reference internal" href="information-theory.html#mutual-information">Mutual Information</a></li>
+<li class="toctree-l2"><a class="reference internal" href="information-theory.html#kullbackleibler-divergence">Kullback–Leibler Divergence</a></li>
+<li class="toctree-l2"><a class="reference internal" href="information-theory.html#cross-entropy">Cross Entropy</a></li>
+<li class="toctree-l2"><a class="reference internal" href="information-theory.html#summary">Summary</a></li>
+<li class="toctree-l2"><a class="reference internal" href="information-theory.html#exercises">Exercises</a></li>
+<li class="toctree-l2"><a class="reference internal" href="information-theory.html#discussions">Discussions</a></li>
+</ul>
+</li>
+</ul>
+</div>
+</div>
+
+
+        </div>
+        <div class="side-doc-outline">
+            <div class="side-doc-outline--content"> 
+            </div>
+        </div>
+
+      <div class="clearer"></div>
+    </div><div class="pagenation">
+  </div>
+        
+        </main>
+    </div>
+  </body>
+</html>

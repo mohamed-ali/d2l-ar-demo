@@ -1,0 +1,1048 @@
+<!DOCTYPE html>
+
+<html xmlns="http://www.w3.org/1999/xhtml" lang="ar">
+  <head>
+    <meta charset="utf-8" />
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta http-equiv="x-ua-compatible" content="ie=edge">
+    
+    <title>Random Variables &#8212; تعمّق في التعلّم العميق 0.7.1 documentation</title>
+
+    <link rel="stylesheet" href="../_static/basic.css" type="text/css" />
+    <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+    <link rel="stylesheet" href="../_static/material-design-lite-1.3.0/material.blue-deep_orange.min.css" type="text/css" />
+    <link rel="stylesheet" href="../_static/sphinx_materialdesign_theme.css" type="text/css" />
+    <link rel="stylesheet" href="../_static/fontawesome/all.css" type="text/css" />
+    <link rel="stylesheet" href="../_static/fonts.css" type="text/css" />
+    <link rel="stylesheet" type="text/css" href="../_static/d2l.css" />
+    <script type="text/javascript" id="documentation_options" data-url_root="../" src="../_static/documentation_options.js"></script>
+    <script type="text/javascript" src="../_static/jquery.js"></script>
+    <script type="text/javascript" src="../_static/underscore.js"></script>
+    <script type="text/javascript" src="../_static/doctools.js"></script>
+    <script type="text/javascript" src="../_static/language_data.js"></script>
+    <script type="text/javascript" src="../_static/d2l.js"></script>
+    <script type="text/javascript" src="../_static/translations.js"></script>
+    <script async="async" type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/latest.js?config=TeX-AMS-MML_HTMLorMML"></script>
+    <link rel="shortcut icon" href="../_static/favicon.png"/>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" /> 
+  </head>
+<body>
+    <div class="mdl-layout mdl-js-layout mdl-layout--fixed-header "><header class="mdl-layout__header mdl-layout__header--waterfall ">
+    <div class="mdl-layout__header-row">
+        
+        <nav class="mdl-navigation breadcrumb">
+            <a class="mdl-navigation__link is-active">Random Variables</a>
+        </nav>
+        <div class="mdl-layout-spacer"></div>
+        <nav class="mdl-navigation">
+        
+<form class="form-inline pull-sm-right" action="../search.html" method="get">
+      <div class="mdl-textfield mdl-js-textfield mdl-textfield--expandable mdl-textfield--floating-label mdl-textfield--align-right">
+        <label id="quick-search-icon" class="mdl-button mdl-js-button mdl-button--icon"  for="waterfall-exp">
+          <i class="material-icons">search</i>
+        </label>
+        <div class="mdl-textfield__expandable-holder">
+          <input class="mdl-textfield__input" type="text" name="q"  id="waterfall-exp" placeholder="Search" />
+          <input type="hidden" name="check_keywords" value="yes" />
+          <input type="hidden" name="area" value="default" />
+        </div>
+      </div>
+      <div class="mdl-tooltip" data-mdl-for="quick-search-icon">
+      Quick search
+      </div>
+</form>
+        
+<a id="button-show-source"
+    class="mdl-button mdl-js-button mdl-button--icon"
+    href="../_sources/chapter_appendix-mathematics-for-deep-learning/random-variables.rst.txt" rel="nofollow">
+  <i class="material-icons">code</i>
+</a>
+<div class="mdl-tooltip" data-mdl-for="button-show-source">
+Show Source
+</div>
+        </nav>
+    </div>
+    <div class="mdl-layout__header-row header-links">
+      <div class="mdl-layout-spacer"></div>
+      <nav class="mdl-navigation">
+          
+              <a  class="mdl-navigation__link" href="https://courses.d2l.ai">
+                  <i class="fas fa-user-graduate"></i>
+                  Courses
+              </a>
+          
+              <a  class="mdl-navigation__link" href="https://d2l.ai/d2l-en.pdf">
+                  <i class="fas fa-file-pdf"></i>
+                  PDF
+              </a>
+          
+              <a  class="mdl-navigation__link" href="https://d2l.ai/d2l-en.zip">
+                  <i class="fas fa-download"></i>
+                  All Notebooks
+              </a>
+          
+              <a  class="mdl-navigation__link" href="https://discuss.mxnet.io">
+                  <i class="fab fa-discourse"></i>
+                  Discuss
+              </a>
+          
+              <a  class="mdl-navigation__link" href="https://github.com/d2l-ai/d2l-en">
+                  <i class="fab fa-github"></i>
+                  GitHub
+              </a>
+          
+              <a  class="mdl-navigation__link" href="https://zh.d2l.ai">
+                  <i class="fas fa-external-link-alt"></i>
+                  中文版
+              </a>
+      </nav>
+    </div>
+</header><header class="mdl-layout__drawer">
+    
+          <!-- Title -->
+      <span class="mdl-layout-title">
+          <a class="title" href="../index.html">
+              <img class="logo" src="../_static/logo-with-text.png" alt="تعمّق في التعلّم العميق"/>
+          </a>
+      </span>
+    
+    
+      <div class="globaltoc">
+        <span class="mdl-layout-title toc">Table Of Contents</span>
+        
+        
+            
+            <nav class="mdl-navigation">
+                <ul>
+<li class="toctree-l1"><a class="reference internal" href="../chapter_preface/index.html">Preface</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../chapter_notation/index.html">الّرموز</a></li>
+</ul>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../chapter_introduction/index.html">1. مقدّمة</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../chapter_preliminaries/index.html">2. التمهيدات</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../chapter_appendix-math-and-keywords-translations/index.html">3. ملحق: ترجمة الألفاظ التقنية و الرياضية</a></li>
+</ul>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../chapter_references/zreferences.html">المراجع</a></li>
+</ul>
+
+            </nav>
+        
+        </div>
+    
+</header>
+        <main class="mdl-layout__content" tabIndex="0">
+
+	<script type="text/javascript" src="../_static/sphinx_materialdesign_theme.js "></script>
+    <header class="mdl-layout__drawer">
+    
+          <!-- Title -->
+      <span class="mdl-layout-title">
+          <a class="title" href="../index.html">
+              <img class="logo" src="../_static/logo-with-text.png" alt="تعمّق في التعلّم العميق"/>
+          </a>
+      </span>
+    
+    
+      <div class="globaltoc">
+        <span class="mdl-layout-title toc">Table Of Contents</span>
+        
+        
+            
+            <nav class="mdl-navigation">
+                <ul>
+<li class="toctree-l1"><a class="reference internal" href="../chapter_preface/index.html">Preface</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../chapter_notation/index.html">الّرموز</a></li>
+</ul>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../chapter_introduction/index.html">1. مقدّمة</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../chapter_preliminaries/index.html">2. التمهيدات</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../chapter_appendix-math-and-keywords-translations/index.html">3. ملحق: ترجمة الألفاظ التقنية و الرياضية</a></li>
+</ul>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../chapter_references/zreferences.html">المراجع</a></li>
+</ul>
+
+            </nav>
+        
+        </div>
+    
+</header>
+
+    <div class="document">
+        <div class="page-content" role="main">
+        
+  <div class="section" id="random-variables">
+<span id="sec-random-variables"></span><h1>Random Variables<a class="headerlink" href="#random-variables" title="Permalink to this headline">¶</a><a href="https://colab.research.google.com/github/d2l-ai/d2l-en-colab/blob/master/chapter_appendix-mathematics-for-deep-learning/random-variables.ipynb" onclick="captureOutboundLink('https://colab.research.google.com/github/d2l-ai/d2l-en-colab/blob/master/chapter_appendix-mathematics-for-deep-learning/random-variables.ipynb'); return false;"> <button style="float:right", id="colab" class="mdl-button mdl-js-button mdl-button--primary mdl-js-ripple-effect"> <i class=" fas fa-external-link-alt"></i> Colab </button></a><div class="mdl-tooltip" data-mdl-for="colab"> Open the notebook in Colab</div></h1>
+<p>In <a class="reference internal" href="../chapter_preliminaries/probability.html#sec-prob"><span class="std std-numref">Section 2.6</span></a> we saw the basics of how to work with discrete
+random variables, which in our case refer to those random variables
+which take either a finite set of possible values, or the integers. In
+this section, we develop the theory of <em>continuous random variables</em>,
+which are random variables which can take on any real value.</p>
+<div class="section" id="continuous-random-variables">
+<h2>Continuous Random Variables<a class="headerlink" href="#continuous-random-variables" title="Permalink to this headline">¶</a></h2>
+<p>Continuous random variables are a significantly more subtle topic than
+discrete random variables. A fair analogy to make is that the technical
+jump is comparable to the jump between adding lists of numbers and
+integrating functions. As such, we will need to take some time to
+develop the theory.</p>
+<div class="section" id="from-discrete-to-continuous">
+<h3>From Discrete to Continuous<a class="headerlink" href="#from-discrete-to-continuous" title="Permalink to this headline">¶</a></h3>
+<p>To understand the additional technical challenges encountered when
+working with continuous random variables, let’s perform a thought
+experiment. Suppose that we are throwing a dart at the dart board, and
+we want to know the probability that it hits exactly <span class="math notranslate nohighlight">\(2 \text{cm}\)</span>
+from the center of the board.</p>
+<p>To start with, we imagine measuring to a single digit of accuracy, that
+is to say with bins for <span class="math notranslate nohighlight">\(0 \text{cm}\)</span>, <span class="math notranslate nohighlight">\(1 \text{cm}\)</span>,
+<span class="math notranslate nohighlight">\(2 \text{cm}\)</span>, and so on. We throw say <span class="math notranslate nohighlight">\(100\)</span> darts at the
+dart board, and if <span class="math notranslate nohighlight">\(20\)</span> of them fall into the bin for
+<span class="math notranslate nohighlight">\(2\text{cm}\)</span> we conclude that <span class="math notranslate nohighlight">\(20\%\)</span> of the darts we throw
+hit the board <span class="math notranslate nohighlight">\(2 \text{cm}\)</span> away from the center.</p>
+<p>However, when we look closer, this does not match our question! We
+wanted exact equality, whereas these bins hold all that fell between say
+<span class="math notranslate nohighlight">\(1.5\text{cm}\)</span> and <span class="math notranslate nohighlight">\(2.5\text{cm}\)</span>.</p>
+<p>Undeterred, we continue further. We measure even more precisely, say
+<span class="math notranslate nohighlight">\(1.9\text{cm}\)</span>, <span class="math notranslate nohighlight">\(2.0\text{cm}\)</span>, <span class="math notranslate nohighlight">\(2.1\text{cm}\)</span>, and
+now see that perhaps <span class="math notranslate nohighlight">\(3\)</span> of the <span class="math notranslate nohighlight">\(100\)</span> darts hit the board in
+the <span class="math notranslate nohighlight">\(2.0\text{cm}\)</span> bucket. Thus we conclude the probability is
+<span class="math notranslate nohighlight">\(3\%\)</span>.</p>
+<p>However, this does not solve anything! We have just pushed the issue
+down one digit further. Let’s abstract a bit. Imagine we know the
+probability that the first <span class="math notranslate nohighlight">\(k\)</span> digits match with
+<span class="math notranslate nohighlight">\(2.00000\ldots\)</span> and we want to know the probability it matches for
+the first <span class="math notranslate nohighlight">\(k+1\)</span> digits. It is fairly reasonable to assume that the
+<span class="math notranslate nohighlight">\({k+1}^{\mathrm{th}}\)</span> digit is essentially a random choice from
+the set <span class="math notranslate nohighlight">\(\{0, 1, 2, \ldots, 9\}\)</span>. At least, we cannot conceive of
+a physically meaningful process which would force the number of
+micrometers away form the center to prefer to end in a <span class="math notranslate nohighlight">\(7\)</span> vs a
+<span class="math notranslate nohighlight">\(3\)</span>.</p>
+<p>What this means is that in essence each additional digit of accuracy we
+require should decrease probability of matching by a factor of
+<span class="math notranslate nohighlight">\(10\)</span>. Or put another way, we would expect that</p>
+<div class="math notranslate nohighlight" id="equation-chapter-appendix-mathematics-for-deep-learning-random-variables-0">
+<span class="eqno">()<a class="headerlink" href="#equation-chapter-appendix-mathematics-for-deep-learning-random-variables-0" title="Permalink to this equation">¶</a></span>\[P(\text{distance is}\; 2.00\ldots \;\text{to}\; k \;\text{digits} ) \approx p\cdot10^{-k}.\]</div>
+<p>The value <span class="math notranslate nohighlight">\(p\)</span> essentially encodes what happens with the first few
+digits, and the <span class="math notranslate nohighlight">\(10^{-k}\)</span> handles the rest.</p>
+<p>Notice that if we know the position accurate to <span class="math notranslate nohighlight">\(k=4\)</span> digits after
+the decimal. that means we know the value falls within the interval say
+<span class="math notranslate nohighlight">\([(1.99995,2.00005]\)</span> which is an interval of length
+<span class="math notranslate nohighlight">\(2.00005-1.99995 = 10^{-4}\)</span>. Thus, if we call the length of this
+interval <span class="math notranslate nohighlight">\(\epsilon\)</span>, we can say</p>
+<div class="math notranslate nohighlight" id="equation-chapter-appendix-mathematics-for-deep-learning-random-variables-1">
+<span class="eqno">()<a class="headerlink" href="#equation-chapter-appendix-mathematics-for-deep-learning-random-variables-1" title="Permalink to this equation">¶</a></span>\[P(\text{distance is in an}\; \epsilon\text{-sized interval around}\; 2 ) \approx \epsilon \cdot p.\]</div>
+<p>Let’s take this one final step further. We have been thinking about the
+point <span class="math notranslate nohighlight">\(2\)</span> the entire time, but never thinking about other points.
+Nothing is different there fundamentally, but it is the case that the
+value <span class="math notranslate nohighlight">\(p\)</span> will likely be different. We would at least hope that a
+dart thrower was more likely to hit a point near the center, like
+<span class="math notranslate nohighlight">\(2\text{cm}\)</span> rather than <span class="math notranslate nohighlight">\(20\text{cm}\)</span>. Thus, the value
+<span class="math notranslate nohighlight">\(p\)</span> is not fixed, but rather should depend on the point <span class="math notranslate nohighlight">\(x\)</span>.
+This tells us that we should expect</p>
+<div class="math notranslate nohighlight" id="equation-eq-pdf-deriv">
+<span class="eqno">()<a class="headerlink" href="#equation-eq-pdf-deriv" title="Permalink to this equation">¶</a></span>\[P(\text{distance is in an}\; \epsilon \text{-sized interval around}\; x ) \approx \epsilon \cdot p(x).\]</div>
+<p>Indeed, <a class="reference internal" href="#equation-eq-pdf-deriv">()</a> precisely defines the <em>probability
+density function</em>. It is a function <span class="math notranslate nohighlight">\(p(x)\)</span> which encodes the
+relative probability of hitting near one point versus another. Let’s
+visualize what such a function might look like.</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="o">%</span><span class="n">matplotlib</span> <span class="n">inline</span>
+<span class="kn">import</span> <span class="nn">d2l</span>
+<span class="kn">from</span> <span class="nn">IPython</span> <span class="kn">import</span> <span class="n">display</span>
+<span class="kn">from</span> <span class="nn">mxnet</span> <span class="kn">import</span> <span class="n">np</span><span class="p">,</span> <span class="n">npx</span>
+<span class="n">npx</span><span class="o">.</span><span class="n">set_np</span><span class="p">()</span>
+
+<span class="c1"># Plot the probability density function for some random variable</span>
+<span class="n">x</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="o">-</span><span class="mi">5</span><span class="p">,</span> <span class="mi">5</span><span class="p">,</span> <span class="mf">0.01</span><span class="p">)</span>
+<span class="n">p</span> <span class="o">=</span> <span class="mf">0.2</span><span class="o">*</span><span class="n">np</span><span class="o">.</span><span class="n">exp</span><span class="p">(</span><span class="o">-</span><span class="p">(</span><span class="n">x</span> <span class="o">-</span> <span class="mi">3</span><span class="p">)</span><span class="o">**</span><span class="mi">2</span> <span class="o">/</span> <span class="mi">2</span><span class="p">)</span><span class="o">/</span><span class="n">np</span><span class="o">.</span><span class="n">sqrt</span><span class="p">(</span><span class="mi">2</span> <span class="o">*</span> <span class="n">np</span><span class="o">.</span><span class="n">pi</span><span class="p">)</span> <span class="o">+</span> \
+    <span class="mf">0.8</span><span class="o">*</span><span class="n">np</span><span class="o">.</span><span class="n">exp</span><span class="p">(</span><span class="o">-</span><span class="p">(</span><span class="n">x</span> <span class="o">+</span> <span class="mi">1</span><span class="p">)</span><span class="o">**</span><span class="mi">2</span> <span class="o">/</span> <span class="mi">2</span><span class="p">)</span><span class="o">/</span><span class="n">np</span><span class="o">.</span><span class="n">sqrt</span><span class="p">(</span><span class="mi">2</span> <span class="o">*</span> <span class="n">np</span><span class="o">.</span><span class="n">pi</span><span class="p">)</span>
+
+<span class="n">d2l</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">p</span><span class="p">,</span> <span class="s1">&#39;x&#39;</span><span class="p">,</span> <span class="s1">&#39;Density&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+<div class="figure align-default">
+<img alt="../_images/output_random-variables_ba5047_1_0.svg" src="../_images/output_random-variables_ba5047_1_0.svg" /></div>
+<p>The locations where the function value is large indicates regions where
+we are more likely to find the random value. The low portions are areas
+where we are unlikely to find the random value.</p>
+</div>
+<div class="section" id="probability-density-functions">
+<h3>Probability Density Functions<a class="headerlink" href="#probability-density-functions" title="Permalink to this headline">¶</a></h3>
+<p>Let’s now investigate this further. We have already seen what a
+probability density function is intuitively for a random variable
+<span class="math notranslate nohighlight">\(X\)</span>, namely the density function is a function <span class="math notranslate nohighlight">\(p(x)\)</span> so
+that</p>
+<div class="math notranslate nohighlight" id="equation-eq-pdf-def">
+<span class="eqno">()<a class="headerlink" href="#equation-eq-pdf-def" title="Permalink to this equation">¶</a></span>\[P(X \; \text{is in an}\; \epsilon \text{-sized interval around}\; x ) \approx \epsilon \cdot p(x).\]</div>
+<p>But what does this imply for the properties of <span class="math notranslate nohighlight">\(p(x)\)</span>?</p>
+<p>First, probabilities are never negative, thus we should expect that
+<span class="math notranslate nohighlight">\(p(x) \ge 0\)</span> as well.</p>
+<p>Second, let’s imagine that we slice up the <span class="math notranslate nohighlight">\(\mathbb{R}\)</span> into an
+infinite number of slices which are <span class="math notranslate nohighlight">\(\epsilon\)</span> wide, say with
+slices <span class="math notranslate nohighlight">\((\epsilon\cdot i, \epsilon \cdot (i+1)]\)</span>. For each of
+these, we know from <a class="reference internal" href="#equation-eq-pdf-def">()</a> the probability is
+approximately</p>
+<div class="math notranslate nohighlight" id="equation-chapter-appendix-mathematics-for-deep-learning-random-variables-2">
+<span class="eqno">()<a class="headerlink" href="#equation-chapter-appendix-mathematics-for-deep-learning-random-variables-2" title="Permalink to this equation">¶</a></span>\[P(X \; \text{is in an}\; \epsilon\text{-sized interval around}\; x ) \approx \epsilon \cdot p(\epsilon \cdot i),\]</div>
+<p>so summed over all of them it should be</p>
+<div class="math notranslate nohighlight" id="equation-chapter-appendix-mathematics-for-deep-learning-random-variables-3">
+<span class="eqno">()<a class="headerlink" href="#equation-chapter-appendix-mathematics-for-deep-learning-random-variables-3" title="Permalink to this equation">¶</a></span>\[P(X\in\mathbb{R}) \approx \sum_i \epsilon \cdot p(\epsilon\cdot i).\]</div>
+<p>This is nothing more than the approximation of an integral discussed in
+<code class="xref std std-numref docutils literal notranslate"><span class="pre">sec_integral_calculus</span></code>, thus we can say that</p>
+<div class="math notranslate nohighlight" id="equation-chapter-appendix-mathematics-for-deep-learning-random-variables-4">
+<span class="eqno">()<a class="headerlink" href="#equation-chapter-appendix-mathematics-for-deep-learning-random-variables-4" title="Permalink to this equation">¶</a></span>\[P(X\in\mathbb{R}) = \int_{-\infty}^{\infty} p(x) \; dx.\]</div>
+<p>We know that <span class="math notranslate nohighlight">\(P(X\in\mathbb{R}) = 1\)</span>, since the random variable
+must take on <em>some</em> number, we can conclude that for any density</p>
+<div class="math notranslate nohighlight" id="equation-chapter-appendix-mathematics-for-deep-learning-random-variables-5">
+<span class="eqno">()<a class="headerlink" href="#equation-chapter-appendix-mathematics-for-deep-learning-random-variables-5" title="Permalink to this equation">¶</a></span>\[\int_{-\infty}^{\infty} p(x) \; dx = 1.\]</div>
+<p>Indeed, digging into this further shows that for any <span class="math notranslate nohighlight">\(a\)</span>, and
+<span class="math notranslate nohighlight">\(b\)</span>, we see that</p>
+<div class="math notranslate nohighlight" id="equation-chapter-appendix-mathematics-for-deep-learning-random-variables-6">
+<span class="eqno">()<a class="headerlink" href="#equation-chapter-appendix-mathematics-for-deep-learning-random-variables-6" title="Permalink to this equation">¶</a></span>\[P(X\in(a, b]) = \int _ {a}^{b} p(x) \; dx.\]</div>
+<p>We may approximate this is code by using the same discrete approximation
+methods as before. In this case we can approximate the probability of
+falling in the blue region.</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1"># Approximate probability using numerical integration</span>
+<span class="n">epsilon</span> <span class="o">=</span> <span class="mf">0.01</span>
+<span class="n">x</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="o">-</span><span class="mi">5</span><span class="p">,</span> <span class="mi">5</span><span class="p">,</span> <span class="mf">0.01</span><span class="p">)</span>
+<span class="n">p</span> <span class="o">=</span> <span class="mf">0.2</span><span class="o">*</span><span class="n">np</span><span class="o">.</span><span class="n">exp</span><span class="p">(</span><span class="o">-</span><span class="p">(</span><span class="n">x</span> <span class="o">-</span> <span class="mi">3</span><span class="p">)</span><span class="o">**</span><span class="mi">2</span> <span class="o">/</span> <span class="mi">2</span><span class="p">)</span> <span class="o">/</span> <span class="n">np</span><span class="o">.</span><span class="n">sqrt</span><span class="p">(</span><span class="mi">2</span> <span class="o">*</span> <span class="n">np</span><span class="o">.</span><span class="n">pi</span><span class="p">)</span> <span class="o">+</span> \
+    <span class="mf">0.8</span><span class="o">*</span><span class="n">np</span><span class="o">.</span><span class="n">exp</span><span class="p">(</span><span class="o">-</span><span class="p">(</span><span class="n">x</span> <span class="o">+</span> <span class="mi">1</span><span class="p">)</span><span class="o">**</span><span class="mi">2</span> <span class="o">/</span> <span class="mi">2</span><span class="p">)</span> <span class="o">/</span> <span class="n">np</span><span class="o">.</span><span class="n">sqrt</span><span class="p">(</span><span class="mi">2</span> <span class="o">*</span> <span class="n">np</span><span class="o">.</span><span class="n">pi</span><span class="p">)</span>
+
+<span class="n">d2l</span><span class="o">.</span><span class="n">set_figsize</span><span class="p">()</span>
+<span class="n">d2l</span><span class="o">.</span><span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">p</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s1">&#39;black&#39;</span><span class="p">)</span>
+<span class="n">d2l</span><span class="o">.</span><span class="n">plt</span><span class="o">.</span><span class="n">fill_between</span><span class="p">(</span><span class="n">x</span><span class="o">.</span><span class="n">tolist</span><span class="p">()[</span><span class="mi">300</span><span class="p">:</span><span class="mi">800</span><span class="p">],</span> <span class="n">p</span><span class="o">.</span><span class="n">tolist</span><span class="p">()[</span><span class="mi">300</span><span class="p">:</span><span class="mi">800</span><span class="p">])</span>
+<span class="n">d2l</span><span class="o">.</span><span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+
+<span class="s2">&quot;Approximate Probability: </span><span class="si">{}</span><span class="s2">&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">sum</span><span class="p">(</span><span class="n">epsilon</span><span class="o">*</span><span class="n">p</span><span class="p">[</span><span class="mi">300</span><span class="p">:</span><span class="mi">800</span><span class="p">]))</span>
+</pre></div>
+</div>
+<div class="figure align-default">
+<img alt="../_images/output_random-variables_ba5047_3_0.svg" src="../_images/output_random-variables_ba5047_3_0.svg" /></div>
+<div class="output highlight-default notranslate"><div class="highlight"><pre><span></span><span class="s1">&#39;Approximate Probability: 0.7736172&#39;</span>
+</pre></div>
+</div>
+<p>It turns out that these two properties describe exactly the space of
+possible probability density functions (or <em>p.d.f.</em>’s for the commonly
+encountered abbreviation). They are non-negative functions
+<span class="math notranslate nohighlight">\(p(x) \ge 0\)</span> such that</p>
+<div class="math notranslate nohighlight" id="equation-eq-pdf-int-one">
+<span class="eqno">()<a class="headerlink" href="#equation-eq-pdf-int-one" title="Permalink to this equation">¶</a></span>\[\int_{-\infty}^{\infty} p(x) \; dx = 1.\]</div>
+<p>We interpret this function by using integration to obtain the
+probability our random variable is in a specific interval:</p>
+<div class="math notranslate nohighlight" id="equation-eq-pdf-int-int">
+<span class="eqno">()<a class="headerlink" href="#equation-eq-pdf-int-int" title="Permalink to this equation">¶</a></span>\[P(X\in(a, b]) = \int _ {a}^{b} p(x) \; dx.\]</div>
+<p>In <code class="xref std std-numref docutils literal notranslate"><span class="pre">sec_distributions</span></code> we will see a number of common
+distributions, but let’s continue working in the abstract.</p>
+</div>
+<div class="section" id="cumulative-distribution-functions">
+<h3>Cumulative Distribution Functions<a class="headerlink" href="#cumulative-distribution-functions" title="Permalink to this headline">¶</a></h3>
+<p>In the previous section, we saw the notion of the p.d.f. In practice,
+this is a commonly encountered method to discuss continuous random
+variables, but it has one significant pitfall: that the values of the
+p.d.f. are not themselves probabilities, but rather a function that we
+must integrate to yield probabilities. There is nothing wrong with a
+density being larger than <span class="math notranslate nohighlight">\(10\)</span>, as long as it is not larger than
+<span class="math notranslate nohighlight">\(10\)</span> for more than an interval of length <span class="math notranslate nohighlight">\(1/10\)</span>. This can be
+counter-intuitive, so people often also think in terms of the
+<em>cumulative distribution function</em>, or c.d.f., which <em>is</em> a probability.</p>
+<p>In particular, by using <a class="reference internal" href="#equation-eq-pdf-int-int">()</a>, we define the c.d.f.
+for a random variable <span class="math notranslate nohighlight">\(X\)</span> with density <span class="math notranslate nohighlight">\(p(x)\)</span> by</p>
+<div class="math notranslate nohighlight" id="equation-chapter-appendix-mathematics-for-deep-learning-random-variables-7">
+<span class="eqno">()<a class="headerlink" href="#equation-chapter-appendix-mathematics-for-deep-learning-random-variables-7" title="Permalink to this equation">¶</a></span>\[F(x) = \int _ {-\infty}^{x} p(x) \; dx = P(X \le x).\]</div>
+<p>Let’s observe a few properties.</p>
+<ul class="simple">
+<li><p><span class="math notranslate nohighlight">\(F(x) \rightarrow 0\)</span> as <span class="math notranslate nohighlight">\(x\rightarrow -\infty\)</span>.</p></li>
+<li><p><span class="math notranslate nohighlight">\(F(x) \rightarrow 1\)</span> as <span class="math notranslate nohighlight">\(x\rightarrow \infty\)</span>.</p></li>
+<li><p><span class="math notranslate nohighlight">\(F(x)\)</span> is non-decreasing
+(<span class="math notranslate nohighlight">\(y &gt; x \implies F(y) \ge F(x)\)</span>).</p></li>
+<li><p><span class="math notranslate nohighlight">\(F(x)\)</span> is continuous (has no jumps) if <span class="math notranslate nohighlight">\(X\)</span> is a
+continuous random variable.</p></li>
+</ul>
+<p>With the fourth bullet point, note that this would not be true if
+<span class="math notranslate nohighlight">\(X\)</span> were discrete, say taking the values <span class="math notranslate nohighlight">\(0\)</span> and <span class="math notranslate nohighlight">\(1\)</span>
+both with probability <span class="math notranslate nohighlight">\(1/2\)</span>. In that case</p>
+<div class="math notranslate nohighlight" id="equation-chapter-appendix-mathematics-for-deep-learning-random-variables-8">
+<span class="eqno">()<a class="headerlink" href="#equation-chapter-appendix-mathematics-for-deep-learning-random-variables-8" title="Permalink to this equation">¶</a></span>\[\begin{split}F(x) = \begin{cases}
+0 &amp; x &lt; 0, \\
+\frac{1}{2} &amp; x &lt; 1, \\
+1 &amp; x \ge 1.
+\end{cases}\end{split}\]</div>
+<p>In this example, we see one of the benefits of working with the c.d.f.,
+the ability to deal with continuous or discrete random variables in the
+same framework, or indeed mixtures of the two (flip a coin: if heads
+return the roll of a die, if tails return the distance of a dart throw
+from the center of a dart board).</p>
+</div>
+<div class="section" id="means">
+<h3>Means<a class="headerlink" href="#means" title="Permalink to this headline">¶</a></h3>
+<p>Suppose that we are dealing with a random variables <span class="math notranslate nohighlight">\(X\)</span>. The
+distribution itself can be hard to interpret. It is often useful to be
+able to summarize the behavior of a random variable concisely. Numbers
+that help us capture the behavior of a random variable are called
+<em>summary statistics</em>. The most commonly encountered ones are the <em>mean</em>,
+the <em>variance</em>, and the <em>standard deviation</em>.</p>
+<p>The <em>mean</em> encodes the average value of a random variable. If we have a
+discrete random variable <span class="math notranslate nohighlight">\(X\)</span>, which takes the values <span class="math notranslate nohighlight">\(x_i\)</span>
+with probabilities <span class="math notranslate nohighlight">\(p_i\)</span>, then the mean is given by the weighted
+average: sum the values times the probability that the random variable
+takes on that value:</p>
+<div class="math notranslate nohighlight" id="equation-eq-exp-def">
+<span class="eqno">()<a class="headerlink" href="#equation-eq-exp-def" title="Permalink to this equation">¶</a></span>\[\mu_X = E[X] = \sum_i x_i p_i.\]</div>
+<p>The way we should interpret the mean (albeit with caution) is that it
+tells us essentially where the random variable tends to be located.</p>
+<p>As a minimalistic example that we will examine throughout this section,
+let’s take <span class="math notranslate nohighlight">\(X\)</span> to be the random variable which takes the value
+<span class="math notranslate nohighlight">\(a-2\)</span> with probability <span class="math notranslate nohighlight">\(p\)</span>, <span class="math notranslate nohighlight">\(a+2\)</span> with probability
+<span class="math notranslate nohighlight">\(p\)</span> and <span class="math notranslate nohighlight">\(a\)</span> with probability <span class="math notranslate nohighlight">\(1-2p\)</span>. We can compute
+using <a class="reference internal" href="#equation-eq-exp-def">()</a> that, for any possible choice of <span class="math notranslate nohighlight">\(a\)</span>
+and <span class="math notranslate nohighlight">\(p\)</span>, the mean is</p>
+<div class="math notranslate nohighlight" id="equation-chapter-appendix-mathematics-for-deep-learning-random-variables-9">
+<span class="eqno">()<a class="headerlink" href="#equation-chapter-appendix-mathematics-for-deep-learning-random-variables-9" title="Permalink to this equation">¶</a></span>\[\mu_X = E[X] = \sum_i x_i p_i = (a-2)p + a(1-2p) + (a+2)p = a.\]</div>
+<p>Thus we see that the mean is <span class="math notranslate nohighlight">\(a\)</span>. This matches the intuition since
+<span class="math notranslate nohighlight">\(a\)</span> is the location around which we centered our random variable.</p>
+<p>Because they are helpful, let’s summarize a few properties.</p>
+<ul class="simple">
+<li><p>For any random variable <span class="math notranslate nohighlight">\(X\)</span> and numbers <span class="math notranslate nohighlight">\(a\)</span> and
+<span class="math notranslate nohighlight">\(b\)</span>, we have that <span class="math notranslate nohighlight">\(\mu_{aX+b} = a\mu_X + b\)</span>.</p></li>
+<li><p>If we have two random variables <span class="math notranslate nohighlight">\(X\)</span> and <span class="math notranslate nohighlight">\(Y\)</span>, we have
+<span class="math notranslate nohighlight">\(\mu_{X+Y} = \mu_X+\mu_Y\)</span>.</p></li>
+</ul>
+<p>Means are useful for understanding the average behavior of a random
+variable, however the mean is not sufficient to even have a full
+intuitive understanding. Making a profit of <span class="math notranslate nohighlight">\(\$10 \pm \$1\)</span> per
+sale is very different from making <span class="math notranslate nohighlight">\(\$10 \pm \$15\)</span> per sale
+despite having the same average value. The second one has a much larger
+degree of fluctuation, and thus represents a much larger risk. Thus, to
+understand the behavior of a random variable, we will need at minimum
+one more measure: some measure of how widely a random variable
+fluctuates.</p>
+</div>
+<div class="section" id="variances">
+<h3>Variances<a class="headerlink" href="#variances" title="Permalink to this headline">¶</a></h3>
+<p>This leads us to consider the <em>variance</em> of a random variable. This is a
+quantitative measure of how far a random variable deviates from the
+mean. Consider the expression <span class="math notranslate nohighlight">\(X - \mu_X\)</span>. This is the deviation
+of the random variable from its mean. This value can be positive or
+negative, so we need to do something to make it positive so that we are
+measuring the magnitude of the deviation.</p>
+<p>A reasonable thing to try is to look at <span class="math notranslate nohighlight">\(\left|X-\mu_X\right|\)</span>,
+and indeed this leads to a useful quantity called the <em>mean absolute
+deviation</em>, however due to connections with other areas of mathematics
+and statistics, people often use a different solution.</p>
+<p>In particular, they look at <span class="math notranslate nohighlight">\((X-\mu_X)^2.\)</span> If we look at the
+typical size of this quantity by taking the mean, we arrive at the
+variance</p>
+<div class="math notranslate nohighlight" id="equation-eq-var-def">
+<span class="eqno">()<a class="headerlink" href="#equation-eq-var-def" title="Permalink to this equation">¶</a></span>\[\sigma_X^2 = \mathrm{Var}(X) = E\left[(X-\mu_X)^2\right] = E[X^2] - \mu_X^2.\]</div>
+<p>The last equality in <a class="reference internal" href="#equation-eq-var-def">()</a> holds by expanding out the
+definition in the middle, and applying the properties of expectation.</p>
+<p>Let’s look at our example where <span class="math notranslate nohighlight">\(X\)</span> is the random variable which
+takes the value <span class="math notranslate nohighlight">\(a-2\)</span> with probability <span class="math notranslate nohighlight">\(p\)</span>, <span class="math notranslate nohighlight">\(a+2\)</span> with
+probability <span class="math notranslate nohighlight">\(p\)</span> and <span class="math notranslate nohighlight">\(a\)</span> with probability <span class="math notranslate nohighlight">\(1-2p\)</span>. In
+this case <span class="math notranslate nohighlight">\(\mu_X = a\)</span>, so all we need to compute is
+<span class="math notranslate nohighlight">\(E\left[X^2\right]\)</span>. This can readily be done:</p>
+<div class="math notranslate nohighlight" id="equation-chapter-appendix-mathematics-for-deep-learning-random-variables-10">
+<span class="eqno">()<a class="headerlink" href="#equation-chapter-appendix-mathematics-for-deep-learning-random-variables-10" title="Permalink to this equation">¶</a></span>\[E\left[X^2\right] = (a-2)^2p + a^2(1-2p) + (a+2)p = a^2 + 8p.\]</div>
+<p>Thus, we see that by <a class="reference internal" href="#equation-eq-var-def">()</a> our variance is</p>
+<div class="math notranslate nohighlight" id="equation-chapter-appendix-mathematics-for-deep-learning-random-variables-11">
+<span class="eqno">()<a class="headerlink" href="#equation-chapter-appendix-mathematics-for-deep-learning-random-variables-11" title="Permalink to this equation">¶</a></span>\[\sigma_X^2 = \mathrm{Var}(X) = E[X^2] - \mu_X^2 = a^2 + 8p - a^2 = 8p.\]</div>
+<p>This result again makes sense. The largest <span class="math notranslate nohighlight">\(p\)</span> can be is
+<span class="math notranslate nohighlight">\(1/2\)</span> which corresponds to picking <span class="math notranslate nohighlight">\(a-2\)</span> or <span class="math notranslate nohighlight">\(a+2\)</span> with
+a coin flip. The variance of this being <span class="math notranslate nohighlight">\(4\)</span> corresponds to the
+fact that both <span class="math notranslate nohighlight">\(a-2\)</span> and <span class="math notranslate nohighlight">\(a+2\)</span> are <span class="math notranslate nohighlight">\(2\)</span> units away from
+the mean, and <span class="math notranslate nohighlight">\(2^2 = 4\)</span>. On the other end of the spectrum, if
+<span class="math notranslate nohighlight">\(p=0\)</span>, this random variable always takes the value <span class="math notranslate nohighlight">\(0\)</span> and
+so it has no variance at all.</p>
+<p>We will list a few properties of variance below:</p>
+<ul class="simple">
+<li><p>For any random variable <span class="math notranslate nohighlight">\(X\)</span>, <span class="math notranslate nohighlight">\(\mathrm{Var}(X) \ge 0\)</span>,
+with <span class="math notranslate nohighlight">\(\mathrm{Var}(X) = 0\)</span> if and only if <span class="math notranslate nohighlight">\(X\)</span> is a
+constant.</p></li>
+<li><p>For any random variable <span class="math notranslate nohighlight">\(X\)</span> and numbers <span class="math notranslate nohighlight">\(a\)</span> and
+<span class="math notranslate nohighlight">\(b\)</span>, we have that
+<span class="math notranslate nohighlight">\(\mathrm{Var}(aX+b) = a^2\mathrm{Var}(X)\)</span>.</p></li>
+<li><p>If we have two <em>independent</em> random variables <span class="math notranslate nohighlight">\(X\)</span> and
+<span class="math notranslate nohighlight">\(Y\)</span>, we have
+<span class="math notranslate nohighlight">\(\mathrm{Var}(X+Y) = \mathrm{Var}(X) + \mathrm{Var}(Y)\)</span>.</p></li>
+</ul>
+<p>When interpreting these values, there can be a bit of a hiccup. In
+particular, let’s try imagining what happens if we keep track of units
+through this computation. Suppose that we are working with the star
+rating assigned to a product on the web page. Then <span class="math notranslate nohighlight">\(a\)</span>,
+<span class="math notranslate nohighlight">\(a-2\)</span>, and <span class="math notranslate nohighlight">\(a+2\)</span> are all measured in units of stars.
+Similarly, the mean <span class="math notranslate nohighlight">\(\mu_X\)</span> is then also measured in stars (being
+a weighted average). However, if we get to the variance, we immediately
+encounter an issue, which is we want to look at <span class="math notranslate nohighlight">\((X-\mu_X)^2\)</span>,
+which is in units of <em>squared stars</em>. This means that the variance
+itself is not comparable to the original measurements. To make it
+interpretable, we will need to return to our original units.</p>
+</div>
+<div class="section" id="standard-deviations">
+<h3>Standard Deviations<a class="headerlink" href="#standard-deviations" title="Permalink to this headline">¶</a></h3>
+<p>This summary statistics can always be deduced from the variance by
+taking the square root! Thus we define the <em>standard deviation</em> to be</p>
+<div class="math notranslate nohighlight" id="equation-chapter-appendix-mathematics-for-deep-learning-random-variables-12">
+<span class="eqno">()<a class="headerlink" href="#equation-chapter-appendix-mathematics-for-deep-learning-random-variables-12" title="Permalink to this equation">¶</a></span>\[\sigma_X = \sqrt{\mathrm{Var}(X)}.\]</div>
+<p>In our example, this means we now have the standard deviation is
+<span class="math notranslate nohighlight">\(\sigma_X = 2\sqrt{2p}\)</span>. If we are dealing with units of stars for
+our review example, <span class="math notranslate nohighlight">\(\sigma_X\)</span> is again in units of stars.</p>
+<p>The properties we had for the variance can be restated for the standard
+deviation.</p>
+<ul class="simple">
+<li><p>For any random variable <span class="math notranslate nohighlight">\(X\)</span>, <span class="math notranslate nohighlight">\(\sigma_{X} \ge 0\)</span>.</p></li>
+<li><p>For any random variable <span class="math notranslate nohighlight">\(X\)</span> and numbers <span class="math notranslate nohighlight">\(a\)</span> and
+<span class="math notranslate nohighlight">\(b\)</span>, we have that <span class="math notranslate nohighlight">\(\sigma_{aX+b} = |a|\sigma_{X}\)</span></p></li>
+<li><p>If we have two <em>independent</em> random variables <span class="math notranslate nohighlight">\(X\)</span> and
+<span class="math notranslate nohighlight">\(Y\)</span>, we have
+<span class="math notranslate nohighlight">\(\sigma_{X+Y} = \sqrt{\sigma_{X}^2 + \sigma_{Y}^2}\)</span>.</p></li>
+</ul>
+<p>It is natural at this moment to ask, “If the standard deviation is in
+the units of our original random variable, does it represent something
+we can draw with regards to that random variable?” The answer is a
+resounding yes! Indeed much like the mean told we the typical location
+of our random variable, the standard deviation gives the typical range
+of variation of that random variable. We can make this rigorous with
+what is known as Chebychev’s inequality:</p>
+<div class="math notranslate nohighlight" id="equation-eq-chebychev">
+<span class="eqno">()<a class="headerlink" href="#equation-eq-chebychev" title="Permalink to this equation">¶</a></span>\[P\left(X \not\in [\mu_X - \alpha\sigma_X, \mu_X + \alpha\sigma_X]\right) \le \frac{1}{\alpha^2}.\]</div>
+<p>Or to state it verbally in the case of <span class="math notranslate nohighlight">\(\alpha=10\)</span>, <span class="math notranslate nohighlight">\(99\%\)</span>
+of the samples from any random variable fall within <span class="math notranslate nohighlight">\(10\)</span> standard
+deviations of the mean. This gives an immediate interpretation to our
+standard summary statistics.</p>
+<p>To see how this statement is rather subtle, let’s take a look at our
+running example again where <span class="math notranslate nohighlight">\(X\)</span> is the random variable which takes
+the value <span class="math notranslate nohighlight">\(a-2\)</span> with probability <span class="math notranslate nohighlight">\(p\)</span>, <span class="math notranslate nohighlight">\(a+2\)</span> with
+probability <span class="math notranslate nohighlight">\(p\)</span> and <span class="math notranslate nohighlight">\(a\)</span> with probability <span class="math notranslate nohighlight">\(1-2p\)</span>. We
+saw that the mean was <span class="math notranslate nohighlight">\(a\)</span> and the standard deviation was
+<span class="math notranslate nohighlight">\(2\sqrt{2p}\)</span>. This means, if we take Chebychev’s inequality
+<a class="reference internal" href="#equation-eq-chebychev">()</a> with <span class="math notranslate nohighlight">\(\alpha = 2\)</span>, we see that the
+expression is</p>
+<div class="math notranslate nohighlight" id="equation-chapter-appendix-mathematics-for-deep-learning-random-variables-13">
+<span class="eqno">()<a class="headerlink" href="#equation-chapter-appendix-mathematics-for-deep-learning-random-variables-13" title="Permalink to this equation">¶</a></span>\[P\left(X \not\in [a - 4\sqrt{2p}, a + 4\sqrt{2p}]\right) \le \frac{1}{4}.\]</div>
+<p>This means that <span class="math notranslate nohighlight">\(75\%\)</span> of the time, this random variable will fall
+within this interval for any value of <span class="math notranslate nohighlight">\(p\)</span>. Now, notice that as
+<span class="math notranslate nohighlight">\(p \rightarrow 0\)</span>, this interval also converges to the single
+point <span class="math notranslate nohighlight">\(a\)</span>. But we know that our random variable takes the values
+<span class="math notranslate nohighlight">\(a-2, a\)</span>, and <span class="math notranslate nohighlight">\(a+2\)</span> only so eventually we can be certain
+<span class="math notranslate nohighlight">\(a-2\)</span> and <span class="math notranslate nohighlight">\(a+2\)</span> will fall outside the interval! The question
+is, at what <span class="math notranslate nohighlight">\(p\)</span> does that happen. So we want to solve: for what
+<span class="math notranslate nohighlight">\(p\)</span> does <span class="math notranslate nohighlight">\(a+4\sqrt{2p} = a+2\)</span>, which is solved when
+<span class="math notranslate nohighlight">\(p=1/8\)</span>, which is <em>exactly</em> the first <span class="math notranslate nohighlight">\(p\)</span> where it could
+possibly happen without violating our claim that no more than
+<span class="math notranslate nohighlight">\(1/4\)</span> of samples from the distribution would fall outside the
+interval (<span class="math notranslate nohighlight">\(1/8\)</span> to the left, and <span class="math notranslate nohighlight">\(1/8\)</span> to the right).</p>
+<p>Let’s visualize this. We will show the probability of getting the three
+values as three vertical bars with height proportional to the
+probability. The interval will be drawn as a horizontal line in the
+middle. The first plot shows what happens for <span class="math notranslate nohighlight">\(p &gt; 1/8\)</span> where the
+interval safely contains all points.</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1"># Define a helper to plot these figures</span>
+<span class="k">def</span> <span class="nf">plot_chebychev</span><span class="p">(</span><span class="n">a</span><span class="p">,</span> <span class="n">p</span><span class="p">):</span>
+    <span class="n">d2l</span><span class="o">.</span><span class="n">set_figsize</span><span class="p">()</span>
+    <span class="n">d2l</span><span class="o">.</span><span class="n">plt</span><span class="o">.</span><span class="n">stem</span><span class="p">([</span><span class="n">a</span><span class="o">-</span><span class="mi">2</span><span class="p">,</span> <span class="n">a</span><span class="p">,</span> <span class="n">a</span><span class="o">+</span><span class="mi">2</span><span class="p">],</span> <span class="p">[</span><span class="n">p</span><span class="p">,</span> <span class="mi">1</span><span class="o">-</span><span class="mi">2</span><span class="o">*</span><span class="n">p</span><span class="p">,</span> <span class="n">p</span><span class="p">],</span> <span class="n">use_line_collection</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+    <span class="n">d2l</span><span class="o">.</span><span class="n">plt</span><span class="o">.</span><span class="n">xlim</span><span class="p">([</span><span class="o">-</span><span class="mi">4</span><span class="p">,</span> <span class="mi">4</span><span class="p">])</span>
+    <span class="n">d2l</span><span class="o">.</span><span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s1">&#39;x&#39;</span><span class="p">)</span>
+    <span class="n">d2l</span><span class="o">.</span><span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s1">&#39;p.m.f.&#39;</span><span class="p">)</span>
+
+    <span class="n">d2l</span><span class="o">.</span><span class="n">plt</span><span class="o">.</span><span class="n">hlines</span><span class="p">(</span><span class="mf">0.5</span><span class="p">,</span> <span class="n">a</span> <span class="o">-</span> <span class="mi">4</span> <span class="o">*</span> <span class="n">np</span><span class="o">.</span><span class="n">sqrt</span><span class="p">(</span><span class="mi">2</span> <span class="o">*</span> <span class="n">p</span><span class="p">),</span>
+                   <span class="n">a</span> <span class="o">+</span> <span class="mi">4</span> <span class="o">*</span> <span class="n">np</span><span class="o">.</span><span class="n">sqrt</span><span class="p">(</span><span class="mi">2</span> <span class="o">*</span> <span class="n">p</span><span class="p">),</span> <span class="s1">&#39;black&#39;</span><span class="p">,</span> <span class="n">lw</span><span class="o">=</span><span class="mi">4</span><span class="p">)</span>
+    <span class="n">d2l</span><span class="o">.</span><span class="n">plt</span><span class="o">.</span><span class="n">vlines</span><span class="p">(</span><span class="n">a</span> <span class="o">-</span> <span class="mi">4</span> <span class="o">*</span> <span class="n">np</span><span class="o">.</span><span class="n">sqrt</span><span class="p">(</span><span class="mi">2</span> <span class="o">*</span> <span class="n">p</span><span class="p">),</span> <span class="mf">0.53</span><span class="p">,</span> <span class="mf">0.47</span><span class="p">,</span> <span class="s1">&#39;black&#39;</span><span class="p">,</span> <span class="n">lw</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
+    <span class="n">d2l</span><span class="o">.</span><span class="n">plt</span><span class="o">.</span><span class="n">vlines</span><span class="p">(</span><span class="n">a</span> <span class="o">+</span> <span class="mi">4</span> <span class="o">*</span> <span class="n">np</span><span class="o">.</span><span class="n">sqrt</span><span class="p">(</span><span class="mi">2</span> <span class="o">*</span> <span class="n">p</span><span class="p">),</span> <span class="mf">0.53</span><span class="p">,</span> <span class="mf">0.47</span><span class="p">,</span> <span class="s1">&#39;black&#39;</span><span class="p">,</span> <span class="n">lw</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
+    <span class="n">d2l</span><span class="o">.</span><span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s2">&quot;p &gt; 1/8&quot;</span><span class="p">)</span>
+
+    <span class="n">d2l</span><span class="o">.</span><span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+
+<span class="c1"># Plot interval when p &gt; 1/8</span>
+<span class="n">plot_chebychev</span><span class="p">(</span><span class="mf">0.0</span><span class="p">,</span> <span class="mf">0.2</span><span class="p">)</span>
+</pre></div>
+</div>
+<div class="figure align-default">
+<img alt="../_images/output_random-variables_ba5047_5_0.svg" src="../_images/output_random-variables_ba5047_5_0.svg" /></div>
+<p>The second shows that at <span class="math notranslate nohighlight">\(p = 1/8\)</span>, the interval exactly touches
+the two points. This shows that the inequality is <em>sharp</em>, since no
+smaller interval could be taken while keeping the inequality true.</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1"># Plot interval when p = 1/8</span>
+<span class="n">plot_chebychev</span><span class="p">(</span><span class="mf">0.0</span><span class="p">,</span> <span class="mf">0.125</span><span class="p">)</span>
+</pre></div>
+</div>
+<div class="figure align-default">
+<img alt="../_images/output_random-variables_ba5047_7_0.svg" src="../_images/output_random-variables_ba5047_7_0.svg" /></div>
+<p>The third shows that for <span class="math notranslate nohighlight">\(p &lt; 1/8\)</span> the interval only contains the
+center. This does not invalidate the inequality since we only needed to
+ensure that no more than <span class="math notranslate nohighlight">\(1/4\)</span> of the probability falls outside
+the interval, which means that once <span class="math notranslate nohighlight">\(p &lt; 1/8\)</span>, the two points at
+<span class="math notranslate nohighlight">\(a-2\)</span> and <span class="math notranslate nohighlight">\(a+2\)</span> can be discarded.</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1"># Plot interval when p &lt; 1/8</span>
+<span class="n">plot_chebychev</span><span class="p">(</span><span class="mf">0.0</span><span class="p">,</span> <span class="mf">0.05</span><span class="p">)</span>
+</pre></div>
+</div>
+<div class="figure align-default">
+<img alt="../_images/output_random-variables_ba5047_9_0.svg" src="../_images/output_random-variables_ba5047_9_0.svg" /></div>
+</div>
+<div class="section" id="means-and-variances-in-the-continuum">
+<h3>Means and Variances in the Continuum<a class="headerlink" href="#means-and-variances-in-the-continuum" title="Permalink to this headline">¶</a></h3>
+<p>This has all been in terms of discrete random variables, but the case of
+continuous random variables is similar. To intuitively understand how
+this works, imagine that we split the real number line into intervals of
+length <span class="math notranslate nohighlight">\(\epsilon\)</span> given by <span class="math notranslate nohighlight">\((\epsilon i, \epsilon (i+1)]\)</span>.
+Once we do this, our continuous random variable has been made discrete
+and we can use <a class="reference internal" href="#equation-eq-exp-def">()</a> say that</p>
+<div class="math notranslate nohighlight" id="equation-chapter-appendix-mathematics-for-deep-learning-random-variables-14">
+<span class="eqno">()<a class="headerlink" href="#equation-chapter-appendix-mathematics-for-deep-learning-random-variables-14" title="Permalink to this equation">¶</a></span>\[\begin{split}\begin{aligned}
+\mu_X &amp; \approx \sum_{i} (\epsilon i)P(X \in (\epsilon i, \epsilon (i+1)]) \\
+&amp; \approx \sum_{i} (\epsilon i)p_X(\epsilon i)\epsilon, \\
+\end{aligned}\end{split}\]</div>
+<p>where <span class="math notranslate nohighlight">\(p_X\)</span> is the density of <span class="math notranslate nohighlight">\(X\)</span>. This is an approximation
+to the integral of <span class="math notranslate nohighlight">\(xp_X(x)\)</span>, so we can conclude that</p>
+<div class="math notranslate nohighlight" id="equation-chapter-appendix-mathematics-for-deep-learning-random-variables-15">
+<span class="eqno">()<a class="headerlink" href="#equation-chapter-appendix-mathematics-for-deep-learning-random-variables-15" title="Permalink to this equation">¶</a></span>\[\mu_X = \int_{-\infty}^\infty xp_X(x) \; dx.\]</div>
+<p>Similarly, using <a class="reference internal" href="#equation-eq-var-def">()</a> the variance can be written as</p>
+<div class="math notranslate nohighlight" id="equation-chapter-appendix-mathematics-for-deep-learning-random-variables-16">
+<span class="eqno">()<a class="headerlink" href="#equation-chapter-appendix-mathematics-for-deep-learning-random-variables-16" title="Permalink to this equation">¶</a></span>\[\sigma^2_X = E[X^2] - \mu_X^2 = \int_{-\infty}^\infty x^2p_X(x) \; dx - \left(\int_{-\infty}^\infty xp_X(x) \; dx\right)^2.\]</div>
+<p>Everything stated above about the mean, the variance, and the standard
+deviation above still apply in this case. For instance, if we consider
+the random variable with density</p>
+<div class="math notranslate nohighlight" id="equation-chapter-appendix-mathematics-for-deep-learning-random-variables-17">
+<span class="eqno">()<a class="headerlink" href="#equation-chapter-appendix-mathematics-for-deep-learning-random-variables-17" title="Permalink to this equation">¶</a></span>\[\begin{split}p(x) = \begin{cases}
+1 &amp; x \in [0,1], \\
+0 &amp; \text{otherwise}.
+\end{cases}\end{split}\]</div>
+<p>we can compute</p>
+<div class="math notranslate nohighlight" id="equation-chapter-appendix-mathematics-for-deep-learning-random-variables-18">
+<span class="eqno">()<a class="headerlink" href="#equation-chapter-appendix-mathematics-for-deep-learning-random-variables-18" title="Permalink to this equation">¶</a></span>\[\mu_X = \int_{-\infty}^\infty xp(x) \; dx = \int_0^1 x \; dx = \frac{1}{2}.\]</div>
+<p>and</p>
+<div class="math notranslate nohighlight" id="equation-chapter-appendix-mathematics-for-deep-learning-random-variables-19">
+<span class="eqno">()<a class="headerlink" href="#equation-chapter-appendix-mathematics-for-deep-learning-random-variables-19" title="Permalink to this equation">¶</a></span>\[\sigma_X^2 = \int_{-\infty}^\infty x^2p(x) \; dx - \left(\frac{1}{2}\right)^2 = \frac{1}{3} - \frac{1}{4} = \frac{1}{12}.\]</div>
+<p>As a warning, let’s examine one more example, known as the <em>Cauchy
+distribution</em>. This is the distribution with p.d.f. given by</p>
+<div class="math notranslate nohighlight" id="equation-chapter-appendix-mathematics-for-deep-learning-random-variables-20">
+<span class="eqno">()<a class="headerlink" href="#equation-chapter-appendix-mathematics-for-deep-learning-random-variables-20" title="Permalink to this equation">¶</a></span>\[p(x) = \frac{1}{1+x^2}.\]</div>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1"># Plot the Cauchy distribution p.d.f.</span>
+<span class="n">x</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="o">-</span><span class="mi">5</span><span class="p">,</span> <span class="mi">5</span><span class="p">,</span> <span class="mf">0.01</span><span class="p">)</span>
+<span class="n">p</span> <span class="o">=</span> <span class="mi">1</span> <span class="o">/</span> <span class="p">(</span><span class="mi">1</span> <span class="o">+</span> <span class="n">x</span><span class="o">**</span><span class="mi">2</span><span class="p">)</span>
+
+<span class="n">d2l</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">p</span><span class="p">,</span> <span class="s1">&#39;x&#39;</span><span class="p">,</span> <span class="s1">&#39;p.d.f.&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+<div class="figure align-default">
+<img alt="../_images/output_random-variables_ba5047_11_0.svg" src="../_images/output_random-variables_ba5047_11_0.svg" /></div>
+<p>This function looks innocent, and indeed consulting a table of integrals
+will show it has area one under it, and thus it defines a continuous
+random variable.</p>
+<p>To see what goes astray, let’s try to compute the variance of this. This
+would involve using <a class="reference internal" href="#equation-eq-var-def">()</a> computing</p>
+<div class="math notranslate nohighlight" id="equation-chapter-appendix-mathematics-for-deep-learning-random-variables-21">
+<span class="eqno">()<a class="headerlink" href="#equation-chapter-appendix-mathematics-for-deep-learning-random-variables-21" title="Permalink to this equation">¶</a></span>\[\int_{-\infty}^\infty \frac{x^2}{1+x^2}\; dx.\]</div>
+<p>The function on the inside looks like this:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1"># Plot the integrand needed to compute the variance</span>
+<span class="n">x</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="o">-</span><span class="mi">20</span><span class="p">,</span> <span class="mi">20</span><span class="p">,</span> <span class="mf">0.01</span><span class="p">)</span>
+<span class="n">p</span> <span class="o">=</span> <span class="n">x</span><span class="o">**</span><span class="mi">2</span> <span class="o">/</span> <span class="p">(</span><span class="mi">1</span> <span class="o">+</span> <span class="n">x</span><span class="o">**</span><span class="mi">2</span><span class="p">)</span>
+
+<span class="n">d2l</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">p</span><span class="p">,</span> <span class="s1">&#39;x&#39;</span><span class="p">,</span> <span class="s1">&#39;integrand&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+<div class="figure align-default">
+<img alt="../_images/output_random-variables_ba5047_13_0.svg" src="../_images/output_random-variables_ba5047_13_0.svg" /></div>
+<p>This function clearly has infinite area under it since it is essentially
+the constant one with a small dip near zero, and indeed we could show
+that</p>
+<div class="math notranslate nohighlight" id="equation-chapter-appendix-mathematics-for-deep-learning-random-variables-22">
+<span class="eqno">()<a class="headerlink" href="#equation-chapter-appendix-mathematics-for-deep-learning-random-variables-22" title="Permalink to this equation">¶</a></span>\[\int_{-\infty}^\infty \frac{x^2}{1+x^2}\; dx = \infty.\]</div>
+<p>This means it does not have a well-defined finite variance.</p>
+<p>However, looking deeper shows an even more disturbing result. Let’s try
+to compute the mean using <a class="reference internal" href="#equation-eq-exp-def">()</a>. Using the change of
+variables formula, we see</p>
+<div class="math notranslate nohighlight" id="equation-chapter-appendix-mathematics-for-deep-learning-random-variables-23">
+<span class="eqno">()<a class="headerlink" href="#equation-chapter-appendix-mathematics-for-deep-learning-random-variables-23" title="Permalink to this equation">¶</a></span>\[\mu_X = \int_{-\infty}^{\infty} \frac{x}{1+x^2} \; dx = \frac{1}{2}\int_1^\infty \frac{1}{u} \; du.\]</div>
+<p>The integral inside is the definition of the logarithm, so this is in
+essence <span class="math notranslate nohighlight">\(\log(\infty) = \infty\)</span>, so there is no well-defined
+average value either!</p>
+<p>Machine learning scientists define their models so that we most often do
+not need to deal with these issues, and will in the vast majority of
+cases deal with random variables with well-defined means and variances.
+However, every so often random variables with <em>heavy tails</em> (that is
+those random variables where the probabilities of getting large values
+are large enough to make things like the mean or variance undefined) are
+helpful in modeling physical systems, thus it is worth knowing that they
+exist.</p>
+</div>
+<div class="section" id="joint-density-functions">
+<h3>Joint Density Functions<a class="headerlink" href="#joint-density-functions" title="Permalink to this headline">¶</a></h3>
+<p>The above work all assumes we are working with a single real valued
+random variable. But what if we are dealing with two or more potentially
+highly correlated random variables? This circumstance is the norm in
+machine learning: imagine random variables like <span class="math notranslate nohighlight">\(R_{i, j}\)</span> which
+encode the red value of the pixel at the <span class="math notranslate nohighlight">\((i, j)\)</span> coordinate in an
+image, or <span class="math notranslate nohighlight">\(P_t\)</span> which is a random variable given by a stock price
+at time <span class="math notranslate nohighlight">\(t\)</span>. Nearby pixels tend to have similar color, and nearby
+times tend to have similar prices. We cannot treat them as separate
+random variables, and expect to create a successful model (we will see
+in <code class="xref std std-numref docutils literal notranslate"><span class="pre">sec_naive_bayes</span></code> a model that under-performs due to such
+an assumption). We need to develop the mathematical language to handle
+these correlated continuous random variables.</p>
+<p>Thankfully, with the multiple integrals in
+<code class="xref std std-numref docutils literal notranslate"><span class="pre">sec_integral_calculus</span></code> we can develop such a language.
+Suppose that we have, for simplicity, two random variables <span class="math notranslate nohighlight">\(X, Y\)</span>
+which can be correlated. Then, similar to the case of a single variable,
+we can ask the question:</p>
+<div class="math notranslate nohighlight" id="equation-chapter-appendix-mathematics-for-deep-learning-random-variables-24">
+<span class="eqno">()<a class="headerlink" href="#equation-chapter-appendix-mathematics-for-deep-learning-random-variables-24" title="Permalink to this equation">¶</a></span>\[P(X \;\text{is in an}\; \epsilon \text{-sized interval around}\; x \; \text{and} \;Y \;\text{is in an}\; \epsilon \text{-sized interval around}\; y ).\]</div>
+<p>Similar reasoning to the single variable case shows that this should be
+approximately</p>
+<div class="math notranslate nohighlight" id="equation-chapter-appendix-mathematics-for-deep-learning-random-variables-25">
+<span class="eqno">()<a class="headerlink" href="#equation-chapter-appendix-mathematics-for-deep-learning-random-variables-25" title="Permalink to this equation">¶</a></span>\[P(X \;\text{is in an}\; \epsilon \text{-sized interval around}\; x \; \text{and} \;Y \;\text{is in an}\; \epsilon \text{-sized interval around}\; y ) \approx \epsilon^{2}p(x, y),\]</div>
+<p>for some function <span class="math notranslate nohighlight">\(p(x, y)\)</span>. This is referred to as the joint
+density of <span class="math notranslate nohighlight">\(X\)</span> and <span class="math notranslate nohighlight">\(Y\)</span>. Similar properties are true for this
+as we saw in the single variable case. Namely:</p>
+<ul class="simple">
+<li><p><span class="math notranslate nohighlight">\(p(x, y) \ge 0\)</span>;</p></li>
+<li><p><span class="math notranslate nohighlight">\(\int _ {\mathbb{R}^2} p(x, y) \;dx \;dy = 1\)</span>;</p></li>
+<li><p><span class="math notranslate nohighlight">\(P((X, Y) \in \mathcal{D}) = \int _ {\mathcal{D}} p(x, y) \;dx \;dy\)</span>.</p></li>
+</ul>
+<p>In this way, we can deal with multiple, potentially correlated random
+variables. If we wish to work with more than two random variables, we
+can extend the multivariate density to as many coordinates as desired by
+considering <span class="math notranslate nohighlight">\(p(\mathbf{x}) = p(x_1, \ldots, x_n)\)</span>. The same
+properties of being non-negative, and having total integral of one still
+hold.</p>
+</div>
+<div class="section" id="marginal-distributions">
+<h3>Marginal Distributions<a class="headerlink" href="#marginal-distributions" title="Permalink to this headline">¶</a></h3>
+<p>When dealing with multiple variables, we often times want to be able to
+ignore the relationships and ask, “how is this one variable
+distributed?” Such a distribution is called a <em>marginal distribution</em>.</p>
+<p>To be concrete, let’s suppose that we have two random variables
+<span class="math notranslate nohighlight">\(X, Y\)</span> with joint density given by <span class="math notranslate nohighlight">\(p _ {X, Y}(x, y)\)</span>. We
+will be using the subscript to indicate what random variables the
+density is for. The question of finding the marginal distribution is
+taking this function, and using it to find <span class="math notranslate nohighlight">\(p _ X(x)\)</span>.</p>
+<p>As with most things, it is best to return to the intuitive picture to
+figure out what should be true. Recall that the density is the function
+<span class="math notranslate nohighlight">\(p _ X\)</span> so that</p>
+<div class="math notranslate nohighlight" id="equation-chapter-appendix-mathematics-for-deep-learning-random-variables-26">
+<span class="eqno">()<a class="headerlink" href="#equation-chapter-appendix-mathematics-for-deep-learning-random-variables-26" title="Permalink to this equation">¶</a></span>\[P(X \in [x, x+\epsilon]) \approx \epsilon \cdot p _ X(x).\]</div>
+<p>There is no mention of <span class="math notranslate nohighlight">\(Y\)</span>, but if all we are given is
+<span class="math notranslate nohighlight">\(p _{X, Y}\)</span>, we need to include <span class="math notranslate nohighlight">\(Y\)</span> somehow. We can first
+observe that this is the same as</p>
+<div class="math notranslate nohighlight" id="equation-chapter-appendix-mathematics-for-deep-learning-random-variables-27">
+<span class="eqno">()<a class="headerlink" href="#equation-chapter-appendix-mathematics-for-deep-learning-random-variables-27" title="Permalink to this equation">¶</a></span>\[P(X \in [x, x+\epsilon] \text{, and } Y \in \mathbb{R}) \approx \epsilon \cdot p _ X(x).\]</div>
+<p>Our density does not directly tell us about what happens in this case,
+we need to split into small intervals in <span class="math notranslate nohighlight">\(y\)</span> as well, so we can
+write this as</p>
+<div class="math notranslate nohighlight" id="equation-chapter-appendix-mathematics-for-deep-learning-random-variables-28">
+<span class="eqno">()<a class="headerlink" href="#equation-chapter-appendix-mathematics-for-deep-learning-random-variables-28" title="Permalink to this equation">¶</a></span>\[\begin{split}\begin{aligned}
+\epsilon \cdot p _ X(x) &amp; \approx \sum _ {i} P(X \in [x, x+\epsilon] \text{, and } Y \in [\epsilon \cdot i, \epsilon \cdot (i+1)]) \\
+&amp; \approx \sum _ {i} \epsilon^{2} p _ {X, Y}(x, \epsilon\cdot i).
+\end{aligned}\end{split}\]</div>
+<div class="figure align-default" id="id1">
+<span id="fig-marginal"></span><img alt="../_images/Marginal.svg" src="../_images/Marginal.svg" /><p class="caption"><span class="caption-text">By summing along the columns of our array of probabilities, we are
+able to obtain the marginal distribution for just the random variable
+represented along the <span class="math notranslate nohighlight">\(x\)</span>-axis.</span><a class="headerlink" href="#id1" title="Permalink to this image">¶</a></p>
+</div>
+<p>This tells us to add up the value of the density along a series of
+squares in a line as is show in in <code class="xref std std-numref docutils literal notranslate"><span class="pre">fig_marginal</span></code>. Indeed,
+after canceling one factor of epsilon from both sides, and recognizing
+the sum on the right is the integral over <span class="math notranslate nohighlight">\(y\)</span>, we can conclude
+that</p>
+<div class="math notranslate nohighlight" id="equation-chapter-appendix-mathematics-for-deep-learning-random-variables-29">
+<span class="eqno">()<a class="headerlink" href="#equation-chapter-appendix-mathematics-for-deep-learning-random-variables-29" title="Permalink to this equation">¶</a></span>\[\begin{split}\begin{aligned}
+ p _ X(x) &amp;  \approx \sum _ {i} \epsilon p _ {X, Y}(x, \epsilon\cdot i) \\
+ &amp; \approx \int_{-\infty}^\infty p_{X, Y}(x, y) \; dy.
+\end{aligned}\end{split}\]</div>
+<p>Thus we see</p>
+<div class="math notranslate nohighlight" id="equation-chapter-appendix-mathematics-for-deep-learning-random-variables-30">
+<span class="eqno">()<a class="headerlink" href="#equation-chapter-appendix-mathematics-for-deep-learning-random-variables-30" title="Permalink to this equation">¶</a></span>\[p _ X(x) = \int_{-\infty}^\infty p_{X, Y}(x, y) \; dy.\]</div>
+<p>This tells us that to get a marginal distribution, we integrate over the
+variables we do not care about. This process is often referred to as
+<em>integrating out</em> or <em>marginalized out</em> the unneeded variables.</p>
+</div>
+<div class="section" id="covariance">
+<h3>Covariance<a class="headerlink" href="#covariance" title="Permalink to this headline">¶</a></h3>
+<p>When dealing with multiple random variables, there is one additional
+summary statistic which is helpful to know: the <em>covariance</em>. This
+measures the degree that two random variable fluctuate together.</p>
+<p>Suppose that we have two random variables <span class="math notranslate nohighlight">\(X\)</span> and <span class="math notranslate nohighlight">\(Y\)</span>, to
+begin with, let’s suppose they are discrete, taking on values
+<span class="math notranslate nohighlight">\((x_i, y_j)\)</span> with probability <span class="math notranslate nohighlight">\(p_{ij}\)</span>. In this case, the
+covariance is defined as</p>
+<div class="math notranslate nohighlight" id="equation-eq-cov-def">
+<span class="eqno">()<a class="headerlink" href="#equation-eq-cov-def" title="Permalink to this equation">¶</a></span>\[\sigma_{XY} = \mathrm{Cov}(X, Y) = \sum_{i, j} (x_i - \mu_X) (y_j-\mu_Y) p_{ij}. = E[XY] - E[X]E[Y].\]</div>
+<p>To think about this intuitively: consider the following pair of random
+variables. Suppose that <span class="math notranslate nohighlight">\(X\)</span> takes the values <span class="math notranslate nohighlight">\(1\)</span> and
+<span class="math notranslate nohighlight">\(3\)</span>, and <span class="math notranslate nohighlight">\(Y\)</span> takes the values <span class="math notranslate nohighlight">\(-1\)</span> and <span class="math notranslate nohighlight">\(3\)</span>.
+Suppose that we have the following probabilities</p>
+<div class="math notranslate nohighlight" id="equation-chapter-appendix-mathematics-for-deep-learning-random-variables-31">
+<span class="eqno">()<a class="headerlink" href="#equation-chapter-appendix-mathematics-for-deep-learning-random-variables-31" title="Permalink to this equation">¶</a></span>\[\begin{split}\begin{aligned}
+P(X = 1 \; \text{and} \; Y = -1) &amp; = \frac{p}{2}, \\
+P(X = 1 \; \text{and} \; Y = 3) &amp; = \frac{1-p}{2}, \\
+P(X = 3 \; \text{and} \; Y = -1) &amp; = \frac{1-p}{2}, \\
+P(X = 3 \; \text{and} \; Y = 3) &amp; = \frac{p}{2},
+\end{aligned}\end{split}\]</div>
+<p>where <span class="math notranslate nohighlight">\(p\)</span> is a parameter in <span class="math notranslate nohighlight">\([0,1]\)</span> we get to pick. Notice
+that if <span class="math notranslate nohighlight">\(p=1\)</span> then they are both always their minimum or maximum
+values simultaneously, and if <span class="math notranslate nohighlight">\(p=0\)</span> they are guaranteed to take
+their flipped values simultaneously (one is large when the other is
+small and vice versa). If <span class="math notranslate nohighlight">\(p=1/2\)</span>, then the four possibilities are
+all equally likely, and neither should be related. Let’s compute the
+covariance. First, note <span class="math notranslate nohighlight">\(\mu_X = 2\)</span> and <span class="math notranslate nohighlight">\(\mu_Y = 1\)</span>, so we
+may compute using <a class="reference internal" href="#equation-eq-cov-def">()</a>:</p>
+<div class="math notranslate nohighlight" id="equation-chapter-appendix-mathematics-for-deep-learning-random-variables-32">
+<span class="eqno">()<a class="headerlink" href="#equation-chapter-appendix-mathematics-for-deep-learning-random-variables-32" title="Permalink to this equation">¶</a></span>\[\begin{split}\begin{aligned}
+\mathrm{Cov}(X, Y) &amp; = \sum_{i, j} (x_i - \mu_X) (y_j-\mu_Y) p_{ij} \\
+&amp; = (1-2)(-1-1)\frac{p}{2} + (1-2)(3-1)\frac{1-p}{2} + (3-2)(-1-1)\frac{1-p}{2} + (3-2)(3-1)\frac{p}{2} \\
+&amp; = 4p-2.
+\end{aligned}\end{split}\]</div>
+<p>When <span class="math notranslate nohighlight">\(p=1\)</span> (the case where the are both maximally positive or
+negative at the same time) has a covariance of <span class="math notranslate nohighlight">\(2\)</span>. When
+<span class="math notranslate nohighlight">\(p=0\)</span> (the case where they are flipped) the covariance is
+<span class="math notranslate nohighlight">\(-2\)</span>. Finally, when <span class="math notranslate nohighlight">\(p=1/2\)</span> (the case where they are
+unrelated), the covariance is <span class="math notranslate nohighlight">\(0\)</span>. Thus we see that the covariance
+measures how these two random variables are related.</p>
+<p>A quick note on the covariance is that it only measures these linear
+relationships. More complex relationships like <span class="math notranslate nohighlight">\(X = Y^2\)</span> where
+<span class="math notranslate nohighlight">\(Y\)</span> is randomly chosen from <span class="math notranslate nohighlight">\(\{-2, -1, 0, 1, 2\}\)</span> with equal
+probability can be missed. Indeed a quick computation shows that these
+random variables have covariance zero, despite one being a deterministic
+function of the other.</p>
+<p>For continuous random variables, much the same story holds. At this
+point, we are pretty comfortable with doing the transition between
+discrete and continuous, so we will provide the continuous analogue of
+<a class="reference internal" href="#equation-eq-cov-def">()</a> without any derivation.</p>
+<div class="math notranslate nohighlight" id="equation-chapter-appendix-mathematics-for-deep-learning-random-variables-33">
+<span class="eqno">()<a class="headerlink" href="#equation-chapter-appendix-mathematics-for-deep-learning-random-variables-33" title="Permalink to this equation">¶</a></span>\[\sigma_{XY} = \int_{\mathbb{R}^2} (x-\mu_X)(y-\mu_Y)p(x, y) \;dx \;dy.\]</div>
+<p>For visualization, let’s take a look at a collection of random variables
+with tunable covariance.</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1"># Plot a few random variables adjustable covariance</span>
+<span class="n">covs</span> <span class="o">=</span> <span class="p">[</span><span class="o">-</span><span class="mf">0.9</span><span class="p">,</span> <span class="mf">0.0</span><span class="p">,</span> <span class="mf">1.2</span><span class="p">]</span>
+<span class="n">d2l</span><span class="o">.</span><span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">12</span><span class="p">,</span> <span class="mi">3</span><span class="p">))</span>
+<span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">3</span><span class="p">):</span>
+    <span class="n">X</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">normal</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">500</span><span class="p">)</span>
+    <span class="n">Y</span> <span class="o">=</span> <span class="n">covs</span><span class="p">[</span><span class="n">i</span><span class="p">]</span><span class="o">*</span><span class="n">X</span> <span class="o">+</span> <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">normal</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">500</span><span class="p">)</span>
+
+    <span class="n">d2l</span><span class="o">.</span><span class="n">plt</span><span class="o">.</span><span class="n">subplot</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">4</span><span class="p">,</span> <span class="n">i</span><span class="o">+</span><span class="mi">1</span><span class="p">)</span>
+    <span class="n">d2l</span><span class="o">.</span><span class="n">plt</span><span class="o">.</span><span class="n">scatter</span><span class="p">(</span><span class="n">X</span><span class="o">.</span><span class="n">asnumpy</span><span class="p">(),</span> <span class="n">Y</span><span class="o">.</span><span class="n">asnumpy</span><span class="p">())</span>
+    <span class="n">d2l</span><span class="o">.</span><span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s1">&#39;X&#39;</span><span class="p">)</span>
+    <span class="n">d2l</span><span class="o">.</span><span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s1">&#39;Y&#39;</span><span class="p">)</span>
+    <span class="n">d2l</span><span class="o">.</span><span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s2">&quot;cov = </span><span class="si">{}</span><span class="s2">&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">covs</span><span class="p">[</span><span class="n">i</span><span class="p">]))</span>
+<span class="n">d2l</span><span class="o">.</span><span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</pre></div>
+</div>
+<div class="figure align-default">
+<img alt="../_images/output_random-variables_ba5047_15_0.svg" src="../_images/output_random-variables_ba5047_15_0.svg" /></div>
+<p>Let’s see some properties of covariances:</p>
+<ul class="simple">
+<li><p>For any random variable <span class="math notranslate nohighlight">\(X\)</span>,
+<span class="math notranslate nohighlight">\(\mathrm{Cov}(X, X) = \mathrm{Var}(X)\)</span>.</p></li>
+<li><p>For any random variables <span class="math notranslate nohighlight">\(X, Y\)</span> and numbers <span class="math notranslate nohighlight">\(a\)</span> and
+<span class="math notranslate nohighlight">\(b\)</span>,
+<span class="math notranslate nohighlight">\(\mathrm{Cov}(aX+b, Y) = \mathrm{Cov}(X, aY+b) = a\mathrm{Cov}(X, Y)\)</span>.</p></li>
+<li><p>If <span class="math notranslate nohighlight">\(X\)</span> and <span class="math notranslate nohighlight">\(Y\)</span> are independent then
+<span class="math notranslate nohighlight">\(\mathrm{Cov}(X, Y) = 0\)</span>.</p></li>
+</ul>
+<p>In addition, we can use the covariance to expand a relationship we saw
+before. Recall that is <span class="math notranslate nohighlight">\(X\)</span> and <span class="math notranslate nohighlight">\(Y\)</span> are two independent
+random variables then</p>
+<div class="math notranslate nohighlight" id="equation-chapter-appendix-mathematics-for-deep-learning-random-variables-34">
+<span class="eqno">()<a class="headerlink" href="#equation-chapter-appendix-mathematics-for-deep-learning-random-variables-34" title="Permalink to this equation">¶</a></span>\[\mathrm{Var}(X+Y) = \mathrm{Var}(X) + \mathrm{Var}(Y).\]</div>
+<p>With knowledge of covariances, we can expand this relationship. Indeed,
+some algebra can show that in general,</p>
+<div class="math notranslate nohighlight" id="equation-chapter-appendix-mathematics-for-deep-learning-random-variables-35">
+<span class="eqno">()<a class="headerlink" href="#equation-chapter-appendix-mathematics-for-deep-learning-random-variables-35" title="Permalink to this equation">¶</a></span>\[\mathrm{Var}(X+Y) = \mathrm{Var}(X) + \mathrm{Var}(Y) + 2\mathrm{Cov}(X, Y).\]</div>
+<p>This allows us to generalize the variance summation rule for correlated
+random variables.</p>
+</div>
+<div class="section" id="correlation">
+<h3>Correlation<a class="headerlink" href="#correlation" title="Permalink to this headline">¶</a></h3>
+<p>As we did in the case of means and variances, let’s now consider units.
+If <span class="math notranslate nohighlight">\(X\)</span> is measured in one unit (say inches), and <span class="math notranslate nohighlight">\(Y\)</span> is
+measured in another (say dollars), the covariance is measured in the
+product of these two units <span class="math notranslate nohighlight">\(\text{inches} \times \text{dollars}\)</span>.
+These units can be hard to interpret. What we will often want in this
+case is a unit-less measurement of relatedness. Indeed, often we do not
+care about exact quantitative correlation, but rather ask if the
+correlation is in the same direction, and how strong the relationship
+is.</p>
+<p>To see what makes sense, let’s perform a thought experiment. Suppose
+that we convert our random variables in inches and dollars to be in
+inches and cents. In this case the random variable <span class="math notranslate nohighlight">\(Y\)</span> is
+multiplied by <span class="math notranslate nohighlight">\(100\)</span>. If we work through the definition, this means
+that <span class="math notranslate nohighlight">\(\mathrm{Cov}(X, Y)\)</span> will be multiplied by <span class="math notranslate nohighlight">\(100\)</span>. Thus
+we see that in this case a change of units change the covariance by a
+factor of <span class="math notranslate nohighlight">\(100\)</span>. Thus, to find our unit-invariant measure of
+correlation, we will need to divide by something else that also gets
+scaled by <span class="math notranslate nohighlight">\(100\)</span>. Indeed we have a clear candidate, the standard
+deviation! Indeed if we define the <em>correlation coefficient</em> to be</p>
+<div class="math notranslate nohighlight" id="equation-eq-cor-def">
+<span class="eqno">()<a class="headerlink" href="#equation-eq-cor-def" title="Permalink to this equation">¶</a></span>\[\rho(X, Y) = \frac{\mathrm{Cov}(X, Y)}{\sigma_{X}\sigma_{Y}},\]</div>
+<p>we see that this is a unit-less value. A little mathematics can show
+that this number is between <span class="math notranslate nohighlight">\(-1\)</span> and <span class="math notranslate nohighlight">\(1\)</span> with <span class="math notranslate nohighlight">\(1\)</span>
+meaning maximally positively correlated, whereas <span class="math notranslate nohighlight">\(-1\)</span> means
+maximally negatively correlated.</p>
+<p>Returning to our explicit discrete example above, we can see that
+<span class="math notranslate nohighlight">\(\sigma_X = 1\)</span> and <span class="math notranslate nohighlight">\(\sigma_Y = 2\)</span>, so we can compute the
+correlation between the two random variables using <a class="reference internal" href="#equation-eq-cor-def">()</a>
+to see that</p>
+<div class="math notranslate nohighlight" id="equation-chapter-appendix-mathematics-for-deep-learning-random-variables-36">
+<span class="eqno">()<a class="headerlink" href="#equation-chapter-appendix-mathematics-for-deep-learning-random-variables-36" title="Permalink to this equation">¶</a></span>\[\rho(X, Y) = \frac{4p-2}{1\cdot 2} = 2p-1.\]</div>
+<p>This now ranges between <span class="math notranslate nohighlight">\(-1\)</span> and <span class="math notranslate nohighlight">\(1\)</span> with the expected
+behavior of <span class="math notranslate nohighlight">\(1\)</span> meaning most correlated, and <span class="math notranslate nohighlight">\(-1\)</span> meaning
+minimally correlated.</p>
+<p>As another example, consider <span class="math notranslate nohighlight">\(X\)</span> as any random variable, and
+<span class="math notranslate nohighlight">\(Y=aX+b\)</span> as any linear deterministic function of <span class="math notranslate nohighlight">\(X\)</span>. Then,
+one can compute that</p>
+<div class="math notranslate nohighlight" id="equation-chapter-appendix-mathematics-for-deep-learning-random-variables-37">
+<span class="eqno">()<a class="headerlink" href="#equation-chapter-appendix-mathematics-for-deep-learning-random-variables-37" title="Permalink to this equation">¶</a></span>\[\sigma_{Y} = \sigma_{aX+b} = |a|\sigma_{X},\]</div>
+<div class="math notranslate nohighlight" id="equation-chapter-appendix-mathematics-for-deep-learning-random-variables-38">
+<span class="eqno">()<a class="headerlink" href="#equation-chapter-appendix-mathematics-for-deep-learning-random-variables-38" title="Permalink to this equation">¶</a></span>\[\mathrm{Cov}(X, Y) = \mathrm{Cov}(X, aX+b) = a\mathrm{Cov}(X, X) = a\mathrm{Var}(X),\]</div>
+<p>and thus by <a class="reference internal" href="#equation-eq-cor-def">()</a> that</p>
+<div class="math notranslate nohighlight" id="equation-chapter-appendix-mathematics-for-deep-learning-random-variables-39">
+<span class="eqno">()<a class="headerlink" href="#equation-chapter-appendix-mathematics-for-deep-learning-random-variables-39" title="Permalink to this equation">¶</a></span>\[\rho(X, Y) = \frac{a\mathrm{Var}(X)}{|a|\sigma_{X}^2} = \frac{a}{|a|} = \mathrm{sign}(a).\]</div>
+<p>Thus we see that the correlation is <span class="math notranslate nohighlight">\(+1\)</span> for any <span class="math notranslate nohighlight">\(a &gt; 0\)</span>,
+and <span class="math notranslate nohighlight">\(-1\)</span> for any <span class="math notranslate nohighlight">\(a &lt; 0\)</span> illustrating that correlation
+measures the degree and directionality the two random variables are
+related, not the scale that the variation takes.</p>
+<p>Let’s again plot a collection of random variables with tunable
+correlation.</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1"># Plot a few random variables adjustable correlations</span>
+<span class="n">cors</span> <span class="o">=</span> <span class="p">[</span><span class="o">-</span><span class="mf">0.9</span><span class="p">,</span> <span class="mf">0.0</span><span class="p">,</span> <span class="mf">1.0</span><span class="p">]</span>
+<span class="n">d2l</span><span class="o">.</span><span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">12</span><span class="p">,</span> <span class="mi">3</span><span class="p">))</span>
+<span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">3</span><span class="p">):</span>
+    <span class="n">X</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">normal</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">500</span><span class="p">)</span>
+    <span class="n">Y</span> <span class="o">=</span> <span class="n">cors</span><span class="p">[</span><span class="n">i</span><span class="p">]</span> <span class="o">*</span> <span class="n">X</span> <span class="o">+</span> <span class="n">np</span><span class="o">.</span><span class="n">sqrt</span><span class="p">(</span><span class="mi">1</span> <span class="o">-</span> <span class="n">cors</span><span class="p">[</span><span class="n">i</span><span class="p">]</span><span class="o">**</span><span class="mi">2</span><span class="p">)</span> <span class="o">*</span> <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">normal</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">500</span><span class="p">)</span>
+
+    <span class="n">d2l</span><span class="o">.</span><span class="n">plt</span><span class="o">.</span><span class="n">subplot</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">4</span><span class="p">,</span> <span class="n">i</span> <span class="o">+</span> <span class="mi">1</span><span class="p">)</span>
+    <span class="n">d2l</span><span class="o">.</span><span class="n">plt</span><span class="o">.</span><span class="n">scatter</span><span class="p">(</span><span class="n">X</span><span class="o">.</span><span class="n">asnumpy</span><span class="p">(),</span> <span class="n">Y</span><span class="o">.</span><span class="n">asnumpy</span><span class="p">())</span>
+    <span class="n">d2l</span><span class="o">.</span><span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s1">&#39;X&#39;</span><span class="p">)</span>
+    <span class="n">d2l</span><span class="o">.</span><span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s1">&#39;Y&#39;</span><span class="p">)</span>
+    <span class="n">d2l</span><span class="o">.</span><span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s2">&quot;cor = </span><span class="si">{}</span><span class="s2">&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">cors</span><span class="p">[</span><span class="n">i</span><span class="p">]))</span>
+<span class="n">d2l</span><span class="o">.</span><span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</pre></div>
+</div>
+<div class="figure align-default">
+<img alt="../_images/output_random-variables_ba5047_17_0.svg" src="../_images/output_random-variables_ba5047_17_0.svg" /></div>
+<p>Let’s list a few properties of the correlation below.</p>
+<ul class="simple">
+<li><p>For any random variable <span class="math notranslate nohighlight">\(X\)</span>, <span class="math notranslate nohighlight">\(\rho(X, X) = 1\)</span>.</p></li>
+<li><p>For any random variables <span class="math notranslate nohighlight">\(X, Y\)</span> and numbers <span class="math notranslate nohighlight">\(a\)</span> and
+<span class="math notranslate nohighlight">\(b\)</span>, <span class="math notranslate nohighlight">\(\rho(aX+b, Y) = \rho(X, aY+b) = \rho(X, Y)\)</span>.</p></li>
+<li><p>If <span class="math notranslate nohighlight">\(X\)</span> and <span class="math notranslate nohighlight">\(Y\)</span> are independent with non-zero variance
+then <span class="math notranslate nohighlight">\(\rho(X, Y) = 0\)</span>.</p></li>
+</ul>
+<p>As a final note, you may feel like some of these formulae are familiar.
+Indeed, if we expand everything out assuming that
+<span class="math notranslate nohighlight">\(\mu_X = \mu_Y = 0\)</span>, we see that this is</p>
+<div class="math notranslate nohighlight" id="equation-chapter-appendix-mathematics-for-deep-learning-random-variables-40">
+<span class="eqno">()<a class="headerlink" href="#equation-chapter-appendix-mathematics-for-deep-learning-random-variables-40" title="Permalink to this equation">¶</a></span>\[\rho(X, Y) = \frac{\sum_{i, j} x_iy_ip_{ij}}{\sqrt{\sum_{i, j}x_i^2 p_{ij}}\sqrt{\sum_{i, j}y_j^2 p_{ij}}}.\]</div>
+<p>This looks like a sum of a product of terms divided by the square root
+of sums of terms. This is exactly the formula for the cosine of the
+angle between two vectors <span class="math notranslate nohighlight">\(\mathbf{v}, \mathbf{w}\)</span> with the
+different coordinates weighted by <span class="math notranslate nohighlight">\(p_{ij}\)</span>:</p>
+<div class="math notranslate nohighlight" id="equation-chapter-appendix-mathematics-for-deep-learning-random-variables-41">
+<span class="eqno">()<a class="headerlink" href="#equation-chapter-appendix-mathematics-for-deep-learning-random-variables-41" title="Permalink to this equation">¶</a></span>\[\cos(\theta) = \frac{\mathbf{v}\cdot \mathbf{w}}{\|\mathbf{v}\|\|\mathbf{w}\|} = \frac{\sum_{i} v_iw_i}{\sqrt{\sum_{i}v_i^2}\sqrt{\sum_{i}w_i^2}}.\]</div>
+<p>Indeed if we think of norms as being related to standard deviations, and
+correlations as being cosines of angles, much of the intuition we have
+from geometry can be applied to thinking about random variables.</p>
+</div>
+</div>
+<div class="section" id="summary">
+<h2>Summary<a class="headerlink" href="#summary" title="Permalink to this headline">¶</a></h2>
+<ul class="simple">
+<li><p>Continuous random variables are random variables that can take on a
+continuum of values. They have some technical difficulties that make
+them more challenging to work with compared to discrete random
+variables.</p></li>
+<li><p>The probability density function allows us to work with continuous
+random variables by giving a function where the area under the curve
+on some interval gives the probability of finding a sample point in
+that interval.</p></li>
+<li><p>The cumulative distribution function is the probability of observing
+the random variable to be less than a given threshold. It can provide
+a useful alternate viewpoint which unifies discrete and continuous
+variables.</p></li>
+<li><p>The mean is the average value of a random variable.</p></li>
+<li><p>The variance is the expected square of the difference between the
+random variable and its mean.</p></li>
+<li><p>The standard deviation is the square root of the variance. It can be
+thought of as measuring the range of values the random variable may
+take.</p></li>
+<li><p>Chebychev’s inequality allows us to make this intuition rigorous by
+giving an explicit interval that contains the random variable most of
+the time.</p></li>
+<li><p>Joint densities allow us to work with correlated random variables. We
+may marginalize joint densities by integrating over unwanted random
+variables to get the distribution of the desired random variable.</p></li>
+<li><p>The covariance and correlation coefficient provide a way to measure
+any linear relationship between two correlated random variables.</p></li>
+</ul>
+</div>
+<div class="section" id="exercises">
+<h2>Exercises<a class="headerlink" href="#exercises" title="Permalink to this headline">¶</a></h2>
+<ol class="arabic simple">
+<li><p>Suppose that we have the random variable with density given by
+<span class="math notranslate nohighlight">\(p(x) = \frac{1}{x^2}\)</span> for <span class="math notranslate nohighlight">\(x \ge 1\)</span> and <span class="math notranslate nohighlight">\(p(x) = 0\)</span>
+otherwise. What is <span class="math notranslate nohighlight">\(P(X &gt; 2)\)</span>?</p></li>
+<li><p>The Laplace distribution is a random variable whose density is given
+by <span class="math notranslate nohighlight">\(p(x = \frac{1}{2}e^{-|x|}\)</span>. What is the mean and the
+standard deviation of this function? As a hint,
+<span class="math notranslate nohighlight">\(\int_0^\infty xe^{-x} \; dx = 1\)</span> and
+<span class="math notranslate nohighlight">\(\int_0^\infty x^2e^{-x} \; dx = 2\)</span>.</p></li>
+<li><p>I walk up to you on the street and say “I have a random variable with
+mean <span class="math notranslate nohighlight">\(1\)</span>, standard deviation <span class="math notranslate nohighlight">\(2\)</span>, and I observed
+<span class="math notranslate nohighlight">\(25\%\)</span> of my samples taking a value larger than <span class="math notranslate nohighlight">\(9\)</span>.” Do
+you believe me? Why or why not?</p></li>
+<li><p>Suppose that you have two random variables <span class="math notranslate nohighlight">\(X, Y\)</span>, with joint
+density given by <span class="math notranslate nohighlight">\(p_{XY}(x, y) = 4xy\)</span> for
+<span class="math notranslate nohighlight">\(x, y \in [0,1]\)</span> and <span class="math notranslate nohighlight">\(p_{XY}(x, y) = 0\)</span> otherwise. What
+is the covariance of <span class="math notranslate nohighlight">\(X\)</span> and <span class="math notranslate nohighlight">\(Y\)</span>?</p></li>
+</ol>
+</div>
+<div class="section" id="discussions">
+<h2><a class="reference external" href="https://discuss.mxnet.io/t/5152">Discussions</a><a class="headerlink" href="#discussions" title="Permalink to this headline">¶</a></h2>
+<p><img alt="image0" src="../_images/qr_random-variables.svg" /></p>
+</div>
+</div>
+
+
+        </div>
+        <div class="side-doc-outline">
+            <div class="side-doc-outline--content"> 
+<div class="localtoc">
+    <p class="caption">
+      <span class="caption-text">Table Of Contents</span>
+    </p>
+    <ul>
+<li><a class="reference internal" href="#">Random Variables</a><ul>
+<li><a class="reference internal" href="#continuous-random-variables">Continuous Random Variables</a><ul>
+<li><a class="reference internal" href="#from-discrete-to-continuous">From Discrete to Continuous</a></li>
+<li><a class="reference internal" href="#probability-density-functions">Probability Density Functions</a></li>
+<li><a class="reference internal" href="#cumulative-distribution-functions">Cumulative Distribution Functions</a></li>
+<li><a class="reference internal" href="#means">Means</a></li>
+<li><a class="reference internal" href="#variances">Variances</a></li>
+<li><a class="reference internal" href="#standard-deviations">Standard Deviations</a></li>
+<li><a class="reference internal" href="#means-and-variances-in-the-continuum">Means and Variances in the Continuum</a></li>
+<li><a class="reference internal" href="#joint-density-functions">Joint Density Functions</a></li>
+<li><a class="reference internal" href="#marginal-distributions">Marginal Distributions</a></li>
+<li><a class="reference internal" href="#covariance">Covariance</a></li>
+<li><a class="reference internal" href="#correlation">Correlation</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#summary">Summary</a></li>
+<li><a class="reference internal" href="#exercises">Exercises</a></li>
+<li><a class="reference internal" href="#discussions">Discussions</a></li>
+</ul>
+</li>
+</ul>
+
+</div>
+            </div>
+        </div>
+
+      <div class="clearer"></div>
+    </div><div class="pagenation">
+  </div>
+        
+        </main>
+    </div>
+  </body>
+</html>

@@ -1,0 +1,784 @@
+<!DOCTYPE html>
+
+<html xmlns="http://www.w3.org/1999/xhtml" lang="ar">
+  <head>
+    <meta charset="utf-8" />
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta http-equiv="x-ua-compatible" content="ie=edge">
+    
+    <title>2.6. Probability &#8212; تعمّق في التعلّم العميق 0.7.1 documentation</title>
+
+    <link rel="stylesheet" href="../_static/basic.css" type="text/css" />
+    <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+    <link rel="stylesheet" href="../_static/material-design-lite-1.3.0/material.blue-deep_orange.min.css" type="text/css" />
+    <link rel="stylesheet" href="../_static/sphinx_materialdesign_theme.css" type="text/css" />
+    <link rel="stylesheet" href="../_static/fontawesome/all.css" type="text/css" />
+    <link rel="stylesheet" href="../_static/fonts.css" type="text/css" />
+    <link rel="stylesheet" type="text/css" href="../_static/d2l.css" />
+    <script type="text/javascript" id="documentation_options" data-url_root="../" src="../_static/documentation_options.js"></script>
+    <script type="text/javascript" src="../_static/jquery.js"></script>
+    <script type="text/javascript" src="../_static/underscore.js"></script>
+    <script type="text/javascript" src="../_static/doctools.js"></script>
+    <script type="text/javascript" src="../_static/language_data.js"></script>
+    <script type="text/javascript" src="../_static/d2l.js"></script>
+    <script type="text/javascript" src="../_static/translations.js"></script>
+    <script async="async" type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/latest.js?config=TeX-AMS-MML_HTMLorMML"></script>
+    <link rel="shortcut icon" href="../_static/favicon.png"/>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="2.7. Documentation" href="lookup-api.html" />
+    <link rel="prev" title="2.5. Automatic Differentiation" href="autograd.html" /> 
+  </head>
+<body>
+    <div class="mdl-layout mdl-js-layout mdl-layout--fixed-header "><header class="mdl-layout__header mdl-layout__header--waterfall ">
+    <div class="mdl-layout__header-row">
+        
+        <nav class="mdl-navigation breadcrumb">
+            <a class="mdl-navigation__link" href="index.html"><span class="section-number">2. </span>التمهيدات</a><i class="material-icons">navigate_next</i>
+            <a class="mdl-navigation__link is-active"><span class="section-number">2.6. </span>Probability</a>
+        </nav>
+        <div class="mdl-layout-spacer"></div>
+        <nav class="mdl-navigation">
+        
+<form class="form-inline pull-sm-right" action="../search.html" method="get">
+      <div class="mdl-textfield mdl-js-textfield mdl-textfield--expandable mdl-textfield--floating-label mdl-textfield--align-right">
+        <label id="quick-search-icon" class="mdl-button mdl-js-button mdl-button--icon"  for="waterfall-exp">
+          <i class="material-icons">search</i>
+        </label>
+        <div class="mdl-textfield__expandable-holder">
+          <input class="mdl-textfield__input" type="text" name="q"  id="waterfall-exp" placeholder="Search" />
+          <input type="hidden" name="check_keywords" value="yes" />
+          <input type="hidden" name="area" value="default" />
+        </div>
+      </div>
+      <div class="mdl-tooltip" data-mdl-for="quick-search-icon">
+      Quick search
+      </div>
+</form>
+        
+<a id="button-show-source"
+    class="mdl-button mdl-js-button mdl-button--icon"
+    href="../_sources/chapter_preliminaries/probability.rst.txt" rel="nofollow">
+  <i class="material-icons">code</i>
+</a>
+<div class="mdl-tooltip" data-mdl-for="button-show-source">
+Show Source
+</div>
+        </nav>
+    </div>
+    <div class="mdl-layout__header-row header-links">
+      <div class="mdl-layout-spacer"></div>
+      <nav class="mdl-navigation">
+          
+              <a  class="mdl-navigation__link" href="https://courses.d2l.ai">
+                  <i class="fas fa-user-graduate"></i>
+                  Courses
+              </a>
+          
+              <a  class="mdl-navigation__link" href="https://d2l.ai/d2l-en.pdf">
+                  <i class="fas fa-file-pdf"></i>
+                  PDF
+              </a>
+          
+              <a  class="mdl-navigation__link" href="https://d2l.ai/d2l-en.zip">
+                  <i class="fas fa-download"></i>
+                  All Notebooks
+              </a>
+          
+              <a  class="mdl-navigation__link" href="https://discuss.mxnet.io">
+                  <i class="fab fa-discourse"></i>
+                  Discuss
+              </a>
+          
+              <a  class="mdl-navigation__link" href="https://github.com/d2l-ai/d2l-en">
+                  <i class="fab fa-github"></i>
+                  GitHub
+              </a>
+          
+              <a  class="mdl-navigation__link" href="https://zh.d2l.ai">
+                  <i class="fas fa-external-link-alt"></i>
+                  中文版
+              </a>
+      </nav>
+    </div>
+</header><header class="mdl-layout__drawer">
+    
+          <!-- Title -->
+      <span class="mdl-layout-title">
+          <a class="title" href="../index.html">
+              <img class="logo" src="../_static/logo-with-text.png" alt="تعمّق في التعلّم العميق"/>
+          </a>
+      </span>
+    
+    
+      <div class="globaltoc">
+        <span class="mdl-layout-title toc">Table Of Contents</span>
+        
+        
+            
+            <nav class="mdl-navigation">
+                <ul>
+<li class="toctree-l1"><a class="reference internal" href="../chapter_preface/index.html">Preface</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../chapter_notation/index.html">الّرموز</a></li>
+</ul>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../chapter_introduction/index.html">1. مقدّمة</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="index.html">2. التمهيدات</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="ndarray.html">2.1. معالجة البيانات</a></li>
+<li class="toctree-l2"><a class="reference internal" href="pandas.html">2.2. Data Preprocessing</a></li>
+<li class="toctree-l2"><a class="reference internal" href="linear-algebra.html">2.3. Linear Algebra</a></li>
+<li class="toctree-l2"><a class="reference internal" href="calculus.html">2.4. Calculus</a></li>
+<li class="toctree-l2"><a class="reference internal" href="autograd.html">2.5. Automatic Differentiation</a></li>
+<li class="toctree-l2 current"><a class="current reference internal" href="#">2.6. Probability</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lookup-api.html">2.7. Documentation</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../chapter_appendix-math-and-keywords-translations/index.html">3. ملحق: ترجمة الألفاظ التقنية و الرياضية</a></li>
+</ul>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../chapter_references/zreferences.html">المراجع</a></li>
+</ul>
+
+            </nav>
+        
+        </div>
+    
+</header>
+        <main class="mdl-layout__content" tabIndex="0">
+
+	<script type="text/javascript" src="../_static/sphinx_materialdesign_theme.js "></script>
+    <header class="mdl-layout__drawer">
+    
+          <!-- Title -->
+      <span class="mdl-layout-title">
+          <a class="title" href="../index.html">
+              <img class="logo" src="../_static/logo-with-text.png" alt="تعمّق في التعلّم العميق"/>
+          </a>
+      </span>
+    
+    
+      <div class="globaltoc">
+        <span class="mdl-layout-title toc">Table Of Contents</span>
+        
+        
+            
+            <nav class="mdl-navigation">
+                <ul>
+<li class="toctree-l1"><a class="reference internal" href="../chapter_preface/index.html">Preface</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../chapter_notation/index.html">الّرموز</a></li>
+</ul>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../chapter_introduction/index.html">1. مقدّمة</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="index.html">2. التمهيدات</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="ndarray.html">2.1. معالجة البيانات</a></li>
+<li class="toctree-l2"><a class="reference internal" href="pandas.html">2.2. Data Preprocessing</a></li>
+<li class="toctree-l2"><a class="reference internal" href="linear-algebra.html">2.3. Linear Algebra</a></li>
+<li class="toctree-l2"><a class="reference internal" href="calculus.html">2.4. Calculus</a></li>
+<li class="toctree-l2"><a class="reference internal" href="autograd.html">2.5. Automatic Differentiation</a></li>
+<li class="toctree-l2 current"><a class="current reference internal" href="#">2.6. Probability</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lookup-api.html">2.7. Documentation</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../chapter_appendix-math-and-keywords-translations/index.html">3. ملحق: ترجمة الألفاظ التقنية و الرياضية</a></li>
+</ul>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../chapter_references/zreferences.html">المراجع</a></li>
+</ul>
+
+            </nav>
+        
+        </div>
+    
+</header>
+
+    <div class="document">
+        <div class="page-content" role="main">
+        
+  <div class="section" id="probability">
+<span id="sec-prob"></span><h1><span class="section-number">2.6. </span>Probability<a class="headerlink" href="#probability" title="Permalink to this headline">¶</a><a href="https://colab.research.google.com/github/d2l-ai/d2l-en-colab/blob/master/chapter_preliminaries/probability.ipynb" onclick="captureOutboundLink('https://colab.research.google.com/github/d2l-ai/d2l-en-colab/blob/master/chapter_preliminaries/probability.ipynb'); return false;"> <button style="float:right", id="colab" class="mdl-button mdl-js-button mdl-button--primary mdl-js-ripple-effect"> <i class=" fas fa-external-link-alt"></i> Colab </button></a><div class="mdl-tooltip" data-mdl-for="colab"> Open the notebook in Colab</div></h1>
+<p>In some form or another, machine learning is all about making
+predictions. We might want to predict the <em>probability</em> of a patient
+suffering a heart attack in the next year, given their clinical history.
+In anomaly detection, we might want to assess how <em>likely</em> a set of
+readings from an airplane’s jet engine would be, were it operating
+normally. In reinforcement learning, we want an agent to act
+intelligently in an environment. This means we need to think about the
+probability of getting a high reward under each of the available action.
+And when we build recommender systems we also need to think about
+probability. For example, say <em>hypothetically</em> that we worked for a
+large online bookseller. We might want to estimate the probability that
+a particular user would buy a particular book. For this we need to use
+the language of probability. Entire courses, majors, theses, careers,
+and even departments, are devoted to probability. So naturally, our goal
+in this section is not to teach the whole subject. Instead we hope to
+get you off the ground, to teach you just enough that you can start
+building your first deep learning models, and to give you enough of a
+flavor for the subject that you can begin to explore it on your own if
+you wish.</p>
+<p>We have already invoked probabilities in previous sections without
+articulating what precisely they are or giving a concrete example. Let’s
+get more serious now by considering the first case: distinguishing cats
+and dogs based on photographs. This might sound simple but it is
+actually a formidable challenge. To start with, the difficulty of the
+problem may depend on the resolution of the image.</p>
+<div class="figure align-default" id="id1">
+<span id="fig-cat-dog"></span><a class="reference internal image-reference" href="../_images/cat_dog_pixels.png"><img alt="../_images/cat_dog_pixels.png" src="../_images/cat_dog_pixels.png" style="width: 300px;" /></a>
+<p class="caption"><span class="caption-number">Fig. 2.6.1 </span><span class="caption-text">Images of varying resolutions (<span class="math notranslate nohighlight">\(10 \times 10\)</span>,
+<span class="math notranslate nohighlight">\(20 \times 20\)</span>, <span class="math notranslate nohighlight">\(40 \times 40\)</span>, <span class="math notranslate nohighlight">\(80 \times 80\)</span>, and
+<span class="math notranslate nohighlight">\(160 \times 160\)</span> pixels).</span><a class="headerlink" href="#id1" title="Permalink to this image">¶</a></p>
+</div>
+<p>As shown in <a class="reference internal" href="#fig-cat-dog"><span class="std std-numref">Fig. 2.6.1</span></a>, while it is easy for humans to
+recognize cats and dogs at the resolution of <span class="math notranslate nohighlight">\(160 \times 160\)</span>
+pixels, it becomes challenging at <span class="math notranslate nohighlight">\(40 \times 40\)</span> pixels and next
+to impossible at <span class="math notranslate nohighlight">\(10 \times 10\)</span> pixels. In other words, our
+ability to tell cats and dogs apart at a large distance (and thus low
+resolution) might approach uninformed guessing. Probability gives us a
+formal way of reasoning about our level of certainty. If we are
+completely sure that the image depicts a cat, we say that the
+<em>probability</em> that the corresponding label <span class="math notranslate nohighlight">\(y\)</span> is “cat”, denoted
+<span class="math notranslate nohighlight">\(P(y=\)</span> “cat”<span class="math notranslate nohighlight">\()\)</span> equals <span class="math notranslate nohighlight">\(1\)</span>. If we had no evidence to
+suggest that <span class="math notranslate nohighlight">\(y =\)</span> “cat” or that <span class="math notranslate nohighlight">\(y =\)</span> “dog”, then we might
+say that the two possibilities were equally <em>likely</em> expressing this as
+<span class="math notranslate nohighlight">\(P(y=\)</span> “cat”<span class="math notranslate nohighlight">\() = P(y=\)</span> “dog”<span class="math notranslate nohighlight">\() = 0.5\)</span>. If we were
+reasonably confident, but not sure that the image depicted a cat, we
+might assign a probability <span class="math notranslate nohighlight">\(0.5 &lt; P(y=\)</span> “cat”<span class="math notranslate nohighlight">\() &lt; 1\)</span>.</p>
+<p>Now consider the second case: given some weather monitoring data, we
+want to predict the probability that it will rain in Taipei tomorrow. If
+it is summertime, the rain might come with probability <span class="math notranslate nohighlight">\(0.5\)</span>.</p>
+<p>In both cases, we have some value of interest. And in both cases we are
+uncertain about the outcome. But there is a key difference between the
+two cases. In this first case, the image is in fact either a dog or a
+cat, and we just do not know which. In the second case, the outcome may
+actually be a random event, if you believe in such things (and most
+physicists do). So probability is a flexible language for reasoning
+about our level of certainty, and it can be applied effectively in a
+broad set of contexts.</p>
+<div class="section" id="basic-probability-theory">
+<h2><span class="section-number">2.6.1. </span>Basic Probability Theory<a class="headerlink" href="#basic-probability-theory" title="Permalink to this headline">¶</a></h2>
+<p>Say that we cast a die and want to know what the chance is of seeing a
+<span class="math notranslate nohighlight">\(1\)</span> rather than another digit. If the die is fair, all the
+<span class="math notranslate nohighlight">\(6\)</span> outcomes <span class="math notranslate nohighlight">\(\{1, \ldots, 6\}\)</span> are equally likely to occur,
+and thus we would see a <span class="math notranslate nohighlight">\(1\)</span> in one out of six cases. Formally we
+state that <span class="math notranslate nohighlight">\(1\)</span> occurs with probability <span class="math notranslate nohighlight">\(\frac{1}{6}\)</span>.</p>
+<p>For a real die that we receive from a factory, we might not know those
+proportions and we would need to check whether it is tainted. The only
+way to investigate the die is by casting it many times and recording the
+outcomes. For each cast of the die, we will observe a value in
+<span class="math notranslate nohighlight">\(\{1, \ldots, 6\}\)</span>. Given these outcomes, we want to investigate
+the probability of observing each outcome.</p>
+<p>One natural approach for each value is to take the individual count for
+that value and to divide it by the total number of tosses. This gives us
+an <em>estimate</em> of the probability of a given <em>event</em>. The <em>law of large
+numbers</em> tell us that as the number of tosses grows this estimate will
+draw closer and closer to the true underlying probability. Before going
+into the details of what is going here, let’s try it out.</p>
+<p>To start, let’s import the necessary packages.</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="o">%</span><span class="n">matplotlib</span> <span class="n">inline</span>
+<span class="kn">import</span> <span class="nn">d2l</span>
+<span class="kn">from</span> <span class="nn">mxnet</span> <span class="kn">import</span> <span class="n">np</span><span class="p">,</span> <span class="n">npx</span>
+<span class="kn">import</span> <span class="nn">random</span>
+<span class="n">npx</span><span class="o">.</span><span class="n">set_np</span><span class="p">()</span>
+</pre></div>
+</div>
+<p>Next, we will want to be able to cast the die. In statistics we call
+this process of drawing examples from probability distributions
+<em>sampling</em>. The distribution that assigns probabilities to a number of
+discrete choices is called the <em>multinomial distribution</em>. We will give
+a more formal definition of <em>distribution</em> later, but at a high level,
+think of it as just an assignment of probabilities to events. In MXNet,
+we can sample from the multinomial distribution via the aptly named
+<code class="docutils literal notranslate"><span class="pre">np.random.multinomial</span></code> function. The function can be called in many
+ways, but we will focus on the simplest. To draw a single sample, we
+simply pass in a vector of probabilities. The output of the
+<code class="docutils literal notranslate"><span class="pre">np.random.multinomial</span></code> function is another vector of the same length:
+its value at index <span class="math notranslate nohighlight">\(i\)</span> is the number of times the sampling outcome
+corresponds to <span class="math notranslate nohighlight">\(i\)</span>.</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">fair_probs</span> <span class="o">=</span> <span class="p">[</span><span class="mf">1.0</span> <span class="o">/</span> <span class="mi">6</span><span class="p">]</span> <span class="o">*</span> <span class="mi">6</span>
+<span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">multinomial</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="n">fair_probs</span><span class="p">)</span>
+</pre></div>
+</div>
+<div class="output highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">array</span><span class="p">([</span><span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">],</span> <span class="n">dtype</span><span class="o">=</span><span class="n">int64</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>If you run the sampler a bunch of times, you will find that you get out
+random values each time. As with estimating the fairness of a die, we
+often want to generate many samples from the same distribution. It would
+be unbearably slow to do this with a Python <code class="docutils literal notranslate"><span class="pre">for</span></code> loop, so
+<code class="docutils literal notranslate"><span class="pre">random.multinomial</span></code> supports drawing multiple samples at once,
+returning an array of independent samples in any shape we might desire.</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">multinomial</span><span class="p">(</span><span class="mi">10</span><span class="p">,</span> <span class="n">fair_probs</span><span class="p">)</span>
+</pre></div>
+</div>
+<div class="output highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">array</span><span class="p">([</span><span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">5</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">],</span> <span class="n">dtype</span><span class="o">=</span><span class="n">int64</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>We can also conduct, say <span class="math notranslate nohighlight">\(3\)</span>, groups of experiments, where each
+group draws <span class="math notranslate nohighlight">\(10\)</span> samples, all at once.</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">counts</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">multinomial</span><span class="p">(</span><span class="mi">10</span><span class="p">,</span> <span class="n">fair_probs</span><span class="p">,</span> <span class="n">size</span><span class="o">=</span><span class="mi">3</span><span class="p">)</span>
+<span class="n">counts</span>
+</pre></div>
+</div>
+<div class="output highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">array</span><span class="p">([[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">4</span><span class="p">,</span> <span class="mi">0</span><span class="p">],</span>
+       <span class="p">[</span><span class="mi">3</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">2</span><span class="p">],</span>
+       <span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">]],</span> <span class="n">dtype</span><span class="o">=</span><span class="n">int64</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>Now that we know how to sample rolls of a die, we can simulate 1000
+rolls. We can then go through and count, after each of the 1000 rolls,
+how many times each number was rolled. Specifically, we calculate the
+relative frequency as the estimate of the true probability.</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1"># Store the results as 32-bit floats for division</span>
+<span class="n">counts</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">multinomial</span><span class="p">(</span><span class="mi">1000</span><span class="p">,</span> <span class="n">fair_probs</span><span class="p">)</span><span class="o">.</span><span class="n">astype</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">float32</span><span class="p">)</span>
+<span class="n">counts</span> <span class="o">/</span> <span class="mi">1000</span>  <span class="c1"># Reletive frequency as the estimate</span>
+</pre></div>
+</div>
+<div class="output highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">array</span><span class="p">([</span><span class="mf">0.164</span><span class="p">,</span> <span class="mf">0.153</span><span class="p">,</span> <span class="mf">0.181</span><span class="p">,</span> <span class="mf">0.163</span><span class="p">,</span> <span class="mf">0.163</span><span class="p">,</span> <span class="mf">0.176</span><span class="p">])</span>
+</pre></div>
+</div>
+<p>Because we generated the data from a fair die, we know that each outcome
+has true probability <span class="math notranslate nohighlight">\(\frac{1}{6}\)</span>, roughly <span class="math notranslate nohighlight">\(0.167\)</span>, so the
+above output estimates look good.</p>
+<p>We can also visualize how these probabilities converge over time towards
+the true probability. Let’s conduct <span class="math notranslate nohighlight">\(500\)</span> groups of experiments
+where each group draws <span class="math notranslate nohighlight">\(10\)</span> samples.</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">counts</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">multinomial</span><span class="p">(</span><span class="mi">10</span><span class="p">,</span> <span class="n">fair_probs</span><span class="p">,</span> <span class="n">size</span><span class="o">=</span><span class="mi">500</span><span class="p">)</span>
+<span class="n">cum_counts</span> <span class="o">=</span> <span class="n">counts</span><span class="o">.</span><span class="n">astype</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">float32</span><span class="p">)</span><span class="o">.</span><span class="n">cumsum</span><span class="p">(</span><span class="n">axis</span><span class="o">=</span><span class="mi">0</span><span class="p">)</span>
+<span class="n">estimates</span> <span class="o">=</span> <span class="n">cum_counts</span> <span class="o">/</span> <span class="n">cum_counts</span><span class="o">.</span><span class="n">sum</span><span class="p">(</span><span class="n">axis</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="n">keepdims</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+
+<span class="n">d2l</span><span class="o">.</span><span class="n">set_figsize</span><span class="p">((</span><span class="mi">6</span><span class="p">,</span> <span class="mf">4.5</span><span class="p">))</span>
+<span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">6</span><span class="p">):</span>
+    <span class="n">d2l</span><span class="o">.</span><span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">estimates</span><span class="p">[:,</span> <span class="n">i</span><span class="p">]</span><span class="o">.</span><span class="n">asnumpy</span><span class="p">(),</span>
+                 <span class="n">label</span><span class="o">=</span><span class="p">(</span><span class="s2">&quot;P(die=&quot;</span> <span class="o">+</span> <span class="nb">str</span><span class="p">(</span><span class="n">i</span> <span class="o">+</span> <span class="mi">1</span><span class="p">)</span> <span class="o">+</span> <span class="s2">&quot;)&quot;</span><span class="p">))</span>
+<span class="n">d2l</span><span class="o">.</span><span class="n">plt</span><span class="o">.</span><span class="n">axhline</span><span class="p">(</span><span class="n">y</span><span class="o">=</span><span class="mf">0.167</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s1">&#39;black&#39;</span><span class="p">,</span> <span class="n">linestyle</span><span class="o">=</span><span class="s1">&#39;dashed&#39;</span><span class="p">)</span>
+<span class="n">d2l</span><span class="o">.</span><span class="n">plt</span><span class="o">.</span><span class="n">gca</span><span class="p">()</span><span class="o">.</span><span class="n">set_xlabel</span><span class="p">(</span><span class="s1">&#39;Groups of experiments&#39;</span><span class="p">)</span>
+<span class="n">d2l</span><span class="o">.</span><span class="n">plt</span><span class="o">.</span><span class="n">gca</span><span class="p">()</span><span class="o">.</span><span class="n">set_ylabel</span><span class="p">(</span><span class="s1">&#39;Estimated probability&#39;</span><span class="p">)</span>
+<span class="n">d2l</span><span class="o">.</span><span class="n">plt</span><span class="o">.</span><span class="n">legend</span><span class="p">();</span>
+</pre></div>
+</div>
+<div class="figure align-default">
+<img alt="../_images/output_probability_bfb2c4_11_0.svg" src="../_images/output_probability_bfb2c4_11_0.svg" /></div>
+<p>Each solid curve corresponds to one of the six values of the die and
+gives our estimated probability that the die turns up that value as
+assessed after each group of experiments. The dashed black line gives
+the true underlying probability. As we get more data by conducting more
+experiments, the <span class="math notranslate nohighlight">\(6\)</span> solid curves converge towards the true
+probability.</p>
+<div class="section" id="axioms-of-probability-theory">
+<h3><span class="section-number">2.6.1.1. </span>Axioms of Probability Theory<a class="headerlink" href="#axioms-of-probability-theory" title="Permalink to this headline">¶</a></h3>
+<p>When dealing with the rolls of a die, we call the set
+<span class="math notranslate nohighlight">\(\mathcal{S} = \{1, 2, 3, 4, 5, 6\}\)</span> the <em>sample space</em> or
+<em>outcome space</em>, where each element is an <em>outcome</em>. An <em>event</em> is a set
+of outcomes from a given sample space. For instance, “seeing a
+<span class="math notranslate nohighlight">\(5\)</span>” (<span class="math notranslate nohighlight">\(\{5\}\)</span>) and “seeing an odd number”
+(<span class="math notranslate nohighlight">\(\{1, 3, 5\}\)</span>) are both valid events of rolling a die. Note that
+if the outcome of a random experiment is in event <span class="math notranslate nohighlight">\(\mathcal{A}\)</span>,
+then event <span class="math notranslate nohighlight">\(\mathcal{A}\)</span> has occurred. That is to say, if
+<span class="math notranslate nohighlight">\(3\)</span> dots faced up after rolling a die, since
+<span class="math notranslate nohighlight">\(3 \in \{1, 3, 5\}\)</span>, we can say that the event “seeing an odd
+number” has occurred.</p>
+<p>Formally, <em>probability</em> can be thought of a function that maps a set to
+a real value. The probability of an event <span class="math notranslate nohighlight">\(\mathcal{A}\)</span> in the
+given sample space <span class="math notranslate nohighlight">\(\mathcal{S}\)</span>, denoted as
+<span class="math notranslate nohighlight">\(P(\mathcal{A})\)</span>, satisfies the following properties:</p>
+<ul class="simple">
+<li><p>For any event <span class="math notranslate nohighlight">\(\mathcal{A}\)</span>, its probability is never negative,
+i.e., <span class="math notranslate nohighlight">\(P(\mathcal{A}) \geq 0\)</span>;</p></li>
+<li><p>Probability of the entire sample space is <span class="math notranslate nohighlight">\(1\)</span>, i.e.,
+<span class="math notranslate nohighlight">\(P(\mathcal{S}) = 1\)</span>;</p></li>
+<li><p>For any countable sequence of events
+<span class="math notranslate nohighlight">\(\mathcal{A}_1, \mathcal{A}_2, \ldots\)</span> that are <em>mutually
+exclusive</em> (<span class="math notranslate nohighlight">\(\mathcal{A}_i \cap \mathcal{A}_j = \emptyset\)</span> for
+all <span class="math notranslate nohighlight">\(i \neq j\)</span>), the probability that any happens is equal to
+the sum of their individual probabilities, i.e.,
+<span class="math notranslate nohighlight">\(P(\bigcup_{i=1}^{\infty} \mathcal{A}_i) = \sum_{i=1}^{\infty} P(\mathcal{A}_i)\)</span>.</p></li>
+</ul>
+<p>These are also the axioms of probability theory, proposed by Kolmogorov
+in 1933. Thanks to this axiom system, we can avoid any philosophical
+dispute on randomness; instead, we can reason rigorously with a
+mathematical language. For instance, by letting event
+<span class="math notranslate nohighlight">\(\mathcal{A}_1\)</span> be the entire sample space and
+<span class="math notranslate nohighlight">\(\mathcal{A}_i = \emptyset\)</span> for all <span class="math notranslate nohighlight">\(i &gt; 1\)</span>, we can prove
+that <span class="math notranslate nohighlight">\(P(\emptyset) = 0\)</span>, i.e., the probability of an impossible
+event is <span class="math notranslate nohighlight">\(0\)</span>.</p>
+</div>
+<div class="section" id="random-variables">
+<h3><span class="section-number">2.6.1.2. </span>Random Variables<a class="headerlink" href="#random-variables" title="Permalink to this headline">¶</a></h3>
+<p>In our random experiment of casting a die, we introduced the notion of a
+<em>random variable</em>. A random variable can be pretty much any quantity and
+is not deterministic. It could take one value among a set of
+possibilities in a random experiment. Consider a random variable
+<span class="math notranslate nohighlight">\(X\)</span> whose value is in the sample space
+<span class="math notranslate nohighlight">\(\mathcal{S} = \{1, 2, 3, 4, 5, 6\}\)</span> of rolling a die. We can
+denote the event “seeing a <span class="math notranslate nohighlight">\(5\)</span>” as <span class="math notranslate nohighlight">\(\{X = 5\}\)</span> or
+<span class="math notranslate nohighlight">\(X = 5\)</span>, and its probability as <span class="math notranslate nohighlight">\(P(\{X = 5\})\)</span> or
+<span class="math notranslate nohighlight">\(P(X = 5)\)</span>. By <span class="math notranslate nohighlight">\(P(X = a)\)</span>, we make a distinction between the
+random variable <span class="math notranslate nohighlight">\(X\)</span> and the values (e.g., <span class="math notranslate nohighlight">\(a\)</span>) that
+<span class="math notranslate nohighlight">\(X\)</span> can take. However, such pedantry results in a cumbersome
+notation. For a compact notation, on one hand, we can just denote
+<span class="math notranslate nohighlight">\(P(X)\)</span> as the <em>distribution</em> over the random variable <span class="math notranslate nohighlight">\(X\)</span>:
+the distribution tells us the probability that <span class="math notranslate nohighlight">\(X\)</span> takes any
+value. On the other hand, we can simply write <span class="math notranslate nohighlight">\(P(a)\)</span> to denote the
+probability that a random variable takes the value <span class="math notranslate nohighlight">\(a\)</span>. Since an
+event in probability theory is a set of outcomes from the sample space,
+we can specify a range of values for a random variable to take. For
+example, <span class="math notranslate nohighlight">\(P(1 \leq X \leq 3)\)</span> denotes the probability of the event
+<span class="math notranslate nohighlight">\(\{1 \leq X \leq 3\}\)</span>, which means
+<span class="math notranslate nohighlight">\(\{X = 1, 2, \text{or}, 3\}\)</span>. Equivalently,
+<span class="math notranslate nohighlight">\(P(1 \leq X \leq 3)\)</span> represents the probability that the random
+variable <span class="math notranslate nohighlight">\(X\)</span> can take a value from <span class="math notranslate nohighlight">\(\{1, 2, 3\}\)</span>.</p>
+<p>Note that there is a subtle difference between <em>discrete</em> random
+variables, like the sides of a die, and <em>continuous</em> ones, like the
+weight and the height of a person. There is little point in asking
+whether two people have exactly the same height. If we take precise
+enough measurements you will find that no two people on the planet have
+the exact same height. In fact, if we take a fine enough measurement,
+you will not have the same height when you wake up and when you go to
+sleep. So there is no purpose in asking about the probability that
+someone is <span class="math notranslate nohighlight">\(1.80139278291028719210196740527486202\)</span> meters tall.
+Given the world population of humans the probability is virtually
+<span class="math notranslate nohighlight">\(0\)</span>. It makes more sense in this case to ask whether someone’s
+height falls into a given interval, say between <span class="math notranslate nohighlight">\(1.79\)</span> and
+<span class="math notranslate nohighlight">\(1.81\)</span> meters. In these cases we quantify the likelihood that we
+see a value as a <em>density</em>. The height of exactly <span class="math notranslate nohighlight">\(1.80\)</span> meters
+has no probability, but nonzero density. In the interval between any two
+different heights we have nonzero probability. In the rest of this
+section, we consider probability in discrete space. For probability over
+continuous random variables, you may refer to
+<code class="xref std std-numref docutils literal notranslate"><span class="pre">sec_random_variables</span></code>.</p>
+</div>
+</div>
+<div class="section" id="dealing-with-multiple-random-variables">
+<h2><span class="section-number">2.6.2. </span>Dealing with Multiple Random Variables<a class="headerlink" href="#dealing-with-multiple-random-variables" title="Permalink to this headline">¶</a></h2>
+<p>Very often, we will want to consider more than one random variable at a
+time. For instance, we may want to model the relationship between
+diseases and symptoms. Given a disease and a symptom, say “flu” and
+“cough”, either may or may not occur in a patient with some probability.
+While we hope that the probability of both would be close to zero, we
+may want to estimate these probabilities and their relationships to each
+other so that we may apply our inferences to effect better medical care.</p>
+<p>As a more complicated example, images contain millions of pixels, thus
+millions of random variables. And in many cases images will come with a
+label, identifying objects in the image. We can also think of the label
+as a random variable. We can even think of all the metadata as random
+variables such as location, time, aperture, focal length, ISO, focus
+distance, and camera type. All of these are random variables that occur
+jointly. When we deal with multiple random variables, there are several
+quantities of interest.</p>
+<div class="section" id="joint-probability">
+<h3><span class="section-number">2.6.2.1. </span>Joint Probability<a class="headerlink" href="#joint-probability" title="Permalink to this headline">¶</a></h3>
+<p>The first is called the <em>joint probability</em> <span class="math notranslate nohighlight">\(P(A = a, B=b)\)</span>. Given
+any values <span class="math notranslate nohighlight">\(a\)</span> and <span class="math notranslate nohighlight">\(b\)</span>, the joint probability lets us
+answer, what is the probability that <span class="math notranslate nohighlight">\(A=a\)</span> and <span class="math notranslate nohighlight">\(B=b\)</span>
+simultaneously? Note that for any values <span class="math notranslate nohighlight">\(a\)</span> and <span class="math notranslate nohighlight">\(b\)</span>,
+<span class="math notranslate nohighlight">\(P(A=a, B=b) \leq P(A=a)\)</span>. This has to be the case, since for
+<span class="math notranslate nohighlight">\(A=a\)</span> and <span class="math notranslate nohighlight">\(B=b\)</span> to happen, <span class="math notranslate nohighlight">\(A=a\)</span> has to happen <em>and</em>
+<span class="math notranslate nohighlight">\(B=b\)</span> also has to happen (and vice versa). Thus, <span class="math notranslate nohighlight">\(A=a\)</span> and
+<span class="math notranslate nohighlight">\(B=b\)</span> cannot be more likely than <span class="math notranslate nohighlight">\(A=a\)</span> or <span class="math notranslate nohighlight">\(B=b\)</span>
+individually.</p>
+</div>
+<div class="section" id="conditional-probability">
+<h3><span class="section-number">2.6.2.2. </span>Conditional Probability<a class="headerlink" href="#conditional-probability" title="Permalink to this headline">¶</a></h3>
+<p>This brings us to an interesting ratio:
+<span class="math notranslate nohighlight">\(0 \leq \frac{P(A=a, B=b)}{P(A=a)} \leq 1\)</span>. We call this ratio a
+<em>conditional probability</em> and denote it by <span class="math notranslate nohighlight">\(P(B=b \mid A=a)\)</span>: it
+is the probability of <span class="math notranslate nohighlight">\(B=b\)</span>, provided that <span class="math notranslate nohighlight">\(A=a\)</span> has
+occurred.</p>
+</div>
+<div class="section" id="bayes-theorem">
+<h3><span class="section-number">2.6.2.3. </span>Bayes’ theorem<a class="headerlink" href="#bayes-theorem" title="Permalink to this headline">¶</a></h3>
+<p>Using the definition of conditional probabilities, we can derive one of
+the most useful and celebrated equations in statistics: <em>Bayes’
+theorem</em>. It goes as follows. By construction, we have the
+<em>multiplication rule</em> that <span class="math notranslate nohighlight">\(P(A, B) = P(B \mid A) P(A)\)</span>. By
+symmetry, this also holds for <span class="math notranslate nohighlight">\(P(A, B) = P(A \mid B) P(B)\)</span>. Assume
+that <span class="math notranslate nohighlight">\(P(B) &gt; 0\)</span>. Solving for one of the conditional variables we
+get</p>
+<div class="math notranslate nohighlight" id="equation-chapter-preliminaries-probability-0">
+<span class="eqno">(2.6.1)<a class="headerlink" href="#equation-chapter-preliminaries-probability-0" title="Permalink to this equation">¶</a></span>\[P(A \mid B) = \frac{P(B \mid A) P(A)}{P(B)}.\]</div>
+<p>Note that here we use the more compact notation where <span class="math notranslate nohighlight">\(P(A, B)\)</span> is
+a <em>joint distribution</em> and <span class="math notranslate nohighlight">\(P(A \mid B)\)</span> is a <em>conditional
+distribution</em>. Such distributions can be evaluated for particular values
+<span class="math notranslate nohighlight">\(A = a, B=b\)</span>.</p>
+</div>
+<div class="section" id="marginalization">
+<h3><span class="section-number">2.6.2.4. </span>Marginalization<a class="headerlink" href="#marginalization" title="Permalink to this headline">¶</a></h3>
+<p>Bayes’ theorem is very useful if we want to infer one thing from the
+other, say cause and effect, but we only know the properties in the
+reverse direction, as we will see later in this section. One important
+operation that we need, to make this work, is <em>marginalization</em>. It is
+the operation of determining <span class="math notranslate nohighlight">\(P(B)\)</span> from <span class="math notranslate nohighlight">\(P(A, B)\)</span>. We can
+see that the probability of <span class="math notranslate nohighlight">\(B\)</span> amounts to accounting for all
+possible choices of <span class="math notranslate nohighlight">\(A\)</span> and aggregating the joint probabilities
+over all of them:</p>
+<div class="math notranslate nohighlight" id="equation-chapter-preliminaries-probability-1">
+<span class="eqno">(2.6.2)<a class="headerlink" href="#equation-chapter-preliminaries-probability-1" title="Permalink to this equation">¶</a></span>\[P(B) = \sum_{A} P(A, B),\]</div>
+<p>which is also known as the <em>sum rule</em>. The probability or distribution
+as a result of marginalization is called a <em>marginal probability</em> or a
+<em>marginal distribution</em>.</p>
+</div>
+<div class="section" id="independence">
+<h3><span class="section-number">2.6.2.5. </span>Independence<a class="headerlink" href="#independence" title="Permalink to this headline">¶</a></h3>
+<p>Another useful property to check for is <em>dependence</em> vs. <em>independence</em>.
+Two random variables <span class="math notranslate nohighlight">\(A\)</span> and <span class="math notranslate nohighlight">\(B\)</span> are independent means that
+the occurrence of one event of <span class="math notranslate nohighlight">\(A\)</span> does not reveal any information
+about the occurrence of an event of <span class="math notranslate nohighlight">\(B\)</span>. In this case
+<span class="math notranslate nohighlight">\(P(B \mid A) = P(B)\)</span>. Statisticians typically express this as
+<span class="math notranslate nohighlight">\(A \perp B\)</span>. From Bayes’ theorem, it follows immediately that also
+<span class="math notranslate nohighlight">\(P(A \mid B) = P(A)\)</span>. In all the other cases we call <span class="math notranslate nohighlight">\(A\)</span> and
+<span class="math notranslate nohighlight">\(B\)</span> dependent. For instance, two successive rolls of a die are
+independent. In contrast, the position of a light switch and the
+brightness in the room are not (they are not perfectly deterministic,
+though, since we could always have a broken light bulb, power failure,
+or a broken switch).</p>
+<p>Since <span class="math notranslate nohighlight">\(P(A \mid B) = \frac{P(A, B)}{P(B)} = P(A)\)</span> is equivalent to
+<span class="math notranslate nohighlight">\(P(A, B) = P(A)P(B)\)</span>, two random variables are independent if and
+only if their joint distribution is the product of their individual
+distributions. Likewise, two random variables <span class="math notranslate nohighlight">\(A\)</span> and <span class="math notranslate nohighlight">\(B\)</span>
+are <em>conditionally independent</em> given another random variable <span class="math notranslate nohighlight">\(C\)</span>
+if and only if <span class="math notranslate nohighlight">\(P(A, B \mid C) = P(A \mid C)P(B \mid C)\)</span>. This is
+expressed as <span class="math notranslate nohighlight">\(A \perp B \mid C\)</span>.</p>
+</div>
+<div class="section" id="application">
+<span id="subsec-probability-hiv-app"></span><h3><span class="section-number">2.6.2.6. </span>Application<a class="headerlink" href="#application" title="Permalink to this headline">¶</a></h3>
+<p>Let’s put our skills to the test. Assume that a doctor administers an
+AIDS test to a patient. This test is fairly accurate and it fails only
+with <span class="math notranslate nohighlight">\(1\%\)</span> probability if the patient is healthy but reporting him
+as diseased. Moreover, it never fails to detect HIV if the patient
+actually has it. We use <span class="math notranslate nohighlight">\(D_1\)</span> to indicate the diagnosis (<span class="math notranslate nohighlight">\(1\)</span>
+if positive and <span class="math notranslate nohighlight">\(0\)</span> if negative) and <span class="math notranslate nohighlight">\(H\)</span> to denote the HIV
+status (<span class="math notranslate nohighlight">\(1\)</span> if positive and <span class="math notranslate nohighlight">\(0\)</span> if negative).
+<a class="reference internal" href="#conditional-prob-d1"><span class="std std-numref">Table 2.6.1</span></a> lists such conditional probability.</p>
+<span id="conditional-prob-d1"></span><table class="docutils align-default" id="id2">
+<caption><span class="caption-number">Table 2.6.1 </span><span class="caption-text">Conditional probability of <span class="math notranslate nohighlight">\(P(D_1 \mid H)\)</span>.</span><a class="headerlink" href="#id2" title="Permalink to this table">¶</a></caption>
+<colgroup>
+<col style="width: 51%" />
+<col style="width: 25%" />
+<col style="width: 25%" />
+</colgroup>
+<thead>
+<tr class="row-odd"><th class="head"><p>Conditional probability</p></th>
+<th class="head"><p><span class="math notranslate nohighlight">\(H=1\)</span></p></th>
+<th class="head"><p><span class="math notranslate nohighlight">\(H=0\)</span></p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p><span class="math notranslate nohighlight">\(P(D_1 = 1 \mid H)\)</span></p></td>
+<td><p>1</p></td>
+<td><p>0.01</p></td>
+</tr>
+<tr class="row-odd"><td><p><span class="math notranslate nohighlight">\(P(D_1 = 0 \mid H)\)</span></p></td>
+<td><p>0</p></td>
+<td><p>0.99</p></td>
+</tr>
+</tbody>
+</table>
+<p>Note that the column sums are all <span class="math notranslate nohighlight">\(1\)</span> (but the row sums are not),
+since the conditional probability needs to sum up to <span class="math notranslate nohighlight">\(1\)</span>, just
+like the probability. Let’s work out the probability of the patient
+having AIDS if the test comes back positive, i.e.,
+<span class="math notranslate nohighlight">\(P(H = 1 \mid D_1 = 1)\)</span>. Obviously this is going to depend on how
+common the disease is, since it affects the number of false alarms.
+Assume that the population is quite healthy, e.g.,
+<span class="math notranslate nohighlight">\(P(H=1) = 0.0015\)</span>. To apply Bayes’ Theorem, we need to apply
+marginalization and the multiplication rule to determine</p>
+<div class="math notranslate nohighlight" id="equation-chapter-preliminaries-probability-2">
+<span class="eqno">(2.6.3)<a class="headerlink" href="#equation-chapter-preliminaries-probability-2" title="Permalink to this equation">¶</a></span>\[\begin{split}\begin{aligned}
+&amp;P(D_1 = 1) \\
+=&amp; P(D_1=1, H=0) + P(D_1=1, H=1)  \\
+=&amp; P(D_1=1 \mid H=0) P(H=0) + P(D_1=1 \mid H=1) P(H=1) \\
+=&amp; 0.011485.
+\end{aligned}\end{split}\]</div>
+<p>Thus, we get</p>
+<div class="math notranslate nohighlight" id="equation-chapter-preliminaries-probability-3">
+<span class="eqno">(2.6.4)<a class="headerlink" href="#equation-chapter-preliminaries-probability-3" title="Permalink to this equation">¶</a></span>\[\begin{split}\begin{aligned}
+&amp;P(H = 1 \mid D_1 = 1)\\ =&amp; \frac{P(D_1=1 \mid H=1) P(H=1)}{P(D_1=1)} \\ =&amp; 0.1306 \end{aligned}.\end{split}\]</div>
+<p>In other words, there is only a 13.06% chance that the patient actually
+has AIDS, despite using a very accurate test. As we can see, probability
+can be quite counterintuitive.</p>
+<p>What should a patient do upon receiving such terrifying news? Likely,
+the patient would ask the physician to administer another test to get
+clarity. The second test has different characteristics and it is not as
+good as the first one, as shown in <a class="reference internal" href="#conditional-prob-d2"><span class="std std-numref">Table 2.6.2</span></a>.</p>
+<span id="conditional-prob-d2"></span><table class="docutils align-default" id="id3">
+<caption><span class="caption-number">Table 2.6.2 </span><span class="caption-text">Conditional probability of <span class="math notranslate nohighlight">\(P(D_2 \mid H)\)</span>.</span><a class="headerlink" href="#id3" title="Permalink to this table">¶</a></caption>
+<colgroup>
+<col style="width: 51%" />
+<col style="width: 25%" />
+<col style="width: 25%" />
+</colgroup>
+<thead>
+<tr class="row-odd"><th class="head"><p>Conditional probability</p></th>
+<th class="head"><p><span class="math notranslate nohighlight">\(H=1\)</span></p></th>
+<th class="head"><p><span class="math notranslate nohighlight">\(H=0\)</span></p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p><span class="math notranslate nohighlight">\(P(D_2 = 1 \mid H)\)</span></p></td>
+<td><p>0.98</p></td>
+<td><p>0.03</p></td>
+</tr>
+<tr class="row-odd"><td><p><span class="math notranslate nohighlight">\(P(D_2 = 0 \mid H)\)</span></p></td>
+<td><p>0.02</p></td>
+<td><p>0.97</p></td>
+</tr>
+</tbody>
+</table>
+<p>Unfortunately, the second test comes back positive, too. Let’s work out
+the requisite probabilities to invoke Bayes’ Theorem by assuming the
+conditional independence:</p>
+<div class="math notranslate nohighlight" id="equation-chapter-preliminaries-probability-4">
+<span class="eqno">(2.6.5)<a class="headerlink" href="#equation-chapter-preliminaries-probability-4" title="Permalink to this equation">¶</a></span>\[\begin{split}\begin{aligned}
+&amp;P(D_1 = 1, D_2 = 1 \mid H = 0) \\
+=&amp; P(D_1 = 1 \mid H = 0) P(D_2 = 1 \mid H = 0)  \\
+=&amp; 0.0003,
+\end{aligned}\end{split}\]</div>
+<div class="math notranslate nohighlight" id="equation-chapter-preliminaries-probability-5">
+<span class="eqno">(2.6.6)<a class="headerlink" href="#equation-chapter-preliminaries-probability-5" title="Permalink to this equation">¶</a></span>\[\begin{split}\begin{aligned}
+&amp;P(D_1 = 1, D_2 = 1 \mid H = 1) \\
+=&amp; P(D_1 = 1 \mid H = 1) P(D_2 = 1 \mid H = 1)  \\
+=&amp; 0.98.
+\end{aligned}\end{split}\]</div>
+<p>Now we can apply marginalization and the multiplication rule:</p>
+<div class="math notranslate nohighlight" id="equation-chapter-preliminaries-probability-6">
+<span class="eqno">(2.6.7)<a class="headerlink" href="#equation-chapter-preliminaries-probability-6" title="Permalink to this equation">¶</a></span>\[\begin{split}\begin{aligned}
+&amp;P(D_1 = 1, D_2 = 1) \\
+=&amp; P(D_1 = 1, D_2 = 1, H = 0) + P(D_1 = 1, D_2 = 1, H = 1)  \\
+=&amp; P(D_1 = 1, D_2 = 1 \mid H = 0)P(H=0) + P(D_1 = 1, D_2 = 1 \mid H = 1)P(H=1)\\
+=&amp; 0.00176955.
+\end{aligned}\end{split}\]</div>
+<p>In the end, the probability of the patient having AIDS given both
+positive tests is</p>
+<div class="math notranslate nohighlight" id="equation-chapter-preliminaries-probability-7">
+<span class="eqno">(2.6.8)<a class="headerlink" href="#equation-chapter-preliminaries-probability-7" title="Permalink to this equation">¶</a></span>\[\begin{split}\begin{aligned}
+&amp;P(H = 1 \mid D_1 = 1, D_2 = 1)\\
+=&amp; \frac{P(D_1 = 1, D_2 = 1 \mid H=1) P(H=1)}{P(D_1 = 1, D_2 = 1)} \\
+=&amp; 0.8307.
+\end{aligned}\end{split}\]</div>
+<p>That is, the second test allowed us to gain much higher confidence that
+not all is well. Despite the second test being considerably less
+accurate than the first one, it still significantly improved our
+estimate.</p>
+</div>
+</div>
+<div class="section" id="expectation-and-variance">
+<h2><span class="section-number">2.6.3. </span>Expectation and Variance<a class="headerlink" href="#expectation-and-variance" title="Permalink to this headline">¶</a></h2>
+<p>To summarize key characteristics of probability distributions, we need
+some measures. The <em>expectation</em> (or average) of the random variable
+<span class="math notranslate nohighlight">\(X\)</span> is denoted as</p>
+<div class="math notranslate nohighlight" id="equation-chapter-preliminaries-probability-8">
+<span class="eqno">(2.6.9)<a class="headerlink" href="#equation-chapter-preliminaries-probability-8" title="Permalink to this equation">¶</a></span>\[E[X] = \sum_{x} x P(X = x).\]</div>
+<p>When the input of a function <span class="math notranslate nohighlight">\(f(x)\)</span> is a random variable drawn
+from the distribution <span class="math notranslate nohighlight">\(P\)</span> with different values <span class="math notranslate nohighlight">\(x\)</span>, the
+expectation of <span class="math notranslate nohighlight">\(f(x)\)</span> is computed as</p>
+<div class="math notranslate nohighlight" id="equation-chapter-preliminaries-probability-9">
+<span class="eqno">(2.6.10)<a class="headerlink" href="#equation-chapter-preliminaries-probability-9" title="Permalink to this equation">¶</a></span>\[E_{x \sim P}[f(x)] = \sum_x f(x) P(x).\]</div>
+<p>In many cases we want to measure by how much the random variable
+<span class="math notranslate nohighlight">\(X\)</span> deviates from its expectation. This can be quantified by the
+variance</p>
+<div class="math notranslate nohighlight" id="equation-chapter-preliminaries-probability-10">
+<span class="eqno">(2.6.11)<a class="headerlink" href="#equation-chapter-preliminaries-probability-10" title="Permalink to this equation">¶</a></span>\[\mathrm{Var}[X] = E\left[(X - E[X])^2\right] =
+E[X^2] - E[X]^2.\]</div>
+<p>Its square root is called the <em>standard deviation</em>. The variance of a
+function of a random variable measures by how much the function deviates
+from the expectation of the function, as different values <span class="math notranslate nohighlight">\(x\)</span> of
+the random variable are sampled from its distribution:</p>
+<div class="math notranslate nohighlight" id="equation-chapter-preliminaries-probability-11">
+<span class="eqno">(2.6.12)<a class="headerlink" href="#equation-chapter-preliminaries-probability-11" title="Permalink to this equation">¶</a></span>\[\mathrm{Var}[f(x)] = E\left[\left(f(x) - E[f(x)]\right)^2\right].\]</div>
+</div>
+<div class="section" id="summary">
+<h2><span class="section-number">2.6.4. </span>Summary<a class="headerlink" href="#summary" title="Permalink to this headline">¶</a></h2>
+<ul class="simple">
+<li><p>We can use MXNet to sample from probability distributions.</p></li>
+<li><p>We can analyze multiple random variables using joint distribution,
+conditional distribution, Bayes’ theorem, marginalization, and
+independence assumptions.</p></li>
+<li><p>Expectation and variance offer useful measures to summarize key
+characteristics of probability distributions.</p></li>
+</ul>
+</div>
+<div class="section" id="exercises">
+<h2><span class="section-number">2.6.5. </span>Exercises<a class="headerlink" href="#exercises" title="Permalink to this headline">¶</a></h2>
+<ol class="arabic simple">
+<li><p>We conducted <span class="math notranslate nohighlight">\(m=500\)</span> groups of experiments where each group
+draws <span class="math notranslate nohighlight">\(n=10\)</span> samples. Vary <span class="math notranslate nohighlight">\(m\)</span> and <span class="math notranslate nohighlight">\(n\)</span>. Observe and
+analyze the experimental results.</p></li>
+<li><p>Given two events with probability <span class="math notranslate nohighlight">\(P(\mathcal{A})\)</span> and
+<span class="math notranslate nohighlight">\(P(\mathcal{B})\)</span>, compute upper and lower bounds on
+<span class="math notranslate nohighlight">\(P(\mathcal{A} \cup \mathcal{B})\)</span> and
+<span class="math notranslate nohighlight">\(P(\mathcal{A} \cap \mathcal{B})\)</span>. (Hint: display the situation
+using a <a class="reference external" href="https://en.wikipedia.org/wiki/Venn_diagram">Venn
+Diagram</a>.)</p></li>
+<li><p>Assume that we have a sequence of random variables, say <span class="math notranslate nohighlight">\(A\)</span>,
+<span class="math notranslate nohighlight">\(B\)</span>, and <span class="math notranslate nohighlight">\(C\)</span>, where <span class="math notranslate nohighlight">\(B\)</span> only depends on <span class="math notranslate nohighlight">\(A\)</span>,
+and <span class="math notranslate nohighlight">\(C\)</span> only depends on <span class="math notranslate nohighlight">\(B\)</span>, can you simplify the joint
+probability <span class="math notranslate nohighlight">\(P(A, B, C)\)</span>? (Hint: this is a <a class="reference external" href="https://en.wikipedia.org/wiki/Markov_chain">Markov
+Chain</a>.)</p></li>
+<li><p>In <a class="reference internal" href="#subsec-probability-hiv-app"><span class="std std-numref">Section 2.6.2.6</span></a>, the first test is more
+accurate. Why not just run the first test a second time?</p></li>
+</ol>
+</div>
+<div class="section" id="discussions">
+<h2><span class="section-number">2.6.6. </span><a class="reference external" href="https://discuss.mxnet.io/t/2319">Discussions</a><a class="headerlink" href="#discussions" title="Permalink to this headline">¶</a></h2>
+<p><img alt="image0" src="../_images/qr_probability.svg" /></p>
+</div>
+</div>
+
+
+        </div>
+        <div class="side-doc-outline">
+            <div class="side-doc-outline--content"> 
+<div class="localtoc">
+    <p class="caption">
+      <span class="caption-text">Table Of Contents</span>
+    </p>
+    <ul>
+<li><a class="reference internal" href="#">2.6. Probability</a><ul>
+<li><a class="reference internal" href="#basic-probability-theory">2.6.1. Basic Probability Theory</a><ul>
+<li><a class="reference internal" href="#axioms-of-probability-theory">2.6.1.1. Axioms of Probability Theory</a></li>
+<li><a class="reference internal" href="#random-variables">2.6.1.2. Random Variables</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#dealing-with-multiple-random-variables">2.6.2. Dealing with Multiple Random Variables</a><ul>
+<li><a class="reference internal" href="#joint-probability">2.6.2.1. Joint Probability</a></li>
+<li><a class="reference internal" href="#conditional-probability">2.6.2.2. Conditional Probability</a></li>
+<li><a class="reference internal" href="#bayes-theorem">2.6.2.3. Bayes’ theorem</a></li>
+<li><a class="reference internal" href="#marginalization">2.6.2.4. Marginalization</a></li>
+<li><a class="reference internal" href="#independence">2.6.2.5. Independence</a></li>
+<li><a class="reference internal" href="#application">2.6.2.6. Application</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#expectation-and-variance">2.6.3. Expectation and Variance</a></li>
+<li><a class="reference internal" href="#summary">2.6.4. Summary</a></li>
+<li><a class="reference internal" href="#exercises">2.6.5. Exercises</a></li>
+<li><a class="reference internal" href="#discussions">2.6.6. Discussions</a></li>
+</ul>
+</li>
+</ul>
+
+</div>
+            </div>
+        </div>
+
+      <div class="clearer"></div>
+    </div><div class="pagenation">
+     <a id="button-prev" href="autograd.html" class="mdl-button mdl-js-button mdl-js-ripple-effect mdl-button--colored" role="botton" accesskey="P">
+         <i class="pagenation-arrow-L fas fa-arrow-left fa-lg"></i>
+         <div class="pagenation-text">
+            <span class="pagenation-direction">Previous</span>
+            <div>2.5. Automatic Differentiation</div>
+         </div>
+     </a>
+     <a id="button-next" href="lookup-api.html" class="mdl-button mdl-js-button mdl-js-ripple-effect mdl-button--colored" role="botton" accesskey="N">
+         <i class="pagenation-arrow-R fas fa-arrow-right fa-lg"></i>
+        <div class="pagenation-text">
+            <span class="pagenation-direction">Next</span>
+            <div>2.7. Documentation</div>
+        </div>
+     </a>
+  </div>
+        
+        </main>
+    </div>
+  </body>
+</html>

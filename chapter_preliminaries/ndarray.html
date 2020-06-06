@@ -1,0 +1,722 @@
+<!DOCTYPE html>
+
+<html xmlns="http://www.w3.org/1999/xhtml" lang="ar">
+  <head>
+    <meta charset="utf-8" />
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta http-equiv="x-ua-compatible" content="ie=edge">
+    
+    <title>2.1. معالجة البيانات &#8212; تعمّق في التعلّم العميق 0.7.1 documentation</title>
+
+    <link rel="stylesheet" href="../_static/basic.css" type="text/css" />
+    <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+    <link rel="stylesheet" href="../_static/material-design-lite-1.3.0/material.blue-deep_orange.min.css" type="text/css" />
+    <link rel="stylesheet" href="../_static/sphinx_materialdesign_theme.css" type="text/css" />
+    <link rel="stylesheet" href="../_static/fontawesome/all.css" type="text/css" />
+    <link rel="stylesheet" href="../_static/fonts.css" type="text/css" />
+    <link rel="stylesheet" type="text/css" href="../_static/d2l.css" />
+    <script type="text/javascript" id="documentation_options" data-url_root="../" src="../_static/documentation_options.js"></script>
+    <script type="text/javascript" src="../_static/jquery.js"></script>
+    <script type="text/javascript" src="../_static/underscore.js"></script>
+    <script type="text/javascript" src="../_static/doctools.js"></script>
+    <script type="text/javascript" src="../_static/language_data.js"></script>
+    <script type="text/javascript" src="../_static/d2l.js"></script>
+    <script type="text/javascript" src="../_static/translations.js"></script>
+    <script async="async" type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/latest.js?config=TeX-AMS-MML_HTMLorMML"></script>
+    <link rel="shortcut icon" href="../_static/favicon.png"/>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="2.2. Data Preprocessing" href="pandas.html" />
+    <link rel="prev" title="2. التمهيدات" href="index.html" /> 
+  </head>
+<body>
+    <div class="mdl-layout mdl-js-layout mdl-layout--fixed-header "><header class="mdl-layout__header mdl-layout__header--waterfall ">
+    <div class="mdl-layout__header-row">
+        
+        <nav class="mdl-navigation breadcrumb">
+            <a class="mdl-navigation__link" href="index.html"><span class="section-number">2. </span>التمهيدات</a><i class="material-icons">navigate_next</i>
+            <a class="mdl-navigation__link is-active"><span class="section-number">2.1. </span>معالجة البيانات</a>
+        </nav>
+        <div class="mdl-layout-spacer"></div>
+        <nav class="mdl-navigation">
+        
+<form class="form-inline pull-sm-right" action="../search.html" method="get">
+      <div class="mdl-textfield mdl-js-textfield mdl-textfield--expandable mdl-textfield--floating-label mdl-textfield--align-right">
+        <label id="quick-search-icon" class="mdl-button mdl-js-button mdl-button--icon"  for="waterfall-exp">
+          <i class="material-icons">search</i>
+        </label>
+        <div class="mdl-textfield__expandable-holder">
+          <input class="mdl-textfield__input" type="text" name="q"  id="waterfall-exp" placeholder="Search" />
+          <input type="hidden" name="check_keywords" value="yes" />
+          <input type="hidden" name="area" value="default" />
+        </div>
+      </div>
+      <div class="mdl-tooltip" data-mdl-for="quick-search-icon">
+      Quick search
+      </div>
+</form>
+        
+<a id="button-show-source"
+    class="mdl-button mdl-js-button mdl-button--icon"
+    href="../_sources/chapter_preliminaries/ndarray.rst.txt" rel="nofollow">
+  <i class="material-icons">code</i>
+</a>
+<div class="mdl-tooltip" data-mdl-for="button-show-source">
+Show Source
+</div>
+        </nav>
+    </div>
+    <div class="mdl-layout__header-row header-links">
+      <div class="mdl-layout-spacer"></div>
+      <nav class="mdl-navigation">
+          
+              <a  class="mdl-navigation__link" href="https://courses.d2l.ai">
+                  <i class="fas fa-user-graduate"></i>
+                  Courses
+              </a>
+          
+              <a  class="mdl-navigation__link" href="https://d2l.ai/d2l-en.pdf">
+                  <i class="fas fa-file-pdf"></i>
+                  PDF
+              </a>
+          
+              <a  class="mdl-navigation__link" href="https://d2l.ai/d2l-en.zip">
+                  <i class="fas fa-download"></i>
+                  All Notebooks
+              </a>
+          
+              <a  class="mdl-navigation__link" href="https://discuss.mxnet.io">
+                  <i class="fab fa-discourse"></i>
+                  Discuss
+              </a>
+          
+              <a  class="mdl-navigation__link" href="https://github.com/d2l-ai/d2l-en">
+                  <i class="fab fa-github"></i>
+                  GitHub
+              </a>
+          
+              <a  class="mdl-navigation__link" href="https://zh.d2l.ai">
+                  <i class="fas fa-external-link-alt"></i>
+                  中文版
+              </a>
+      </nav>
+    </div>
+</header><header class="mdl-layout__drawer">
+    
+          <!-- Title -->
+      <span class="mdl-layout-title">
+          <a class="title" href="../index.html">
+              <img class="logo" src="../_static/logo-with-text.png" alt="تعمّق في التعلّم العميق"/>
+          </a>
+      </span>
+    
+    
+      <div class="globaltoc">
+        <span class="mdl-layout-title toc">Table Of Contents</span>
+        
+        
+            
+            <nav class="mdl-navigation">
+                <ul>
+<li class="toctree-l1"><a class="reference internal" href="../chapter_preface/index.html">Preface</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../chapter_notation/index.html">الّرموز</a></li>
+</ul>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../chapter_introduction/index.html">1. مقدّمة</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="index.html">2. التمهيدات</a><ul class="current">
+<li class="toctree-l2 current"><a class="current reference internal" href="#">2.1. معالجة البيانات</a></li>
+<li class="toctree-l2"><a class="reference internal" href="pandas.html">2.2. Data Preprocessing</a></li>
+<li class="toctree-l2"><a class="reference internal" href="linear-algebra.html">2.3. Linear Algebra</a></li>
+<li class="toctree-l2"><a class="reference internal" href="calculus.html">2.4. Calculus</a></li>
+<li class="toctree-l2"><a class="reference internal" href="autograd.html">2.5. Automatic Differentiation</a></li>
+<li class="toctree-l2"><a class="reference internal" href="probability.html">2.6. Probability</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lookup-api.html">2.7. Documentation</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../chapter_appendix-math-and-keywords-translations/index.html">3. ملحق: ترجمة الألفاظ التقنية و الرياضية</a></li>
+</ul>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../chapter_references/zreferences.html">المراجع</a></li>
+</ul>
+
+            </nav>
+        
+        </div>
+    
+</header>
+        <main class="mdl-layout__content" tabIndex="0">
+
+	<script type="text/javascript" src="../_static/sphinx_materialdesign_theme.js "></script>
+    <header class="mdl-layout__drawer">
+    
+          <!-- Title -->
+      <span class="mdl-layout-title">
+          <a class="title" href="../index.html">
+              <img class="logo" src="../_static/logo-with-text.png" alt="تعمّق في التعلّم العميق"/>
+          </a>
+      </span>
+    
+    
+      <div class="globaltoc">
+        <span class="mdl-layout-title toc">Table Of Contents</span>
+        
+        
+            
+            <nav class="mdl-navigation">
+                <ul>
+<li class="toctree-l1"><a class="reference internal" href="../chapter_preface/index.html">Preface</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../chapter_notation/index.html">الّرموز</a></li>
+</ul>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../chapter_introduction/index.html">1. مقدّمة</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="index.html">2. التمهيدات</a><ul class="current">
+<li class="toctree-l2 current"><a class="current reference internal" href="#">2.1. معالجة البيانات</a></li>
+<li class="toctree-l2"><a class="reference internal" href="pandas.html">2.2. Data Preprocessing</a></li>
+<li class="toctree-l2"><a class="reference internal" href="linear-algebra.html">2.3. Linear Algebra</a></li>
+<li class="toctree-l2"><a class="reference internal" href="calculus.html">2.4. Calculus</a></li>
+<li class="toctree-l2"><a class="reference internal" href="autograd.html">2.5. Automatic Differentiation</a></li>
+<li class="toctree-l2"><a class="reference internal" href="probability.html">2.6. Probability</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lookup-api.html">2.7. Documentation</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../chapter_appendix-math-and-keywords-translations/index.html">3. ملحق: ترجمة الألفاظ التقنية و الرياضية</a></li>
+</ul>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../chapter_references/zreferences.html">المراجع</a></li>
+</ul>
+
+            </nav>
+        
+        </div>
+    
+</header>
+
+    <div class="document">
+        <div class="page-content" role="main">
+        
+  <div class="section" id="sec-ndarray">
+<span id="id1"></span><h1><span class="section-number">2.1. </span>معالجة البيانات<a class="headerlink" href="#sec-ndarray" title="Permalink to this headline">¶</a><a href="https://colab.research.google.com/github/d2l-ai/d2l-en-colab/blob/master/chapter_preliminaries/ndarray.ipynb" onclick="captureOutboundLink('https://colab.research.google.com/github/d2l-ai/d2l-en-colab/blob/master/chapter_preliminaries/ndarray.ipynb'); return false;"> <button style="float:right", id="colab" class="mdl-button mdl-js-button mdl-button--primary mdl-js-ripple-effect"> <i class=" fas fa-external-link-alt"></i> Colab </button></a><div class="mdl-tooltip" data-mdl-for="colab"> Open the notebook in Colab</div></h1>
+<p>لإنجاز أي شيء متعلّق بالبيانات ، نحتاج إلى طريقة لتخزينها ومعالجتها.</p>
+<p>عمومًا ، هناك شيئان مهمان نحتاج إلى القيام بهما مع البيانات: (1) الحصول
+عليها ؛ و (2) معالجتها بمجرد أن تكون داخل الكمبيوتر. لا فائدة من الحصول
+على البيانات دون أي وسيلة لتخزينها، لذلك دعونا نتدرّب أوّلاً على بعض
+البيانات الإصطناعية. للبدء ، سوف نقوم بإعتبار الصفيف (array) كهيكل أساسي
+لتخزين البيانات التّي سنتعامل معها، و سنشير إليه في بقية الكتاب ب
+<code class="docutils literal notranslate"><span class="pre">ndarray</span></code> حيث تمثل <span class="math notranslate nohighlight">\(n\)</span> عدد أبعاده و أمّا <code class="docutils literal notranslate"><span class="pre">d</span></code> فيشير إلى كلمة
+أبعاد المأخوذة من اللفظ الإنجليزي dimension. إعلم أنّ الndarray هو
+الأداة الرئيسية لتخزين البيانات وتحويلها في MXNet.</p>
+<p>إذا إستخدمت NumPy من قبل ، و هي حزمة الحوسبة العلمية الأكثر استخدامًا في
+Python ، فستَجِدُ هذا الِقسمَ مألوفًا. إعلم أنّ المحافظة على هذا الشبه
+قد كان واحدًا من مبادئ التصميم الأساسية لMXNet. لقد قمنا بتصميم
+<code class="docutils literal notranslate"><span class="pre">ndarray</span></code> في MXNet ليكون امتدادًا لـ <code class="docutils literal notranslate"><span class="pre">ndarray</span></code> الموجود في NumPy مع
+إضافة بعض الميزات المتقدّمة و هي: أولاً ، تدعم ndarray من MXNet الحساب
+غير المتزامن على وحدات المعالجة المركزية ، GPU ، والبنية السحابية
+الموزعة ، في حين يدعم NumPy الحساب على وحدة المعالجة المركزية فقط.
+ثانياً ، تدعم ndarray من MXNet التمايز التلقائي (automatic
+differentiation). هذه الخصائص تجعل ndarray من MXNet مناسبة للتعلّم
+العميق. في بقية الكتاب ، عندما نقول <code class="docutils literal notranslate"><span class="pre">ndarray</span></code> ، فإننا نُشير إلى
+<code class="docutils literal notranslate"><span class="pre">ndarray</span></code> من MXNet ما لم يُنَصَّ على خلاف ذلك.</p>
+<div class="section" id="id2">
+<h2><span class="section-number">2.1.1. </span>لنشرع بالعمل<a class="headerlink" href="#id2" title="Permalink to this headline">¶</a></h2>
+<p>في هذا القسم ، نَهدف إلى تزويدك بالأدوات الأساسية للحساب الرياضي والحساب
+الرقمي التي ستستند إليها أثناء تقدمك في الكتاب. نوفر أيضا العديد من
+الأمثلة التي ستمكنك من التمرّن على إستخدام مكتبة MXNet. لا تقلق إذا
+واجهت صعوبة في فهم بعض المفاهيم الرياضية أو وظائف المكتبة. سنقوم في
+الأقسام التالية بإعادة النظر في مواد هذا الباب في سياق أمثلة عمليّة وسوف
+تفهمها أكثر حينها. من ناحية أخرى ، إذا كنت متمرسا على المعلومات الموجودة
+في هذا الباب وترغب في التعمق في المحتوى الرياضي ، فما عليك سوى تخطي هذا
+القسم.</p>
+<p>للبدء ، لنستورد الوحدات النمطية <code class="docutils literal notranslate"><span class="pre">np</span></code> (<code class="docutils literal notranslate"><span class="pre">numpy</span></code>) و<code class="docutils literal notranslate"><span class="pre">npx</span></code>
+(<code class="docutils literal notranslate"><span class="pre">numpy_extension</span></code>) من MXNet. هنا ، تشتمل الوحدة النمطية <code class="docutils literal notranslate"><span class="pre">np</span></code> على
+وظائف يدعمها NumPy ، بينما تحتوي الوحدة النمطية npx على مجموعة من
+الملحقات التي تم تطويرها لتمكين التعلّم العميق في بيئة تشبه NumPy. عند
+استخدام <code class="docutils literal notranslate"><span class="pre">ndarray</span></code> ، فإننا دائمًا ما نستدعي وظيفة <code class="docutils literal notranslate"><span class="pre">set_np</span></code> : نقوم
+بهذا لكي نظمن توافق معالجة <code class="docutils literal notranslate"><span class="pre">ndarray</span></code> مع بقية مكونات مكتبة MXNet.</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">mxnet</span> <span class="kn">import</span> <span class="n">np</span><span class="p">,</span> <span class="n">npx</span>
+<span class="n">npx</span><span class="o">.</span><span class="n">set_np</span><span class="p">()</span>
+</pre></div>
+</div>
+<p>يمثل <code class="docutils literal notranslate"><span class="pre">ndarray</span></code> مجموعة (قد تكون متعددة الأبعاد) من القيم العددية. إذا
+كان هناك محور واحد ، فإنّ <code class="docutils literal notranslate"><span class="pre">ndarray</span></code> يقابل (في الرياضيات) <em>متجه</em>
+(vector). مع محورين ،يتطابق “ndarray” مع <em>مصفوفة</em> (matrix). لا توجد
+أسماء رياضية مخصّصة للمصفوفات التي تحتوي على أكثر من محورين — لذلك نحن
+ببساطة نسميها <em>tensors</em>.</p>
+<p>للبدء ، يُمكننا استخدام <code class="docutils literal notranslate"><span class="pre">arange</span></code> لإنشاء متجه صفي (row vector) سنسميه
+<code class="docutils literal notranslate"><span class="pre">x</span></code> يحتوي على الأعداد صحيحة من <span class="math notranslate nohighlight">\(0\)</span> إلى <span class="math notranslate nohighlight">\(12\)</span>. عند إنشاء هذه
+القيم سيعتبرها الحاسوب مبدئيا على أنّها أعداد عشرية. إلاّ أنّنا نسمى
+كُلاًّ من القيم الموجودة في <code class="docutils literal notranslate"><span class="pre">ndarray</span></code> ب* العنصر* (element)
+من<code class="docutils literal notranslate"><span class="pre">ndarray</span></code>. على سبيل المثال ، نقول بأنّ هناك <span class="math notranslate nohighlight">\(12\)</span> عنصرًا في
+ال<code class="docutils literal notranslate"><span class="pre">ndarray</span></code> المسمى <code class="docutils literal notranslate"><span class="pre">x</span></code>.</p>
+<p>ما لم يُنَصَّ على خلاف ذلك ، سيتم تخزين <code class="docutils literal notranslate"><span class="pre">ndarray</span></code> جديد في الذاكرة
+الرئيسية وتخصيصه للحساب المستند على وحدة المعالجة المركزية (CPU).</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">x</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="mi">12</span><span class="p">)</span>
+<span class="n">x</span>
+</pre></div>
+</div>
+<div class="output highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">array</span><span class="p">([</span> <span class="mf">0.</span><span class="p">,</span>  <span class="mf">1.</span><span class="p">,</span>  <span class="mf">2.</span><span class="p">,</span>  <span class="mf">3.</span><span class="p">,</span>  <span class="mf">4.</span><span class="p">,</span>  <span class="mf">5.</span><span class="p">,</span>  <span class="mf">6.</span><span class="p">,</span>  <span class="mf">7.</span><span class="p">,</span>  <span class="mf">8.</span><span class="p">,</span>  <span class="mf">9.</span><span class="p">,</span> <span class="mf">10.</span><span class="p">,</span> <span class="mf">11.</span><span class="p">])</span>
+</pre></div>
+</div>
+<p>We can access an <code class="docutils literal notranslate"><span class="pre">ndarray</span></code>’s <em>shape</em> (the length along each axis) by
+inspecting its <code class="docutils literal notranslate"><span class="pre">shape</span></code> property.</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">x</span><span class="o">.</span><span class="n">shape</span>
+</pre></div>
+</div>
+<div class="output highlight-default notranslate"><div class="highlight"><pre><span></span><span class="p">(</span><span class="mi">12</span><span class="p">,)</span>
+</pre></div>
+</div>
+<p>If we just want to know the total number of elements in an <code class="docutils literal notranslate"><span class="pre">ndarray</span></code>,
+i.e., the product of all of the shape elements, we can inspect its
+<code class="docutils literal notranslate"><span class="pre">size</span></code> property. Because we are dealing with a vector here, the single
+element of its <code class="docutils literal notranslate"><span class="pre">shape</span></code> is identical to its <code class="docutils literal notranslate"><span class="pre">size</span></code>.</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">x</span><span class="o">.</span><span class="n">size</span>
+</pre></div>
+</div>
+<div class="output highlight-default notranslate"><div class="highlight"><pre><span></span><span class="mi">12</span>
+</pre></div>
+</div>
+<p>To change the shape of an <code class="docutils literal notranslate"><span class="pre">ndarray</span></code> without altering either the number
+of elements or their values, we can invoke the <code class="docutils literal notranslate"><span class="pre">reshape</span></code> function. For
+example, we can transform our <code class="docutils literal notranslate"><span class="pre">ndarray</span></code>, <code class="docutils literal notranslate"><span class="pre">x</span></code>, from a row vector with
+shape (<span class="math notranslate nohighlight">\(12\)</span>,) to a matrix with shape (<span class="math notranslate nohighlight">\(3\)</span>, <span class="math notranslate nohighlight">\(4\)</span>). This
+new <code class="docutils literal notranslate"><span class="pre">ndarray</span></code> contains the exact same values, but views them as a
+matrix organized as <span class="math notranslate nohighlight">\(3\)</span> rows and <span class="math notranslate nohighlight">\(4\)</span> columns. To reiterate,
+although the shape has changed, the elements in <code class="docutils literal notranslate"><span class="pre">x</span></code> have not. Note
+that the <code class="docutils literal notranslate"><span class="pre">size</span></code> is unaltered by reshaping.</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">x</span> <span class="o">=</span> <span class="n">x</span><span class="o">.</span><span class="n">reshape</span><span class="p">(</span><span class="mi">3</span><span class="p">,</span> <span class="mi">4</span><span class="p">)</span>
+<span class="n">x</span>
+</pre></div>
+</div>
+<div class="output highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">array</span><span class="p">([[</span> <span class="mf">0.</span><span class="p">,</span>  <span class="mf">1.</span><span class="p">,</span>  <span class="mf">2.</span><span class="p">,</span>  <span class="mf">3.</span><span class="p">],</span>
+       <span class="p">[</span> <span class="mf">4.</span><span class="p">,</span>  <span class="mf">5.</span><span class="p">,</span>  <span class="mf">6.</span><span class="p">,</span>  <span class="mf">7.</span><span class="p">],</span>
+       <span class="p">[</span> <span class="mf">8.</span><span class="p">,</span>  <span class="mf">9.</span><span class="p">,</span> <span class="mf">10.</span><span class="p">,</span> <span class="mf">11.</span><span class="p">]])</span>
+</pre></div>
+</div>
+<p>Reshaping by manually specifying every dimension is unnecessary. If our
+target shape is a matrix with shape (height, width), then after we know
+the width, the height is given implicitly. Why should we have to perform
+the division ourselves? In the example above, to get a matrix with
+<span class="math notranslate nohighlight">\(3\)</span> rows, we specified both that it should have <span class="math notranslate nohighlight">\(3\)</span> rows and
+<span class="math notranslate nohighlight">\(4\)</span> columns. Fortunately, <code class="docutils literal notranslate"><span class="pre">ndarray</span></code> can automatically work out
+one dimension given the rest. We invoke this capability by placing
+<code class="docutils literal notranslate"><span class="pre">-1</span></code> for the dimension that we would like <code class="docutils literal notranslate"><span class="pre">ndarray</span></code> to automatically
+infer. In our case, instead of calling <code class="docutils literal notranslate"><span class="pre">x.reshape(3,</span> <span class="pre">4)</span></code>, we could
+have equivalently called <code class="docutils literal notranslate"><span class="pre">x.reshape(-1,</span> <span class="pre">4)</span></code> or <code class="docutils literal notranslate"><span class="pre">x.reshape(3,</span> <span class="pre">-1)</span></code>.</p>
+<p>The <code class="docutils literal notranslate"><span class="pre">empty</span></code> method grabs a chunk of memory and hands us back a matrix
+without bothering to change the value of any of its entries. This is
+remarkably efficient but we must be careful because the entries might
+take arbitrary values, including very big ones!</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">np</span><span class="o">.</span><span class="n">empty</span><span class="p">((</span><span class="mi">3</span><span class="p">,</span> <span class="mi">4</span><span class="p">))</span>
+</pre></div>
+</div>
+<div class="output highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">array</span><span class="p">([[</span><span class="mf">0.</span><span class="p">,</span> <span class="mf">0.</span><span class="p">,</span> <span class="mf">0.</span><span class="p">,</span> <span class="mf">0.</span><span class="p">],</span>
+       <span class="p">[</span><span class="mf">0.</span><span class="p">,</span> <span class="mf">0.</span><span class="p">,</span> <span class="mf">0.</span><span class="p">,</span> <span class="mf">0.</span><span class="p">],</span>
+       <span class="p">[</span><span class="mf">0.</span><span class="p">,</span> <span class="mf">0.</span><span class="p">,</span> <span class="mf">0.</span><span class="p">,</span> <span class="mf">0.</span><span class="p">]])</span>
+</pre></div>
+</div>
+<p>Typically, we will want our matrices initialized either with zeros,
+ones, some other constants, or numbers randomly sampled from a specific
+distribution. We can create an <code class="docutils literal notranslate"><span class="pre">ndarray</span></code> representing a tensor with
+all elements set to <span class="math notranslate nohighlight">\(0\)</span> and a shape of (<span class="math notranslate nohighlight">\(2\)</span>, <span class="math notranslate nohighlight">\(3\)</span>,
+<span class="math notranslate nohighlight">\(4\)</span>) as follows:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">np</span><span class="o">.</span><span class="n">zeros</span><span class="p">((</span><span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">4</span><span class="p">))</span>
+</pre></div>
+</div>
+<div class="output highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">array</span><span class="p">([[[</span><span class="mf">0.</span><span class="p">,</span> <span class="mf">0.</span><span class="p">,</span> <span class="mf">0.</span><span class="p">,</span> <span class="mf">0.</span><span class="p">],</span>
+        <span class="p">[</span><span class="mf">0.</span><span class="p">,</span> <span class="mf">0.</span><span class="p">,</span> <span class="mf">0.</span><span class="p">,</span> <span class="mf">0.</span><span class="p">],</span>
+        <span class="p">[</span><span class="mf">0.</span><span class="p">,</span> <span class="mf">0.</span><span class="p">,</span> <span class="mf">0.</span><span class="p">,</span> <span class="mf">0.</span><span class="p">]],</span>
+
+       <span class="p">[[</span><span class="mf">0.</span><span class="p">,</span> <span class="mf">0.</span><span class="p">,</span> <span class="mf">0.</span><span class="p">,</span> <span class="mf">0.</span><span class="p">],</span>
+        <span class="p">[</span><span class="mf">0.</span><span class="p">,</span> <span class="mf">0.</span><span class="p">,</span> <span class="mf">0.</span><span class="p">,</span> <span class="mf">0.</span><span class="p">],</span>
+        <span class="p">[</span><span class="mf">0.</span><span class="p">,</span> <span class="mf">0.</span><span class="p">,</span> <span class="mf">0.</span><span class="p">,</span> <span class="mf">0.</span><span class="p">]]])</span>
+</pre></div>
+</div>
+<p>Similarly, we can create tensors with each element set to 1 as follows:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">np</span><span class="o">.</span><span class="n">ones</span><span class="p">((</span><span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">4</span><span class="p">))</span>
+</pre></div>
+</div>
+<div class="output highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">array</span><span class="p">([[[</span><span class="mf">1.</span><span class="p">,</span> <span class="mf">1.</span><span class="p">,</span> <span class="mf">1.</span><span class="p">,</span> <span class="mf">1.</span><span class="p">],</span>
+        <span class="p">[</span><span class="mf">1.</span><span class="p">,</span> <span class="mf">1.</span><span class="p">,</span> <span class="mf">1.</span><span class="p">,</span> <span class="mf">1.</span><span class="p">],</span>
+        <span class="p">[</span><span class="mf">1.</span><span class="p">,</span> <span class="mf">1.</span><span class="p">,</span> <span class="mf">1.</span><span class="p">,</span> <span class="mf">1.</span><span class="p">]],</span>
+
+       <span class="p">[[</span><span class="mf">1.</span><span class="p">,</span> <span class="mf">1.</span><span class="p">,</span> <span class="mf">1.</span><span class="p">,</span> <span class="mf">1.</span><span class="p">],</span>
+        <span class="p">[</span><span class="mf">1.</span><span class="p">,</span> <span class="mf">1.</span><span class="p">,</span> <span class="mf">1.</span><span class="p">,</span> <span class="mf">1.</span><span class="p">],</span>
+        <span class="p">[</span><span class="mf">1.</span><span class="p">,</span> <span class="mf">1.</span><span class="p">,</span> <span class="mf">1.</span><span class="p">,</span> <span class="mf">1.</span><span class="p">]]])</span>
+</pre></div>
+</div>
+<p>Often, we want to randomly sample the values for each element in an
+<code class="docutils literal notranslate"><span class="pre">ndarray</span></code> from some probability distribution. For example, when we
+construct arrays to serve as parameters in a neural network, we will
+typically inititialize their values randomly. The following snippet
+creates an <code class="docutils literal notranslate"><span class="pre">ndarray</span></code> with shape (<span class="math notranslate nohighlight">\(3\)</span>, <span class="math notranslate nohighlight">\(4\)</span>). Each of its
+elements is randomly sampled from a standard Gaussian (normal)
+distribution with a mean of <span class="math notranslate nohighlight">\(0\)</span> and a standard deviation of
+<span class="math notranslate nohighlight">\(1\)</span>.</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">normal</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="n">size</span><span class="o">=</span><span class="p">(</span><span class="mi">3</span><span class="p">,</span> <span class="mi">4</span><span class="p">))</span>
+</pre></div>
+</div>
+<div class="output highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">array</span><span class="p">([[</span> <span class="mf">1.1630787</span> <span class="p">,</span>  <span class="mf">2.2122064</span> <span class="p">,</span>  <span class="mf">0.4838046</span> <span class="p">,</span>  <span class="mf">0.7740038</span> <span class="p">],</span>
+       <span class="p">[</span> <span class="mf">0.29956347</span><span class="p">,</span>  <span class="mf">1.0434403</span> <span class="p">,</span>  <span class="mf">0.15302546</span><span class="p">,</span>  <span class="mf">1.1839255</span> <span class="p">],</span>
+       <span class="p">[</span><span class="o">-</span><span class="mf">1.1688148</span> <span class="p">,</span>  <span class="mf">1.8917114</span> <span class="p">,</span>  <span class="mf">1.5580711</span> <span class="p">,</span> <span class="o">-</span><span class="mf">1.2347414</span> <span class="p">]])</span>
+</pre></div>
+</div>
+<p>We can also specify the exact values for each element in the desired
+<code class="docutils literal notranslate"><span class="pre">ndarray</span></code> by supplying a Python list (or list of lists) containing the
+numerical values. Here, the outermost list corresponds to axis
+<span class="math notranslate nohighlight">\(0\)</span>, and the inner list to axis <span class="math notranslate nohighlight">\(1\)</span>.</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([[</span><span class="mi">2</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">4</span><span class="p">,</span> <span class="mi">3</span><span class="p">],</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">4</span><span class="p">],</span> <span class="p">[</span><span class="mi">4</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">1</span><span class="p">]])</span>
+</pre></div>
+</div>
+<div class="output highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">array</span><span class="p">([[</span><span class="mf">2.</span><span class="p">,</span> <span class="mf">1.</span><span class="p">,</span> <span class="mf">4.</span><span class="p">,</span> <span class="mf">3.</span><span class="p">],</span>
+       <span class="p">[</span><span class="mf">1.</span><span class="p">,</span> <span class="mf">2.</span><span class="p">,</span> <span class="mf">3.</span><span class="p">,</span> <span class="mf">4.</span><span class="p">],</span>
+       <span class="p">[</span><span class="mf">4.</span><span class="p">,</span> <span class="mf">3.</span><span class="p">,</span> <span class="mf">2.</span><span class="p">,</span> <span class="mf">1.</span><span class="p">]])</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="operations">
+<h2><span class="section-number">2.1.2. </span>Operations<a class="headerlink" href="#operations" title="Permalink to this headline">¶</a></h2>
+<p>This book is not about software engineering. Our interests are not
+limited to simply reading and writing data from/to arrays. We want to
+perform mathematical operations on those arrays. Some of the simplest
+and most useful operations are the <em>elementwise</em> operations. These apply
+a standard scalar operation to each element of an array. For functions
+that take two arrays as inputs, elementwise operations apply some
+standard binary operator on each pair of corresponding elements from the
+two arrays. We can create an elementwise function from any function that
+maps from a scalar to a scalar.</p>
+<p>In mathematical notation, we would denote such a <em>unary</em> scalar operator
+(taking one input) by the signature
+<span class="math notranslate nohighlight">\(f: \mathbb{R} \rightarrow \mathbb{R}\)</span>. This just mean that the
+function is mapping from any real number (<span class="math notranslate nohighlight">\(\mathbb{R}\)</span>) onto
+another. Likewise, we denote a <em>binary</em> scalar operator (taking two real
+inputs, and yielding one output) by the signature
+<span class="math notranslate nohighlight">\(f: \mathbb{R}, \mathbb{R} \rightarrow \mathbb{R}\)</span>. Given any two
+vectors <span class="math notranslate nohighlight">\(\mathbf{u}\)</span> and <span class="math notranslate nohighlight">\(\mathbf{v}\)</span> <em>of the same shape</em>,
+and a binary operator <span class="math notranslate nohighlight">\(f\)</span>, we can produce a vector
+<span class="math notranslate nohighlight">\(\mathbf{c} = F(\mathbf{u},\mathbf{v})\)</span> by setting
+<span class="math notranslate nohighlight">\(c_i \gets f(u_i, v_i)\)</span> for all <span class="math notranslate nohighlight">\(i\)</span>, where <span class="math notranslate nohighlight">\(c_i, u_i\)</span>,
+and <span class="math notranslate nohighlight">\(v_i\)</span> are the <span class="math notranslate nohighlight">\(i^\mathrm{th}\)</span> elements of vectors
+<span class="math notranslate nohighlight">\(\mathbf{c}, \mathbf{u}\)</span>, and <span class="math notranslate nohighlight">\(\mathbf{v}\)</span>. Here, we
+produced the vector-valued
+<span class="math notranslate nohighlight">\(F: \mathbb{R}^d, \mathbb{R}^d \rightarrow \mathbb{R}^d\)</span> by
+<em>lifting</em> the scalar function to an elementwise vector operation.</p>
+<p>In MXNet, the common standard arithmetic operators (<code class="docutils literal notranslate"><span class="pre">+</span></code>, <code class="docutils literal notranslate"><span class="pre">-</span></code>, <code class="docutils literal notranslate"><span class="pre">*</span></code>,
+<code class="docutils literal notranslate"><span class="pre">/</span></code>, and <code class="docutils literal notranslate"><span class="pre">**</span></code>) have all been <em>lifted</em> to elementwise operations for
+any identically-shaped tensors of arbitrary shape. We can call
+elementwise operations on any two tensors of the same shape. In the
+following example, we use commas to formulate a <span class="math notranslate nohighlight">\(5\)</span>-element tuple,
+where each element is the result of an elementwise operation.</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">x</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">4</span><span class="p">,</span> <span class="mi">8</span><span class="p">])</span>
+<span class="n">y</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span><span class="mi">2</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">2</span><span class="p">])</span>
+<span class="n">x</span> <span class="o">+</span> <span class="n">y</span><span class="p">,</span> <span class="n">x</span> <span class="o">-</span> <span class="n">y</span><span class="p">,</span> <span class="n">x</span> <span class="o">*</span> <span class="n">y</span><span class="p">,</span> <span class="n">x</span> <span class="o">/</span> <span class="n">y</span><span class="p">,</span> <span class="n">x</span> <span class="o">**</span> <span class="n">y</span>  <span class="c1"># The ** operator is exponentiation</span>
+</pre></div>
+</div>
+<div class="output highlight-default notranslate"><div class="highlight"><pre><span></span><span class="p">(</span><span class="n">array</span><span class="p">([</span> <span class="mf">3.</span><span class="p">,</span>  <span class="mf">4.</span><span class="p">,</span>  <span class="mf">6.</span><span class="p">,</span> <span class="mf">10.</span><span class="p">]),</span>
+ <span class="n">array</span><span class="p">([</span><span class="o">-</span><span class="mf">1.</span><span class="p">,</span>  <span class="mf">0.</span><span class="p">,</span>  <span class="mf">2.</span><span class="p">,</span>  <span class="mf">6.</span><span class="p">]),</span>
+ <span class="n">array</span><span class="p">([</span> <span class="mf">2.</span><span class="p">,</span>  <span class="mf">4.</span><span class="p">,</span>  <span class="mf">8.</span><span class="p">,</span> <span class="mf">16.</span><span class="p">]),</span>
+ <span class="n">array</span><span class="p">([</span><span class="mf">0.5</span><span class="p">,</span> <span class="mf">1.</span> <span class="p">,</span> <span class="mf">2.</span> <span class="p">,</span> <span class="mf">4.</span> <span class="p">]),</span>
+ <span class="n">array</span><span class="p">([</span> <span class="mf">1.</span><span class="p">,</span>  <span class="mf">4.</span><span class="p">,</span> <span class="mf">16.</span><span class="p">,</span> <span class="mf">64.</span><span class="p">]))</span>
+</pre></div>
+</div>
+<p>Many more operations can be applied elementwise, including unary
+operators like exponentiation.</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">np</span><span class="o">.</span><span class="n">exp</span><span class="p">(</span><span class="n">x</span><span class="p">)</span>
+</pre></div>
+</div>
+<div class="output highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">array</span><span class="p">([</span><span class="mf">2.7182817e+00</span><span class="p">,</span> <span class="mf">7.3890562e+00</span><span class="p">,</span> <span class="mf">5.4598148e+01</span><span class="p">,</span> <span class="mf">2.9809580e+03</span><span class="p">])</span>
+</pre></div>
+</div>
+<p>In addition to elementwise computations, we can also perform linear
+algebra operations, including vector dot products and matrix
+multiplication. We will explain the crucial bits of linear algebra (with
+no assumed prior knowledge) in <a class="reference internal" href="linear-algebra.html#sec-linear-algebra"><span class="std std-numref">Section 2.3</span></a>.</p>
+<p>We can also <em>concatenate</em> multiple <code class="docutils literal notranslate"><span class="pre">ndarray</span></code>s together, stacking
+them end-to-end to form a larger <code class="docutils literal notranslate"><span class="pre">ndarray</span></code>. We just need to provide a
+list of <code class="docutils literal notranslate"><span class="pre">ndarray</span></code>s and tell the system along which axis to
+concatenate. The example below shows what happens when we concatenate
+two matrices along rows (axis <span class="math notranslate nohighlight">\(0\)</span>, the first element of the shape)
+vs. columns (axis <span class="math notranslate nohighlight">\(1\)</span>, the second element of the shape). We can
+see that, the first output <code class="docutils literal notranslate"><span class="pre">ndarray</span></code>‘s axis-<span class="math notranslate nohighlight">\(0\)</span> length
+(<span class="math notranslate nohighlight">\(6\)</span>) is the sum of the two input <code class="docutils literal notranslate"><span class="pre">ndarray</span></code>s’ axis-<span class="math notranslate nohighlight">\(0\)</span>
+lengths (<span class="math notranslate nohighlight">\(3 + 3\)</span>); while the second output <code class="docutils literal notranslate"><span class="pre">ndarray</span></code>‘s
+axis-<span class="math notranslate nohighlight">\(1\)</span> length (<span class="math notranslate nohighlight">\(8\)</span>) is the sum of the two input
+<code class="docutils literal notranslate"><span class="pre">ndarray</span></code>s’ axis-<span class="math notranslate nohighlight">\(1\)</span> lengths (<span class="math notranslate nohighlight">\(4 + 4\)</span>).</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">x</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="mi">12</span><span class="p">)</span><span class="o">.</span><span class="n">reshape</span><span class="p">(</span><span class="mi">3</span><span class="p">,</span> <span class="mi">4</span><span class="p">)</span>
+<span class="n">y</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([[</span><span class="mi">2</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">4</span><span class="p">,</span> <span class="mi">3</span><span class="p">],</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">4</span><span class="p">],</span> <span class="p">[</span><span class="mi">4</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">1</span><span class="p">]])</span>
+<span class="n">np</span><span class="o">.</span><span class="n">concatenate</span><span class="p">([</span><span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">],</span> <span class="n">axis</span><span class="o">=</span><span class="mi">0</span><span class="p">),</span> <span class="n">np</span><span class="o">.</span><span class="n">concatenate</span><span class="p">([</span><span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">],</span> <span class="n">axis</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
+</pre></div>
+</div>
+<div class="output highlight-default notranslate"><div class="highlight"><pre><span></span><span class="p">(</span><span class="n">array</span><span class="p">([[</span> <span class="mf">0.</span><span class="p">,</span>  <span class="mf">1.</span><span class="p">,</span>  <span class="mf">2.</span><span class="p">,</span>  <span class="mf">3.</span><span class="p">],</span>
+        <span class="p">[</span> <span class="mf">4.</span><span class="p">,</span>  <span class="mf">5.</span><span class="p">,</span>  <span class="mf">6.</span><span class="p">,</span>  <span class="mf">7.</span><span class="p">],</span>
+        <span class="p">[</span> <span class="mf">8.</span><span class="p">,</span>  <span class="mf">9.</span><span class="p">,</span> <span class="mf">10.</span><span class="p">,</span> <span class="mf">11.</span><span class="p">],</span>
+        <span class="p">[</span> <span class="mf">2.</span><span class="p">,</span>  <span class="mf">1.</span><span class="p">,</span>  <span class="mf">4.</span><span class="p">,</span>  <span class="mf">3.</span><span class="p">],</span>
+        <span class="p">[</span> <span class="mf">1.</span><span class="p">,</span>  <span class="mf">2.</span><span class="p">,</span>  <span class="mf">3.</span><span class="p">,</span>  <span class="mf">4.</span><span class="p">],</span>
+        <span class="p">[</span> <span class="mf">4.</span><span class="p">,</span>  <span class="mf">3.</span><span class="p">,</span>  <span class="mf">2.</span><span class="p">,</span>  <span class="mf">1.</span><span class="p">]]),</span>
+ <span class="n">array</span><span class="p">([[</span> <span class="mf">0.</span><span class="p">,</span>  <span class="mf">1.</span><span class="p">,</span>  <span class="mf">2.</span><span class="p">,</span>  <span class="mf">3.</span><span class="p">,</span>  <span class="mf">2.</span><span class="p">,</span>  <span class="mf">1.</span><span class="p">,</span>  <span class="mf">4.</span><span class="p">,</span>  <span class="mf">3.</span><span class="p">],</span>
+        <span class="p">[</span> <span class="mf">4.</span><span class="p">,</span>  <span class="mf">5.</span><span class="p">,</span>  <span class="mf">6.</span><span class="p">,</span>  <span class="mf">7.</span><span class="p">,</span>  <span class="mf">1.</span><span class="p">,</span>  <span class="mf">2.</span><span class="p">,</span>  <span class="mf">3.</span><span class="p">,</span>  <span class="mf">4.</span><span class="p">],</span>
+        <span class="p">[</span> <span class="mf">8.</span><span class="p">,</span>  <span class="mf">9.</span><span class="p">,</span> <span class="mf">10.</span><span class="p">,</span> <span class="mf">11.</span><span class="p">,</span>  <span class="mf">4.</span><span class="p">,</span>  <span class="mf">3.</span><span class="p">,</span>  <span class="mf">2.</span><span class="p">,</span>  <span class="mf">1.</span><span class="p">]]))</span>
+</pre></div>
+</div>
+<p>Sometimes, we want to construct a binary <code class="docutils literal notranslate"><span class="pre">ndarray</span></code> via <em>logical
+statements</em>. Take <code class="docutils literal notranslate"><span class="pre">x</span> <span class="pre">==</span> <span class="pre">y</span></code> as an example. For each position, if <code class="docutils literal notranslate"><span class="pre">x</span></code>
+and <code class="docutils literal notranslate"><span class="pre">y</span></code> are equal at that position, the corresponding entry in the new
+<code class="docutils literal notranslate"><span class="pre">ndarray</span></code> takes a value of <span class="math notranslate nohighlight">\(1\)</span>, meaning that the logical
+statement <code class="docutils literal notranslate"><span class="pre">x</span> <span class="pre">==</span> <span class="pre">y</span></code> is true at that position; otherwise that position
+takes <span class="math notranslate nohighlight">\(0\)</span>.</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">x</span> <span class="o">==</span> <span class="n">y</span>
+</pre></div>
+</div>
+<div class="output highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">array</span><span class="p">([[</span><span class="kc">False</span><span class="p">,</span>  <span class="kc">True</span><span class="p">,</span> <span class="kc">False</span><span class="p">,</span>  <span class="kc">True</span><span class="p">],</span>
+       <span class="p">[</span><span class="kc">False</span><span class="p">,</span> <span class="kc">False</span><span class="p">,</span> <span class="kc">False</span><span class="p">,</span> <span class="kc">False</span><span class="p">],</span>
+       <span class="p">[</span><span class="kc">False</span><span class="p">,</span> <span class="kc">False</span><span class="p">,</span> <span class="kc">False</span><span class="p">,</span> <span class="kc">False</span><span class="p">]])</span>
+</pre></div>
+</div>
+<p>Summing all the elements in the <code class="docutils literal notranslate"><span class="pre">ndarray</span></code> yields an <code class="docutils literal notranslate"><span class="pre">ndarray</span></code> with
+only one element.</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">x</span><span class="o">.</span><span class="n">sum</span><span class="p">()</span>
+</pre></div>
+</div>
+<div class="output highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">array</span><span class="p">(</span><span class="mf">66.</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>For stylistic convenience, we can write <code class="docutils literal notranslate"><span class="pre">x.sum()</span></code>as <code class="docutils literal notranslate"><span class="pre">np.sum(x)</span></code>.</p>
+</div>
+<div class="section" id="broadcasting-mechanism">
+<h2><span class="section-number">2.1.3. </span>Broadcasting Mechanism<a class="headerlink" href="#broadcasting-mechanism" title="Permalink to this headline">¶</a></h2>
+<p>In the above section, we saw how to perform elementwise operations on
+two <code class="docutils literal notranslate"><span class="pre">ndarray</span></code>s of the same shape. Under certain conditions, even
+when shapes differ, we can still perform elementwise operations by
+invoking the <em>broadcasting mechanism</em>. These mechanisms work in the
+following way: First, expand one or both arrays by copying elements
+appropriately so that after this transformation, the two <code class="docutils literal notranslate"><span class="pre">ndarray</span></code>s
+have the same shape. Second, carry out the elementwise operations on the
+resulting arrays.</p>
+<p>In most cases, we broadcast along an axis where an array initially only
+has length <span class="math notranslate nohighlight">\(1\)</span>, such as in the following example:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">a</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="mi">3</span><span class="p">)</span><span class="o">.</span><span class="n">reshape</span><span class="p">(</span><span class="mi">3</span><span class="p">,</span> <span class="mi">1</span><span class="p">)</span>
+<span class="n">b</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="mi">2</span><span class="p">)</span><span class="o">.</span><span class="n">reshape</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">)</span>
+<span class="n">a</span><span class="p">,</span> <span class="n">b</span>
+</pre></div>
+</div>
+<div class="output highlight-default notranslate"><div class="highlight"><pre><span></span><span class="p">(</span><span class="n">array</span><span class="p">([[</span><span class="mf">0.</span><span class="p">],</span>
+        <span class="p">[</span><span class="mf">1.</span><span class="p">],</span>
+        <span class="p">[</span><span class="mf">2.</span><span class="p">]]),</span> <span class="n">array</span><span class="p">([[</span><span class="mf">0.</span><span class="p">,</span> <span class="mf">1.</span><span class="p">]]))</span>
+</pre></div>
+</div>
+<p>Since <code class="docutils literal notranslate"><span class="pre">a</span></code> and <code class="docutils literal notranslate"><span class="pre">b</span></code> are <span class="math notranslate nohighlight">\(3\times1\)</span> and <span class="math notranslate nohighlight">\(1\times2\)</span> matrices
+respectively, their shapes do not match up if we want to add them. We
+<em>broadcast</em> the entries of both matrices into a larger <span class="math notranslate nohighlight">\(3\times2\)</span>
+matrix as follows: for matrix <code class="docutils literal notranslate"><span class="pre">a</span></code> it replicates the columns and for
+matrix <code class="docutils literal notranslate"><span class="pre">b</span></code> it replicates the rows before adding up both elementwise.</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">a</span> <span class="o">+</span> <span class="n">b</span>
+</pre></div>
+</div>
+<div class="output highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">array</span><span class="p">([[</span><span class="mf">0.</span><span class="p">,</span> <span class="mf">1.</span><span class="p">],</span>
+       <span class="p">[</span><span class="mf">1.</span><span class="p">,</span> <span class="mf">2.</span><span class="p">],</span>
+       <span class="p">[</span><span class="mf">2.</span><span class="p">,</span> <span class="mf">3.</span><span class="p">]])</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="indexing-and-slicing">
+<h2><span class="section-number">2.1.4. </span>Indexing and Slicing<a class="headerlink" href="#indexing-and-slicing" title="Permalink to this headline">¶</a></h2>
+<p>Just as in any other Python array, elements in an <code class="docutils literal notranslate"><span class="pre">ndarray</span></code> can be
+accessed by index. As in any Python array, the first element has index
+<span class="math notranslate nohighlight">\(0\)</span> and ranges are specified to include the first but <em>before</em> the
+last element. As in standard Python lists, we can access elements
+according to their relative position to the end of the list by using
+negative indices.</p>
+<p>Thus, <code class="docutils literal notranslate"><span class="pre">[-1]</span></code> selects the last element and <code class="docutils literal notranslate"><span class="pre">[1:3]</span></code> selects the second
+and the third elements as follows:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">x</span><span class="p">[</span><span class="o">-</span><span class="mi">1</span><span class="p">],</span> <span class="n">x</span><span class="p">[</span><span class="mi">1</span><span class="p">:</span><span class="mi">3</span><span class="p">]</span>
+</pre></div>
+</div>
+<div class="output highlight-default notranslate"><div class="highlight"><pre><span></span><span class="p">(</span><span class="n">array</span><span class="p">([</span> <span class="mf">8.</span><span class="p">,</span>  <span class="mf">9.</span><span class="p">,</span> <span class="mf">10.</span><span class="p">,</span> <span class="mf">11.</span><span class="p">]),</span> <span class="n">array</span><span class="p">([[</span> <span class="mf">4.</span><span class="p">,</span>  <span class="mf">5.</span><span class="p">,</span>  <span class="mf">6.</span><span class="p">,</span>  <span class="mf">7.</span><span class="p">],</span>
+        <span class="p">[</span> <span class="mf">8.</span><span class="p">,</span>  <span class="mf">9.</span><span class="p">,</span> <span class="mf">10.</span><span class="p">,</span> <span class="mf">11.</span><span class="p">]]))</span>
+</pre></div>
+</div>
+<p>Beyond reading, we can also write elements of a matrix by specifying
+indices.</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">x</span><span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">]</span> <span class="o">=</span> <span class="mi">9</span>
+<span class="n">x</span>
+</pre></div>
+</div>
+<div class="output highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">array</span><span class="p">([[</span> <span class="mf">0.</span><span class="p">,</span>  <span class="mf">1.</span><span class="p">,</span>  <span class="mf">2.</span><span class="p">,</span>  <span class="mf">3.</span><span class="p">],</span>
+       <span class="p">[</span> <span class="mf">4.</span><span class="p">,</span>  <span class="mf">5.</span><span class="p">,</span>  <span class="mf">9.</span><span class="p">,</span>  <span class="mf">7.</span><span class="p">],</span>
+       <span class="p">[</span> <span class="mf">8.</span><span class="p">,</span>  <span class="mf">9.</span><span class="p">,</span> <span class="mf">10.</span><span class="p">,</span> <span class="mf">11.</span><span class="p">]])</span>
+</pre></div>
+</div>
+<p>If we want to assign multiple elements the same value, we simply index
+all of them and then assign them the value. For instance, <code class="docutils literal notranslate"><span class="pre">[0:2,</span> <span class="pre">:]</span></code>
+accesses the first and second rows, where <code class="docutils literal notranslate"><span class="pre">:</span></code> takes all the elements
+along axis <span class="math notranslate nohighlight">\(1\)</span> (column). While we discussed indexing for matrices,
+this obviously also works for vectors and for tensors of more than
+<span class="math notranslate nohighlight">\(2\)</span> dimensions.</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">x</span><span class="p">[</span><span class="mi">0</span><span class="p">:</span><span class="mi">2</span><span class="p">,</span> <span class="p">:]</span> <span class="o">=</span> <span class="mi">12</span>
+<span class="n">x</span>
+</pre></div>
+</div>
+<div class="output highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">array</span><span class="p">([[</span><span class="mf">12.</span><span class="p">,</span> <span class="mf">12.</span><span class="p">,</span> <span class="mf">12.</span><span class="p">,</span> <span class="mf">12.</span><span class="p">],</span>
+       <span class="p">[</span><span class="mf">12.</span><span class="p">,</span> <span class="mf">12.</span><span class="p">,</span> <span class="mf">12.</span><span class="p">,</span> <span class="mf">12.</span><span class="p">],</span>
+       <span class="p">[</span> <span class="mf">8.</span><span class="p">,</span>  <span class="mf">9.</span><span class="p">,</span> <span class="mf">10.</span><span class="p">,</span> <span class="mf">11.</span><span class="p">]])</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="id3">
+<h2><span class="section-number">2.1.5. </span>حفظ الذاكرة<a class="headerlink" href="#id3" title="Permalink to this headline">¶</a></h2>
+<p>In the previous example, every time we ran an operation, we allocated
+new memory to host its results. For example, if we write <code class="docutils literal notranslate"><span class="pre">y</span> <span class="pre">=</span> <span class="pre">x</span> <span class="pre">+</span> <span class="pre">y</span></code>,
+we will dereference the <code class="docutils literal notranslate"><span class="pre">ndarray</span></code> that <code class="docutils literal notranslate"><span class="pre">y</span></code> used to point to and
+instead point <code class="docutils literal notranslate"><span class="pre">y</span></code> at the newly allocated memory. In the following
+example, we demonstrate this with Python’s <code class="docutils literal notranslate"><span class="pre">id()</span></code> function, which
+gives us the exact address of the referenced object in memory. After
+running <code class="docutils literal notranslate"><span class="pre">y</span> <span class="pre">=</span> <span class="pre">y</span> <span class="pre">+</span> <span class="pre">x</span></code>, we will find that <code class="docutils literal notranslate"><span class="pre">id(y)</span></code> points to a different
+location. That is because Python first evaluates <code class="docutils literal notranslate"><span class="pre">y</span> <span class="pre">+</span> <span class="pre">x</span></code>, allocating
+new memory for the result and then makes <code class="docutils literal notranslate"><span class="pre">y</span></code> point to this new
+location in memory.</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">before</span> <span class="o">=</span> <span class="nb">id</span><span class="p">(</span><span class="n">y</span><span class="p">)</span>
+<span class="n">y</span> <span class="o">=</span> <span class="n">y</span> <span class="o">+</span> <span class="n">x</span>
+<span class="nb">id</span><span class="p">(</span><span class="n">y</span><span class="p">)</span> <span class="o">==</span> <span class="n">before</span>
+</pre></div>
+</div>
+<div class="output highlight-default notranslate"><div class="highlight"><pre><span></span><span class="kc">False</span>
+</pre></div>
+</div>
+<p>This might be undesirable for two reasons. First, we do not want to run
+around allocating memory unnecessarily all the time. In machine
+learning, we might have hundreds of megabytes of parameters and update
+all of them multiple times per second. Typically, we will want to
+perform these updates <em>in place</em>. Second, we might point at the same
+parameters from multiple variables. If we do not update in place, this
+could cause that discarded memory is not released, and make it possible
+for parts of our code to inadvertently reference stale parameters.</p>
+<p>Fortunately, performing in-place operations in MXNet is easy. We can
+assign the result of an operation to a previously allocated array with
+slice notation, e.g., <code class="docutils literal notranslate"><span class="pre">y[:]</span> <span class="pre">=</span> <span class="pre">&lt;expression&gt;</span></code>. To illustrate this
+concept, we first create a new matrix <code class="docutils literal notranslate"><span class="pre">z</span></code> with the same shape as
+another <code class="docutils literal notranslate"><span class="pre">y</span></code>, using <code class="docutils literal notranslate"><span class="pre">zeros_like</span></code> to allocate a block of <span class="math notranslate nohighlight">\(0\)</span>
+entries.</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">z</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">zeros_like</span><span class="p">(</span><span class="n">y</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="s1">&#39;id(z):&#39;</span><span class="p">,</span> <span class="nb">id</span><span class="p">(</span><span class="n">z</span><span class="p">))</span>
+<span class="n">z</span><span class="p">[:]</span> <span class="o">=</span> <span class="n">x</span> <span class="o">+</span> <span class="n">y</span>
+<span class="nb">print</span><span class="p">(</span><span class="s1">&#39;id(z):&#39;</span><span class="p">,</span> <span class="nb">id</span><span class="p">(</span><span class="n">z</span><span class="p">))</span>
+</pre></div>
+</div>
+<div class="output highlight-default notranslate"><div class="highlight"><pre><span></span><span class="nb">id</span><span class="p">(</span><span class="n">z</span><span class="p">):</span> <span class="mi">4662329248</span>
+<span class="nb">id</span><span class="p">(</span><span class="n">z</span><span class="p">):</span> <span class="mi">4662329248</span>
+</pre></div>
+</div>
+<p>If the value of <code class="docutils literal notranslate"><span class="pre">x</span></code> is not reused in subsequent computations, we can
+also use <code class="docutils literal notranslate"><span class="pre">x[:]</span> <span class="pre">=</span> <span class="pre">x</span> <span class="pre">+</span> <span class="pre">y</span></code> or <code class="docutils literal notranslate"><span class="pre">x</span> <span class="pre">+=</span> <span class="pre">y</span></code> to reduce the memory overhead of
+the operation.</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">before</span> <span class="o">=</span> <span class="nb">id</span><span class="p">(</span><span class="n">x</span><span class="p">)</span>
+<span class="n">x</span> <span class="o">+=</span> <span class="n">y</span>
+<span class="nb">id</span><span class="p">(</span><span class="n">x</span><span class="p">)</span> <span class="o">==</span> <span class="n">before</span>
+</pre></div>
+</div>
+<div class="output highlight-default notranslate"><div class="highlight"><pre><span></span><span class="kc">True</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="conversion-to-other-python-objects">
+<h2><span class="section-number">2.1.6. </span>Conversion to Other Python Objects<a class="headerlink" href="#conversion-to-other-python-objects" title="Permalink to this headline">¶</a></h2>
+<p>Converting an MXNet <code class="docutils literal notranslate"><span class="pre">ndarray</span></code> to a NumPy <code class="docutils literal notranslate"><span class="pre">ndarray</span></code>, or vice versa,
+is easy. The converted result does not share memory. This minor
+inconvenience is actually quite important: when you perform operations
+on the CPU or on GPUs, you do not want MXNet to halt computation,
+waiting to see whether the NumPy package of Python might want to be
+doing something else with the same chunk of memory. The <code class="docutils literal notranslate"><span class="pre">array</span></code> and
+<code class="docutils literal notranslate"><span class="pre">asnumpy</span></code> functions do the trick.</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">a</span> <span class="o">=</span> <span class="n">x</span><span class="o">.</span><span class="n">asnumpy</span><span class="p">()</span>
+<span class="n">b</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">(</span><span class="n">a</span><span class="p">)</span>
+<span class="nb">type</span><span class="p">(</span><span class="n">a</span><span class="p">),</span> <span class="nb">type</span><span class="p">(</span><span class="n">b</span><span class="p">)</span>
+</pre></div>
+</div>
+<div class="output highlight-default notranslate"><div class="highlight"><pre><span></span><span class="p">(</span><span class="n">numpy</span><span class="o">.</span><span class="n">ndarray</span><span class="p">,</span> <span class="n">mxnet</span><span class="o">.</span><span class="n">numpy</span><span class="o">.</span><span class="n">ndarray</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>To convert a size-<span class="math notranslate nohighlight">\(1\)</span> <code class="docutils literal notranslate"><span class="pre">ndarray</span></code> to a Python scalar, we can
+invoke the <code class="docutils literal notranslate"><span class="pre">item</span></code> function or Python’s built-in functions.</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">a</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span><span class="mf">3.5</span><span class="p">])</span>
+<span class="n">a</span><span class="p">,</span> <span class="n">a</span><span class="o">.</span><span class="n">item</span><span class="p">(),</span> <span class="nb">float</span><span class="p">(</span><span class="n">a</span><span class="p">),</span> <span class="nb">int</span><span class="p">(</span><span class="n">a</span><span class="p">)</span>
+</pre></div>
+</div>
+<div class="output highlight-default notranslate"><div class="highlight"><pre><span></span><span class="p">(</span><span class="n">array</span><span class="p">([</span><span class="mf">3.5</span><span class="p">]),</span> <span class="mf">3.5</span><span class="p">,</span> <span class="mf">3.5</span><span class="p">,</span> <span class="mi">3</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="id4">
+<h2><span class="section-number">2.1.7. </span>الخلاصة<a class="headerlink" href="#id4" title="Permalink to this headline">¶</a></h2>
+<ul class="simple">
+<li><p>MXNet’s <code class="docutils literal notranslate"><span class="pre">ndarray</span></code> is an extension to NumPy’s <code class="docutils literal notranslate"><span class="pre">ndarray</span></code> with a few
+killer advantages that make it suitable for deep learning.</p></li>
+<li><p>MXNet’s <code class="docutils literal notranslate"><span class="pre">ndarray</span></code> provides a variety of functionalities including
+basic mathematics operations, broadcasting, indexing, slicing, memory
+saving, and conversion to other Python objects.</p></li>
+</ul>
+</div>
+<div class="section" id="id5">
+<h2><span class="section-number">2.1.8. </span>التّمارين<a class="headerlink" href="#id5" title="Permalink to this headline">¶</a></h2>
+<ol class="arabic simple">
+<li><p>Run the code in this section. Change the conditional statement
+<code class="docutils literal notranslate"><span class="pre">x</span> <span class="pre">==</span> <span class="pre">y</span></code> in this section to <code class="docutils literal notranslate"><span class="pre">x</span> <span class="pre">&lt;</span> <span class="pre">y</span></code> or <code class="docutils literal notranslate"><span class="pre">x</span> <span class="pre">&gt;</span> <span class="pre">y</span></code>, and then see
+what kind of <code class="docutils literal notranslate"><span class="pre">ndarray</span></code> you can get.</p></li>
+<li><p>Replace the two <code class="docutils literal notranslate"><span class="pre">ndarray</span></code>s that operate by element in the
+broadcasting mechanism with other shapes, e.g., three dimensional
+tensors. Is the result the same as expected?</p></li>
+</ol>
+</div>
+<div class="section" id="discussions">
+<h2><span class="section-number">2.1.9. </span><a class="reference external" href="https://discuss.mxnet.io/t/2316">Discussions</a><a class="headerlink" href="#discussions" title="Permalink to this headline">¶</a></h2>
+<p><img alt="image0" src="../_images/qr_ndarray.svg" /></p>
+</div>
+</div>
+
+
+        </div>
+        <div class="side-doc-outline">
+            <div class="side-doc-outline--content"> 
+<div class="localtoc">
+    <p class="caption">
+      <span class="caption-text">Table Of Contents</span>
+    </p>
+    <ul>
+<li><a class="reference internal" href="#">2.1. معالجة البيانات</a><ul>
+<li><a class="reference internal" href="#id2">2.1.1. لنشرع بالعمل</a></li>
+<li><a class="reference internal" href="#operations">2.1.2. Operations</a></li>
+<li><a class="reference internal" href="#broadcasting-mechanism">2.1.3. Broadcasting Mechanism</a></li>
+<li><a class="reference internal" href="#indexing-and-slicing">2.1.4. Indexing and Slicing</a></li>
+<li><a class="reference internal" href="#id3">2.1.5. حفظ الذاكرة</a></li>
+<li><a class="reference internal" href="#conversion-to-other-python-objects">2.1.6. Conversion to Other Python Objects</a></li>
+<li><a class="reference internal" href="#id4">2.1.7. الخلاصة</a></li>
+<li><a class="reference internal" href="#id5">2.1.8. التّمارين</a></li>
+<li><a class="reference internal" href="#discussions">2.1.9. Discussions</a></li>
+</ul>
+</li>
+</ul>
+
+</div>
+            </div>
+        </div>
+
+      <div class="clearer"></div>
+    </div><div class="pagenation">
+     <a id="button-prev" href="index.html" class="mdl-button mdl-js-button mdl-js-ripple-effect mdl-button--colored" role="botton" accesskey="P">
+         <i class="pagenation-arrow-L fas fa-arrow-left fa-lg"></i>
+         <div class="pagenation-text">
+            <span class="pagenation-direction">Previous</span>
+            <div>2. التمهيدات</div>
+         </div>
+     </a>
+     <a id="button-next" href="pandas.html" class="mdl-button mdl-js-button mdl-js-ripple-effect mdl-button--colored" role="botton" accesskey="N">
+         <i class="pagenation-arrow-R fas fa-arrow-right fa-lg"></i>
+        <div class="pagenation-text">
+            <span class="pagenation-direction">Next</span>
+            <div>2.2. Data Preprocessing</div>
+        </div>
+     </a>
+  </div>
+        
+        </main>
+    </div>
+  </body>
+</html>

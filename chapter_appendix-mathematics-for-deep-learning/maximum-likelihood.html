@@ -1,0 +1,488 @@
+<!DOCTYPE html>
+
+<html xmlns="http://www.w3.org/1999/xhtml" lang="ar">
+  <head>
+    <meta charset="utf-8" />
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta http-equiv="x-ua-compatible" content="ie=edge">
+    
+    <title>Maximum Likelihood &#8212; تعمّق في التعلّم العميق 0.7.1 documentation</title>
+
+    <link rel="stylesheet" href="../_static/basic.css" type="text/css" />
+    <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+    <link rel="stylesheet" href="../_static/material-design-lite-1.3.0/material.blue-deep_orange.min.css" type="text/css" />
+    <link rel="stylesheet" href="../_static/sphinx_materialdesign_theme.css" type="text/css" />
+    <link rel="stylesheet" href="../_static/fontawesome/all.css" type="text/css" />
+    <link rel="stylesheet" href="../_static/fonts.css" type="text/css" />
+    <link rel="stylesheet" type="text/css" href="../_static/d2l.css" />
+    <script type="text/javascript" id="documentation_options" data-url_root="../" src="../_static/documentation_options.js"></script>
+    <script type="text/javascript" src="../_static/jquery.js"></script>
+    <script type="text/javascript" src="../_static/underscore.js"></script>
+    <script type="text/javascript" src="../_static/doctools.js"></script>
+    <script type="text/javascript" src="../_static/language_data.js"></script>
+    <script type="text/javascript" src="../_static/d2l.js"></script>
+    <script type="text/javascript" src="../_static/translations.js"></script>
+    <script async="async" type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/latest.js?config=TeX-AMS-MML_HTMLorMML"></script>
+    <link rel="shortcut icon" href="../_static/favicon.png"/>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" /> 
+  </head>
+<body>
+    <div class="mdl-layout mdl-js-layout mdl-layout--fixed-header "><header class="mdl-layout__header mdl-layout__header--waterfall ">
+    <div class="mdl-layout__header-row">
+        
+        <nav class="mdl-navigation breadcrumb">
+            <a class="mdl-navigation__link is-active">Maximum Likelihood</a>
+        </nav>
+        <div class="mdl-layout-spacer"></div>
+        <nav class="mdl-navigation">
+        
+<form class="form-inline pull-sm-right" action="../search.html" method="get">
+      <div class="mdl-textfield mdl-js-textfield mdl-textfield--expandable mdl-textfield--floating-label mdl-textfield--align-right">
+        <label id="quick-search-icon" class="mdl-button mdl-js-button mdl-button--icon"  for="waterfall-exp">
+          <i class="material-icons">search</i>
+        </label>
+        <div class="mdl-textfield__expandable-holder">
+          <input class="mdl-textfield__input" type="text" name="q"  id="waterfall-exp" placeholder="Search" />
+          <input type="hidden" name="check_keywords" value="yes" />
+          <input type="hidden" name="area" value="default" />
+        </div>
+      </div>
+      <div class="mdl-tooltip" data-mdl-for="quick-search-icon">
+      Quick search
+      </div>
+</form>
+        
+<a id="button-show-source"
+    class="mdl-button mdl-js-button mdl-button--icon"
+    href="../_sources/chapter_appendix-mathematics-for-deep-learning/maximum-likelihood.rst.txt" rel="nofollow">
+  <i class="material-icons">code</i>
+</a>
+<div class="mdl-tooltip" data-mdl-for="button-show-source">
+Show Source
+</div>
+        </nav>
+    </div>
+    <div class="mdl-layout__header-row header-links">
+      <div class="mdl-layout-spacer"></div>
+      <nav class="mdl-navigation">
+          
+              <a  class="mdl-navigation__link" href="https://courses.d2l.ai">
+                  <i class="fas fa-user-graduate"></i>
+                  Courses
+              </a>
+          
+              <a  class="mdl-navigation__link" href="https://d2l.ai/d2l-en.pdf">
+                  <i class="fas fa-file-pdf"></i>
+                  PDF
+              </a>
+          
+              <a  class="mdl-navigation__link" href="https://d2l.ai/d2l-en.zip">
+                  <i class="fas fa-download"></i>
+                  All Notebooks
+              </a>
+          
+              <a  class="mdl-navigation__link" href="https://discuss.mxnet.io">
+                  <i class="fab fa-discourse"></i>
+                  Discuss
+              </a>
+          
+              <a  class="mdl-navigation__link" href="https://github.com/d2l-ai/d2l-en">
+                  <i class="fab fa-github"></i>
+                  GitHub
+              </a>
+          
+              <a  class="mdl-navigation__link" href="https://zh.d2l.ai">
+                  <i class="fas fa-external-link-alt"></i>
+                  中文版
+              </a>
+      </nav>
+    </div>
+</header><header class="mdl-layout__drawer">
+    
+          <!-- Title -->
+      <span class="mdl-layout-title">
+          <a class="title" href="../index.html">
+              <img class="logo" src="../_static/logo-with-text.png" alt="تعمّق في التعلّم العميق"/>
+          </a>
+      </span>
+    
+    
+      <div class="globaltoc">
+        <span class="mdl-layout-title toc">Table Of Contents</span>
+        
+        
+            
+            <nav class="mdl-navigation">
+                <ul>
+<li class="toctree-l1"><a class="reference internal" href="../chapter_preface/index.html">Preface</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../chapter_notation/index.html">الّرموز</a></li>
+</ul>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../chapter_introduction/index.html">1. مقدّمة</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../chapter_preliminaries/index.html">2. التمهيدات</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../chapter_appendix-math-and-keywords-translations/index.html">3. ملحق: ترجمة الألفاظ التقنية و الرياضية</a></li>
+</ul>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../chapter_references/zreferences.html">المراجع</a></li>
+</ul>
+
+            </nav>
+        
+        </div>
+    
+</header>
+        <main class="mdl-layout__content" tabIndex="0">
+
+	<script type="text/javascript" src="../_static/sphinx_materialdesign_theme.js "></script>
+    <header class="mdl-layout__drawer">
+    
+          <!-- Title -->
+      <span class="mdl-layout-title">
+          <a class="title" href="../index.html">
+              <img class="logo" src="../_static/logo-with-text.png" alt="تعمّق في التعلّم العميق"/>
+          </a>
+      </span>
+    
+    
+      <div class="globaltoc">
+        <span class="mdl-layout-title toc">Table Of Contents</span>
+        
+        
+            
+            <nav class="mdl-navigation">
+                <ul>
+<li class="toctree-l1"><a class="reference internal" href="../chapter_preface/index.html">Preface</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../chapter_notation/index.html">الّرموز</a></li>
+</ul>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../chapter_introduction/index.html">1. مقدّمة</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../chapter_preliminaries/index.html">2. التمهيدات</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../chapter_appendix-math-and-keywords-translations/index.html">3. ملحق: ترجمة الألفاظ التقنية و الرياضية</a></li>
+</ul>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../chapter_references/zreferences.html">المراجع</a></li>
+</ul>
+
+            </nav>
+        
+        </div>
+    
+</header>
+
+    <div class="document">
+        <div class="page-content" role="main">
+        
+  <div class="section" id="maximum-likelihood">
+<span id="sec-maximum-likelihood"></span><h1>Maximum Likelihood<a class="headerlink" href="#maximum-likelihood" title="Permalink to this headline">¶</a><a href="https://colab.research.google.com/github/d2l-ai/d2l-en-colab/blob/master/chapter_appendix-mathematics-for-deep-learning/maximum-likelihood.ipynb" onclick="captureOutboundLink('https://colab.research.google.com/github/d2l-ai/d2l-en-colab/blob/master/chapter_appendix-mathematics-for-deep-learning/maximum-likelihood.ipynb'); return false;"> <button style="float:right", id="colab" class="mdl-button mdl-js-button mdl-button--primary mdl-js-ripple-effect"> <i class=" fas fa-external-link-alt"></i> Colab </button></a><div class="mdl-tooltip" data-mdl-for="colab"> Open the notebook in Colab</div></h1>
+<p>One of the most commonly encountered way of thinking in machine learning
+is the maximum likelihood point of view. This is the concept that when
+working with a probabilistic model with unknown parameters, the
+parameters which make the data have the highest probability are the most
+likely ones.</p>
+<div class="section" id="the-maximum-likelihood-principle">
+<h2>The Maximum Likelihood Principle<a class="headerlink" href="#the-maximum-likelihood-principle" title="Permalink to this headline">¶</a></h2>
+<p>This has a Bayesian interpretation which can be helpful to think about.
+Suppose that we have a model with parameters <span class="math notranslate nohighlight">\(\boldsymbol{\theta}\)</span>
+and a collection of data points <span class="math notranslate nohighlight">\(X\)</span>. For concreteness, we can
+imagine that <span class="math notranslate nohighlight">\(\boldsymbol{\theta}\)</span> is a single value representing
+the probability that a coin comes up heads when flipped, and <span class="math notranslate nohighlight">\(X\)</span>
+is a sequence of independent coin flips. We will look at this example in
+depth later.</p>
+<p>If we want to find the most likely value for the parameters of our
+model, that means we want to find</p>
+<div class="math notranslate nohighlight" id="equation-eq-max-like">
+<span class="eqno">()<a class="headerlink" href="#equation-eq-max-like" title="Permalink to this equation">¶</a></span>\[\mathop{\mathrm{argmax}} P(\boldsymbol{\theta}\mid X).\]</div>
+<p>By Bayes’ rule, this is the same thing as</p>
+<div class="math notranslate nohighlight" id="equation-chapter-appendix-mathematics-for-deep-learning-maximum-likelihood-0">
+<span class="eqno">()<a class="headerlink" href="#equation-chapter-appendix-mathematics-for-deep-learning-maximum-likelihood-0" title="Permalink to this equation">¶</a></span>\[\mathop{\mathrm{argmax}} \frac{P(X \mid \boldsymbol{\theta})P(\boldsymbol{\theta})}{P(X)}.\]</div>
+<p>The expression <span class="math notranslate nohighlight">\(P(X)\)</span>, a parameter agnostic probability of
+generating the data, does not depend on <span class="math notranslate nohighlight">\(\boldsymbol{\theta}\)</span> at
+all, and so can be dropped without changing the best choice of
+<span class="math notranslate nohighlight">\(\boldsymbol{\theta}\)</span>. Similarly, we may now posit that we have no
+prior assumption on which set of parameters are better than any others,
+so we may declare that <span class="math notranslate nohighlight">\(P(\boldsymbol{\theta})\)</span> does not depend on
+theta either! This, for instance, makes sense in our coin flipping
+example where the probability it comes up heads could be any value in
+<span class="math notranslate nohighlight">\([0,1]\)</span> without any prior belief it is fair or not (often referred
+to as an <em>uninformative prior</em>). Thus we see that our application of
+Bayes’ rule shows that our best choice of <span class="math notranslate nohighlight">\(\boldsymbol{\theta}\)</span> is
+the maximum likelihood estimate for <span class="math notranslate nohighlight">\(\boldsymbol{\theta}\)</span>:</p>
+<div class="math notranslate nohighlight" id="equation-chapter-appendix-mathematics-for-deep-learning-maximum-likelihood-1">
+<span class="eqno">()<a class="headerlink" href="#equation-chapter-appendix-mathematics-for-deep-learning-maximum-likelihood-1" title="Permalink to this equation">¶</a></span>\[\hat{\boldsymbol{\theta}} = \mathop{\mathrm{argmax}} _ {\boldsymbol{\theta}} P(X \mid \boldsymbol{\theta}).\]</div>
+<p>As a matter of common terminology, the probability of the data given the
+parameters (<span class="math notranslate nohighlight">\(P(X \mid \boldsymbol{\theta})\)</span>) is referred to as the
+<em>likelihood</em>.</p>
+<div class="section" id="a-concrete-example">
+<h3>A Concrete Example<a class="headerlink" href="#a-concrete-example" title="Permalink to this headline">¶</a></h3>
+<p>Let’s see how this works in a concrete example. Suppose that we have a
+single parameter <span class="math notranslate nohighlight">\(\theta\)</span> representing the probability that a coin
+flip is heads. Then the probability of getting a tails is
+<span class="math notranslate nohighlight">\(1-\theta\)</span>, and so if our observed data <span class="math notranslate nohighlight">\(X\)</span> is a sequence
+with <span class="math notranslate nohighlight">\(n_H\)</span> heads and <span class="math notranslate nohighlight">\(n_T\)</span> tails, we can use the fact that
+independent probabilities multiply to see that</p>
+<div class="math notranslate nohighlight" id="equation-chapter-appendix-mathematics-for-deep-learning-maximum-likelihood-2">
+<span class="eqno">()<a class="headerlink" href="#equation-chapter-appendix-mathematics-for-deep-learning-maximum-likelihood-2" title="Permalink to this equation">¶</a></span>\[P(X \mid \theta) = \theta^{n_H}(1-\theta)^{n_T}.\]</div>
+<p>If we flip <span class="math notranslate nohighlight">\(13\)</span> coins and get the sequence “HHHTHTTHHHHHT”, which
+has <span class="math notranslate nohighlight">\(n_H = 9\)</span> and <span class="math notranslate nohighlight">\(n_T = 4\)</span>, we see that this is</p>
+<div class="math notranslate nohighlight" id="equation-chapter-appendix-mathematics-for-deep-learning-maximum-likelihood-3">
+<span class="eqno">()<a class="headerlink" href="#equation-chapter-appendix-mathematics-for-deep-learning-maximum-likelihood-3" title="Permalink to this equation">¶</a></span>\[P(X \mid \theta) = \theta^9(1-\theta)^4.\]</div>
+<p>One nice thing about this example will be that we know the answer going
+in. Indeed, if we said verbally, “I flipped 13 coins, and 9 came up
+heads, what is our best guess for the probability that the coin comes us
+heads?,” everyone would correctly guess <span class="math notranslate nohighlight">\(9/13\)</span>. What this maximum
+likelihood method will give us is a way to get that number from first
+principals in a way that will generalize to vastly more complex
+situations.</p>
+<p>For our example, the plot of <span class="math notranslate nohighlight">\(P(X \mid \theta)\)</span> is as follows:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="o">%</span><span class="n">matplotlib</span> <span class="n">inline</span>
+<span class="kn">import</span> <span class="nn">d2l</span>
+<span class="kn">from</span> <span class="nn">mxnet</span> <span class="kn">import</span> <span class="n">autograd</span><span class="p">,</span> <span class="n">np</span><span class="p">,</span> <span class="n">npx</span>
+<span class="n">npx</span><span class="o">.</span><span class="n">set_np</span><span class="p">()</span>
+
+<span class="n">theta</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mf">0.001</span><span class="p">)</span>
+<span class="n">p</span> <span class="o">=</span> <span class="n">theta</span><span class="o">**</span><span class="mi">9</span> <span class="o">*</span> <span class="p">(</span><span class="mi">1</span> <span class="o">-</span> <span class="n">theta</span><span class="p">)</span><span class="o">**</span><span class="mf">4.</span>
+
+<span class="n">d2l</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">theta</span><span class="p">,</span> <span class="n">p</span><span class="p">,</span> <span class="s1">&#39;theta&#39;</span><span class="p">,</span> <span class="s1">&#39;likelihood&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+<div class="figure align-default">
+<img alt="../_images/output_maximum-likelihood_c12333_1_0.svg" src="../_images/output_maximum-likelihood_c12333_1_0.svg" /></div>
+<p>This has its maximum value somewhere near our expected
+<span class="math notranslate nohighlight">\(9/13 \approx 0.7\ldots\)</span>. To see if it is exactly there, we can
+turn to calculus. Notice that at the maximum, the function is flat.
+Thus, we could find the maximum likelihood estimate
+<a class="reference internal" href="#equation-eq-max-like">()</a> by finding the values of <span class="math notranslate nohighlight">\(\theta\)</span> where the
+derivative is zero, and finding the one that gives the highest
+probability. We compute:</p>
+<div class="math notranslate nohighlight" id="equation-chapter-appendix-mathematics-for-deep-learning-maximum-likelihood-4">
+<span class="eqno">()<a class="headerlink" href="#equation-chapter-appendix-mathematics-for-deep-learning-maximum-likelihood-4" title="Permalink to this equation">¶</a></span>\[\begin{split}\begin{aligned}
+0 &amp; = \frac{d}{d\theta} P(X \mid \theta) \\
+&amp; = \frac{d}{d\theta} \theta^9(1-\theta)^4 \\
+&amp; = 9\theta^8(1-\theta)^4 - 4\theta^9(1-\theta)^3 \\
+&amp; = \theta^8(1-\theta)^3(9-13\theta).
+\end{aligned}\end{split}\]</div>
+<p>This has three solutions: <span class="math notranslate nohighlight">\(0\)</span>, <span class="math notranslate nohighlight">\(1\)</span> and <span class="math notranslate nohighlight">\(9/13\)</span>. The
+first two are clearly minima, not maxima as they assign probability
+<span class="math notranslate nohighlight">\(0\)</span> to our sequence. The final value does <em>not</em> assign zero
+probability to our sequence, and thus must be the maximum likelihood
+estimate <span class="math notranslate nohighlight">\(\hat \theta = 9/13\)</span>.</p>
+</div>
+</div>
+<div class="section" id="numerical-optimization-and-the-negative-log-likelihood">
+<h2>Numerical Optimization and the Negative Log-Likelihood<a class="headerlink" href="#numerical-optimization-and-the-negative-log-likelihood" title="Permalink to this headline">¶</a></h2>
+<p>The previous example is nice, but what if we have billions of parameters
+and data points.</p>
+<p>First notice that, if we make the assumption that all the data points
+are independent, we can no longer practically consider the likelihood
+itself as it is a product of many probabilities. Indeed, each
+probability is in <span class="math notranslate nohighlight">\([0,1]\)</span>, say typically of size about
+<span class="math notranslate nohighlight">\(1/2\)</span>, and the product of <span class="math notranslate nohighlight">\((1/2)^{1000000000}\)</span> is far below
+machine precision. We cannot work with that directly.</p>
+<p>However, recall that the logarithm turns products to sums, in which case</p>
+<div class="math notranslate nohighlight" id="equation-chapter-appendix-mathematics-for-deep-learning-maximum-likelihood-5">
+<span class="eqno">()<a class="headerlink" href="#equation-chapter-appendix-mathematics-for-deep-learning-maximum-likelihood-5" title="Permalink to this equation">¶</a></span>\[\log((1/2)^{1000000000}) = 1000000000\cdot\log(1/2) \approx -301029995.6\ldots\]</div>
+<p>This number fits perfectly within even a single precision <span class="math notranslate nohighlight">\(32\)</span>-bit
+float. Thus, we should consider the <em>log-likelihood</em>, which is</p>
+<div class="math notranslate nohighlight" id="equation-chapter-appendix-mathematics-for-deep-learning-maximum-likelihood-6">
+<span class="eqno">()<a class="headerlink" href="#equation-chapter-appendix-mathematics-for-deep-learning-maximum-likelihood-6" title="Permalink to this equation">¶</a></span>\[\log(P(X \mid \boldsymbol{\theta})).\]</div>
+<p>Since the function <span class="math notranslate nohighlight">\(x \mapsto \log(x)\)</span> is increasing, maximizing
+the likelihood is the same thing as maximizing the log-likelihood.
+Indeed in <code class="xref std std-numref docutils literal notranslate"><span class="pre">sec_naive_bayes</span></code> we will see this reasoning applied
+when working with the specific example of the naive Bayes classifier.</p>
+<p>We often work with loss functions, where we wish to minimize the loss.
+We may turn maximum likelihood into the minimization of a loss by taking
+<span class="math notranslate nohighlight">\(-\log(P(X \mid \boldsymbol{\theta}))\)</span>, which is the <em>negative
+log-likelihood</em>.</p>
+<p>To illustrate this, consider the coin flipping problem from before, and
+pretend that we do not know the closed form solution. The we may compute
+that</p>
+<div class="math notranslate nohighlight" id="equation-chapter-appendix-mathematics-for-deep-learning-maximum-likelihood-7">
+<span class="eqno">()<a class="headerlink" href="#equation-chapter-appendix-mathematics-for-deep-learning-maximum-likelihood-7" title="Permalink to this equation">¶</a></span>\[-\log(P(X \mid \boldsymbol{\theta})) = -\log(\theta^{n_H}(1-\theta)^{n_T}) = -(n_H\log(\theta) + n_T\log(1-\theta)).\]</div>
+<p>This can be written into code, and freely optimized even for billions of
+coin flips.</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1"># Set up our data</span>
+<span class="n">n_H</span> <span class="o">=</span> <span class="mi">8675309</span>
+<span class="n">n_T</span> <span class="o">=</span> <span class="mi">25624</span>
+
+<span class="c1"># Initialize our paramteres</span>
+<span class="n">theta</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">(</span><span class="mf">0.5</span><span class="p">)</span>
+<span class="n">theta</span><span class="o">.</span><span class="n">attach_grad</span><span class="p">()</span>
+
+<span class="c1"># Perform gradient descent</span>
+<span class="n">lr</span> <span class="o">=</span> <span class="mf">0.00000000001</span>
+<span class="k">for</span> <span class="nb">iter</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">10</span><span class="p">):</span>
+    <span class="k">with</span> <span class="n">autograd</span><span class="o">.</span><span class="n">record</span><span class="p">():</span>
+        <span class="n">loss</span> <span class="o">=</span> <span class="o">-</span><span class="p">(</span><span class="n">n_H</span> <span class="o">*</span> <span class="n">np</span><span class="o">.</span><span class="n">log</span><span class="p">(</span><span class="n">theta</span><span class="p">)</span> <span class="o">+</span> <span class="n">n_T</span> <span class="o">*</span> <span class="n">np</span><span class="o">.</span><span class="n">log</span><span class="p">(</span><span class="mi">1</span> <span class="o">-</span> <span class="n">theta</span><span class="p">))</span>
+    <span class="n">loss</span><span class="o">.</span><span class="n">backward</span><span class="p">()</span>
+    <span class="n">theta</span> <span class="o">-=</span> <span class="n">lr</span> <span class="o">*</span> <span class="n">theta</span><span class="o">.</span><span class="n">grad</span>
+
+<span class="c1"># Check output</span>
+<span class="n">theta</span><span class="p">,</span> <span class="n">n_H</span> <span class="o">/</span> <span class="p">(</span><span class="n">n_H</span> <span class="o">+</span> <span class="n">n_T</span><span class="p">)</span>
+</pre></div>
+</div>
+<div class="output highlight-default notranslate"><div class="highlight"><pre><span></span><span class="p">(</span><span class="n">array</span><span class="p">(</span><span class="mf">0.50172704</span><span class="p">),</span> <span class="mf">0.9970550284664874</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>Numerical convenience is only one reason people like to use negative
+log-likelihoods. Indeed, there are a several reasons that it can be
+preferable.</p>
+<p>The second reason we consider the log-likelihood is the simplified
+application of calculus rules. As discussed above, due to independence
+assumptions, most probabilities we encounter in machine learning are
+products of individual probabilities.</p>
+<div class="math notranslate nohighlight" id="equation-chapter-appendix-mathematics-for-deep-learning-maximum-likelihood-8">
+<span class="eqno">()<a class="headerlink" href="#equation-chapter-appendix-mathematics-for-deep-learning-maximum-likelihood-8" title="Permalink to this equation">¶</a></span>\[P(X\mid\boldsymbol{\theta}) = p(x_1\mid\boldsymbol{\theta})\cdot p(x_2\mid\boldsymbol{\theta})\cdots p(x_n\mid\boldsymbol{\theta}).\]</div>
+<p>This means that if we directly apply the product rule to compute a
+derivative we get</p>
+<div class="math notranslate nohighlight" id="equation-chapter-appendix-mathematics-for-deep-learning-maximum-likelihood-9">
+<span class="eqno">()<a class="headerlink" href="#equation-chapter-appendix-mathematics-for-deep-learning-maximum-likelihood-9" title="Permalink to this equation">¶</a></span>\[\begin{split}\begin{aligned}
+\frac{\partial}{\partial \boldsymbol{\theta}} P(X\mid\boldsymbol{\theta}) &amp; = \left(\frac{\partial}{\partial \boldsymbol{\theta}}P(x_1\mid\boldsymbol{\theta})\right)\cdot P(x_2\mid\boldsymbol{\theta})\cdots P(x_n\mid\boldsymbol{\theta}) \\
+&amp; \quad + P(x_1\mid\boldsymbol{\theta})\cdot \left(\frac{\partial}{\partial \boldsymbol{\theta}}P(x_2\mid\boldsymbol{\theta})\right)\cdots P(x_n\mid\boldsymbol{\theta}) \\
+&amp; \quad \quad \quad \quad \quad \quad \quad \quad \quad \quad \vdots \\
+&amp; \quad + P(x_1\mid\boldsymbol{\theta})\cdot P(x_2\mid\boldsymbol{\theta}) \cdots \left(\frac{\partial}{\partial \boldsymbol{\theta}}P(x_n\mid\boldsymbol{\theta})\right).
+\end{aligned}\end{split}\]</div>
+<p>This requires <span class="math notranslate nohighlight">\(n(n-1)\)</span> multiplications, along with <span class="math notranslate nohighlight">\((n-1)\)</span>
+additions, so it is total of quadratic time in the inputs! Sufficient
+cleverness in grouping terms will reduce this to linear time, but it
+requires some thought. For the negative log-likelihood we have instead</p>
+<div class="math notranslate nohighlight" id="equation-chapter-appendix-mathematics-for-deep-learning-maximum-likelihood-10">
+<span class="eqno">()<a class="headerlink" href="#equation-chapter-appendix-mathematics-for-deep-learning-maximum-likelihood-10" title="Permalink to this equation">¶</a></span>\[-\log\left(P(X\mid\boldsymbol{\theta})\right) = -\log(P(x_1\mid\boldsymbol{\theta})) - \log(P(x_2\mid\boldsymbol{\theta})) \cdots - \log(P(x_n\mid\boldsymbol{\theta})),\]</div>
+<p>which then gives</p>
+<div class="math notranslate nohighlight" id="equation-chapter-appendix-mathematics-for-deep-learning-maximum-likelihood-11">
+<span class="eqno">()<a class="headerlink" href="#equation-chapter-appendix-mathematics-for-deep-learning-maximum-likelihood-11" title="Permalink to this equation">¶</a></span>\[- \frac{\partial}{\partial \boldsymbol{\theta}} \log\left(P(X\mid\boldsymbol{\theta})\right) = \frac{1}{P(x_1\mid\boldsymbol{\theta})}\left(\frac{\partial}{\partial \boldsymbol{\theta}}P(x_1\mid\boldsymbol{\theta})\right) + \cdots + \frac{1}{P(x_n\mid\boldsymbol{\theta})}\left(\frac{\partial}{\partial \boldsymbol{\theta}}P(x_n\mid\boldsymbol{\theta})\right).\]</div>
+<p>This requires only <span class="math notranslate nohighlight">\(n\)</span> divides and <span class="math notranslate nohighlight">\(n-1\)</span> sums, and thus is
+linear time in the inputs.</p>
+<p>The third and final reason to consider the negative log-likelihood is
+the relationship to information theory, which we will discuss in detail
+in <code class="xref std std-numref docutils literal notranslate"><span class="pre">sec_information_theory</span></code>. This is a rigorous mathematical
+theory which gives a way to measure the degree of information or
+randomness in a random variable. The key object of study in that field
+is the entropy which is</p>
+<div class="math notranslate nohighlight" id="equation-chapter-appendix-mathematics-for-deep-learning-maximum-likelihood-12">
+<span class="eqno">()<a class="headerlink" href="#equation-chapter-appendix-mathematics-for-deep-learning-maximum-likelihood-12" title="Permalink to this equation">¶</a></span>\[H(p) = -\sum_{i} p_i \log_2(p_i),\]</div>
+<p>which measures the randomness of a source. Notice that this is nothing
+more than the average <span class="math notranslate nohighlight">\(-\log\)</span> probability, and thus if we take our
+negative log-likelihood and divide by the number of data points, we get
+a relative of entropy known as cross-entropy. This theoretical
+interpretation alone would be sufficiently compelling to motivate
+reporting the average negative log-likelihood over the dataset as a way
+of measuring model performance.</p>
+</div>
+<div class="section" id="maximum-likelihood-for-continuous-variables">
+<h2>Maximum Likelihood for Continuous Variables<a class="headerlink" href="#maximum-likelihood-for-continuous-variables" title="Permalink to this headline">¶</a></h2>
+<p>Everything that we have done so far assumes we are working with discrete
+random variables, but what if we want to work with continuous ones?</p>
+<p>The short summary is that nothing at all changes, except we replace all
+the instances of the probability with the probability density. Recalling
+that we write densities with lower case <span class="math notranslate nohighlight">\(p\)</span>, this means that for
+example we now say</p>
+<div class="math notranslate nohighlight" id="equation-chapter-appendix-mathematics-for-deep-learning-maximum-likelihood-13">
+<span class="eqno">()<a class="headerlink" href="#equation-chapter-appendix-mathematics-for-deep-learning-maximum-likelihood-13" title="Permalink to this equation">¶</a></span>\[-\log\left(p(X\mid\boldsymbol{\theta})\right) = -\log(p(x_1\mid\boldsymbol{\theta})) - \log(p(x_2\mid\boldsymbol{\theta})) \cdots - \log(p(x_n\mid\boldsymbol{\theta})) = -\sum_i \log(p(x_i \mid \theta)).\]</div>
+<p>The question becomes, “Why is this OK?” After all, the reason we
+introduced densities was because probabilities of getting specific
+outcomes themselves was zero, and thus is not the probability of
+generating our data for any set of parameters zero?</p>
+<p>Indeed, this is the case, and understanding why we can shift to
+densities is an exercise in tracing what happens to the epsilons.</p>
+<p>Let’s first re-define our goal. Suppose that for continuous random
+variables we no longer want to compute the probability of getting
+exactly the right value, but instead matching to within some range
+<span class="math notranslate nohighlight">\(\epsilon\)</span>. For simplicity, we assume our data is repeated
+observations <span class="math notranslate nohighlight">\(x_1, \ldots, x_N\)</span> of identically distributed random
+variables <span class="math notranslate nohighlight">\(X_1, \ldots, X_N\)</span>. As we have seen previously, this can
+be written as</p>
+<div class="math notranslate nohighlight" id="equation-chapter-appendix-mathematics-for-deep-learning-maximum-likelihood-14">
+<span class="eqno">()<a class="headerlink" href="#equation-chapter-appendix-mathematics-for-deep-learning-maximum-likelihood-14" title="Permalink to this equation">¶</a></span>\[\begin{split}\begin{aligned}
+&amp;P(X_1 \in [x_1, x_1+\epsilon], X_2 \in [x_2, x_2+\epsilon], \ldots, X_N \in [x_N, x_N+\epsilon]\mid\boldsymbol{\theta}) \\
+\approx &amp;\epsilon^Np(x_1\mid\boldsymbol{\theta})\cdot p(x_2\mid\boldsymbol{\theta}) \cdots p(x_n\mid\boldsymbol{\theta}).
+\end{aligned}\end{split}\]</div>
+<p>Thus, if we take negative logarithms of this we obtain</p>
+<div class="math notranslate nohighlight" id="equation-chapter-appendix-mathematics-for-deep-learning-maximum-likelihood-15">
+<span class="eqno">()<a class="headerlink" href="#equation-chapter-appendix-mathematics-for-deep-learning-maximum-likelihood-15" title="Permalink to this equation">¶</a></span>\[\begin{split}\begin{aligned}
+&amp;-\log(P(X_1 \in [x_1, x_1+\epsilon], X_2 \in [x_2, x_2+\epsilon], \ldots, X_N \in [x_N, x_N+\epsilon]\mid\boldsymbol{\theta})) \\
+\approx &amp; -N\log(\epsilon) - \sum_{i} \log(p(x_i\mid\boldsymbol{\theta})).
+\end{aligned}\end{split}\]</div>
+<p>If we examine this expression, the only place that the <span class="math notranslate nohighlight">\(\epsilon\)</span>
+occurs is in the additive constant <span class="math notranslate nohighlight">\(-N\log(\epsilon)\)</span>. This does
+not depend on the parameters <span class="math notranslate nohighlight">\(\boldsymbol{\theta}\)</span> at all, so the
+optimal choice of <span class="math notranslate nohighlight">\(\boldsymbol{\theta}\)</span> does not depend on our
+choice of <span class="math notranslate nohighlight">\(\epsilon\)</span>! If we demand four digits or four-hundred,
+the best choice of <span class="math notranslate nohighlight">\(\boldsymbol{\theta}\)</span> remains the same, thus we
+may freely drop the epsilon to see that what we want to optimize is</p>
+<div class="math notranslate nohighlight" id="equation-chapter-appendix-mathematics-for-deep-learning-maximum-likelihood-16">
+<span class="eqno">()<a class="headerlink" href="#equation-chapter-appendix-mathematics-for-deep-learning-maximum-likelihood-16" title="Permalink to this equation">¶</a></span>\[- \sum_{i} \log(p(x_i\mid\boldsymbol{\theta})).\]</div>
+<p>Thus, we see that the maximum likelihood point of view can operate with
+continuous random variables as easily as with discrete ones by replacing
+the probabilities with probability densities.</p>
+</div>
+<div class="section" id="summary">
+<h2>Summary<a class="headerlink" href="#summary" title="Permalink to this headline">¶</a></h2>
+<ul class="simple">
+<li><p>The maximum likelihood principle tells us that the best fit model for
+a given dataset is the one that generates the data with the highest
+probability.</p></li>
+<li><p>Often people work with the negative log-likelihood instead for a
+variety of reasons: numerical stability, conversion of products to
+sums (and the resulting simplification of gradient computations), and
+theoretical ties to information theory.</p></li>
+<li><p>While simplest to motivate in the discrete setting, it may be freely
+generalized to the continuous setting as well by maximizing the
+probability density assigned to the datapoints.</p></li>
+</ul>
+</div>
+<div class="section" id="exercises">
+<h2>Exercises<a class="headerlink" href="#exercises" title="Permalink to this headline">¶</a></h2>
+<ol class="arabic simple">
+<li><p>Suppose that you know that a random variable has density
+<span class="math notranslate nohighlight">\(\frac{1}{\alpha}e^{-\alpha x}\)</span> for some value <span class="math notranslate nohighlight">\(\alpha\)</span>.
+You obtain a single observation from the random variable which is the
+number <span class="math notranslate nohighlight">\(3\)</span>. What is the maximum likelihood estimate for
+<span class="math notranslate nohighlight">\(\alpha\)</span>?</p></li>
+<li><p>Suppose that you have a dataset of samples <span class="math notranslate nohighlight">\(\{x_i\}_{i=1}^N\)</span>
+drawn from a Gaussian with unknown mean, but variance <span class="math notranslate nohighlight">\(1\)</span>. What
+is the maximum likelihood estimate for the mean?</p></li>
+</ol>
+</div>
+<div class="section" id="discussions">
+<h2><a class="reference external" href="https://discuss.mxnet.io/t/5153">Discussions</a><a class="headerlink" href="#discussions" title="Permalink to this headline">¶</a></h2>
+<p><img alt="image0" src="../_images/qr_maximum-likelihood.svg" /></p>
+</div>
+</div>
+
+
+        </div>
+        <div class="side-doc-outline">
+            <div class="side-doc-outline--content"> 
+<div class="localtoc">
+    <p class="caption">
+      <span class="caption-text">Table Of Contents</span>
+    </p>
+    <ul>
+<li><a class="reference internal" href="#">Maximum Likelihood</a><ul>
+<li><a class="reference internal" href="#the-maximum-likelihood-principle">The Maximum Likelihood Principle</a><ul>
+<li><a class="reference internal" href="#a-concrete-example">A Concrete Example</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#numerical-optimization-and-the-negative-log-likelihood">Numerical Optimization and the Negative Log-Likelihood</a></li>
+<li><a class="reference internal" href="#maximum-likelihood-for-continuous-variables">Maximum Likelihood for Continuous Variables</a></li>
+<li><a class="reference internal" href="#summary">Summary</a></li>
+<li><a class="reference internal" href="#exercises">Exercises</a></li>
+<li><a class="reference internal" href="#discussions">Discussions</a></li>
+</ul>
+</li>
+</ul>
+
+</div>
+            </div>
+        </div>
+
+      <div class="clearer"></div>
+    </div><div class="pagenation">
+  </div>
+        
+        </main>
+    </div>
+  </body>
+</html>
