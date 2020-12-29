@@ -132,16 +132,104 @@ const addCopyButtonToCodeCells = () => {
 
 runWhenDOMLoaded(addCopyButtonToCodeCells);
 
+function discourse_embed() {
+    $('a').each(function(){
+        if ($(this).text().indexOf("Discussions") != -1) {
+            var pp = $(this).parent();
+            if (pp.is('h2')  || pp.is('li')) {
+                return;
+            }
+            var pp = $(this).parent().parent();
+            if (pp.hasClass('mdl-tabs__panel') && !pp.hasClass('is-active')) {
+                return;
+            }
+            var url = $(this).attr('href');
+            var tokens = url.split('/');
+            var topic_id = tokens[tokens.length-1];
+            var domain = tokens[0]+'//'+tokens[2]+'/';
+            $("#discourse-comments").remove();
+            $(this).parent().append('<div id="discourse-comments"></div>');
+
+
+            DiscourseEmbed = { discourseUrl: domain, topicId: topic_id };
+            (function() {
+                var d = document.createElement('script'); d.type = 'text/javascript';
+                d.async = true;
+                d.src = DiscourseEmbed.discourseUrl + 'javascripts/embed.js';
+                (document.getElementsByTagName('head')[0] ||
+                 document.getElementsByTagName('body')[0]).appendChild(d);
+            })();
+            $(this).hide()
+        }
+    });
+}
+
+function select_tab(i) {
+    var n = 4;
+    $(".mdl-tabs").each(function(index){
+        var j;
+        for (j = 0; j < n; j++) {
+            if (j != i) {
+                $(this).find(".mdl-tabs__panel:eq("+j.toString()+")").removeClass('is-active');
+            }
+        }
+        $(this).find(".mdl-tabs__panel:eq("+i.toString()+")").addClass('is-active');
+    });
+    $(".d2l-tabs").each(function(index){
+        var j;
+        for (j = 0; j < n; j++) {
+            if (j != i) {
+                $(this).find(".d2l-tabs__tab:eq("+j.toString()+")").hide();
+            }
+        }
+        $(this).find(".d2l-tabs__tab:eq("+i.toString()+")").show();
+    });
+    $(".mdl-tabs__tab-bar").each(function(index){
+        var j;
+        for (j = 0; j < n; j++) {
+            if (j != i) {
+                $(this).find(".mdl-tabs__tab:eq("+j.toString()+")").removeClass('is-active');
+            }
+        }
+        $(this).find(".mdl-tabs__tab:eq("+i.toString()+")").addClass('is-active');
+    });
+    discourse_embed();
+}
+
+$(document).ready(function () {
+  select_tab(0);
+  $(".mdl-tabs__tab-bar").each(function(index){
+    $(this).find(".mdl-tabs__tab:eq(0)").click(function() {
+        select_tab(0);
+    });
+    $(this).find(".mdl-tabs__tab:eq(1)").click(function() {
+        select_tab(1);
+    });
+    $(this).find(".mdl-tabs__tab:eq(2)").click(function() {
+        select_tab(2);
+    });
+    $(this).find(".mdl-tabs__tab:eq(3)").click(function() {
+        select_tab(3);
+    });
+  });
+});
+
 (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
 (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
 m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
 })(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
 
-ga('create', 'UA-96378503-10', 'auto');
+ga('create', '', 'auto');
 ga('send', 'pageview');
 var captureOutboundLink = function(url) {
    ga('send', 'event', 'outbound', 'click', url, {
      'transport': 'beacon',
      'hitCallback': function(){document.location = url;}
    });
+}
+
+var tagClick = function(tab) {
+    ga('send', 'event', 'tab', 'click', tab, {
+        'transport': 'beacon'
+    });
 }

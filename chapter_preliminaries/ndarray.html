@@ -1,6 +1,6 @@
 <!DOCTYPE html>
 
-<html xmlns="http://www.w3.org/1999/xhtml" lang="ar">
+<html xmlns="http://www.w3.org/1999/xhtml">
   <head>
     <meta charset="utf-8" />
     <meta charset="utf-8">
@@ -22,7 +22,6 @@
     <script type="text/javascript" src="../_static/doctools.js"></script>
     <script type="text/javascript" src="../_static/language_data.js"></script>
     <script type="text/javascript" src="../_static/d2l.js"></script>
-    <script type="text/javascript" src="../_static/translations.js"></script>
     <script async="async" type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/latest.js?config=TeX-AMS-MML_HTMLorMML"></script>
     <link rel="shortcut icon" href="../_static/favicon.png"/>
     <link rel="index" title="Index" href="../genindex.html" />
@@ -31,7 +30,7 @@
     <link rel="prev" title="2. التمهيدات" href="index.html" /> 
   </head>
 <body>
-    <div class="mdl-layout mdl-js-layout mdl-layout--fixed-header "><header class="mdl-layout__header mdl-layout__header--waterfall ">
+    <div class="mdl-layout mdl-js-layout mdl-layout--fixed-header mdl-layout--fixed-drawer"><header class="mdl-layout__header mdl-layout__header--waterfall ">
     <div class="mdl-layout__header-row">
         
         <nav class="mdl-navigation breadcrumb">
@@ -119,7 +118,7 @@ Show Source
             
             <nav class="mdl-navigation">
                 <ul>
-<li class="toctree-l1"><a class="reference internal" href="../chapter_preface/index.html">Preface</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../chapter_preface/index.html">تمهيد</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../chapter_notation/index.html">الّرموز</a></li>
 </ul>
 <ul class="current">
@@ -165,7 +164,7 @@ Show Source
             
             <nav class="mdl-navigation">
                 <ul>
-<li class="toctree-l1"><a class="reference internal" href="../chapter_preface/index.html">Preface</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../chapter_preface/index.html">تمهيد</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../chapter_notation/index.html">الّرموز</a></li>
 </ul>
 <ul class="current">
@@ -196,7 +195,7 @@ Show Source
         <div class="page-content" role="main">
         
   <div class="section" id="sec-ndarray">
-<span id="id1"></span><h1><span class="section-number">2.1. </span>معالجة البيانات<a class="headerlink" href="#sec-ndarray" title="Permalink to this headline">¶</a><a href="https://colab.research.google.com/github/d2l-ai/d2l-en-colab/blob/master/chapter_preliminaries/ndarray.ipynb" onclick="captureOutboundLink('https://colab.research.google.com/github/d2l-ai/d2l-en-colab/blob/master/chapter_preliminaries/ndarray.ipynb'); return false;"> <button style="float:right", id="colab" class="mdl-button mdl-js-button mdl-button--primary mdl-js-ripple-effect"> <i class=" fas fa-external-link-alt"></i> Colab </button></a><div class="mdl-tooltip" data-mdl-for="colab"> Open the notebook in Colab</div></h1>
+<span id="id1"></span><h1><span class="section-number">2.1. </span>معالجة البيانات<a class="headerlink" href="#sec-ndarray" title="Permalink to this headline">¶</a><a href="https://colab.research.google.com/github/['d2l-ai/d2l-en-colab']/blob/master/chapter_preliminaries/ndarray.ipynb" onclick="captureOutboundLink('https://colab.research.google.com/github/['d2l-ai/d2l-en-colab']/blob/master/chapter_preliminaries/ndarray.ipynb'); return false;"> <button style="float:right", id="Colab" class="mdl-button mdl-js-button mdl-button--primary mdl-js-ripple-effect"> <i class=" fas fa-external-link-alt"></i> Colab </button></a><div class="mdl-tooltip" data-mdl-for="Colab"> Open the notebook in Colab</div></h1>
 <p>لإنجاز أي شيء متعلّق بالبيانات ، نحتاج إلى طريقة لتخزينها ومعالجتها.</p>
 <p>عمومًا ، هناك شيئان مهمان نحتاج إلى القيام بهما مع البيانات: (1) الحصول
 عليها ؛ و (2) معالجتها بمجرد أن تكون داخل الكمبيوتر. لا فائدة من الحصول
@@ -601,8 +600,8 @@ entries.</p>
 <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;id(z):&#39;</span><span class="p">,</span> <span class="nb">id</span><span class="p">(</span><span class="n">z</span><span class="p">))</span>
 </pre></div>
 </div>
-<div class="output highlight-default notranslate"><div class="highlight"><pre><span></span><span class="nb">id</span><span class="p">(</span><span class="n">z</span><span class="p">):</span> <span class="mi">4662329248</span>
-<span class="nb">id</span><span class="p">(</span><span class="n">z</span><span class="p">):</span> <span class="mi">4662329248</span>
+<div class="output highlight-default notranslate"><div class="highlight"><pre><span></span><span class="nb">id</span><span class="p">(</span><span class="n">z</span><span class="p">):</span> <span class="mi">140525583902592</span>
+<span class="nb">id</span><span class="p">(</span><span class="n">z</span><span class="p">):</span> <span class="mi">140525583902592</span>
 </pre></div>
 </div>
 <p>If the value of <code class="docutils literal notranslate"><span class="pre">x</span></code> is not reused in subsequent computations, we can

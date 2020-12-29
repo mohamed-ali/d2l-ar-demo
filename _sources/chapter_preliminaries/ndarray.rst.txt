@@ -612,8 +612,8 @@ entries.
 .. parsed-literal::
     :class: output
 
-    id(z): 4662329248
-    id(z): 4662329248
+    id(z): 140525583902592
+    id(z): 140525583902592
 
 
 If the value of ``x`` is not reused in subsequent computations, we can
